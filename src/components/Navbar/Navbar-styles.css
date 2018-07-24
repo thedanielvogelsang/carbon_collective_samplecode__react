@@ -1,0 +1,87 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500'); */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+div.header-navbar{
+  border-bottom: 2px solid #1fa245;
+  /* border-bottom: 2px solid rgb(70,138,199); */
+  position: fixed;
+  display: block;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  color: white;
+  width: 100vw;
+  align-items: center;
+  background-color: black;
+  z-index: 1;
+}
+
+.svg-icon{
+  margin-top: -5px;
+}
+
+.carbon-header-button{
+  margin: 12px 0 0 10px !important;
+  height: 40px !important;
+  width: 30px !important;
+  min-height: 40px !important;
+  min-width: 30px !important;
+  padding: 0 !important;
+  background-color: white !important;
+  border-radius: 10px;
+}
+
+header {
+  display: flex;
+  flex-flow: row, nowrap;
+  padding-top: 15px;
+}
+
+.header-icons{
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+ul.navbar {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.navbar li:hover{
+  cursor: pointer;
+}
+
+li.header-button{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+  align-items: baseline;
+  vertical-align: top;
+  justify-content: center;
+
+}
+
+.invite-button span.material-icons{
+  font-size: 36px !important;
+  color: #1fa245;
+  margin-top: -6px;
+}
+
+.invite-button{
+  margin-top: 22px;
+}
+
+.plus_one{
+  right: -10px;
+  top: -3px;
+}
+
+.carbon-img-header{
+  color: rgb(121,194,120);
+  background-color: black;
+  padding: 6px;
+}

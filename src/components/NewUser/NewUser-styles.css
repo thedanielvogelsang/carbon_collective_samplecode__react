@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.signup-page-div{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 400px;
+}
+
+.signup-form h3{
+  max-width: 350px;
+}
+
+.signup-form label{
+  max-width: 350px;
+}
+
+.signup-button-container {
+  flex-basis: 10vh;
+  margin-bottom: 80px;
+  margin-top: 0;
+}
+
+.signup-error-box{
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 20px;
+  color: #ED3838;
+}
+
+.form-submit{
+  max-width: 350px;
+}
+
+.signup-btn-submit{
+  color: #1fa245;
+  background-color: #2A2C33;
+}
+
+h4.new-user-label{
+  font-family: "PT Serif", serif;
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}

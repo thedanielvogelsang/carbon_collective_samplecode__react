@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.bug-directions1{
+  margin-top: 20px;
+  font-size: 0.9em;
+  line-height: 1.2em;
+  color: white;
+  text-align: left;
+  text-shadow: 1px 1px 1px black;
+  margin-bottom: 15px;
+  width: 300px;
+}
+
+.bug-directions{
+  margin-left: 10px;
+  font-size: 0.8em;
+  color: white;
+  text-align: left;
+  padding: 2px;
+  width: 250px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.bug-textBox{
+  margin: 40px 0px 20px;
+  font-family: 'PT Serif', serif;
+  border-radius: 5%;
+  padding: 15px;
+}
+
+.bug-btn{
+  max-width: 200px;
+  height: 40px;
+  min-width: 180px;
+  font-size: 1.4em;
+  font-family: 'PT Serif', serif;
+  padding: 5px 10px;
+  text-shadow: 1px 1px black;
+  color: #1fa245;
+  background-color: #2A2C33;
+  margin-bottom: 100px;
+}
+
+h3.bug-fix-title{
+  font-size: 26px;
+  color: white;
+  padding: 35px 0px 35px 0px;
+  margin: 10px 0px 0px 0px;
+  font-family: 'PT Serif', serif;
+  text-shadow: -1px -1px black;
+  width: 300px;
+  border-bottom: 1px dotted white;
+  font-weight: lighter;
+}
+
+.email-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 10px;
+  min-height: 500px;
+}
+
+.email-form-container textarea{
+  font-size: 0.8em;
+  max-width: 300px;
+  box-sizing: border-box;
+  color: #415B2F;
+}
+
+
+form.form-container.bug-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  justify-content: flex-start;
+  color: black;
+  font-weight: bold;
+  max-width: 350px;
+  align-items: center;
+}
+
+form.bug-form label{
+  max-width: 350px;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+
+form.bug-form textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #415B2F;
+  font-size: 1.1em;
+}
+
+form.bug-form textarea::-moz-placeholder { /* Firefox 19+ */
+  color: #415B2F;
+  font-size: 1.1em;
+}
+
+form.bug-form textarea:-ms-input-placeholder { /* IE 10+ */
+  color: #415B2F;
+  font-size: 1.1em;
+}
+
+form.bug-form textarea:-moz-placeholder { /* Firefox 18- */
+  color: #415B2F;
+  font-size: 1.1em;
+}

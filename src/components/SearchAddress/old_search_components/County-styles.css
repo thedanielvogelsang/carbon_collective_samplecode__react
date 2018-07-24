@@ -1,0 +1,180 @@
+.county-header{
+  height: 20px;
+  margin-top: 35px;
+  /* background-color: white; */
+  color: white;
+  padding: 24px 0px 20px 0px;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  /* font-size: 1.2em;
+  border-bottom: 2px solid #129941;
+  border-top: 2px solid #129941; */
+  font-family: 'PT Serif', serif;
+  font-size: 1.4em;
+  text-shadow: 1px -1px black;
+}
+
+.county-box{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.forward-backward-links-container-countys{
+  display: flex;
+  max-width: 300px !important;
+  min-width: 300px;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  margin-top: 60px;
+  border-top: 2px dotted white;
+  border-bottom: 2px dotted white;
+}
+
+/* .countyForm span.Select-multi-value-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} */
+
+.county-box div{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+
+.county-box .Select-menu-outer{
+  margin-top: 0px;
+  padding-top: 0px;
+  min-height: 40px !important;
+  overflow-y: scroll;
+  width: 70vw !important;
+  max-width: 300px !important;
+  background-color: white;
+  border-left: 4px solid #129941;
+  border-right: 4px solid #129941;
+  color: #415B2F;
+  padding-top: 5px;
+  z-index: 1;
+  -webkit-transform:translate3d(0,0,0);
+  margin-bottom: 30px;
+}
+
+.countyForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  overflow-y: scroll !important;
+  width: 100vw !important;
+}
+
+/* .countyForm div.Select-menu{
+  justify-content: center !important;
+  align-items: center !important;
+  align-self: center;
+  padding-top: 1680px;
+  -webkit-transform:translate3d(0,0,0);
+} */
+
+.county-list-options{
+  align-self: center;
+  line-height: 1.5;
+  padding-bottom: 6px;
+  border-bottom: 2px dotted black !important;
+  margin: 5px 0 5px 0;
+  z-index: 0 !important;
+  min-height: 25px;
+  -webkit-transform:translate3d(0,0,0);
+}
+
+.countyForm .Select-input{
+  display: flex !important;
+  width: 100vw !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 0;
+}
+
+.countyForm .Select-control{
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 200px;
+  overflow-y: hidden;
+}
+
+.countyForm .Select-control span{
+  width: 100vw !important;
+  height: 40px;
+}
+
+.countyForm .Select-input input{
+  width: 100vw;
+}
+.countyForm div{
+  width: 100vw;
+}
+
+.Select-option{
+  width: 100vw;
+}
+.Select-placeholder{
+  margin-top: 0px !important;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.Select-value.county-list-options{
+  border-bottom: 0px !important;
+  overflow-y: scroll !important;
+}
+
+.county-welcome{
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.county-link-container{
+  flex-direction: column;
+  margin-top: 0px !important;
+}
+
+#countyform-input{
+  width: 50vw !important;
+  text-align: center;
+}
+
+button.confirm-county-btn{
+  margin: 20px 0 20px 0;
+}
+
+button.red{
+  background-color: red !important;
+}
+.hidden{
+  display: none !important;
+}
+
+.text-show{
+  display: flex;
+  max-width: 350px;
+  align-self: center;
+  margin: 50px;
+  font-size: 1.3em;
+}

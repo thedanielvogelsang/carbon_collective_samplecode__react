@@ -1,0 +1,50 @@
+div.house-exists{
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0px;
+  align-items: center;
+}
+
+.house-exists h1{
+  margin: 20px 0px;
+  font-size: 2em;
+}
+
+.house-exists h3{
+  margin-bottom: 3px;
+}
+
+.house-exists h4{
+  margin: 10px 0px 20px 0px;
+  text-decoration: underline;
+}
+
+ul.resident-list{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  min-height: 80px;
+  max-width: 300px;
+}
+
+li.resident{
+  max-width: 160px;
+  text-align: left;
+}
+
+div.join-house-btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 30px;
+  width: 200px;
+  padding: 10px;
+}
+
+button.join-house-btn{
+  height: 34px;
+  width: 60px;
+  font-size: 1em;
+  background-color: #2A2C33;
+  color: #1fa245;
+}

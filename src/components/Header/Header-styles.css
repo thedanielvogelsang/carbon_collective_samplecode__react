@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua');
+
+header.header {
+  display: flex;
+  flex-flow: row, nowrap;
+  justify-content: center;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+header.landing-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding-top: 15px;
+  margin: 0px;
+  margin-top: 20px;
+  font-family: 'Inknut Antiqua', serif;
+}
+
+.header-img-container {
+  width: 100px;
+  height: auto;
+  display: inline-block;
+}
+
+header img {
+  max-width: 100%;
+  height: auto;
+}
+
+div.header-text {
+  display: inline-flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: left;
+  margin-top: 0;
+  width: 180px;
+}
+
+div.header-text.landing-page {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  width: auto;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: -2px 2px black;
+  font-size: 1.4em;
+  color: rgb(240,245,245);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 350px;
+}
+
+header h1 {
+  font-size: 2.5em;
+}
+
+.cc-img{
+  width: 100px;
+  height: 100px;
+}

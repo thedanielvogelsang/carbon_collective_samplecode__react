@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+/* @import url('https://fonts.googleapis.com/css?family=Roboto'); */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html {
+  background-color: #2A2C33;
+  color: white;
+}
+
+.app-container {
+  text-align: center;
+  padding-top: 70px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container h4 {
+  margin: 10px;
+}
+
+.form-container h3 {
+  margin: 30px;
+}
+
+form {
+  padding: 0 10%;
+  font-size: 18px;
+  width: 80%;
+  display: flex;
+}
+
+input {
+  border-radius: 5px;
+  border-style: none;
+  box-sizing: border-box;
+  font-size: 14px;
+  height: 22px;
+  margin: 6px 0;
+  outline: none;
+  padding: 15px;
+  width: 98%;
+}
+
+input:focus {
+  box-shadow: 0 0 15px rgba(72, 205, 11, 1);
+}
+
+select {
+  background-color: white;
+  border-radius: 5px;
+  border-style: none;
+  border: 0;
+  font-size: 14px;
+  height: 26px;
+  margin: 8px 0;
+  padding: 2px;
+  width: 98%;
+}
+
+button {
+  /* background-color: rgb(31,162,69); */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  max-width: 400px;
+  font-size: 1.1em;
+  font-family: 'PT Serif', serif;
+  text-transform: uppercase;
+  background-color: #1fa245;
+  color: black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.button-containers {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+  margin: 10px;
+}
+
+button.form-submit {
+  bottom: -10;
+  border-radius: 4px;
+  font-size: 24px;
+  font-weight: bold;
+  height: 80px;
+  margin-top: 8px;
+  padding: 8px 20px;
+  position: absolute;
+  width: 100vw;
+  text-shadow: 1px 2px black;
+  font-family: 'PT Serif', serif;
+}
+
+.error-box {
+  font-size: 20px;
+  margin: 20px;
+  color: #ED3838;
+}
+
+a {
+  color: #129941;
+}
+
+a:hover{
+  cursor: pointer;
+}
+
+.expandable-checklist:hover{
+  cursor: pointer;
+}
+
+input:hover{
+  cursor: pointer;
+}

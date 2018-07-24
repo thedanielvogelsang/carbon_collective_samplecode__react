@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.house-editform{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 26px;
+  margin: 20px 0px 25px 0px;
+  font-family: 'PT Serif', serif;
+  text-shadow: -1px -1px black;
+  font-family: 'PT Serif', serif;
+}
+
+.house-editform label{
+  max-width: 200px;
+  max-height: 70px;
+}
+
+.house-editform h3 {
+  color: #1fa245;
+  margin: 20px 0 30px;
+  font-family: 'PT Serif', serif;
+
+}
+h3.edit-header.house-settings{
+  color: white;
+  text-shadow: 0 0 1px black;
+  font-family: "PT Serif", serif;
+  padding: 20px 0 35px 0;
+  border-bottom: 1px dotted white;
+  margin-bottom: 10px !important;
+  /* font-weight: lighter; */
+}
+.house-editform h5 {
+  font-weight: bolder;
+  font-size: 22px;
+  margin: 20px 0 15px;
+}
+
+h3.current-address {
+  color: #1fa245;
+  font-size: 20px;
+  margin: 0 0 20px 0;
+}
+
+h4.click-address-text{
+  margin-top: 20px;
+  color: #1fa245;
+}
+
+.current-address{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'PT Serif', serif;
+}
+
+.current-address h4{
+  max-width: 300px;
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+
+.houseDelete{
+  margin: 20px 0px 40px 0px;
+}
+
+.deleteHouse{
+  padding: 5px 10px;
+  color: #1fa245;
+  background-color: #2A2C33;
+  font-size: 0.9em;
+  margin-top: 20px;
+}
+
+.housesettings-error-box{
+  font-size: 1.1em;
+  font-family: "PT Serif", serif;
+  color: #1fa245;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

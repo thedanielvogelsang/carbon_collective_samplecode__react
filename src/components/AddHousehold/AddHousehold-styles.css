@@ -1,0 +1,115 @@
+/* .house-add-page{
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+} */
+
+.add-household {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.add-household h3 {
+  color: #1fa245;
+  font-size: 20px;
+  margin: 30px 0 10px;
+}
+
+.add-household h5 {
+  font-weight: bolder;
+  font-size: 22px;
+  margin: 30px 0 15px;
+  font-family: "PT Serif", serif;
+}
+
+.add-household label{
+  max-width: 200px;
+}
+
+.number-form {
+  margin-top: 8px;
+  max-width: 200px;
+  align-content: center;
+  justify-content: center;
+}
+
+.number-form button {
+  border-radius: 20px;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.number-form input:not(.sq-feet){
+  font-size: 20px;
+  height: 50px;
+  margin: 10px;
+  width: 30%;
+  text-align: center;
+}
+
+.sq-feet {
+  font-size: 20px;
+  height: 50px;
+  margin: 10px 0;
+  width: 150px;
+  text-align: center;
+}
+
+.toggle-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 0.8em;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 0.8em;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 0.8em;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size: 0.8em;
+}
+
+.toggle-btn span.material-icons{
+  vertical-align: text-top;
+  padding-top: 2.5px;
+  padding-left: 3.3px;
+}
+
+.toggle-btn-apt{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 250px;
+}
+
+h1.toggle-btn-text{
+  margin: 0 15px;
+}
+
+.add-house-submit-btn{
+  background: #2A2C33;
+  color: #1fa245;
+  font-size: 1.1em !important;
+  height: 60px !important;
+}
+
+/* .toggle-btn div:first-child{
+  background-color: white !important;
+  width: 80px !important;
+  justify-content: space-around !important;
+} */

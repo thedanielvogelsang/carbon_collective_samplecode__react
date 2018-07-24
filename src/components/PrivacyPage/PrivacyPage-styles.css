@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+
+.privacy-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "PT Serif", serif;
+}
+
+.privacy-notice{
+  width: 100%;
+  max-width: 375px;
+}
+
+.privacy-form-div{
+  width: 100%;
+  max-width: 375px;
+
+}
+
+.privacy-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+}
+.privacy-header{
+  font-size: 1.3em;
+  text-align: left;
+  padding: 0px 15px 10px 15px;
+}
+
+.privacy-text{
+  margin: 5px 5px 2px 5px;
+  text-align: justify;
+  font-size: 1.1em;
+  line-height: 1.1em;
+  padding: 5px 15px;
+  background-color: white;
+  color: #415B2F;
+  text-indent: 30px;
+  font-weight: bold;
+}
+
+.privacy-text p{
+  margin: 10px 0px;
+}
+
+.privacy-notice-checkbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: middle;
+  height: 8vh;
+  width: 100%;
+  margin: 5px;
+  background-color: #4c4e5b;
+}
+
+.privacy-notice-checkbox h4{
+  font-size: 0.7em;
+  height: 100%;
+  text-align: left;
+  position: relative;
+  line-height: 1.3em;
+  padding: 10px 0px 0px 15px;
+}
+
+.privacy-notice-checkbox h4 > span{
+}
+
+.privacy-notice-checkbox input{
+  padding: 10px 0px 0px 0px;
+}
+
+.privacy-notice-checkbox .input-div{
+  margin-top: 5px;
+  height: 15%;
+  width: 10%;
+  position: relative;
+  top: 3px;
+  margin-right: 15px;
+}
+
+.accept-container{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+button.accept-privacy-notice-btn{
+  height: 30px;
+  width: 80px;
+  font-size: 0.7em;
+}
+
+.accept-container button.decline{
+  margin-right: 10px
+}
+.accept-container button.accept{
+  margin-left: 10px;
+}

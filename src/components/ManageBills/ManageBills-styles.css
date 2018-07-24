@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
+.bills-page-container{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.manage-bills-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  max-width: 400px;
+  margin-top: 20px;
+  border-top: 3px solid #2A2C33;
+  padding-top: 2px;
+}
+
+.manage-bills-container{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 350px;
+  min-height: 300px;
+  padding: 0;
+  border-top: 2px solid white;
+  justify-content: center;
+  align-items: center;
+}
+
+.manage-bills {
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  padding: 0px !important;
+  width: 100% !important;
+}
+
+.manage-bills input{
+  background-color: white;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  padding: 2px 5px;
+}
+
+.manage-bills input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+  font-size: 13px;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.manage-bills input::-moz-placeholder { /* Firefox 19+ */
+  font-size: 13px;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.manage-bills input:-ms-input-placeholder { /* IE 10+ */
+  font-size: 13px;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.manage-bills input:-moz-placeholder { /* Firefox 18- */
+  font-size: 13px;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+
+input#calendar-1{
+  font-size: 14px;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  text-align: center;
+}
+input#calendar-2{
+  font-size: 14px;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  text-align: center;
+}
+input#no_residents{
+  width: 35%;
+  text-align: center;
+  color: black;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.bills-form-line1{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: content-box;
+  margin: 5px 0;
+
+}
+.bills-form-line2{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: content-box;
+  margin: 5px 0;
+}
+.bills-form-line3{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: content-box;
+  margin: 5px 0;
+  margin-bottom: 60px;
+  padding-top: 10px;
+}
+
+form.manage-bills label{
+  padding: 5px 0px 5px 2px;
+  height: 7vh;
+  width: 45%;
+  margin: 2px 2px;
+  text-shadow: 1px 1px black;
+  font-family: 'PT Serif', serif;
+}
+
+form.manage-bills label.start-date-label{
+}
+
+.labels{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.labels h5{
+  padding-bottom: 5px;
+}
+
+p.no_people_ptag{
+  font-size: 0.8em;
+  padding: 6px 0px;
+}
+
+label.bill-cost {
+}
+
+h3.bills-title{
+  margin-bottom: 6px;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+  font-family: 'PT Serif', serif;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+  padding-top: 18px;
+}
+
+h6.bill-type-header{
+  text-align: left;
+  width: 359px;
+  /* font-family: 'Kaushan Script', cursive;
+  font-size: 2em; */
+  margin-left: 16px;
+  margin-top: 16px;
+  max-width: 400px;
+  margin-bottom: 20px;
+  font-family: 'PT Serif', serif;
+  font-size: 2.7em;
+}
+
+h4.bills-errors{
+  margin-top: 40px;
+  font-family: 'PT Serif', serif;
+
+}
+
+.bills-button-container {
+  padding-top: 10px;
+}
+
+.bills-button{
+  width: 120px;
+  height: 60px;
+  margin: 0;
+  font-size: 14px;
+  text-shadow: none;
+  font-weight: bold;
+  color: #1fa245;
+  text-shadow: 1px 1px 1px black;
+  background-color: #2A2C33;
+}

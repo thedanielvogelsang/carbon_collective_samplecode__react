@@ -1,0 +1,21 @@
+.bug-report-icon-fixed-container{
+  width: 100vw;
+  max-width: 903px;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  bottom: 34px;
+  height: 35px;
+  z-index: 0;
+}
+
+span.bug-report-icon-fixed{
+  background-color: black;
+  height: 35px !important;
+  width: 35px !important;
+  margin-right: 10px;
+  border: 1px solid #1fa245;
+  border-radius: 50%;
+  z-index: 1;
+}

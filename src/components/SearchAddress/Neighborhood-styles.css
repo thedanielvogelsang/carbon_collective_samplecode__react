@@ -1,0 +1,297 @@
+.neighborhood-header{
+  height: 20px;
+  /* background-color: white; */
+  color: white;
+  padding: 10px 0px 20px 0px;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  /* font-size: 1.2em;
+  border-bottom: 2px solid #129941;
+  border-top: 2px solid #129941; */
+  font-family: 'PT Serif', serif;
+  font-size: 1.6em;
+  text-shadow: 1px -1px black;
+}
+
+.neighborhood-form-container{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.regional-form.neighborhoods{
+  display: flex;
+  width: 90vw;
+  height: 70vh !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.regional-form-btns.neighborhoods{
+  width: 250px;
+}
+.regional-form-btns.to-counties{
+  width: 150px;
+}
+
+.searchNeighborhood-next{
+  background-color: #2A2C33;
+  color: #1fa245;
+  font-size: 1.4em;
+  margin-bottom: 30px;
+  animation: fade 2.5s ease 1 forwards;
+  animation-iteration-count: infinite;
+}
+/* .neighborhoodForm span.Select-multi-value-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} */
+
+
+.neighborhoodForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  overflow-y: scroll !important;
+  width: 100vw !important;
+}
+
+#go-to-address-icon{
+  color: #1fa245 !important;
+  font-size: 2em !important;
+  animation: fade 2.5s ease 1 forwards;
+  animation-iteration-count: infinite;
+}
+/* .neighborhoodForm div.Select-menu{
+  justify-content: center !important;
+  align-items: center !important;
+  align-self: center;
+  padding-top: 1680px;
+  -webkit-transform:translate3d(0,0,0);
+} */
+
+.neighborhood-list-options{
+  align-self: center;
+  line-height: 1.5;
+  padding-bottom: 6px;
+  border-bottom: 2px dotted black !important;
+  margin: 5px 0 5px 0;
+  z-index: 0 !important;
+  min-height: 25px;
+  -webkit-transform:translate3d(0,0,0);
+}
+
+
+.neighborhood-welcome{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.neighborhood-link-container{
+  flex-direction: column;
+  margin-top: 0px !important;
+}
+.neighborhood-link-container h3{
+}
+
+#neighborhoodform-input{
+  display: flex;
+  flex-direction: column;
+  width: 50vw !important;
+  max-width: 300px !important;
+  text-align: center;
+  height: 30px;
+  z-index: 3;
+}
+
+button.confirm-neighborhood-btn{
+  margin: 40px 0 40px 0;
+  background-color: #2A2C33;
+  color: #1fa245;
+  font-size: 1.0em;
+  max-width: 200px;
+  animation: fade 2.5s ease 1 forwards;
+  animation-iteration-count: infinite;
+}
+
+button.red{
+  background-color: red !important;
+}
+.hidden{
+  display: none !important;
+}
+
+.text-show{
+  display: flex;
+  max-width: 400px;
+  align-self: center;
+  margin: 50px 0;
+  font-size: 1.3em;
+}
+
+#first-clause{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 200px;
+  width: 90vw;
+  max-width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+h3.welcome-text{
+  text-align: left;
+  line-height: 1.5em;
+  margin-bottom: 100px;
+  font-size: 1.2em;
+}
+
+p.click-to-continue{
+  font-size: 0.9em;
+  color: #1fa245;
+  animation: fade 2.5s ease 1 forwards;
+  animation-iteration-count: infinite;
+}
+
+#custom-select-neighborhood{
+  margin-bottom: 60px;
+  z-index: 3;
+}
+
+#second-clause{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 200px;
+  width: 90vw;
+  max-width: 400px;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-top: 90px;
+}
+
+#second-clause p{
+  margin-left: -20px;
+}
+
+#third-clause{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#third-clause h3{
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.5em;
+  font-size: 1.2em;
+}
+
+p.third-clause-p{
+  font-family: 'PT Serif', serif;
+  font-size: 0.8em;
+  font-weight: lighter;
+  margin: 20px 0px;
+  max-width: 260px;
+  line-height: 1.2em;
+}
+
+p#blw-p{
+  text-align: left;
+}
+
+p.third-clause-p:nth-child(4){
+  text-align: left;
+}
+
+/*the container must be positioned relative:*/
+.neighborhood-form-container .custom-select {
+  position: relative;
+  text-shadow: 1px 1px black;
+  font-family: 'PT Serif', serif;
+  width: 100% !important;
+  max-height: 80px;
+  margin-bottom: 10px;
+}
+
+.neighborhood-form-container .custom-select select {
+  display: none !important; /*hide original SELECT element:*/
+}
+.neighborhood-form-container .select-selected {
+  width: 90%;
+  background-color: #1fa245;
+  color: white;
+  z-index: -1;
+}
+/*style the arrow inside the select element:*/
+.neighborhood-form-container .select-selected:after {
+  position: absolute;
+  content: "";
+  top: 15px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.neighborhood-form-container .select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 8px;
+}
+/*style the items (options), including the selected item:*/
+.neighborhood-form-container .select-items div,.select-selected {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+.neighborhood-form-container .select-items{
+  z-index: 1;
+}
+
+.neighborhood-form-container .select-items div{
+  color: black;
+  text-shadow: -1px 1px #ffffff;
+  background-color: #bdbec0;
+  z-index: 1;
+}
+/*style items (options):*/
+  /* .select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  } */
+/*hide the items when the select box is closed:*/
+.neighborhood-form-container .select-hide {
+  display: none;
+}
+.neighborhood-form-container .select-items div:hover, .same-as-selected {
+  color: white;
+  text-shadow: -1px 1px black;
+  background-color: #2A2C33;
+}
+
+@keyframes fade {
+  0% { opacity: 1 }
+  50% { opacity: 1 }
+  75% { opacity: 0 }
+  100% { opacity: 1 }
+}

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+div.settings-header{
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 10px;
+  background-color: #415B2F;
+  margin-top: -10px;
+}
+
+div.settings-email{
+  padding: 10px;
+  text-align: left;
+}
+div.settings-email p{
+  margin: 5px 0;
+  text-shadow: -1px 1px 1px black;
+}
+
+div.settings-email p.first{
+
+}
+div.settings-email p.second{
+  margin-left: 10px;
+}
+div.settings-page{
+  width: 94vw;
+  background-color: white;
+  color: black;
+  padding-top: 20px;
+  padding-left: 10px;
+  height: 620px;
+}
+
+ul.options-list{
+  display: flex;
+  width: 85vw;
+  list-style-type: none;
+  margin: 0;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  font-size: 24px;
+  border-bottom: 0.5px solid grey;
+}
+
+.settings-page span.material-icons{
+  vertical-align: middle;
+  padding-top: 25px;
+}
+
+li.setting-icon{
+  float: left;
+  width: 25%;
+  margin-left: 10vw;
+  line-height: 76px;
+  align-content: center;
+}
+
+li.setting-icon span{
+  z-index: 3;
+}
+
+li.setting-desc{
+  float: left;
+  padding-top: 8px;
+  width: 190px;
+  line-height: 76px;
+  font-size: 0.9em;
+  margin-left: -10px;
+  z-index: 3;
+}
+
+li.setting-icon:hover{
+  cursor: pointer
+}
+
+li.setting-desc:hover{
+  cursor: pointer
+}
+li.setting-desc-first{
+  color: rgb(43, 152, 240);
+  width: 75%;
+}

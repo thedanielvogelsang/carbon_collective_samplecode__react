@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.region-list-page{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-family: 'PT Serif', serif;
+
+}
+
+h1.ranked-title{
+  font-size: 1.4em;
+  color: white;
+  border: 1px dashed;
+  border-bottom: 1px solid;
+  padding: 10px 20px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.resource-logo{
+  width: 26;
+  height: 36;
+}
+
+.rankings-table-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-rank{
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  max-width: 337px;
+  padding: 0px 0 0px 15px;
+}
+
+.score-rank.second-line{
+  padding: 3px;
+  margin: 0px 0px 10px 0px;
+  background-color: #4c4e5b;
+  border: 3px solid white;
+}
+
+.score-rank p{
+  max-width: 30%;
+  padding-right: 10px;
+}
+
+.score-rank.second-line p{
+  /* color: #1fa245; */
+  background-color: #5e606d;
+  height: 25px;
+  line-height: 25px;
+  border-bottom: 1px solid white;
+}
+
+p.title-ranked-consumption{
+  min-height: 40px;
+  text-align: left;
+  min-width: 46%;
+}
+
+p.title-ranked-rank{
+  min-height: 40px;
+  max-width: 80px;
+  padding-right: 0px;
+  text-align: left;
+}
+
+p.mytitle-p{
+  min-height: 40px;
+}
+
+p.data-p{
+  width: 60px;
+}
+
+p.data-p.first{
+  padding-left: 15px;
+  min-width: 46%;
+  text-align: left;
+}
+
+p.data-p.second{
+  padding-right: 18px;
+  text-align: left;
+}
+
+p.data-p.last{
+  padding-right: 22px;
+}

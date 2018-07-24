@@ -1,0 +1,149 @@
+div.user-list-page{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  justify-content: center
+}
+
+h1.user-list-title{
+  margin-top: 100px;
+  font-size: 1.4em;
+  color: #29d967;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  text-decoration: underline;
+}
+
+div.user-list-container{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-top: 60px;
+  width: 100vw;
+  z-index: 0;
+}
+
+div.user_box{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+}
+ul.user-list{
+  display: flex;
+  flex-direction: column;
+  height: 57vh;
+  width: 87vw;
+  max-width: 350px;
+  text-align: justify;
+  margin-top: 10px;
+  padding: 2px 15px;
+  padding-bottom: 30px;
+  background-color: rgb(71, 73, 86);
+  overflow-y: scroll;
+}
+
+li.ranked-user-row{
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100vw;
+  max-width: 350px;
+  box-sizing: content-box;
+  min-height: 40px;
+}
+
+li.highlighted-user-row{
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+  color: #29d967;
+  width: 100vw;
+  max-width: 350px;
+  box-sizing: content-box;
+  min-height: 40px;
+}
+
+div.user-row-container{
+  display: flex;
+  flex-direction: row;
+  max-width: 350px;
+  align-content: space-between;
+}
+
+ul.user-row-list{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-width: 350px;
+  width: 87vw;
+  text-align: justify;
+  justify-content: space-between;
+}
+
+ul.user-row-list li{
+  display: inline-block;
+}
+
+li.user-row-name{
+  text-align: left;
+  margin-left: -5px;
+  min-width: 190px;
+  max-width: 210px;
+}
+
+li.user-row-rank{
+  min-width: 5vw;
+  text-align: center;
+  margin-left: -10px;
+}
+
+li.user-row-score{
+  width: 25vw;
+  text-overflow: ellipsis;
+  margin-left: -30px;
+  text-align: right;
+}
+
+li.user-arrow{
+  width: 5vw;
+  position: relative;
+  right: -10;
+  margin-left: -4px;
+
+}
+
+table.user-list-headers{
+  width: 90vw;
+  max-width: 350px;
+  position: relative;
+  margin-left: -10px;
+}
+
+tr.user-list-header-row{
+  align-content: space-between;
+}
+
+th.header-rank{
+  width: 14vw;
+  text-align: left;
+}
+
+th.header-user{
+  width: 30vw;
+  margin-right: 20px;
+}
+
+th.header-score{
+  text-align: right;
+  width: 200px;
+  float: right;
+}

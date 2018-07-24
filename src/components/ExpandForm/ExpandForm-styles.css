@@ -1,0 +1,33 @@
+form.suggestion-form {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  justify-content: flex-start !important;
+  color: black;
+  font-weight: bold;
+}
+
+h4.expand-request-directions{
+  font-family: "PT Serif", serif;
+  font-size: 1.4em;
+  color: white;
+  text-shadow: 0 0 1px black;
+  margin: 20px 0px 30px 0;
+  padding: 0px;
+}
+.expansion-textBox{
+  margin: 30px 0px 80px 0px;
+  max-width: 250px;
+  height: 140px;
+  vertical-align: text-top;
+  font-size: 0.9em;
+  padding: 5px;
+}
+
+.suggestion-btn{
+  max-width: 200px;
+  height: 70px;
+  font-size: 1.2em;
+  background-color: #2A2C33;
+  color: #1fa245;
+}

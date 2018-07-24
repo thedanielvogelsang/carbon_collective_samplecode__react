@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.email-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 10px;
+  min-height: 500px;
+}
+
+form.suggestion-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+  max-width: 350px;
+  align-items: center;
+}
+
+form.suggestion-form label{
+  max-width: 350px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+form.suggestion-form textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #415B2F;
+  font-size: 1.2em;
+}
+
+form.suggestion-form textarea::-moz-placeholder { /* Firefox 19+ */
+  color: #415B2F;
+  font-size: 1.2em;
+}
+
+form.suggestion-form textarea:-ms-input-placeholder { /* IE 10+ */
+  color: #415B2F;
+  font-size: 1.2em;
+}
+
+form.suggestion-form textarea:-moz-placeholder { /* Firefox 18- */
+  color: #415B2F;
+  font-size: 1.2em;
+}
+
+h3.suggestion-title{
+  color: white  ;
+  font-size: 27px;
+  padding: 0px 0px 35px 0px;
+  font-family: 'PT Serif', serif;
+  text-shadow: -1px -1px black;
+  width: 300px;
+  font-weight: lighter;
+  border-bottom: 1px dotted white;
+}
+
+.suggestion-textBox{
+  margin: 30px 0px 90px;
+  font-family: 'PT Serif', serif;
+  border-radius: 5%;
+  padding: 15px;
+  max-width: 320px;
+  box-sizing: content-box;
+}
+
+.suggestion-btn{
+  max-width: 200px;
+  height: 40px;
+  min-width: 180px;
+  font-size: 1.2em;
+  font-family: 'PT Serif', serif;
+  padding: 5px 10px;
+  text-shadow: 1px 1px black;
+}
