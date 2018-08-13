@@ -7,6 +7,8 @@ import FontIcon from 'material-ui/FontIcon';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import BackArrow from 'material-ui/svg-icons/av/replay';
 import {post} from '../../api_client';
+  import LogGrey from "./img/log_grey.svg";
+  import LogGreen from "./img/log_green.svg";
 
 import "typeface-roboto";
 import './Navbar-styles.css'
@@ -24,6 +26,12 @@ class Navbar extends Component {
       super()
       this.state = {
         foot_url: "./img/FOOT_blank_2.png",
+        login_input: "log in",
+        logDiv: "login-div",
+        log: LogGrey,
+        placeholder: 'log in',
+        user_id: false,
+        loaded: false,
         styles: {
           mediumIcon: {
             color: 'rgb(240, 250, 250)',
@@ -77,6 +85,10 @@ class Navbar extends Component {
       this.goToInvitePage = this.goToInvitePage.bind(this)
       this.sortButtonClicks = this.sortButtonClicks.bind(this)
       this.checkSettingsStatus = this.checkSettingsStatus.bind(this)
+      this.handleForm = this.handleForm.bind(this)
+      this.handleLogin = this.handleLogin.bind(this)
+      this.highlightLogin = this.highlightLogin.bind(this)
+      this.unhighlightLogin = this.unhighlightLogin.bind(this)
     }
 
     static contextTypes = {
@@ -96,11 +108,71 @@ class Navbar extends Component {
       if(this.props.history.location.pathname !== '/settings' && status){this.setState({settingsOpen: false})}
     }
 
+    handleLogin(e){
+      e.preventDefault();
+      let value = e.target.value;
+      this.setState({
+        login_input: value,
+      })
+    }
+
+    handleLogin(e){
+      e.preventDefault();
+      let value = e.target.value;
+      if(this.state.user_id && this.state.loaded){
+        
+      }
+      this.setState({
+        login_input: value,
+      })
+    }
+
+    highlightLogin(){
+      this.setState({
+        log: LogGreen,
+        logDiv: 'login-div highlighted',
+        placeholder: ''
+      })
+    }
+
+    unhighlightLogin(){
+      this.setState({
+        log: LogGrey,
+        logDiv: 'login-div',
+        placeholder: 'log in'
+      })
+    }
+
     render() {
     let loaded = this.props.loaded;
     if (['/'].indexOf(window.location.pathname) > -1 && !loaded) {
       return(
-        <div>
+        <div className="landing-navbar">
+          <div className="navbar-logo-menu-div">
+            <h1 className="h1-c">C</h1>
+          </div>
+          <form className="landing-navbar-signup-form" onSubmit={(e) => handleLogin(e)}>
+            <div className={this.state.logDiv}>
+              <img className="log-svg" src={this.state.log} style={{ width: '26px' }} />
+              <input
+                className="login-bar"
+                onChange={this.handleForm}
+                onFocus={this.highlightLogin}
+                onBlur={this.unhighlightLogin}
+                placeholder={this.state.placeholder}
+              />
+            </div>
+          </form>
+          <div className="landing-navbar-links">
+            <ul className="navbar">
+              <li className="header-button landing-nav-link">
+                <a onClick={(e) => this.goToAboutPage(e)}>About</a>
+              </li>
+              <li className="header-button landing-nav-link">
+                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+              </li>
+            </ul>
+          </div>
         </div>
       )
     }else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){

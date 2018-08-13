@@ -6,7 +6,8 @@ const Header = () => {
     return (
       <header className="landing-header">
         <div className="header-text landing-page">
-          <h1>Carbon Collective</h1>
+          <h1 className="landing-header-h1">Carbon</h1>
+          <h2 className="landing-subheader-h2">COLLECTIVE</h2>
         </div>
       </header>
     )
