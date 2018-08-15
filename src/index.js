@@ -13,13 +13,13 @@ const scrollTop = function(){
 }
 
 const CarbonCollective = (
-  <BrowserRouter onUpdate={() => scrollTop()}>
     <Provider store={store}>
       <PersistGate loading={Loader} persistor={persistor}>
-        <App />
+        <BrowserRouter onUpdate={() => scrollTop()}>
+          <App />
+        </BrowserRouter>
       </PersistGate>
     </Provider>
-  </BrowserRouter>
 )
 
 ReactDOM.render(
