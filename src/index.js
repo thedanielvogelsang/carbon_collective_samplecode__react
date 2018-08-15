@@ -4,18 +4,22 @@ import './reset.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 import {Provider} from 'react-redux';
-import store from './store.js';
+import { PersistGate } from 'redux-persist/integration/react'
+import { Loader } from './components/Loader'
+import {store, persistor} from './store.js';
 
 const scrollTop = function(){
   return document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
 const CarbonCollective = (
-  <BrowserRouter onUpdate={() => scrollTop()}>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={Loader} persistor={persistor}>
+        <BrowserRouter onUpdate={() => scrollTop()}>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
-  </BrowserRouter>
 )
 
 ReactDOM.render(

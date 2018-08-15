@@ -17,7 +17,7 @@ class Checklist extends Component{
       return true
     }else{
       return false
-    };
+    }
   }
 
   render(){

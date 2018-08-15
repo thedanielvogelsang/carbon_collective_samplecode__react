@@ -368,6 +368,7 @@ class Navbar extends Component {
   }
 
   goToSettings(){
+    console.log('setings button pushed')
     this.checkSettingsStatus()
     if(this.state.settingsOpen){
       this.context.router.history.goBack()
@@ -387,7 +388,7 @@ class Navbar extends Component {
   }
 
   logPageChange(name){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let path = `${id}/presses-nav-btn`
     let page = this.props.history.location.pathname
     let datum = {user_behavior: {
@@ -406,9 +407,9 @@ const mapStateToProps = (state) => ({
     data: state.userInfo.data
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
+// const mapDispatchToProps = (dispatch) => ({
+//
+// });
 
 // bypassing mapDispatchToProps for now:
 export default withRouter(connect(mapStateToProps, { loginUser })(Navbar));

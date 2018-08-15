@@ -1,4 +1,4 @@
-import {LOGIN_USER, USER_INFO} from './types' ;
+import {LOGIN_USER, USER_INFO, DASH_INFO} from './types' ;
 import {get, post} from '../api_client'
 
 
@@ -19,6 +19,20 @@ export const loginUser = (loginData) => dispatch => {
     )
 }
 
+export function fetchDashData(id, type) {
+  return function(dispatch) {
+    const path = `api/v1/users/${id}/resources?resource=${type}`
+    get(path)
+      .then(
+        data => dispatch({
+          type: DASH_INFO,
+          payload: data
+        })
+      )
+      .catch(error => console.log(error))
+  }
+}
+
 export function fetchUserData(id) {
   return function(dispatch) {
     const path = 'api/v1/users/' + id
@@ -29,6 +43,6 @@ export function fetchUserData(id) {
           payload: data
         })
       )
-      .catch(error => console.log())
+      .catch(error => console.log(error))
   }
 }

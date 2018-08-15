@@ -1,9 +1,10 @@
-import {LOGIN_USER, USER_INFO} from '../actions/types' ;
+import {LOGIN_USER, USER_INFO, DASH_INFO} from '../actions/types' ;
 
 const initialState = {
   user_id: null,
   house_id: null,
   data: null,
+  dash_data: null, 
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         house_id: action.payload.household.id,
         data: action.payload
+      }
+    case DASH_INFO:
+      return {
+        ...state,
+        dash_data: action.payload
       }
     default:
       return state;

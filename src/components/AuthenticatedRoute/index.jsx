@@ -10,7 +10,6 @@ class AuthenticatedRoute extends React.Component {
     this.props.history.push('/')
   }
   render() {
-    console.log(this.props)
     if (!this.props.loaded) {
       this.redirectToLogin()
       return null

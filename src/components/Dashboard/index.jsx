@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import DashboardData from '../DashboardData';
-import {get, post} from '../../api_client';
-import {connect} from 'react-redux'
+import {post} from '../../api_client';
+import {connect} from 'react-redux';
+import {fetchDashData} from '../../actions/userActions'
 import './Dashboard-styles.css';
 
 function capitalizeFirstLetter(string) {
@@ -11,7 +12,6 @@ function capitalizeFirstLetter(string) {
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
     let resource = localStorage.getItem('resource_type') || 'carbon'
     let color = localStorage.getItem('accent_color') || "rgb(191,130,54)"
     if(resource === 'null'){
@@ -37,7 +37,6 @@ class Dashboard extends Component {
 };
 
   componentDidMount(){
-    console.log('mounted')
     this.updateUserData()
     this.setDashboardData(this.state.resourceType)
   }
@@ -117,7 +116,7 @@ class Dashboard extends Component {
         }, this.updateUserData);
         break
       case "gas":
-      this.setState({
+        this.setState({
         resourceType: type,
         water_url: "./img/AQUA_blank_2.png",
         elec_url: "./img/ELEC_blank_2.png",
@@ -125,7 +124,7 @@ class Dashboard extends Component {
         flame_url: "./img/FLAME_fill_2.png",
         color: "rgb(239,98,93)",
         loading: true,
-      }, this.updateUserData);
+        }, this.updateUserData);
         break
       default:
         break;
@@ -134,19 +133,15 @@ class Dashboard extends Component {
 
   setUserState(data){
     localStorage.setItem("avg_monthly_consumption", data.avg_monthly_consumption)
-    this.setState({loading: false})
+    // this.setState({data, loading: false})
   }
 
   updateUserData(){
     let type = this.state.resourceType
-    const path = `api/v1/users/${this.state.user_id}/resources?resource=${type}`
-    get(path)
-      .then(data => this.setUserState(data))
-      .catch(error => console.log(error))
+    this.props.fetchDashData(this.props.user_id, type)
   }
 
   render() {
-    let loading = this.state.loading
     let house = this.props.house_id
     let title = capitalizeFirstLetter(this.state.resourceType)
     let resource = this.state.resourceType
@@ -221,9 +216,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="dashboard-data-container">
-
-            {!loading ? <DashboardData {...this.state} title={title} updateState={this.props.updateState}/> : null }
-
+          <DashboardData {...this.state} title={title} updateState={this.props.updateState}/>
           </div>
         </div>
       )}else{
@@ -289,10 +282,12 @@ const mapStateToProps = (state) => {
   return({
     user_id: state.userInfo.user_id,
     house_id: state.userInfo.house_id,
-    data: state.userInfo.data
+    data: state.userInfo.data,
+    dash_data: state.userInfo.dash_data
   })
 }
-export default connect(mapStateToProps, null)(Dashboard);
+
+export default connect(mapStateToProps, {fetchDashData})(Dashboard);
 
 // Avatar:
 
