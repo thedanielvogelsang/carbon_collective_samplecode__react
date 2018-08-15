@@ -33,7 +33,8 @@ import FixBugPage from '../FixBugPage'
 import FixBugLink from '../FixBugLink'
 import CarbonCalc from '../CarbonCalculationsPage'
 import Page404 from '../Page404'
-import {get} from '../../api_client'
+import {connect} from 'react-redux'
+import {fetchUserData} from '../../actions/userActions'
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -108,13 +109,13 @@ const getResourceType = function(){
 }
 
 class App extends Component {
-  constructor() {
+  constructor(props) {
     let resourceType = getResourceType();
     resourceType = resourceType || 'carbon'
-    super();
+    super(props);
     this.state = {
-      user_id: sessionStorage.getItem('user_id'),
-      house_id: sessionStorage.getItem('house_id'),
+      user_id: props.user_id,
+      house_id: props.house_id,
       userData: null,
       loaded: false,
       resource_type: resourceType,
@@ -125,6 +126,7 @@ class App extends Component {
     };
     this.updateState = this.updateState.bind(this);
     this.addUserData = this.addUserData.bind(this);
+    this.handleData = this.handleData.bind(this);
   };
 
 // adds userData, which is used on many pages, from api call
@@ -134,28 +136,25 @@ class App extends Component {
 
 // updates state if sessionStorage.getItem('user_id') changes (login/logout fix)
   componentDidUpdate(prevProps, prevState){
-    if(prevState.user_id !== sessionStorage.getItem('user_id')){
-      this.setState({loaded: false, user_id: sessionStorage.getItem('user_id')}, this.addUserData)
+    if(prevState.user_id !== this.props.user_id){
+      this.setState({loaded: false, user_id: this.props.user_id}, this.addUserData)
     }
   }
 
 // pulls non-resource-related user data from api
   addUserData(){
-    if(this.state.user_id !== 'null'){
-      const path = 'api/v1/users/' + this.state.user_id
-      get(path)
-        .then(data => this.handleData(data))
-        .catch(error => console.log())
+    if(this.state.user_id !== null){
+      this.props.fetchUserData(this.state.user_id)
+      setTimeout(this.handleData, 500)
     }
   }
 
 // handles user fetch return to set house
-  handleData(data){
-    if(data.household){
-      sessionStorage.setItem("house_id", data.household.id)
-      this.setState({userData: data, loaded: true, house_id: data.household.id})
+  handleData(){
+    if(this.props.data && this.props.data.household){
+      this.setState({userData: this.props.data, loaded: true, house_id: this.props.data.household.id})
     }else{
-      this.setState({userData: data, loaded: true})
+      this.setState({userData: this.props.data, loaded: true})
     }
   }
 // method sent as props to child components for updating parent App state (this)
@@ -167,8 +166,8 @@ class App extends Component {
 
   render() {
     let loaded = this.state.loaded;
-    let house = sessionStorage.getItem("house_id");
-    let id = sessionStorage.getItem("user_id");
+    let house = this.props.house_id;
+    let id = this.props.user_id;
     if(!loaded && !id){
       return(
         <div className="app-container">
@@ -232,4 +231,18 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return ({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    data: state.userInfo.data
+  })
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return({
+//     fetchUserData: fetchUserData
+//   })
+// }
+
+export default connect(mapStateToProps, {fetchUserData})(App);

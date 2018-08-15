@@ -7,6 +7,8 @@ import FontIcon from 'material-ui/FontIcon';
 import SettingsIcon from 'material-ui/svg-icons/action/settings';
 import BackArrow from 'material-ui/svg-icons/av/replay';
 import {post} from '../../api_client';
+import {connect} from 'react-redux'
+import { loginUser } from '../../actions/userActions'
   import LogGrey from "./img/log_grey.svg";
   import LogGreen from "./img/log_green.svg";
 
@@ -22,15 +24,19 @@ function removeColor() {
 }
 
 class Navbar extends Component {
-    constructor(){
-      super()
+    constructor(props){
+      super(props)
       this.state = {
         foot_url: "./img/FOOT_blank_2.png",
-        login_input: "log in",
+        login_input: "",
         logDiv: "login-div",
         log: LogGrey,
         placeholder: 'log in',
-        user_id: false,
+        user_id: props.user_id || false,
+        email: false,
+        email_logged: false,
+        password_logged: false,
+        password: '',
         loaded: false,
         styles: {
           mediumIcon: {
@@ -83,12 +89,16 @@ class Navbar extends Component {
       this.goToDash = this.goToDash.bind(this)
       this.goToSettings = this.goToSettings.bind(this)
       this.goToInvitePage = this.goToInvitePage.bind(this)
-      this.sortButtonClicks = this.sortButtonClicks.bind(this)
       this.checkSettingsStatus = this.checkSettingsStatus.bind(this)
-      this.handleForm = this.handleForm.bind(this)
+      this.handleChange = this.handleChange.bind(this)
       this.handleLogin = this.handleLogin.bind(this)
+      this.handleLoginForm = this.handleLoginForm.bind(this)
       this.highlightLogin = this.highlightLogin.bind(this)
       this.unhighlightLogin = this.unhighlightLogin.bind(this)
+      this.sortPageChange = this.sortPageChange.bind(this)
+      this.goToPage = this.goToPage.bind(this)
+      this.inputBox = this.inputBox.bind(this)
+      this.clearAll = this.clearAll.bind(this)
     }
 
     static contextTypes = {
@@ -96,11 +106,41 @@ class Navbar extends Component {
     }
 
     componentDidMount(){
+      this.checkLoginStatus()
       this.checkSettingsStatus()
     }
 
     componentDidUpdate(){
+
       this.checkSettingsStatus()
+    }
+
+    componentWillReceiveProps(nextProps){
+    }
+
+    clearAll(){
+      this.setState({
+        foot_url: "./img/FOOT_blank_2.png",
+        login_input: "",
+        logDiv: "login-div",
+        log: LogGrey,
+        placeholder: 'log in',
+        user_id: this.props.user_id || false,
+        email: false,
+        email_logged: false,
+        password_logged: false,
+        password: '',
+        loaded: false,
+      });
+    }
+
+    checkLoginStatus(){
+      // check for state user_id here, if it exists then loaded = true
+      if(2 < 1){
+        this.state({
+          loaded: true
+        })
+      }
     }
 
     checkSettingsStatus(){
@@ -108,39 +148,120 @@ class Navbar extends Component {
       if(this.props.history.location.pathname !== '/settings' && status){this.setState({settingsOpen: false})}
     }
 
-    handleLogin(e){
-      e.preventDefault();
+    handleChange(e){
       let value = e.target.value;
+      let name = e.target.name
       this.setState({
-        login_input: value,
+        [name]: value,
       })
     }
 
-    handleLogin(e){
-      e.preventDefault();
-      let value = e.target.value;
-      if(this.state.user_id && this.state.loaded){
-        
+    handleLogin(){
+      const stateData = { ...this.state };
+      const loginData = {user: stateData}
+      this.props.loginUser(loginData)
+      setTimeout(this.sortPageChange, 1000)
+    }
+
+    resetWithErrors(error){
+      alert(error.errors)
+      this.clearAll()
+    }
+
+    goToPage(path) {
+      this.props.history.push(path)
+    };
+
+    sortPageChange(){
+      let path = `${this.props.id}/user-logs-in`
+      // if successful, add to redux
+      post(path)
+        .then(ans => console.log())
+        .catch(error => console.log(error))
+      if(!this.props.data.privacy_policy){
+        this.clearAll()
+        setTimeout(this.goToPage, 600, '/privacy-policy')
+      }else{
+        console.log("go to dash with or without a house")
+        this.clearAll()
+        setTimeout(this.goToPage, 1000, '/dashboard')
       }
-      this.setState({
-        login_input: value,
-      })
     }
 
-    highlightLogin(){
+    handleLoginForm(e){
+      e.preventDefault();
+      if(this.state.email && this.state.password === '' && !this.state.loaded){
+        this.setState({
+          email_logged: true,
+          placeholder: 'password'
+        })
+      }else if(this.state.password !== '' && !this.state.loaded){
+        this.setState({
+          password_logged: true,
+        })
+        this.handleLogin()
+      }else{
+        console.log('other login response needed')
+      }
+    }
+
+    highlightLogin(e){
+      e.target.value = ''
       this.setState({
         log: LogGreen,
         logDiv: 'login-div highlighted',
-        placeholder: ''
       })
     }
 
     unhighlightLogin(){
-      this.setState({
-        log: LogGrey,
-        logDiv: 'login-div',
-        placeholder: 'log in'
-      })
+      if(this.state.email){
+        this.setState({
+          log: LogGrey,
+          logDiv: 'login-div',
+          placeholder: 'password'
+        })
+      }else{
+        this.setState({
+          log: LogGrey,
+          logDiv: 'login-div',
+          placeholder: 'log in'
+        })
+      }
+    }
+
+    inputBox(){
+      if(!this.state.email_logged){
+        return(
+          <input
+            className="login-bar"
+            name="email"
+            onChange={this.handleChange}
+            onFocus={this.highlightLogin}
+            onBlur={this.unhighlightLogin}
+            placeholder={this.state.placeholder}
+            onKeyPress={function(){return null}}
+          />
+        )
+      }else if(!this.state.password_logged){
+        return(
+          <input
+            type="password"
+            className="login-bar"
+            name="password"
+            onChange={this.handleChange}
+            onFocus={(e) => this.highlightLogin(e)}
+            onBlur={this.unhighlightLogin}
+            placeholder={this.state.placeholder}
+            value={this.state.password}
+          />
+        )
+      }else{
+        return(
+          <div>
+          </div>
+        )
+      }
+
     }
 
     render() {
@@ -151,16 +272,10 @@ class Navbar extends Component {
           <div className="navbar-logo-menu-div">
             <h1 className="h1-c">C</h1>
           </div>
-          <form className="landing-navbar-signup-form" onSubmit={(e) => handleLogin(e)}>
+          <form className="landing-navbar-signup-form" onSubmit={(e) => this.handleLoginForm(e)}>
             <div className={this.state.logDiv}>
-              <img className="log-svg" src={this.state.log} style={{ width: '26px' }} />
-              <input
-                className="login-bar"
-                onChange={this.handleForm}
-                onFocus={this.highlightLogin}
-                onBlur={this.unhighlightLogin}
-                placeholder={this.state.placeholder}
-              />
+              <img alt="log logo" className="log-svg" src={this.state.log} style={{ width: '26px' }} />
+              {this.inputBox()}
             </div>
           </form>
           <div className="landing-navbar-links">
@@ -200,7 +315,7 @@ class Navbar extends Component {
       let color3 = this.state.styles.color.color
       let color = {color: color3}
       return (
-      <MuiThemeProvider>
+        <MuiThemeProvider>
         <header>
           <div className="header-navbar">
             <ul className="navbar">
@@ -237,204 +352,6 @@ class Navbar extends Component {
         </header>
       </MuiThemeProvider>
       )
-    }
-  }
-  sortButtonClicks(e, btn){
-    e.preventDefault()
-    if(btn === 'btn2'){
-      console.log('dash')
-      this.setState({
-        foot_url: "./img/FOOT_fill_2.png",
-        mediumIcon4: {
-          color: '##bdbec0',
-          opacity: 0.8,
-          width: 36,
-          height: 36,
-          alignContent: 'center',
-          justifyContent: 'center',
-          paddingBottom: '10px',
-        },
-        left: {
-          width: 48,
-          height: 38,
-          padding: 12,
-          position: 'relative',
-          top: 5,
-        },
-        middle: {
-          width: 48,
-          height: 38,
-          padding: 12,
-          position: 'relative',
-          top: 5,
-        },
-        right: {
-          width: 48,
-          height: 38,
-          padding: 12,
-          position: 'relative',
-          top: 5,
-          verticalAlign: 'center'
-        },
-        mediumIcon: {
-          color: 'rgb(240, 250, 250)',
-          opacity: 0.8,
-          width: 36,
-          height: 36,
-          alignContent: 'center',
-          justifyContent: 'center',
-          paddingBottom: '10px',
-        },
-        color: "#bdbec0",
-      }, this.goToDash)
-    }
-    else if(btn === 'btn4'){
-      console.log('settings')
-      this.setState({
-        styles: {
-          color: "#bdbec0",
-          mediumIcon4: {
-            color: '#1fa245',
-            opacity: 0.8,
-            width: 36,
-            height: 36,
-            alignContent: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-          },
-          mediumIcon: {
-            color: 'rgb(240, 250, 250)',
-            opacity: 0.8,
-            width: 36,
-            height: 36,
-            alignContent: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-          },
-          left: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-          },
-          middle: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-          },
-          right: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-            verticalAlign: 'center'
-          },
-          foot_url: "./img/FOOT_blank_2.png",
-        }
-      }, this.goToSettings)
-    }
-    else if(btn === "btn3"){
-      console.log('invite')
-      this.setState({
-        styles: {
-          color: "#1fa245",
-          mediumIcon4: {
-            color: '#bdbec0',
-            opacity: 0.8,
-            width: 36,
-            height: 36,
-            alignContent: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-          },
-          mediumIcon: {
-            color: 'rgb(240, 250, 250)',
-            opacity: 0.8,
-            width: 36,
-            height: 36,
-            alignContent: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-          },
-          left: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-          },
-          middle: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-          },
-          right: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-            verticalAlign: 'center'
-          },
-          foot_url: "./img/FOOT_blank_2.png",
-        }
-      }, this.goToInvitePage)
-
-    }
-    else if(btn === "btn1"){
-      console.log('back')
-      this.setState({
-        styles: {
-          color: "#bdbec0",
-          mediumIcon4: {
-            color: '#bdbec0',
-            opacity: 0.8,
-            width: 36,
-            height: 36,
-            alignContent: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-          },
-          mediumIcon: {
-            color: 'rgb(240, 250, 250)',
-            opacity: 0.8,
-            width: 36,
-            height: 36,
-            alignContent: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-          },
-          left: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-          },
-          middle: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-          },
-          right: {
-            width: 48,
-            height: 38,
-            padding: 12,
-            position: 'relative',
-            top: 5,
-            verticalAlign: 'center'
-          },
-          foot_url: "./img/FOOT_blank_2.png",
-        }
-      }, this.goBack)
     }
   }
 
@@ -484,4 +401,14 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+const mapStateToProps = (state) => ({
+    id: state.userInfo.user_id,
+    data: state.userInfo.data
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+// bypassing mapDispatchToProps for now:
+export default withRouter(connect(mapStateToProps, { loginUser })(Navbar));

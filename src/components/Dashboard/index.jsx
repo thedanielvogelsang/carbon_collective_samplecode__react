@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DashboardData from '../DashboardData';
 import {get, post} from '../../api_client';
+import {connect} from 'react-redux'
 import './Dashboard-styles.css';
 
 function capitalizeFirstLetter(string) {
@@ -10,16 +11,16 @@ function capitalizeFirstLetter(string) {
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    let user_id = sessionStorage.getItem('user_id')
+    console.log(props)
     let resource = localStorage.getItem('resource_type') || 'carbon'
     let color = localStorage.getItem('accent_color') || "rgb(191,130,54)"
     if(resource === 'null'){
       resource = 'carbon'
     }
     this.state = {
-      user_id: user_id,
-      first: this.props.userData.first,
-      avatar_url: "./img/fake_avatar_img.jpg",
+      user_id: props.user_id,
+      first: props.data.first,
+      avatar_url: props.data.avatar_url,
       water_url: "./img/AQUA_blank_2.png",
       elec_url: "./img/ELEC_blank_2.png",
       carbon_url: "./img/Leaf final_blank.png",
@@ -36,16 +37,19 @@ class Dashboard extends Component {
 };
 
   componentDidMount(){
+    console.log('mounted')
     this.updateUserData()
     this.setDashboardData(this.state.resourceType)
   }
 
-  componentDidUpdate(){
-    localStorage.setItem("accent_color", this.state.color)
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.color !== this.state.color){
+      localStorage.setItem("accent_color", this.state.color)
+    }
   }
 
   goToPage(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.user_id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -62,7 +66,7 @@ class Dashboard extends Component {
   preSetDash(e){
    e.preventDefault();
    let type = e.target.getAttribute('name')
-   let id = sessionStorage.getItem('user_id')
+   let id = this.props.user_id
    let page = this.props.history.location.pathname
    let path = `${id}/presses-btn`
    let datum = {user_behavior: {
@@ -130,11 +134,10 @@ class Dashboard extends Component {
 
   setUserState(data){
     localStorage.setItem("avg_monthly_consumption", data.avg_monthly_consumption)
-    this.setState({data, first: data.first, loading: false})
+    this.setState({loading: false})
   }
 
   updateUserData(){
-    // t
     let type = this.state.resourceType
     const path = `api/v1/users/${this.state.user_id}/resources?resource=${type}`
     get(path)
@@ -144,7 +147,7 @@ class Dashboard extends Component {
 
   render() {
     let loading = this.state.loading
-    let house = sessionStorage.getItem('house_id')
+    let house = this.props.house_id
     let title = capitalizeFirstLetter(this.state.resourceType)
     let resource = this.state.resourceType
     let color = this.state.color
@@ -282,7 +285,14 @@ const GlobalSavings = (props) => {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    data: state.userInfo.data
+  })
+}
+export default connect(mapStateToProps, null)(Dashboard);
 
 // Avatar:
 
