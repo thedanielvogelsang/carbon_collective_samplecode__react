@@ -21,13 +21,13 @@ class Dashboard extends Component {
       user_id: props.user_id,
       first: props.data.first,
       avatar_url: props.data.avatar_url,
+      dash_data: props.dash_data,
       water_url: "./img/AQUA_blank_2.png",
       elec_url: "./img/ELEC_blank_2.png",
       carbon_url: "./img/Leaf final_blank.png",
       flame_url: "./img/FLAME_blank_2.png",
       color: color,
       colorBack: "#D3D4D5",
-      loading: true,
       resourceType: resource,
     };
     this.setDashboardData = this.setDashboardData.bind(this);
