@@ -115,7 +115,7 @@ class HouseSettings extends Component{
   }
 
   clearAndGoToDash(data){
-    // perhaps here we need to remove house_id from Redux state 
+    // perhaps here we need to remove house_id from Redux state
     setTimer(data)
       .then(data => this.goToDashboard())
       .catch(error => console.log(error))
@@ -160,7 +160,7 @@ class HouseSettings extends Component{
 
   addressForm(){
     return(
-      <div>
+      <div className="deleteHouse-container">
         <div className="current-address">
           <h3 className='current-address'> Current Address: </h3>
           <h4> {this.state.full_address} </h4>
@@ -188,51 +188,51 @@ class HouseSettings extends Component{
     let addressLoaded = this.state.addressLoaded
     if(this.state.house_exists && addressLoaded){
       return(
-        <div>
-        <div className="housesettings-error-box" onClick={this.disappear} style={this.state.errorStyle}>
-          { this.state.errors }
-        </div>
-        <form
-          className="form-container house-editform"
-          >
-            <h3 className="edit-header house-settings"> Edit House Specs</h3>
-            <h5> Current Number of Residents </h5>
-            <label>
-              <div className="number-form">
-                <button
-                  onClick={ (e) => this.updateResidents(e) }
-                >-</button>
+        <div className="houseSettings-container">
+          <div className="housesettings-error-box" onClick={this.disappear} style={this.state.errorStyle}>
+            { this.state.errors }
+          </div>
+          <form
+            className="form-container house-editform"
+            >
+              <h3 className="edit-header house-settings"> Edit House Specs</h3>
+              <h5> Current Number of Residents </h5>
+              <label>
+                <div className="number-form">
+                  <button
+                    onClick={ (e) => this.updateResidents(e) }
+                  >-</button>
+                  <input
+                    type="text"
+                    name="no_residents"
+                    step="1"
+                    min="1"
+                    max="1000"
+                    readOnly={true}
+                    placeholder={ this.state.house.no_residents }
+                    onBlur={ this.handleChange }
+                  />
+                  <button
+                    onClick={ (e) => this.updateResidents(e, "add") }
+                  >+</button>
+                </div>
+              </label>
+              <h5>Total Square Feet</h5>
+              <label>
                 <input
-                  type="text"
-                  name="no_residents"
+                  type="number"
+                  className="sq-feet"
+                  name="total_sq_ft"
+                  placeholder={ this.state.house.total_sq_ft }
                   step="1"
-                  min="1"
-                  max="1000"
-                  readOnly={true}
-                  placeholder={ this.state.house.no_residents }
+                  min="0"
+                  max="50000"
+                  onFocus={(e) => e.target.placeholder = ''}
                   onBlur={ this.handleChange }
                 />
-                <button
-                  onClick={ (e) => this.updateResidents(e, "add") }
-                >+</button>
-              </div>
-            </label>
-            <h5>Total Square Feet</h5>
-            <label>
-              <input
-                type="number"
-                className="sq-feet"
-                name="total_sq_ft"
-                placeholder={ this.state.house.total_sq_ft }
-                step="1"
-                min="0"
-                max="50000"
-                onFocus={(e) => e.target.placeholder = ''}
-                onBlur={ this.handleChange }
-              />
-            </label>
-          </form>
-          { addressLoaded ? this.addressForm() : null }
+              </label>
+            </form>
+            { addressLoaded ? this.addressForm() : null }
         </div>
       )
     }else{
