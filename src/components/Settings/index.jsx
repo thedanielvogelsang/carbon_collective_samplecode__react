@@ -23,9 +23,7 @@ const iconStylesFirst = {
 class Settings extends Component {
   constructor(props){
     super(props);
-    const user_id = props.user_id
     this.state = {
-      user_id: user_id,
       email: '',
       avatar_url: "./fake_avatar_img.jpg",
     };
@@ -38,7 +36,7 @@ class Settings extends Component {
   };
 
   componentDidMount() {
-    const path = 'api/v1/users/' + this.state.user_id;
+    const path = 'api/v1/users/' + this.props.user_id;
     get(path)
       .then(data => this.setState({email: data.email, first: data.first, last: data.last}))
       .catch(error => console.log(error))
@@ -90,7 +88,7 @@ class Settings extends Component {
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.user_id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
