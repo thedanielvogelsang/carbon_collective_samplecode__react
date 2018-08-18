@@ -212,7 +212,7 @@ class Navbar extends Component {
   }
 
   unhighlightLogin(){
-    if(this.state.email){
+    if(this.state.email_logged){
       this.setState({
         log: LogGrey,
         logDiv: 'login-div',
