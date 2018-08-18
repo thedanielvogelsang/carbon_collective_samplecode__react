@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html {
+  background-color: white;
+  color: white;
+}
+
+.app-container {
+  text-align: center;
+  padding-top: 70px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Libre Franklin', Helvetica, sans-serif;
+  font-size: 1em;
+  color: #2a2c33;
+}
+
+.loader {
+    display: block;
+    border: 16px solid #6E6B6B; /* Light grey */
+    border-top: 16px solid #129941; /* Blue */
+    border-bottom: 16px solid #129941; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

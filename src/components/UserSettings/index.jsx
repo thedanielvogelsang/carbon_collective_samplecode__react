@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import ReactExpandableViewList from 'react-expandable-listview';
 import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {get, put, post} from '../../api_client';
 import './UserSettings-styles.css';
 
 class UserSettings extends Component{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
-      user_id: sessionStorage.getItem('user_id')
+      loading: true
     }
     this.updateUser = this.updateUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -22,13 +23,13 @@ class UserSettings extends Component{
   }
 
   setInitialSettingState(){
-    get(`api/v1/users/${this.state.user_id}`)
-      .then(data => this.setState({first: data.first, last: data.last, email: data.email}))
+    get(`api/v1/users/${this.props.id}`)
+      .then(data => this.setState({first: data.first, last: data.last, email: data.email, loading: false}))
       .catch(error => console.log(error))
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -55,7 +56,7 @@ class UserSettings extends Component{
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -71,7 +72,7 @@ class UserSettings extends Component{
   updateUser(event){
     const target = event.target;
     const name = target.name;
-    const id = sessionStorage.getItem('user_id')
+    const id = this.props.id
     if(target.value === ''){
       target.placeholder = this.state[name]
     }else{
@@ -85,55 +86,62 @@ class UserSettings extends Component{
   }
 
   render(){
-    return(
-      <div className="usrForm-cnt">
-      <div className="users-editform-container">
-      <div className="form-outside-container">
-        <h3 className="edit-header">{this.state.first}'s User Info</h3>
-        <form
-          className="form-container users-editform"
-        >
-        <h4> First Name </h4>
-        <input
-          onChange={this.handleChange}
-          onFocus={(e) => e.target.placeholder = ''}
-          onBlur={this.updateUser}
-          placeholder={this.state.first}
-          name="first"
-          type="text"
-          />
-        <h4> Last Name </h4>
-        <input
-          onChange={this.handleChange}
-          onFocus={(e) => e.target.placeholder = ''}
-          onBlur={this.updateUser}
-          placeholder={this.state.last}
-          name="last"
-          type="text"
-          />
-        <h4> Email </h4>
-        <input
-          onChange={this.handleChange}
-          onFocus={(e) => e.target.placeholder = ''}
-          onBlur={this.updateUser}
-          placeholder={this.state.email}
-          name="email"
-          type="text"
-          />
-        </form>
-        <div>
-          <button
-            className="address-link"
-            onClick={this.goToHouseSettings}
-            >House Info</button>
+    let loading = this.state.loading
+    if (!loading) {
+      return(
+        <div className="usrForm-cnt">
+        <div className="users-editform-container">
+        <div className="form-outside-container">
+          <h3 className="edit-header">{this.state.first + "'"}s User Info</h3>
+          <form
+            className="form-container users-editform"
+          >
+          <h4> First Name </h4>
+          <input
+            onChange={this.handleChange}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={this.updateUser}
+            placeholder={this.state.first}
+            name="first"
+            type="text"
+            />
+          <h4> Last Name </h4>
+          <input
+            onChange={this.handleChange}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={this.updateUser}
+            placeholder={this.state.last}
+            name="last"
+            type="text"
+            />
+          <h4> Email </h4>
+          <input
+            onChange={this.handleChange}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={this.updateUser}
+            placeholder={this.state.email}
+            name="email"
+            type="text"
+            />
+          </form>
+          <div>
+            <button
+              className="address-link"
+              onClick={this.goToHouseSettings}
+              >House Info</button>
+          </div>
+          </div>
+          <div className='passwordUpdate'>
+            <PasswordInput />
+          </div>
         </div>
         </div>
-        <div className='passwordUpdate'>
-          <PasswordInput />
-        </div>
-      </div>
-      </div>
-    )
+      )
+    }else{
+      return(
+        <div></div>
+      )
+    }
   }
 }
 
@@ -294,4 +302,10 @@ class PasswordInput extends Component{
   };
 };
 
-export default withRouter(UserSettings);
+const mapStateWithProps = function(state){
+  return({
+    id: state.userInfo.user_id,
+  })
+}
+
+export default withRouter(connect(mapStateWithProps, null)(UserSettings));

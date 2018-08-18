@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import { get, post } from '../../api_client'
@@ -20,11 +21,9 @@ const iconStylesFirst = {
 }
 
 class Settings extends Component {
-  constructor(){
-    super();
-    const user_id = sessionStorage.getItem('user_id')
+  constructor(props){
+    super(props);
     this.state = {
-      user_id: user_id,
       email: '',
       avatar_url: "./fake_avatar_img.jpg",
     };
@@ -37,7 +36,7 @@ class Settings extends Component {
   };
 
   componentDidMount() {
-    const path = 'api/v1/users/' + this.state.user_id;
+    const path = 'api/v1/users/' + this.props.user_id;
     get(path)
       .then(data => this.setState({email: data.email, first: data.first, last: data.last}))
       .catch(error => console.log(error))
@@ -69,11 +68,13 @@ class Settings extends Component {
     post(path)
       .then(data => console.log())
       .catch(error => console.log(error))
-    sessionStorage.removeItem('user_id')
-    sessionStorage.removeItem('house_id')
-    localStorage.removeItem('resource_type')
-    localStorage.removeItem('accent_color')
+    localStorage.clear();
     this.props.history.push('/')
+    setTimeout(this.resetPage, 500)
+  }
+
+  resetPage(){
+    return location.reload()
   }
 
   suggestionsPage(){
@@ -87,7 +88,7 @@ class Settings extends Component {
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.user_id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -168,4 +169,7 @@ class Settings extends Component {
 //   <li className="setting-desc">Set Goals</li>
 // </ul>
 
-export default withRouter(Settings);
+const mapStateToProps = (state) => ({
+    user_id: state.userInfo.user_id
+});
+export default withRouter(connect(mapStateToProps, null)(Settings));

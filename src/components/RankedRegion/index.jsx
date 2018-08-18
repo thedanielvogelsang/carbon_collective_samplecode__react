@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {put, post} from '../../api_client';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -64,7 +65,7 @@ class RankedRegion extends Component{
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.user_id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -77,7 +78,7 @@ class RankedRegion extends Component{
   }
 
   logPageMount(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.user_id
     let page = this.props.history.location.pathname + this.props.name
     let url = `${id}/page-mounted`
     let datum = { pageName: page }
@@ -212,4 +213,11 @@ class RankedRegion extends Component{
   }
 }
 
-export default withRouter(RankedRegion);
+
+const mapStateToProps = (state) => {
+  return({
+    user_id: state.userInfo.user_id
+  })
+}
+
+export default withRouter(connect(mapStateToProps, null)(RankedRegion));

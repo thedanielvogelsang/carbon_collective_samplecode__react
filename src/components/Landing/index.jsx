@@ -23,22 +23,15 @@ class Landing extends Component {
   render() {
     return (
       <div className='landing-body'>
-        <div className="earth-container">
-          <img
-          className="cc-landing-img"
-          alt="app logo"
-          src="./img/Leaf final_fill.png"
-          />
-        </div>
-        <div className="button-containers landing-button">
-        <div>
-        <a className="new-member-link" onClick={this.newMemberSignUp}>- not a CC member yet? -</a>
-        </div>
+          <div className="landing-text">
+          <p>
+            <span>Envisioning a sustainable</span> green vision based movement which is necessarily inclusive of every buzz-word I can think of all in one sentence, the Carbon Collective brings to this vital community the evolution of environmental responsibility, fairness, egalitarianism, and hope.
+          </p>
+          </div>
           <button
             className="landing-button"
-            onClick={(e) => this.goToPage('/login') }
-          >Sign in</button>
-        </div>
+            onClick={this.newMemberSignUp}
+          >GET INVOLVED</button>
       </div>
     )
   }

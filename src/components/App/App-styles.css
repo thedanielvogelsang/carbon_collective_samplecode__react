@@ -8,7 +8,7 @@ body {
 }
 
 html {
-  background-color: #2A2C33;
+  background-color: white;
   color: white;
 }
 
@@ -21,37 +21,35 @@ html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.form-container h4 {
-  margin: 10px;
-}
-
-.form-container h3 {
-  margin: 30px;
+  font-family: 'Libre Franklin', Helvetica, sans-serif;
+  font-size: 1em;
+  color: #2a2c33;
 }
 
 form {
   padding: 0 10%;
   font-size: 18px;
-  width: 80%;
   display: flex;
 }
 
 input {
+
   border-radius: 5px;
   border-style: none;
   box-sizing: border-box;
-  font-size: 14px;
-  height: 22px;
+  /* font-size: 14px;
+  height: 22px; */
   margin: 6px 0;
   outline: none;
-  padding: 15px;
-  width: 98%;
+  padding: 6px;
+  /* width: 98%; */
 }
 
 input:focus {
-  box-shadow: 0 0 15px rgba(72, 205, 11, 1);
+  /* border: 6px solid #79c278;
+  opacity: 100%;
+  transition: opacity .3s; */
+  /* box-shadow: 0 0 15px rgba(72, 205, 11, 1); */
 }
 
 select {
@@ -66,8 +64,7 @@ select {
   width: 98%;
 }
 
-button {
-  /* background-color: rgb(31,162,69); */
+/* button {
   border: none;
   border-radius: 4px;
   color: white;
@@ -77,42 +74,14 @@ button {
   text-transform: uppercase;
   background-color: #1fa245;
   color: black;
-}
+} */
 
 button:hover {
   cursor: pointer;
 }
 
-.button-containers {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  bottom: 0;
-  margin: 10px;
-}
-
-button.form-submit {
-  bottom: -10;
-  border-radius: 4px;
-  font-size: 24px;
-  font-weight: bold;
-  height: 80px;
-  margin-top: 8px;
-  padding: 8px 20px;
-  position: absolute;
-  width: 100vw;
-  text-shadow: 1px 2px black;
-  font-family: 'PT Serif', serif;
-}
-
-.error-box {
-  font-size: 20px;
-  margin: 20px;
-  color: #ED3838;
-}
-
 a {
-  color: #129941;
+  color: #2a2c33;
 }
 
 a:hover{

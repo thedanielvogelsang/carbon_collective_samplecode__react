@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import DashboardData from '../DashboardData';
-import {get, post} from '../../api_client';
+import {post} from '../../api_client';
+import {connect} from 'react-redux';
+import {fetchDashData} from '../../actions/userActions'
 import './Dashboard-styles.css';
+import Loader from '../Loader';
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -10,70 +13,46 @@ function capitalizeFirstLetter(string) {
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    let user_id = sessionStorage.getItem('user_id')
     let resource = localStorage.getItem('resource_type') || 'carbon'
     let color = localStorage.getItem('accent_color') || "rgb(191,130,54)"
     if(resource === 'null'){
       resource = 'carbon'
     }
     this.state = {
-      user_id: user_id,
-      first: this.props.userData.first,
-      avatar_url: "./img/fake_avatar_img.jpg",
+      loading: true,
+      user_id: props.user_id,
+      first: props.data.first,
+      avatar_url: props.data.avatar_url,
       water_url: "./img/AQUA_blank_2.png",
       elec_url: "./img/ELEC_blank_2.png",
       carbon_url: "./img/Leaf final_blank.png",
       flame_url: "./img/FLAME_blank_2.png",
       color: color,
       colorBack: "#D3D4D5",
-      loading: true,
       resourceType: resource,
     };
     this.setDashboardData = this.setDashboardData.bind(this);
     this.preSetDash = this.preSetDash.bind(this);
     this.goToPage = this.goToPage.bind(this);
     this.updateUserData = this.updateUserData.bind(this);
+    this.changeDashboardData = this.changeDashboardData.bind(this);
+    this.showDashboardData = this.showDashboardData.bind(this);
 };
 
   componentDidMount(){
-    this.updateUserData()
+    // this.updateUserData()
     this.setDashboardData(this.state.resourceType)
+    this.props.dash_data ? this.showDashboardData() : console.log()
   }
 
-  componentDidUpdate(){
-    localStorage.setItem("accent_color", this.state.color)
+  componentDidUpdate(prevProps, prevState){
+    prevState.color !== this.state.color ? localStorage.setItem("accent_color", this.state.color) : console.log()
+    prevProps.dash_data !== this.props.dash_data ? this.changeDashboardData(this.props.dash_data) : console.log()
   }
 
-  goToPage(path){
-    let id = sessionStorage.getItem('user_id')
-    let page = this.props.history.location.pathname
-    let url = `${id}/page-leave`
-    let datum = {user_behavior: {
-      prevPage: page,
-      nextPage: path,
-        }
-      }
-    post(url, datum)
-     .then(data => console.log())
-     .catch(error => console.log(error))
-    this.props.history.push(path)
-  }
-
-  preSetDash(e){
-   e.preventDefault();
-   let type = e.target.getAttribute('name')
-   let id = sessionStorage.getItem('user_id')
-   let page = this.props.history.location.pathname
-   let path = `${id}/presses-btn`
-   let datum = {user_behavior: {
-     buttonName: type,
-     pageName: page,
-   }
-                }
-   post(path, datum)
-    .then(data => console.log())
-    .catch(error => console.log(error))
-   this.setDashboardData(type)
+  updateUserData(){
+    let type = this.state.resourceType
+    this.props.fetchDashData(this.props.user_id, type)
   }
 
   setDashboardData(type){
@@ -113,7 +92,7 @@ class Dashboard extends Component {
         }, this.updateUserData);
         break
       case "gas":
-      this.setState({
+        this.setState({
         resourceType: type,
         water_url: "./img/AQUA_blank_2.png",
         elec_url: "./img/ELEC_blank_2.png",
@@ -121,30 +100,62 @@ class Dashboard extends Component {
         flame_url: "./img/FLAME_fill_2.png",
         color: "rgb(239,98,93)",
         loading: true,
-      }, this.updateUserData);
+        }, this.updateUserData);
         break
       default:
         break;
     }
   }
 
-  setUserState(data){
-    localStorage.setItem("avg_monthly_consumption", data.avg_monthly_consumption)
-    this.setState({data, first: data.first, loading: false})
+  changeDashboardData(dash_data){
+    this.setState({
+      loading: false,
+      dash_data: dash_data,
+    })
   }
 
-  updateUserData(){
-    // t
-    let type = this.state.resourceType
-    const path = `api/v1/users/${this.state.user_id}/resources?resource=${type}`
-    get(path)
-      .then(data => this.setUserState(data))
-      .catch(error => console.log(error))
+  showDashboardData(){
+    this.setState({
+      loading: false
+    })
   }
+
+  goToPage(path){
+    let id = this.props.user_id
+    let page = this.props.history.location.pathname
+    let url = `${id}/page-leave`
+    let datum = {user_behavior: {
+      prevPage: page,
+      nextPage: path,
+        }
+      }
+    post(url, datum)
+     .then(data => {return data})
+     .catch(error => console.log(error))
+    this.props.history.push(path)
+  }
+
+  preSetDash(e){
+   e.preventDefault();
+   let type = e.target.getAttribute('name')
+   let id = this.props.user_id
+   let page = this.props.history.location.pathname
+   let path = `${id}/presses-btn`
+   let datum = {user_behavior: {
+     buttonName: type,
+     pageName: page,
+   }
+                }
+   post(path, datum)
+    .then(data => {return data})
+    .catch(error => console.log(error))
+   this.setDashboardData(type)
+  }
+
 
   render() {
     let loading = this.state.loading
-    let house = sessionStorage.getItem('house_id')
+    let house = this.props.house_id
     let title = capitalizeFirstLetter(this.state.resourceType)
     let resource = this.state.resourceType
     let color = this.state.color
@@ -218,9 +229,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="dashboard-data-container">
-
-            {!loading ? <DashboardData {...this.state} title={title} updateState={this.props.updateState}/> : null }
-
+          {!loading ? <DashboardData {...this.state} title={title} updateState={this.props.updateState}/> : <Loader /> }
           </div>
         </div>
       )}else{
@@ -282,7 +291,16 @@ const GlobalSavings = (props) => {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    data: state.userInfo.data,
+    dash_data: state.userInfo.dash_data
+  })
+}
+
+export default connect(mapStateToProps, {fetchDashData})(Dashboard);
 
 // Avatar:
 
