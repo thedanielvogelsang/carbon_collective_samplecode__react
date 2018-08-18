@@ -144,8 +144,6 @@ class Navbar extends Component {
 
   checkSettingsStatus(){
     let status = this.state.settingsOpen
-    console.log(status)
-    console.log(this.props.history.location.pathname)
     // initializes with false
     // if found to be false and on settings page, make opposite
     if(this.props.history.location.pathname === '/settings' && !status){this.setState({settingsOpen: !status})}

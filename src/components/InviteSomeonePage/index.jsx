@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Button from 'muicss/lib/react/button';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {post} from '../../api_client';
 import './InviteSomeone-styles.css';
 
@@ -25,7 +26,6 @@ class InviteSomeonePage extends Component{
   constructor(){
     super();
     this.state = {
-      user_id: sessionStorage.getItem('user_id'),
       emails: {},
       emailInputs: [],
       count: 1,
@@ -53,7 +53,7 @@ class InviteSomeonePage extends Component{
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -113,7 +113,7 @@ class InviteSomeonePage extends Component{
   handleForm(event){
     event.preventDefault();
     let emailData = {emails: this.state.emails, message: this.state.message}
-    const id = this.state.user_id
+    const id = this.props.id
     const path = `users/invite/${id}`
     post(path, emailData)
       .then(data => this.goBackToDash(data))
@@ -213,4 +213,9 @@ class InviteSomeonePage extends Component{
   }
 }
 
-export default withRouter(InviteSomeonePage);
+const mapStateWithProps = (state) => {
+  return({
+    id: state.userInfo.user_id
+  })
+}
+export default withRouter(connect(mapStateWithProps, null)(InviteSomeonePage));
