@@ -109,4 +109,5 @@ function resourceStyler(type){
   }
 }
 
+
 export default RegionPage;
