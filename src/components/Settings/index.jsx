@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import { get, post } from '../../api_client'
@@ -20,9 +21,9 @@ const iconStylesFirst = {
 }
 
 class Settings extends Component {
-  constructor(){
-    super();
-    const user_id = sessionStorage.getItem('user_id')
+  constructor(props){
+    super(props);
+    const user_id = props.user_id
     this.state = {
       user_id: user_id,
       email: '',
@@ -69,11 +70,13 @@ class Settings extends Component {
     post(path)
       .then(data => console.log())
       .catch(error => console.log(error))
-    sessionStorage.removeItem('user_id')
-    sessionStorage.removeItem('house_id')
-    localStorage.removeItem('resource_type')
-    localStorage.removeItem('accent_color')
+    localStorage.clear();
     this.props.history.push('/')
+    setTimeout(this.resetPage, 500)
+  }
+
+  resetPage(){
+    return location.reload()
   }
 
   suggestionsPage(){
@@ -168,4 +171,7 @@ class Settings extends Component {
 //   <li className="setting-desc">Set Goals</li>
 // </ul>
 
-export default withRouter(Settings);
+const mapStateToProps = (state) => ({
+    user_id: state.userInfo.user_id
+});
+export default withRouter(connect(mapStateToProps, null)(Settings));

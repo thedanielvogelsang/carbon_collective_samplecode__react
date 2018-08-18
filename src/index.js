@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './reset.css';
 import { BrowserRouter } from 'react-router-dom';
+// import { syncHistoryWithStore } from 'react-router-redux'
 import App from './components/App';
 import {Provider} from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
-import { Loader } from './components/Loader'
+import Loader from './components/Loader'
 import {store, persistor} from './store.js';
 
 const scrollTop = function(){
@@ -14,7 +15,7 @@ const scrollTop = function(){
 
 const CarbonCollective = (
     <Provider store={store}>
-      <PersistGate loading={Loader} persistor={persistor}>
+      <PersistGate loading={<Loader />} persistor={persistor}>
         <BrowserRouter onUpdate={() => scrollTop()}>
           <App />
         </BrowserRouter>

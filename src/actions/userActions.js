@@ -1,5 +1,6 @@
 import {LOGIN_USER, USER_INFO, DASH_INFO} from './types' ;
-import {get, post} from '../api_client'
+import {BrowserRouter} from 'react-router-dom';
+import {get, post} from '../api_client';
 
 
 export const loginUser = (loginData) => dispatch => {
@@ -12,7 +13,7 @@ export const loginUser = (loginData) => dispatch => {
       })
     )
     .then(
-      data => {return data.payload}
+      data => sortPageChange(data.payload)
     )
     .catch(
       error => { return error }
@@ -44,5 +45,14 @@ export function fetchUserData(id) {
         })
       )
       .catch(error => console.log(error))
+  }
+}
+
+function sortPageChange(data){
+  if(!data.privacy_policy){
+    setTimeout(BrowserRouter.push('/privacy-policy'), 1000)
+  }else{
+    // console.log(BrowserRouter)
+    setTimeout(BrowserRouter.push('/dashboard'), 1000)
   }
 }

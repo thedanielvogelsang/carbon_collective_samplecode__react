@@ -4,6 +4,7 @@ import {post} from '../../api_client';
 import {connect} from 'react-redux';
 import {fetchDashData} from '../../actions/userActions'
 import './Dashboard-styles.css';
+import Loader from '../Loader';
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -18,10 +19,10 @@ class Dashboard extends Component {
       resource = 'carbon'
     }
     this.state = {
+      loading: true,
       user_id: props.user_id,
       first: props.data.first,
       avatar_url: props.data.avatar_url,
-      dash_data: props.dash_data,
       water_url: "./img/AQUA_blank_2.png",
       elec_url: "./img/ELEC_blank_2.png",
       carbon_url: "./img/Leaf final_blank.png",
@@ -34,49 +35,24 @@ class Dashboard extends Component {
     this.preSetDash = this.preSetDash.bind(this);
     this.goToPage = this.goToPage.bind(this);
     this.updateUserData = this.updateUserData.bind(this);
+    this.changeDashboardData = this.changeDashboardData.bind(this);
+    this.showDashboardData = this.showDashboardData.bind(this);
 };
 
   componentDidMount(){
-    this.updateUserData()
+    // this.updateUserData()
     this.setDashboardData(this.state.resourceType)
+    this.props.dash_data ? this.showDashboardData() : console.log()
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevState.color !== this.state.color){
-      localStorage.setItem("accent_color", this.state.color)
-    }
+    prevState.color !== this.state.color ? localStorage.setItem("accent_color", this.state.color) : console.log()
+    prevProps.dash_data !== this.props.dash_data ? this.changeDashboardData(this.props.dash_data) : console.log()
   }
 
-  goToPage(path){
-    let id = this.props.user_id
-    let page = this.props.history.location.pathname
-    let url = `${id}/page-leave`
-    let datum = {user_behavior: {
-      prevPage: page,
-      nextPage: path,
-        }
-      }
-    post(url, datum)
-     .then(data => console.log())
-     .catch(error => console.log(error))
-    this.props.history.push(path)
-  }
-
-  preSetDash(e){
-   e.preventDefault();
-   let type = e.target.getAttribute('name')
-   let id = this.props.user_id
-   let page = this.props.history.location.pathname
-   let path = `${id}/presses-btn`
-   let datum = {user_behavior: {
-     buttonName: type,
-     pageName: page,
-   }
-                }
-   post(path, datum)
-    .then(data => console.log())
-    .catch(error => console.log(error))
-   this.setDashboardData(type)
+  updateUserData(){
+    let type = this.state.resourceType
+    this.props.fetchDashData(this.props.user_id, type)
   }
 
   setDashboardData(type){
@@ -131,17 +107,54 @@ class Dashboard extends Component {
     }
   }
 
-  setUserState(data){
-    localStorage.setItem("avg_monthly_consumption", data.avg_monthly_consumption)
-    // this.setState({data, loading: false})
+  changeDashboardData(dash_data){
+    this.setState({
+      loading: false,
+      dash_data: dash_data,
+    })
   }
 
-  updateUserData(){
-    let type = this.state.resourceType
-    this.props.fetchDashData(this.props.user_id, type)
+  showDashboardData(){
+    this.setState({
+      loading: false
+    })
   }
+
+  goToPage(path){
+    let id = this.props.user_id
+    let page = this.props.history.location.pathname
+    let url = `${id}/page-leave`
+    let datum = {user_behavior: {
+      prevPage: page,
+      nextPage: path,
+        }
+      }
+    post(url, datum)
+     .then(data => {return data})
+     .catch(error => console.log(error))
+    this.props.history.push(path)
+  }
+
+  preSetDash(e){
+   e.preventDefault();
+   let type = e.target.getAttribute('name')
+   let id = this.props.user_id
+   let page = this.props.history.location.pathname
+   let path = `${id}/presses-btn`
+   let datum = {user_behavior: {
+     buttonName: type,
+     pageName: page,
+   }
+                }
+   post(path, datum)
+    .then(data => {return data})
+    .catch(error => console.log(error))
+   this.setDashboardData(type)
+  }
+
 
   render() {
+    let loading = this.state.loading
     let house = this.props.house_id
     let title = capitalizeFirstLetter(this.state.resourceType)
     let resource = this.state.resourceType
@@ -216,7 +229,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="dashboard-data-container">
-          <DashboardData {...this.state} title={title} updateState={this.props.updateState}/>
+          {!loading ? <DashboardData {...this.state} title={title} updateState={this.props.updateState}/> : <Loader /> }
           </div>
         </div>
       )}else{

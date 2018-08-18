@@ -4,7 +4,7 @@ const initialState = {
   user_id: null,
   house_id: null,
   data: null,
-  dash_data: null, 
+  dash_data: false,
 }
 
 const usersReducer = (state = initialState, action) => {

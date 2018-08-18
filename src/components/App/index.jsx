@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App-styles.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import AuthenticatedRoute from '../AuthenticatedRoute'
 import UnauthenticatedRoute from '../UnauthenticatedRoute';
 import HouselessRoute from '../HouselessRoute';
@@ -245,4 +245,4 @@ const mapStateToProps = (state) => {
 //   })
 // }
 
-export default connect(mapStateToProps, {fetchUserData})(App);
+export default withRouter(connect(mapStateToProps, {fetchUserData})(App));

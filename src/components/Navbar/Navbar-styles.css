@@ -39,7 +39,7 @@ div.header-navbar{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 64px;
   background-color: #f5f5f5 !important;
   border-bottom: 1px solid rgb(192,194,194);
