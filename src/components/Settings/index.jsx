@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import { get, post } from '../../api_client'
-import './Settings-styles.css';
+  import DashLogo from './img/footprint.svg';
+  import InviteLogo from './img/invite.svg';
+  import BillsLogo from './img/doc.svg';
+  import './Settings-styles.css';
 
 const iconStyles = {
   color: 'black',
@@ -26,7 +29,11 @@ class Settings extends Component {
     this.state = {
       email: '',
       avatar_url: "./fake_avatar_img.jpg",
+      dashLogo: DashLogo,
+      billsLogo: BillsLogo,
+      inviteLogo: InviteLogo,
     };
+    this.goToDash = this.goToDash.bind(this);
     this.goToInvitePage = this.goToInvitePage.bind(this);
     this.goToUserUpdatePage = this.goToUserUpdatePage.bind(this);
     this.goToHouseUpdatePage = this.goToHouseUpdatePage.bind(this);
@@ -45,6 +52,11 @@ class Settings extends Component {
   goToInvitePage(event){
     this.logPageChange('/invites')
     this.props.history.push('/invites')
+  }
+
+  goToDash(event){
+    this.logPageChange('/dashboard')
+    this.props.history.push('/dashboard')
   }
 
   goToGoalsPage(event){
@@ -103,6 +115,20 @@ class Settings extends Component {
 
   render() {
     return (
+    <div>
+    <div className="shrunken-subnav-div">
+      <ul className="shrunken-subnav-list">
+        <li className="shrunken-nav-buttons">
+          <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
+        </li>
+        <li className="shrunken-nav-buttons">
+          <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
+        </li>
+        <li className="shrunken-nav-buttons">
+          <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+        </li>
+      </ul>
+    </div>
     <div className="settings-dropdown">
       <div className='settings-header' onClick={() => this.props.history.push('/dashboard')}>
         <div className="settings-email">
@@ -150,6 +176,7 @@ class Settings extends Component {
           </ul>
         </div>
       </MuiThemeProvider>
+    </div>
     </div>
     )
   };

@@ -277,9 +277,9 @@ class Navbar extends Component {
     let loaded = this.state.loaded;
     if (['/'].indexOf(window.location.pathname) > -1 && !loaded) {
       return(
-        <div className="landing-navbar">
+        <div className="landing-navbar navbar">
           <div className="navbar-logo-menu-div">
-            <img alt="carbon collective logo" className="cc-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToPage('/')}/>
+            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={this.goToPage('/')}/>
           </div>
           <form className="landing-navbar-login-form" onSubmit={(e) => this.handleLoginForm(e)}>
             <div className={this.state.logDiv}>
@@ -303,8 +303,9 @@ class Navbar extends Component {
     else if(['/'].indexOf(window.location.pathname) > -1 && loaded) {
       return(
         <div className="landing-navbar">
-          <div className="navbar-logo-menu-div">
-            <img alt="carbon collective logo" className="cc-logo" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+          <div className="navbar-logo-menu-div navbar">
+            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
             <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
           <div className="landing-navbar-links">
@@ -325,7 +326,7 @@ class Navbar extends Component {
     }
     else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){
       return(
-        <div className="landing-navbar">
+        <div className="landing-navbar navbar">
           <div className="navbar-logo-menu-div">
             <h1 className="h1-c">C</h1>
           </div>
@@ -346,7 +347,7 @@ class Navbar extends Component {
         return(
           <MuiThemeProvider>
             <header>
-              <div className="header-navbar">
+              <div className="header-navbar navbar">
                 <ul className="navbar">
                   <li className="header-button">
                   <IconButton onMouseEnter={addColor} onMouseLeave={removeColor} onClick={this.context.router.history.goBack} iconStyle={this.state.styles.mediumIcon} style={this.state.styles.left}>
@@ -363,9 +364,10 @@ class Navbar extends Component {
         let color3 = this.state.styles.color.color
         let color = {color: color3}
         return (
-          <div className="landing-navbar">
+          <div className="main-navbar">
             <div className="navbar-logo-menu-div">
-              <img alt="carbon collective logo" className="navbar-link cc-logo" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+                <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+                <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
               <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
             </div>
             <div className="landing-navbar-links">
