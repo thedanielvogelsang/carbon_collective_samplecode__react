@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import { loginUser } from '../../actions/userActions'
   import LogGrey from "./img/log_grey.svg";
   import LogGreen from "./img/log_green.svg";
+  import CCLogo from './img/CC_logo.svg';
 
 import "typeface-roboto";
 import './Navbar-styles.css'
@@ -31,6 +32,7 @@ class Navbar extends Component {
       login_input: "",
       logDiv: "login-div",
       log: LogGrey,
+      logo: CCLogo,
       placeholder: 'log in',
       user_id: props.user_id || false,
       email: false,
@@ -182,7 +184,8 @@ class Navbar extends Component {
         .then(ans => this.goToPage('/dashboard'))
         .catch(error => console.log(error))
     }else{
-      alert("Login failed. Please try again")
+      console.log(this.props.error)
+      alert(this.props.error.errors)
     }
     this.clearAll()
   }
@@ -268,7 +271,7 @@ class Navbar extends Component {
       return(
         <div className="landing-navbar">
           <div className="navbar-logo-menu-div">
-            <h1 className="h1-c">C</h1>
+            <img alt="carbon collective logo" className="cc-logo" src={this.state.logo} style={{width: '26px'}}/>
           </div>
           <form className="landing-navbar-signup-form" onSubmit={(e) => this.handleLoginForm(e)}>
             <div className={this.state.logDiv}>
@@ -436,7 +439,8 @@ class Navbar extends Component {
 
 const mapStateToProps = (state) => ({
     id: state.userInfo.user_id,
-    data: state.userInfo.data
+    data: state.userInfo.data,
+    error: state.userInfo.error
 });
 
 // const mapDispatchToProps = (dispatch) => ({

@@ -1,4 +1,4 @@
-import {LOGIN_USER, USER_INFO, DASH_INFO} from '../actions/types' ;
+import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR} from '../actions/types' ;
 
 const initialState = {
   user_id: null,
@@ -25,6 +25,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         dash_data: action.payload
+      }
+    case CATCH_ERROR:
+      return {
+        ...state,
+        error: action.payload
       }
     default:
       return state;
