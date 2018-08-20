@@ -9,9 +9,14 @@ import BackArrow from 'material-ui/svg-icons/av/replay';
 import {post} from '../../api_client';
 import {connect} from 'react-redux'
 import { loginUser } from '../../actions/userActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
   import LogGrey from "./img/log_grey.svg";
   import LogGreen from "./img/log_green.svg";
   import CCLogo from './img/CC_logo.svg';
+  import DashFoot from './img/footprint.svg';
+  import InviteLogo from './img/invite.svg';
+  import BillsPageLogo from './img/doc.svg';
 
 import "typeface-roboto";
 import './Navbar-styles.css'
@@ -33,6 +38,9 @@ class Navbar extends Component {
       logDiv: "login-div",
       log: LogGrey,
       logo: CCLogo,
+      dashLogo: DashFoot,
+      inviteLogo: InviteLogo,
+      billsLogo: BillsPageLogo,
       placeholder: 'log in',
       user_id: props.user_id || false,
       email: false,
@@ -271,9 +279,9 @@ class Navbar extends Component {
       return(
         <div className="landing-navbar">
           <div className="navbar-logo-menu-div">
-            <img alt="carbon collective logo" className="cc-logo" src={this.state.logo} style={{width: '26px'}}/>
+            <img alt="carbon collective logo" className="cc-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToPage('/')}/>
           </div>
-          <form className="landing-navbar-signup-form" onSubmit={(e) => this.handleLoginForm(e)}>
+          <form className="landing-navbar-login-form" onSubmit={(e) => this.handleLoginForm(e)}>
             <div className={this.state.logDiv}>
               <img alt="log logo" className="log-svg" src={this.state.log} style={{ width: '26px' }} />
               {this.inputBox()}
@@ -296,7 +304,8 @@ class Navbar extends Component {
       return(
         <div className="landing-navbar">
           <div className="navbar-logo-menu-div">
-            <h1 className="h1-c">C</h1>
+            <img alt="carbon collective logo" className="cc-logo" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
           <div className="landing-navbar-links">
             <ul className="navbar">
@@ -305,6 +314,9 @@ class Navbar extends Component {
               </li>
               <li className="header-button landing-nav-link">
                 <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+              </li>
+              <li className="header-button landing-nav-link">
+                <FontAwesomeIcon icon={faEllipsisH} className="hamburger-menu-landing" onClick={this.goToSettings}/>
               </li>
             </ul>
           </div>
@@ -351,42 +363,28 @@ class Navbar extends Component {
         let color3 = this.state.styles.color.color
         let color = {color: color3}
         return (
-          <MuiThemeProvider>
-          <header>
-            <div className="header-navbar">
+          <div className="landing-navbar">
+            <div className="navbar-logo-menu-div">
+              <img alt="carbon collective logo" className="navbar-link cc-logo" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+              <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
+            </div>
+            <div className="landing-navbar-links">
               <ul className="navbar">
-                <li className="header-button">
-                <IconButton id="back-nav" onClick={this.goBack} iconStyle={this.state.styles.mediumIcon} style={this.state.styles.left}>
-                  <BackArrow  id="back-nav" className="svg-icon"/>
-                </IconButton>
+                <li className="header-button landing-nav-link">
+                  <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
                 </li>
-                <li className="carbon-header">
-                <button
-                  className="carbon-header-button"
-                  onClick={this.goToDash}
-                  id="carbon-nav"
-                  ><img
-                      className="carbon-img-header"
-                      alt="carbon collective dash button"
-                      id="carbon-nav"
-                      src={require(`${this.state.foot_url}`)}
-                      style={{width: '18px', height: '30px'}}
-                      />
-                </button>
+                <li className="header-button landing-nav-link">
+                  <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
                 </li>
-                <li className="invite-button">
-                  <FontIcon className="material-icons plus_one" id="invite-nav" onClick={this.goToInvitePage} style={color}>plus_one</FontIcon>
-                  <FontIcon className="material-icons" id="invite-nav2" onClick={this.goToInvitePage} style={color}>accessibility</FontIcon>
+                <li className="header-button landing-nav-link">
+                  <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
                 </li>
-                <li id="settings-nav" className="header-button">
-                <IconButton id="settings-nav" onClick={this.goToSettings} iconStyle={this.state.styles.mediumIcon4} style={this.state.styles.right}>
-                  <SettingsIcon id="settings-nav" className="svg-icon" />
-                </IconButton>
+                <li className="header-button landing-nav-link">
+                  <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={this.goToSettings}/>
                 </li>
               </ul>
             </div>
-          </header>
-        </MuiThemeProvider>
+          </div>
         )
       }
   }
