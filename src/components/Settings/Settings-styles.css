@@ -53,8 +53,8 @@ ul.options-list:hover{
   background-color: rgb(245,245,245);
 }
 
-ul.options-list:hover {
-  text-shadow: 1px 1px 2px rgb(251,230,73);
+ul.options-list:hover li{
+  -webkit-transform: scale(1.05)
 }
 
 .settings-page span.material-icons{
@@ -94,5 +94,6 @@ li.setting-desc:hover{
 
 li.setting-desc-first{
   color: rgb(47, 157, 102);
+  margin-left: 6px;
   width: 75%;
 }
