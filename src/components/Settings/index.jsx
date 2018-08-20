@@ -14,7 +14,7 @@ const iconStyles = {
 }
 
 const iconStylesFirst = {
-  color: 'rgb(43, 152, 240)',
+  color: 'rgb(47, 157, 102)',
   height: 58,
   width: 64,
   fontSize: 36,
@@ -103,7 +103,7 @@ class Settings extends Component {
 
   render() {
     return (
-    <div>
+    <div className="settings-dropdown">
       <div className='settings-header' onClick={() => this.props.history.push('/dashboard')}>
         <div className="settings-email">
           <p className="first">{this.state.first} {this.state.last}</p><br/>
@@ -114,37 +114,37 @@ class Settings extends Component {
         <div className="settings-page">
           <ul className="options-list" onClick={this.goToUserUpdatePage}>
             <li className="setting-icon">
-              <FontIcon className="material-icons" style={iconStylesFirst}>contact_mail</FontIcon>
+              <FontIcon className="material-icons settings-icon" style={iconStylesFirst}>contact_mail</FontIcon>
             </li>
             <li className="setting-desc setting-desc-first" >Edit Profile</li>
           </ul>
           <ul className="options-list" onClick={this.goToHouseUpdatePage}>
             <li className="setting-icon">
-              <FontIcon className="material-icons" style={iconStyles}>build</FontIcon>
+              <FontIcon className="material-icons settings-icon" style={iconStyles}>build</FontIcon>
             </li>
             <li className="setting-desc">Update Household</li>
           </ul>
           <ul className="options-list" onClick={this.goToInvitePage}>
             <li className="setting-icon">
-              <FontIcon className="material-icons" style={iconStyles}>accessibility</FontIcon>
+              <FontIcon className="material-icons settings-icon" style={iconStyles}>accessibility</FontIcon>
             </li>
             <li className="setting-desc">Invite Someone</li>
           </ul>
           <ul className="options-list" onClick={this.suggestionsPage}>
             <li className="setting-icon">
-              <FontIcon className="material-icons" style={iconStyles}>live_help</FontIcon>
+              <FontIcon className="material-icons settings-icon" style={iconStyles}>live_help</FontIcon>
             </li>
             <li className="setting-desc">Send a Suggestion</li>
           </ul>
           <ul className="options-list" onClick={this.bugsPage}>
             <li className="setting-icon">
-              <FontIcon className="material-icons" style={iconStyles}>bug_report</FontIcon>
+              <FontIcon className="material-icons settings-icon" style={iconStyles}>bug_report</FontIcon>
             </li>
             <li className="setting-desc">Bug Fix Request</li>
           </ul>
           <ul className="options-list" onClick={this.logout}>
             <li className="setting-icon">
-              <FontIcon className="material-icons" style={iconStyles}>hourglass_empty</FontIcon>
+              <FontIcon className="material-icons settings-icon" style={iconStyles}>hourglass_empty</FontIcon>
             </li>
             <li className="setting-desc">Log Out</li>
           </ul>

@@ -14,8 +14,14 @@ span.bug-report-icon-fixed{
   background-color: black;
   height: 35px !important;
   width: 35px !important;
-  margin-right: 10px;
+  margin-right: 11px;
   border: 1px solid #1fa245;
   border-radius: 50%;
   z-index: 1;
+}
+
+span.bug-report-icon-fixed:hover{
+  height: 37px !important;
+  width: 37px !important;
+  margin-right: 12px;
 }

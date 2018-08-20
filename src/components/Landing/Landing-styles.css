@@ -8,14 +8,6 @@
   align-items: center;
 }
 
-.earth-container {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  max-width: 350px;
-  height: 50vh;
-}
-
 .landing-text{
   max-width: 350px;
 
@@ -84,4 +76,46 @@ button.landing-button:hover{
 div.landing-button{
   flex-basis: 10vh;
   margin-bottom: 60px;
+}
+
+@media (max-width: 600px){
+  .landing-text{
+    max-width: 300px;
+
+  }
+
+  .landing-text p{
+    text-align: justify;
+    font-family: 'Libre Franklin', Helvetica, sans-serif;
+       font-weight: 400;
+       color: #2a2c33;
+       font-size: .875em;
+       line-height: 1.4em;
+
+  }
+
+  .landing-text span{
+    font-family: 'Libre Franklin', Helvetica, sans-serif;
+             font-weight: 800;
+             color: #219a60;
+             font-size: .9rem;
+  }
+  
+  button.landing-button {
+    bottom: 40px;
+    font-size: 28px;
+    font-weight: 300;
+    height: 55px;
+    padding: 8px 18px;
+    position: absolute;
+    margin-bottom: 15px;
+    width: 100vw;
+    max-width: 300px;
+    text-transform: uppercase;
+    background-color: #fce834;
+    opacity: 0.5 !important;
+    transition: opacity .3s;
+    color: #2A2C33;
+    border-radius: 5px;
+  }
 }

@@ -1,6 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500'); */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+
+
 div.header-navbar{
   border-bottom: 2px solid #1fa245;
   /* border-bottom: 2px solid rgb(70,138,199); */
@@ -25,6 +27,8 @@ div.header-navbar{
   color: #219a60;
   padding-left: 40px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .svg-icon{
@@ -35,7 +39,7 @@ div.header-navbar{
   position: absolute;
   top: 0;
   width: 100vw;
-  padding: 5px 30px;
+  padding: 5px 0px 5px 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -49,7 +53,7 @@ div.landing-navbar-links{
   min-width: 25vw;
 }
 
-form.landing-navbar-signup-form{
+form.landing-navbar-login-form{
   width: 50vw;
 }
 
@@ -99,7 +103,6 @@ ul.navbar li:hover{
 
 li.header-button{
   margin-top: 5px;
-  margin-bottom: 10px;
   display: inline-block;
   align-items: baseline;
   vertical-align: top;
@@ -149,6 +152,35 @@ li.landing-nav-link a:hover{
   height: 26px;
 }
 
+img.navbar-link:hover { -webkit-transform: scale(1.2);}
+
+.shrunken-hamburger-menu{
+  display: none;
+}
+
+.hamburger-menu{
+  font-size: 24px;
+  padding-top: 5px;
+  margin-right: 10px;
+  color: black;
+}
+
+.hamburger-menu:hover{
+  color: rgb(251,230,73);
+  font-size: 27px;
+}
+
+.hamburger-menu-landing{
+  font-size: 24px;
+  margin-right: 10px;
+  margin-top: -3px;
+}
+
+.hamburger-menu-landing:hover{
+  color: rgb(251,230,73);
+  font-size: 32px;
+}
+
 .loader {
     border: 2px solid #6E6B6B; /* Light grey */
     border-top: 2px solid #129941; /* Blue */
@@ -170,4 +202,25 @@ li.landing-nav-link a:hover{
 
 .visible{
   display: block;
+}
+
+
+@media (max-width: 600px) {
+  div.landing-navbar-links{
+    display: none;
+  }
+  .shrunken-hamburger-menu{
+    display: block;
+  }
+
+  .shrunken-hamburger-menu:hover{
+    font-size: 24px;
+  }
+  .navbar-logo-menu-div{
+    min-width: 100vw;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
 }

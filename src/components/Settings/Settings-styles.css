@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+div.settings-dropdown{
+  padding-top: 20px;
+  background-color: white;
+}
+
 div.settings-header{
   margin: 0;
   margin-bottom: 8px;
   padding: 10px;
-  background-color: #415B2F;
+  background-color: rgb(47, 157, 102);
   margin-top: -10px;
+  color: white;
 }
 
 div.settings-email{
@@ -28,7 +34,6 @@ div.settings-page{
   width: 94vw;
   background-color: white;
   color: black;
-  padding-top: 20px;
   padding-left: 10px;
   height: 620px;
 }
@@ -38,11 +43,18 @@ ul.options-list{
   width: 85vw;
   list-style-type: none;
   margin: 0;
-  margin-bottom: 10px;
   padding-bottom: 10px;
   text-align: left;
   font-size: 24px;
   border-bottom: 0.5px solid grey;
+}
+
+ul.options-list:hover{
+  background-color: rgb(245,245,245);
+}
+
+ul.options-list:hover {
+  text-shadow: 1px 1px 2px rgb(251,230,73);
 }
 
 .settings-page span.material-icons{
@@ -77,9 +89,10 @@ li.setting-icon:hover{
 }
 
 li.setting-desc:hover{
-  cursor: pointer
+  cursor: pointer;
 }
+
 li.setting-desc-first{
-  color: rgb(43, 152, 240);
+  color: rgb(47, 157, 102);
   width: 75%;
 }
