@@ -4,6 +4,10 @@
 div.settings-dropdown{
   padding-top: 20px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
 div.settings-header{
@@ -96,4 +100,44 @@ li.setting-desc-first{
   color: rgb(47, 157, 102);
   margin-left: 6px;
   width: 75%;
+}
+
+.shrunken-subnav-div{
+  display: none;
+  min-width: 100vw;
+}
+
+
+
+@media (max-width: 600px) {
+  .shrunken-subnav-div{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    min-width: 100vw;
+  }
+  ul.shrunken-subnav-list {
+      display: flex;
+      flex-direction: row;
+      padding: 3px 10px;
+      width: 200px;
+      justify-content: space-between;
+      align-items: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  ul.shrunken-subnav-list li:hover{
+    cursor: pointer;
+  }
+
+  li.shrunken-nav-buttons{
+    margin-top: 5px;
+    display: inline-block;
+    align-items: baseline;
+    vertical-align: top;
+    justify-content: center;
+  }
 }

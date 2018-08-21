@@ -21,7 +21,6 @@ div.header-navbar{
 }
 
 .navbar-logo-menu-div{
-  min-width: 25vw;
   text-align: left;
   font-size: 1.3em;
   color: #219a60;
@@ -43,18 +42,38 @@ div.header-navbar{
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  height: 64px;
+  background-color: #f5f5f5 !important;
+  border-bottom: 1px solid rgb(192,194,194);
+  box-sizing: border-box;
+}
+
+.main-navbar{
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   height: 64px;
   background-color: #f5f5f5 !important;
   border-bottom: 1px solid rgb(192,194,194);
+  box-sizing: border-box;
 }
 
 div.landing-navbar-links{
   min-width: 25vw;
+  margin-left: 10vw;
 }
 
 form.landing-navbar-login-form{
-  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0px;
 }
 
 img.log-svg{
@@ -77,6 +96,10 @@ input.login-bar::-webkit-input-placeholder{
   text-align: center;
   padding-right: 10px;
   color: rgb(192,194,194);
+}
+
+.cc-logo{
+  margin-right: 25vw;
 }
 
 header {
@@ -152,7 +175,11 @@ li.landing-nav-link a:hover{
   height: 26px;
 }
 
-img.navbar-link:hover { -webkit-transform: scale(1.2);}
+.navbar img {
+  padding: 2px;
+}
+
+.navbar img:hover:not(.log-svg){ -webkit-transform: scale(1.2); background-color: rgb(221,221,221); box-shadow: 0px 0px 10px rgb(251,230,73) !important}
 
 .shrunken-hamburger-menu{
   display: none;
@@ -178,7 +205,6 @@ img.navbar-link:hover { -webkit-transform: scale(1.2);}
 
 .hamburger-menu-landing:hover{
   color: rgb(251,230,73);
-  font-size: 32px;
 }
 
 .loader {
@@ -204,23 +230,133 @@ img.navbar-link:hover { -webkit-transform: scale(1.2);}
   display: block;
 }
 
+.shrunken-subnav{
+  display: none;
+}
 
-@media (max-width: 600px) {
+img.homepage{
+  display: block;
+}
+
+img.dropdown-logo{
+  display: none;
+}
+
+form.shrunken-landing-navbar-login-form{
+  display: none;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0px;
+}
+
+@media (max-width: 900px){
   div.landing-navbar-links{
-    display: none;
-  }
-  .shrunken-hamburger-menu{
-    display: block;
+    min-width: 25vw;
+    margin-left: 12vw;
   }
 
-  .shrunken-hamburger-menu:hover{
-    font-size: 24px;
+  input.login-bar{
+    font-size: 1.0em;
+    min-width: 200px;
+    max-width: 280px;
+    padding-right: 40px;
+  }
+
+  input.login-bar::-webkit-input-placeholder{
+    font-family: 'Libre Franklin', Helvetica, sans-serif;
+    font-size: 1.1em;
+    text-align: center;
+    padding-right: 10px;
+    color: rgb(192,194,194);
+  }
+
+}
+
+@media (max-width: 780px){
+  div.landing-navbar-links{
+    min-width: 0px;
+    margin-left: 20vw;
+  }
+  form.landing-navbar-login-form{
+    margin-left: 20px;
   }
   .navbar-logo-menu-div{
-    min-width: 100vw;
+    width: 40vw;
+  }
+  .cc-logo.unloaded{
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    top: 18px;
+    left: 23px;
+  }
+}
+
+
+@media (max-width: 667px){
+  form.landing-navbar-login-form{
+    margin-left: 0px;
+  }
+  .navbar-logo-menu-div.unloaded{
+    width: 50px;
+  }
+  .navbar-logo-menu-div.loaded{
     text-align: center;
     justify-content: center;
     align-items: center;
     padding: 0;
+  }
+  div.landing-navbar-links{
+    display: none;
+  }
+  img.cc-logo.homepage.loaded {
+    display: none;
+  }
+  .main-navbar{
+    justify-content: center;
+  }
+  .shrunken-hamburger-menu{
+    display: block;
+  }
+  .shrunken-hamburger-menu:hover{
+    font-size: 24px;
+  }
+  img.dropdown-logo{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .shrunken-subnav{
+    display: flex;
+    flex-direction: row;
+    padding: 3px 10px;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 460px){
+  .landing-navbar{
+    height: 100px;
+    width: 100vw;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+  .navbar-logo-menu-div{
+    width: 100vw;
+    height: 100px;
+  }
+  .cc-logo.unloaded{
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+  }
+  form.shrunken-landing-navbar-login-form{
+    display: flex !important;
+  }
+  form.landing-navbar-login-form{
+    display: none;
   }
 }
