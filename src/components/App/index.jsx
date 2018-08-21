@@ -9,7 +9,7 @@ import Landing from '../Landing'
 import AddAddress from '../AddAddress'
 import AddHousehold from '../AddHousehold'
 import HouseExists from '../HouseExists'
-import Dashboard from '../Dashboard-b'
+import Dashboard from '../Dashboard'
 import ManageBills from '../ManageBills'
 import Settings from '../Settings'
 import Login from '../Login'
@@ -204,7 +204,7 @@ class App extends Component {
               <NoHouseRoute path="/add_address" loaded={loaded} house={house} component={ AddAddress } addUserData={this.addUserData}/> } />
               <NoHouseRoute path="/add_household" loaded={loaded} house={house} component={ AddHousehold } addUserData={this.addUserData}/> } />
               <NoHouseRoute path="/house-exists" loaded={loaded} house={house} component={ HouseExists } addUserData={this.addUserData} data={this.state.userData}/> } />
-              <AuthenticatedRouteProps path="/dashboard" loaded={loaded} component={ Dashboard } user_id={this.state.user_id} updateState={this.updateState} userData={this.state.userData} /> } />
+              <AuthenticatedRouteProps path="/dashboard" loaded={loaded} component={ Dashboard } updateState={this.updateState} userData={this.state.userData} /> } />
               <AuthenticatedRouteProps path="/managebills" loaded={loaded}  component={ ManageBills } data={this.state} updateState={this.updateState} /> } />
               <AuthenticatedRouteProps path="/carbon-calculations" loaded={loaded} component={ CarbonCalc } /> } />
               <AuthenticatedRouteProps path="/regionPage" loaded={loaded}  component={ RegionPage} data={this.state} /> } />

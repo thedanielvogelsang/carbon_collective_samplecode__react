@@ -31,7 +31,7 @@ class DashboardData extends Component {
 
   componentDidMount(){
     this.logDashboardDataRender()
-    let res = this.props.resourceType
+    let res = this.props.resource_type
     if(res !== 'carbon'){
       this.state.noBills && this.state.login ? triggerAnimation(res) : console.log()
     }
@@ -91,7 +91,7 @@ class DashboardData extends Component {
   applyDataOnState(region, name, region_type){
     // page change
     let path = '/regionPage/'
-    let resType = this.props.resourceType
+    let resType = this.props.resource_type
     let newPath = path + region_type + '/resource?' + resType
     this.logPageChange(newPath)
     localStorage.setItem('region_type', region_type)
@@ -127,7 +127,7 @@ class DashboardData extends Component {
     var colorC = "white";
     var metric = this.props.dash_data.metric_sym
     var notCarbon;
-    this.props.resourceType === 'carbon' ? notCarbon = false : notCarbon = true;
+    this.props.resource_type === 'carbon' ? notCarbon = false : notCarbon = true;
     return (
       <div className="data-container">
           <div className="community-comps">
@@ -240,7 +240,8 @@ const mapStateToProps = (state) => {
   return({
     user_id: state.userInfo.user_id,
     house_id: state.userInfo.house_id,
-    dash_data: state.userInfo.dash_data
+    dash_data: state.userInfo.dash_data,
+    resource_type: state.userInfo.resource_type
   })
 }
 

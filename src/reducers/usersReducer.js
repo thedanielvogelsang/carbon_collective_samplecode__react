@@ -5,6 +5,7 @@ const initialState = {
   house_id: null,
   data: null,
   dash_data: false,
+  resource_type: 'carbon',
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -24,7 +25,9 @@ const usersReducer = (state = initialState, action) => {
     case DASH_INFO:
       return {
         ...state,
-        dash_data: action.payload
+        dash_data: action.payload[0],
+        resource_type: action.payload[1],
+        color: action.payload[2]
       }
     case CATCH_ERROR:
       return {
