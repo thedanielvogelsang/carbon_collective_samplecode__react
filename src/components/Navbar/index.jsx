@@ -331,7 +331,7 @@ class Navbar extends Component {
       return(
         <div className="main-navbar">
           <div className="navbar-logo-menu-div navbar loaded">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
           <div className="landing-navbar-links">
@@ -357,7 +357,7 @@ class Navbar extends Component {
       return(
         <div className="landing-navbar navbar">
           <div className="navbar-logo-menu-div navbar">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <img alt="carbon collective logo homepage" className="cc-logo not-homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
             <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
@@ -394,7 +394,7 @@ class Navbar extends Component {
         return (
           <div className="main-navbar">
             <div className="navbar-logo-menu-div navbar loaded">
-              <img alt="carbon collective logo hompeage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
               <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
             </div>
             <div className="landing-navbar-links">
