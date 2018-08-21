@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import SettingsIcon from 'material-ui/svg-icons/action/settings';
-import BackArrow from 'material-ui/svg-icons/av/replay';
+// import IconButton from 'material-ui/IconButton';
+// import FontIcon from 'material-ui/FontIcon';
 import {post} from '../../api_client';
 import {connect} from 'react-redux'
 import { loginUser } from '../../actions/userActions'
@@ -20,14 +18,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import "typeface-roboto";
 import './Navbar-styles.css'
+//
+// function addColor() {
+//   this.style.backgroundColor = 'rgb(121,194,120)'
+// }
 
-function addColor() {
-  this.style.backgroundColor = 'rgb(121,194,120)'
-}
-
-function removeColor() {
-  this.style.backgroundColor = undefined
-}
+// function removeColor() {
+//   this.style.backgroundColor = undefined
+// }
 
 class Navbar extends Component {
   constructor(props){
@@ -277,11 +275,17 @@ class Navbar extends Component {
     let loaded = this.state.loaded;
     if (['/'].indexOf(window.location.pathname) > -1 && !loaded) {
       return(
-        <div className="landing-navbar navbar">
-          <div className="navbar-logo-menu-div">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={this.goToPage('/')}/>
+        <div className="landing-navbar navbar unloaded">
+          <div className="navbar-logo-menu-div unloaded">
+            <img alt="carbon collective logo homepage" className="cc-logo homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <form className="shrunken-landing-navbar-login-form unloaded" style={{display: 'none'}} onSubmit={(e) => this.handleLoginForm(e)}>
+              <div className={this.state.logDiv}>
+                <img alt="log logo" className="log-svg" src={this.state.log} style={{ width: '26px' }} />
+                {this.inputBox()}
+              </div>
+            </form>
           </div>
-          <form className="landing-navbar-login-form" onSubmit={(e) => this.handleLoginForm(e)}>
+          <form className="landing-navbar-login-form unloaded" onSubmit={(e) => this.handleLoginForm(e)}>
             <div className={this.state.logDiv}>
               <img alt="log logo" className="log-svg" src={this.state.log} style={{ width: '26px' }} />
               {this.inputBox()}
@@ -302,10 +306,9 @@ class Navbar extends Component {
     }
     else if(['/'].indexOf(window.location.pathname) > -1 && loaded) {
       return(
-        <div className="landing-navbar">
-          <div className="navbar-logo-menu-div navbar">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
-            <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
+        <div className="main-navbar">
+          <div className="navbar-logo-menu-div navbar loaded">
+            <img alt="carbon collective logo homepage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
           <div className="landing-navbar-links">
@@ -324,12 +327,41 @@ class Navbar extends Component {
         </div>
       )
     }
+    else if(['/settings'].indexOf(window.location.pathname) > - 1){
+      return(
+        <div className="main-navbar">
+          <div className="navbar-logo-menu-div navbar loaded">
+            <img alt="carbon collective logo homepage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
+          </div>
+          <div className="landing-navbar-links">
+            <ul className="navbar">
+              <li className="header-button landing-nav-link">
+                <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
+              </li>
+              <li className="header-button landing-nav-link">
+                <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
+              </li>
+              <li className="header-button landing-nav-link">
+                <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+              </li>
+              <li className="header-button landing-nav-link">
+                <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )
+    }
     else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){
       return(
         <div className="landing-navbar navbar">
-          <div className="navbar-logo-menu-div">
-            <h1 className="h1-c">C</h1>
+          <div className="navbar-logo-menu-div navbar">
+            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
+            <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
+
           <div className="landing-navbar-links">
             <ul className="navbar">
               <li className="header-button landing-nav-link">
@@ -350,9 +382,7 @@ class Navbar extends Component {
               <div className="header-navbar navbar">
                 <ul className="navbar">
                   <li className="header-button">
-                  <IconButton onMouseEnter={addColor} onMouseLeave={removeColor} onClick={this.context.router.history.goBack} iconStyle={this.state.styles.mediumIcon} style={this.state.styles.left}>
-                    <BackArrow className="svg-icon" />
-                  </IconButton>
+
                   </li>
                 </ul>
               </div>
@@ -361,14 +391,11 @@ class Navbar extends Component {
           )
     }
     else{
-        let color3 = this.state.styles.color.color
-        let color = {color: color3}
         return (
           <div className="main-navbar">
-            <div className="navbar-logo-menu-div">
-                <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
-                <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
-              <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
+            <div className="navbar-logo-menu-div navbar loaded">
+              <img alt="carbon collective logo hompeage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+              <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
             </div>
             <div className="landing-navbar-links">
               <ul className="navbar">
@@ -382,7 +409,7 @@ class Navbar extends Component {
                   <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
                 </li>
                 <li className="header-button landing-nav-link">
-                  <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={this.goToSettings}/>
+                  <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
                 </li>
               </ul>
             </div>

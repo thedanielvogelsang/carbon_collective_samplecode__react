@@ -145,7 +145,7 @@ class App extends Component {
   addUserData(){
     if(this.state.user_id !== null){
       this.props.fetchUserData(this.state.user_id)
-      setTimeout(this.handleData, 500)
+      setTimeout(this.handleData, 1000)
     }
   }
 
@@ -153,8 +153,10 @@ class App extends Component {
   handleData(){
     if(this.props.data && this.props.data.household){
       this.setState({userData: this.props.data, loaded: true, house_id: this.props.data.household.id})
-    }else{
+    }else if(this.props.data){
       this.setState({userData: this.props.data, loaded: true})
+    }else{
+      return null
     }
   }
 // method sent as props to child components for updating parent App state (this)
