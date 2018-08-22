@@ -355,20 +355,15 @@ class Navbar extends Component {
     }
     else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){
       return(
-        <div className="landing-navbar navbar">
-          <div className="navbar-logo-menu-div navbar">
-            <img alt="carbon collective logo homepage" className="cc-logo not-homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+        <div className="main-navbar navbar">
+          <div className="navbar-logo-menu-div navbar loaded">
+            <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
-            <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
-
-          <div className="landing-navbar-links">
+          <div className="main-navbar-links">
             <ul className="navbar">
               <li className="header-button landing-nav-link">
-                <a onClick={(e) => this.goToAboutPage(e)}>About</a>
-              </li>
-              <li className="header-button landing-nav-link">
-                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+                <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
               </li>
             </ul>
           </div>
