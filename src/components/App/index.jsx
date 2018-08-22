@@ -171,6 +171,8 @@ class App extends Component {
     let loaded = this.state.loaded;
     let house = this.props.house_id;
     let id = this.props.user_id;
+    let fixbug;
+    this.props.history.location.pathname === '/settings' ? fixbug = false : fixbug = true;
     if(!loaded && !id){
       return(
         <div className="app-container">
@@ -192,7 +194,7 @@ class App extends Component {
           <div className="app-container">
             <Navbar loaded={loaded}/>
             <Header />
-            <FixBugLink/>
+            {fixbug ? <FixBugLink /> :  null}
             <Switch>
               <PropsRoute exact path="/" component={ Landing } loaded={loaded} updateState={this.updateState} /> } />
               <PropsRoute path="/login" component={ Login } loaded={loaded} data={this.state} updateState={this.updateState} /> } />
