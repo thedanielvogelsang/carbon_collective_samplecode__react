@@ -7,14 +7,14 @@ class ResourceNav extends Component {
   constructor(props){
     super(props);
     this.state = {
-      water_url: "./img/AQUA_blank_2.png",
-      elec_url: "./img/ELEC_blank_2.png",
       carbon_url: "./img/Leaf final_blank.png",
+      elec_url: "./img/ELEC_blank_2.png",
+      water_url: "./img/AQUA_blank_2.png",
       flame_url: "./img/FLAME_blank_2.png",
       carbon_highlighted: true,
       elec_highlighted: false,
-      flame_highlighted: false,
       water_highlighted: false,
+      flame_highlighted: false,
     }
     this.postButtonPress = this.postButtonPress.bind(this);
     this.setDashboardData = this.setDashboardData.bind(this);
@@ -33,14 +33,14 @@ class ResourceNav extends Component {
 
   updateDashColors(){
     let type = this.props.resource_type
-    this.setDashboardData(type)
+    this.updateUserData(type)
+    setTimeout(this.setDashboardData, 500, type)
   }
 
   setDashboardData(type){
     switch(type){
       case "carbon":
         this.setState({
-          resourceType: type,
           water_url: "./img/AQUA_blank_2.png",
           elec_url: "./img/ELEC_blank_2.png",
           carbon_url: "./img/Leaf final_fill.png",

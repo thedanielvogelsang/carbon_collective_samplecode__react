@@ -1,4 +1,4 @@
-import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR} from '../actions/types' ;
+import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_HOUSE} from '../actions/types' ;
 
 const initialState = {
   user_id: null,
@@ -6,6 +6,7 @@ const initialState = {
   data: null,
   dash_data: false,
   resource_type: 'carbon',
+  color: 'rgb(121,194,120)',
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -33,6 +34,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload
+      }
+    case CLEAR_HOUSE:
+      return {
+        ...state,
+        house_id: null
       }
     default:
       return state;

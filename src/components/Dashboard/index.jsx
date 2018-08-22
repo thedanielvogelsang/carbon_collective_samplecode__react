@@ -41,7 +41,6 @@ class Dashboard extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    prevState.color !== this.state.color ? localStorage.setItem("accent_color", this.state.color) : console.log()
     prevProps.dash_data !== this.props.dash_data ? this.changeDashboardData(this.props.dash_data) : console.log()
   }
 
@@ -86,6 +85,7 @@ class Dashboard extends Component {
     let resource = this.props.resource_type
     let title = capitalizeFirstLetter(resource)
     let color = this.props.color
+    console.log(color)
     if(title === "Gas"){
       title = "Heat"
     }

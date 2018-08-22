@@ -3,12 +3,6 @@ import {withRouter} from 'react-router-dom';
 import BugLink from './img/feedback.svg'
 import './FixBugLink-styles.css';
 
-const iconStyles = {
-  color: '#bdbec0',
-  height: 58,
-  width: 58,
-  fontSize: 36,
-}
 class FixBugLink extends Component{
   constructor(){
     super();

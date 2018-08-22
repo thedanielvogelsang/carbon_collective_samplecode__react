@@ -498,6 +498,7 @@ span.material-icons.carbon-logo{
   button.resource-btn:not(:first-child){
     margin-left: 10px;
   }
+
   .carbon-img{
     height: 34px;
     width: 34px;

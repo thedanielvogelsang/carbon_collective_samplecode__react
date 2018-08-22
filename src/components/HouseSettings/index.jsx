@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
+import {removeUserHouse} from '../../actions/userActions'
 import {get, put, post, destroy} from '../../api_client';
 import './HouseSettings-styles.css';
 
@@ -105,10 +106,7 @@ class HouseSettings extends Component{
     let id = this.state.user_id
     let hId = this.state.house_id
     if(confirm("Are you sure you want to remove your house from your profile? Warning:: You can't undo this.")){
-      const path = `api/v1/users/${id}/houses/${hId}`
-      destroy(path)
-        .then(data => this.clearAndGoToDash(data))
-        .catch(error => console.log(error))
+      this.props.removeUserHouse(id, hId)
     }else{
       this.forceUpdate()
     }
@@ -252,4 +250,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default withRouter(connect(mapStateToProps, null)(HouseSettings));
+export default withRouter(connect(mapStateToProps, {removeUserHouse})(HouseSettings));

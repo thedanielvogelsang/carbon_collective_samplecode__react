@@ -241,7 +241,8 @@ const mapStateToProps = (state) => {
     user_id: state.userInfo.user_id,
     house_id: state.userInfo.house_id,
     dash_data: state.userInfo.dash_data,
-    resource_type: state.userInfo.resource_type
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
   })
 }
 
