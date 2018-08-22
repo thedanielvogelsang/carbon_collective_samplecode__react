@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FontIcon from 'material-ui/FontIcon';
 import {withRouter} from 'react-router-dom';
+import BugLink from './img/feedback.svg'
 import './FixBugLink-styles.css';
 
 const iconStyles = {
@@ -21,10 +20,13 @@ class FixBugLink extends Component{
   }
   render(){
     return(
-      <div className="bug-report-icon-fixed-container">
-        <MuiThemeProvider>
-          <FontIcon className="material-icons bug-report-icon-fixed" onClick={(e) => this.goToBugsPage('/bugs')} style={iconStyles}>bug_report</FontIcon>
-        </MuiThemeProvider>
+      <div className="bug-report-icon-fixed-div">
+        <div className="bug-report-icon-container">
+          <img alt="bug report icon" className="material-icons bug-report-icon-fixed" onClick={(e) => this.goToBugsPage('/bugs')} src={BugLink} />
+          <div className="bug-prompt" style={{display: 'none'}} >
+            <p>Find a Bug?</p>
+          </div>
+        </div>
       </div>
     )
   }
