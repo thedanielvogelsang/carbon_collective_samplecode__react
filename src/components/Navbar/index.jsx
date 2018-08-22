@@ -360,7 +360,7 @@ class Navbar extends Component {
             <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
           </div>
-          <div className="main-navbar-links">
+          <div className="landing-navbar-links">
             <ul className="navbar">
               <li className="header-button landing-nav-link">
                 <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
