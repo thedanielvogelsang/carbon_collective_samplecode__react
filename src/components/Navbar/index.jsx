@@ -96,6 +96,7 @@ class Navbar extends Component {
     this.goBack = this.goBack.bind(this)
     this.goToDash = this.goToDash.bind(this)
     this.goToSettings = this.goToSettings.bind(this)
+    this.goToAboutPage = this.goToAboutPage.bind(this)
     this.goToInvitePage = this.goToInvitePage.bind(this)
     this.checkLoginStatus = this.checkLoginStatus.bind(this)
     this.checkSettingsStatus = this.checkSettingsStatus.bind(this)
@@ -304,6 +305,15 @@ class Navbar extends Component {
         </div>
       )
     }
+    else if(!loaded){
+        return(
+          <div className="main-navbar navbar">
+            <div className="navbar-logo-menu-div navbar loaded">
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            </div>
+          </div>
+          )
+    }
     else if(['/'].indexOf(window.location.pathname) > -1 && loaded) {
       return(
         <div className="main-navbar">
@@ -370,19 +380,13 @@ class Navbar extends Component {
         </div>
       )
     }
-    else if(['/login', '/signup', '/add_address', '/add_household', '/login-first-time', '/expand-request'].indexOf(window.location.pathname) > -1){
+    else if(['/about', '/login', '/signup', '/add_address', '/add_household', '/login-first-time', '/expand-request'].indexOf(window.location.pathname) > -1){
         return(
-          <MuiThemeProvider>
-            <header>
-              <div className="header-navbar navbar">
-                <ul className="navbar">
-                  <li className="header-button">
-
-                  </li>
-                </ul>
-              </div>
-            </header>
-          </MuiThemeProvider>
+          <div className="main-navbar navbar">
+            <div className="navbar-logo-menu-div navbar loaded">
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            </div>
+          </div>
           )
     }
     else{
@@ -436,6 +440,12 @@ class Navbar extends Component {
       this.logPageChange("/settings")
       this.props.history.push('/settings')
     }
+  }
+
+  goToAboutPage(){
+    this.setState({settingsOpen: false})
+    this.logPageChange("/about")
+    this.props.history.push('/about')
   }
 
   goToInvitePage(){

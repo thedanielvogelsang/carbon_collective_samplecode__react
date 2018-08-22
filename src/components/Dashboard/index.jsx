@@ -85,7 +85,7 @@ class Dashboard extends Component {
     let resource = this.props.resource_type
     let title = capitalizeFirstLetter(resource)
     let color = this.props.color
-    console.log(color)
+    console.log(loading, house, color)
     if(title === "Gas"){
       title = "Heat"
     }
