@@ -11,6 +11,10 @@ class ResourceNav extends Component {
       elec_url: "./img/ELEC_blank_2.png",
       carbon_url: "./img/Leaf final_blank.png",
       flame_url: "./img/FLAME_blank_2.png",
+      carbon_highlighted: true,
+      elec_highlighted: false,
+      flame_highlighted: false,
+      water_highlighted: false,
     }
     this.postButtonPress = this.postButtonPress.bind(this);
     this.setDashboardData = this.setDashboardData.bind(this);
@@ -41,6 +45,10 @@ class ResourceNav extends Component {
           elec_url: "./img/ELEC_blank_2.png",
           carbon_url: "./img/Leaf final_fill.png",
           flame_url: "./img/FLAME_blank_2.png",
+          carbon_highlighted: true,
+          elec_highlighted: false,
+          flame_highlighted: false,
+          water_highlighted: false,
         }, this.props.updateLoader(true));
         break
       case "electricity":
@@ -49,6 +57,10 @@ class ResourceNav extends Component {
           elec_url: "./img/ELEC_fill_2.png",
           carbon_url: "./img/Leaf final_blank.png",
           flame_url: "./img/FLAME_blank_2.png",
+          carbon_highlighted: false,
+          elec_highlighted: true,
+          flame_highlighted: false,
+          water_highlighted: false,
         }, this.props.updateLoader(true));
         break
       case "water":
@@ -57,6 +69,10 @@ class ResourceNav extends Component {
           elec_url: "./img/ELEC_blank_2.png",
           carbon_url: "./img/Leaf final_blank.png",
           flame_url: "./img/FLAME_blank_2.png",
+          carbon_highlighted: false,
+          elec_highlighted: false,
+          flame_highlighted: false,
+          water_highlighted: true,
         }, this.props.updateLoader(true));
         break
       case "gas":
@@ -65,6 +81,10 @@ class ResourceNav extends Component {
         elec_url: "./img/ELEC_blank_2.png",
         carbon_url: "./img/Leaf final_blank.png",
         flame_url: "./img/FLAME_fill_2.png",
+        carbon_highlighted: false,
+        elec_highlighted: false,
+        flame_highlighted: true,
+        water_highlighted: false,
         }, this.props.updateLoader(true));
         break
       default:
@@ -95,6 +115,11 @@ class ResourceNav extends Component {
 }
 
   render(){
+    let carbon_class, water_class, elec_class, heat_class;
+    this.state.carbon_highlighted ? carbon_class = 'carbon-img highlighted' : carbon_class = 'carbon-img';
+    this.state.elec_highlighted ? elec_class = 'elec-img highlighted' : elec_class = 'elec-img';
+    this.state.water_highlighted ? water_class = 'water-img highlighted' : water_class = 'water-img';
+    this.state.flame_highlighted ? heat_class = 'gas-img highlighted' : heat_class = 'gas-img';
     return(
         <div className="dashboard-resource-nav">
           <button
@@ -102,7 +127,7 @@ class ResourceNav extends Component {
             onClick={this.preSetDash}
             name="carbon"
             ><img
-                className="carbon-img"
+                className={carbon_class}
                 alt="carbon collective logo carbon"
                 name="carbon"
                 src={require(`${this.state.carbon_url}`)} />
@@ -112,7 +137,7 @@ class ResourceNav extends Component {
           onClick={this.preSetDash}
           name="electricity"
           ><img
-              className="elec-img"
+              className={elec_class}
               alt="carbon collective logo electricity"
               name="electricity"
               src={require(`${this.state.elec_url}`)} />
@@ -122,7 +147,7 @@ class ResourceNav extends Component {
           onClick={this.preSetDash}
           name="water"
           ><img
-              className="water-img"
+              className={water_class}
               alt="carbon collective logo water"
               name="water"
               src={require(`${this.state.water_url}`)} />
@@ -132,7 +157,7 @@ class ResourceNav extends Component {
           onClick={this.preSetDash}
           name="gas"
           ><img
-              className="gas-img"
+              className={heat_class}
               alt="carbon collective logo gas"
               name="gas"
               src={require(`${this.state.flame_url}`)} />

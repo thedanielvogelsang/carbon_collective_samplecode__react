@@ -1,4 +1,4 @@
-.bug-report-icon-fixed-container{
+.bug-report-icon-fixed-div{
   width: 100vw;
   max-width: 903px;
   position: fixed;
@@ -10,18 +10,36 @@
   z-index: 0;
 }
 
-span.bug-report-icon-fixed{
-  background-color: black;
+.bug-report-icon-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
   height: 35px !important;
   width: 35px !important;
+  padding: 5px 5px 5px 8px;
   margin-right: 11px;
   border: 1px solid #1fa245;
   border-radius: 50%;
   z-index: 1;
 }
 
-span.bug-report-icon-fixed:hover{
-  height: 37px !important;
-  width: 37px !important;
-  margin-right: 12px;
+.bug-report-icon-container:hover{
+  -webkit-transform: scale(1.2);
+}
+
+.bug-prompt p{
+  font-size: 10px;
+  font-weight: bolder;
+}
+
+.bug-report-icon-container:hover .bug-prompt{
+  display: flex !important;
+  flex-direction: row;
+  position: relative;
+  right: 30px;
+}
+
+img.bug-report-icon-fixed{
+  width: 90%;
+  height: 90%;
 }

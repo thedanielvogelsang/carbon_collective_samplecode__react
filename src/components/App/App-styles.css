@@ -26,6 +26,18 @@ html {
   color: #2a2c33;
 }
 
+#app-background-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('./img/background.jpeg');
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
 form {
   padding: 0 10%;
   font-size: 18px;
@@ -94,4 +106,34 @@ a:hover{
 
 input:hover{
   cursor: pointer;
+}
+
+@media (min-width: 800px){
+  #app-background-image{
+    background-size: 100vw 100vh;
+  }
+}
+
+@media (max-width: 370px){
+  #app-background-image{
+    background-image: url();
+    background-color: rgb(241, 246, 219);
+  }
+  .bug-report-icon-fixed-container{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    margin-right: 0px;
+  }
+  img.cc-logo{
+    z-index: 1;
+  }
+  svg.shrunken-hamburger-menu{
+    z-index: 1;
+  }
+  img.bug-report-icon-fixed{
+    width: 10vw;
+  }
 }
