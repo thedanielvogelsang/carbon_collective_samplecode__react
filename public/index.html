@@ -35,4 +35,12 @@
      </div>
      <div id="root"></div>
    </body>
+   <script type='text/javascript'>
+    setTimeout(500, function(){
+          var root = document.getElementById('root')
+          var image = document.getElementById('app-background-image')
+          image.style.height = root.offsetHeight + "px"
+          console.log(image.offsetHeight)
+        })
+   </script>
  </html>

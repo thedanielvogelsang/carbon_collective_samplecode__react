@@ -155,23 +155,36 @@ button.update-bill-button{
   font-weight: bolder;
   text-shadow: 1px 1px black;
   height: 52px;
+  opacity: 0.5;
+  background-color: #F1F6DB;
+  color: #1fa245!important;
   border: 0.5px solid  white;
   border-top: 1px solid white;
   border-bottom: 1px solid  white;
   padding: 0px 10px;
 }
 
-div.update-bill-button{
-  width: 32%;
+button.update-bill-button:hover{
+  cursor: pointer;
+  width: 33%;
   margin-right: 10px;
   font-size: 0.9em;
   font-weight: bolder;
+  color: #219a60 !important;
+  opacity: 0.8;
   text-shadow: 1px 1px black;
   height: 52px;
-  border: 0.5px solid  white;
-  border-top: 1px solid white;
-  border-bottom: 1px solid  white;
+  border: 0.5px solid  #c0c2c2;
+  border-top: 1px solid #c0c2c2;
+  border-bottom: 1px solid  #c0c2c2;
   padding: 0px 10px;
+  /* width: 33%;
+  margin-right: 30px;
+  margin-left: -10px;
+  height: 55px;
+  border: 1px solid #29d967;
+  background-color: #129941;
+  color: #2A2C33; */
 }
 
 .manage-bills-div{
@@ -184,18 +197,6 @@ img.manage-bills-button{
   padding: 0;
   margin: 0px 4px;
 }
-
-button.update-bill-button:hover{
-  cursor: pointer;
-  /* width: 33%;
-  margin-right: 30px;
-  margin-left: -10px;
-  height: 55px;
-  border: 1px solid #29d967;
-  background-color: #129941;
-  color: #2A2C33; */
-}
-
 
 .no-house-container{
   margin-top: 60px;

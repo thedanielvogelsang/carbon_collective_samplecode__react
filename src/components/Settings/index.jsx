@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
-import { get, post } from '../../api_client'
+import { get, post } from '../../api_client';
   import DashLogo from './img/footprint.svg';
   import BillsLogo from './img/doc.svg';
   import ProfileLogo from './img/profile.svg';
@@ -150,13 +150,13 @@ class Settings extends Component {
       <ul className="shrunken-subnav-list">
         <li className="shrunken-nav-buttons">
           <div className="shrunken-nav-icon-container dash">
-            <div className='shrunken-nav-label'>Dash</div>
+            <div className='shrunken-nav-label' onClick={(e) => this.goToDash(e)}>Dash</div>
             <img alt="carbon collective logo" className="navbar-link dash-log dropdown-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
           </div>
         </li>
         <li className="shrunken-nav-buttons">
           <div className="shrunken-nav-icon-container bills">
-            <div className='shrunken-nav-label'>Bills</div>
+            <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/managebills')}>Bills</div>
             <img alt="carbon collective logo" className="navbar-link bills-page-logo dropdown-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
           </div>
         </li>

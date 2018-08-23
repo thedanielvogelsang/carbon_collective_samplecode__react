@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import HouseUsersBoards from './users';
 import './HouseholdData-styles.css';
 
@@ -44,7 +45,7 @@ function resourceStyler(type){
 class HouseholdData extends Component{
   constructor(props){
     super(props);
-    let resource  = capitalize(localStorage.getItem('resource_type'))
+    let resource  = capitalize(props.resource_type)
     let avg_monthly, avg_daily;
     if(resource === "Carbon"){
       avg_daily = props.data.avg_daily_consumption_per_user
@@ -158,10 +159,10 @@ class HouseholdData extends Component{
   }
 
   render(){
-    let low_case_res = localStorage.getItem("resource_type")
+    let low_case_res = this.props.resource_type
     let img_path = getImgPath(low_case_res)
     let style = resourceStyler(low_case_res)
-    const color = localStorage.getItem('accent_color');
+    const color = this.props.color
     let per_what = sortCarbon(low_case_res)
     return(
       <div className="household-container">
@@ -214,7 +215,7 @@ class HouseholdData extends Component{
             />
         </div>
         <div className="household-users">
-          <HouseUsersBoards users={this.state.users_ids} updateState={this.updateState} metric={this.state.resource_unit}/>
+          <HouseUsersBoards users={this.state.users_ids} resType={this.props.resource_type} user_id={this.props.user_id} house_id={this.props.house_id} updateState={this.updateState} metric={this.state.resource_unit}/>
         </div>
 
       </div>
@@ -222,4 +223,14 @@ class HouseholdData extends Component{
   }
 }
 
-export default HouseholdData;
+const mapStateToProps = (state) => {
+  return({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    dash_data: state.userInfo.dash_data,
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
+  })
+}
+
+export default connect(mapStateToProps, null)(HouseholdData);

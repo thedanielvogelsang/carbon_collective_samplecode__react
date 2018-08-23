@@ -30,52 +30,6 @@ export default class BarGraph extends Component{
       }
     }
 
-  // runTest2(props){
-  //   var color = props.color
-  //   console.log(props)
-  //   var dataVal = props.a
-  //   console.log(dataVal)
-  //   var percenting = props.b
-  //   console.log(percenting)
-  //   dataVal = percenting - dataVal + 1
-  //   var chartName = "." + props.chartName
-  //   // using 1. to give percentage threshold to val
-  //   var data = [dataVal, percenting];
-  //   console.log(data)
-  //   var width = 220,
-  //       barHeight = 30;
-  //
-  //   var x = d3.scaleLinear()
-  //       .domain([0, d3.max(data)])
-  //       .range([0, width]);
-  //
-  //   var chart = d3.select(chartName)
-  //       .attr("width", width)
-  //       .attr("height", barHeight); // excludes 2nd bar from showing
-  //
-  //   var bar = chart.selectAll("g")
-  //       .data(data)
-  //       .enter()
-  //       .append("g")
-  //       .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-  //
-  //   bar.append("rect")
-  //       .attr("width", 0)
-  //       .transition()
-  //       .duration(1500)
-  //       .attr("width", x)
-  //       .attr("fill", color)
-  //       .attr("height", barHeight - 1);
-  //       .attr("id", props.id)
-  //
-  //   bar.append("text")
-  //       .attr("x", function(d) { return x(d) - 3; })
-  //       .attr("y", barHeight / 2.5)
-  //       .attr("dy", ".60em")
-  //       .text(function(){return String(props.a) + "/" + String(percenting)})
-  //
-  // }
-
   render(){
     let loading = this.state.loading;
     if(loading){

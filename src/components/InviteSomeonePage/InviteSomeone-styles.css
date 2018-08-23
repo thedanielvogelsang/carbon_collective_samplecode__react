@@ -4,21 +4,23 @@
   justify-content: space-between;
   align-items: center;
   width: 100vw;
+  height: 100%;
   margin-top: -10px;
+  overflow: auto;
 }
 
 .invite-email-input{
   width: 100%;
+  min-height: 40px;
 }
 
 form.inviteSomeone-form{
   display: flex;
   flex-direction: column;
-  height: 75vh;
   justify-content: flex-start;
   max-width: 350px;
+  min-width: 350px;
   padding: 0px !important;
-  margin-bottom: 50px;
 }
 
 .inviteSomeone-form ul{
@@ -30,34 +32,7 @@ form.inviteSomeone-form{
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 0.7em;
-  margin-bottom: 30px;
-  margin-top: 15px;
   z-index: 1;
-}
-
-.add-email p{
-  margin-left: 20px;
-  font-size: 1.3em;
-  text-align: left;
-  max-width: 150px;
-}
-
-.add-email p.addP{
-  width: 50px;
-  margin-left: 0px !important;
-}
-
-.plus-btn{
-  height: 25px;
-  width: 25px;
-  margin: 5px;
-  border-radius: 14px;
-  font-weight: bolder;
-}
-
-.plus-btn.message{
-  margin-left: -10px;
 }
 
 li.email-input-row{
@@ -68,8 +43,11 @@ li.email-input-row{
 }
 
 label.invite-label{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-height: 280px;
-  margin-bottom: 10px;
   padding-left: 6px;
 }
 
@@ -77,7 +55,7 @@ label.invite-label h4{
   font-size: 1.1em;
   text-align: left;
   padding-left: 5px;
-  font-family: 'PT Serif', serif;
+  font-family: 'Merriweather', serif;
 }
 
 .invite-invite-div{
@@ -86,19 +64,22 @@ label.invite-label h4{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10vh;
+}
+
+.invite-sub-btn{
+  background-color: #89868D;
+  color: white;
+  font-size: 0.9em;
 }
 
 .invite-invite-button{
-  color: #1fa245;
-  background-color: #2A2C33;
   z-index: 1;
-  width: 200px;
 }
 
 .invitation-textBox{
-  margin: 30px 0px 10px;
-  font-family: 'PT Serif', serif;
-  border-radius: 5%;
+  margin: 5px 0px;
+  font-family: 'Merriweather', serif;
   padding: 15px;
   max-width: 320px;
   box-sizing: content-box;
@@ -130,5 +111,4 @@ label.invite-label textarea:-ms-input-placeholder {
 }
 label.invite-label textarea:-moz-placeholder {
   font-size: 1.1em;
-
 }

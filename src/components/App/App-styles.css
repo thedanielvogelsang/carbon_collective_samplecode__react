@@ -10,14 +10,14 @@ body {
 
 html {
   background-color: white;
-  color: white;
+  color: #89868D;
 }
 
 .app-container {
   text-align: center;
   padding-top: 70px;
   width: 100vw;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,7 @@ html {
   flex-direction: column;
   font-family: 'Libre Franklin', Helvetica, sans-serif;
   font-size: 1em;
-  color: #2a2c33;
+  color: #89868D;
 }
 
 #app-background-image{
@@ -33,12 +33,19 @@ html {
   top: 0;
   left: 0;
   background-image: url('./img/background.jpeg');
-  background-repeat: no-repeat;
+  background-repeat: center repeat-y;
+  background-size: auto 100%;
+  padding-top: 10vh;
   opacity: 0.2;
   z-index: -1;
   width: 100vw;
-  height: 100vh;
-  background-color: rgb(241, 246, 219);
+  height: 100%;
+  background-color: #E3E7D5;
+  background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover
 }
 
 form {
@@ -49,7 +56,6 @@ form {
 
 input {
 
-  border-radius: 5px;
   border-style: none;
   box-sizing: border-box;
   /* font-size: 14px;
@@ -61,10 +67,7 @@ input {
 }
 
 input:focus {
-  /* border: 6px solid #79c278;
-  opacity: 100%;
-  transition: opacity .3s; */
-  /* box-shadow: 0 0 15px rgba(72, 205, 11, 1); */
+
 }
 
 select {
@@ -79,17 +82,18 @@ select {
   width: 98%;
 }
 
-/* button {
-  border: none;
-  border-radius: 4px;
+button {
   color: white;
-  max-width: 400px;
-  font-size: 1.1em;
-  font-family: 'PT Serif', serif;
-  text-transform: uppercase;
-  background-color: #1fa245;
-  color: black;
-} */
+  font-family: "Libre Franklin", Garamond, sans-serif;
+  background-color: #105130;
+  margin: 2vh 0px;
+  width: 100%;
+  max-width: 350px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
 
 button:hover {
   cursor: pointer;
@@ -107,21 +111,45 @@ a:hover{
   cursor: pointer;
 }
 
-input:hover{
-  cursor: pointer;
+input{
+  font-family: 'Merriweather', serif;
+  opacity: 0.5;
+  font-size: 14px;
 }
 
-@media (min-width: 800px){
+input:hover{
+  cursor: pointer;
+  opacity: 1.0;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 1.2em;
+  padding: 3px 0px 3px 5px;
+}
+input::-moz-placeholder {
+  font-size: 1.2em;
+  padding: 3px 0px 3px 5px;
+
+}
+input:-ms-input-placeholder {
+  font-size: 1.2em;
+  padding: 3px 0px 3px 5px;
+
+}
+input:-moz-placeholder {
+  font-size: 1.2em;
+  padding: 3px 0px 3px 5px;
+
+}
+
+@media (max-width: 600px){
   #app-background-image{
-    background-size: 100vw 100vh;
+    background: #F1F6DB;
+    opacity: 0.8;
   }
 }
 
 @media (max-width: 370px){
-  #app-background-image{
-    background-image: url();
-    background-color: rgb(241, 246, 219);
-  }
   .bug-report-icon-fixed-container{
     display: flex;
     flex-direction: row;

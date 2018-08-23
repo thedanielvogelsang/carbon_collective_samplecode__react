@@ -101,3 +101,45 @@ header h1 {
     margin-left: 4px;
   }
 }
+
+@media (max-width: 360px){
+  .landing-header-h1{
+    font-size: 3.6em;
+  }
+}
+
+@media (max-width: 328px){
+  .landing-subheader-h2{
+    font-size: 20px;
+  }
+}
+@media (max-width: 300px){
+  .landing-header-h1{
+    font-size: 2.9em;
+  }
+  .landing-subheader-h2{
+    font-size: 11px;
+  }
+}
+@media (max-width: 275px){
+  .landing-header-h1{
+    font-size: 2.8em;
+  }
+  .landing-subheader-h2{
+    font-size: 12px;
+  }
+  p{
+
+  }
+}
+@media (max-width: 245px){
+  .landing-header-h1{
+    font-size: 2.7em;
+  }
+  .landing-subheader-h2{
+    font-size: 9px;
+  }
+  p{
+
+  }
+}

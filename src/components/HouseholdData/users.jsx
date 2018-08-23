@@ -14,10 +14,9 @@ function updateUser(user) {
   }
 }
 
-const userRanks = function(users, org_id){
-  const _res = localStorage.getItem('resource_type');
+const userRanks = function(users, org_id, resType, hId){
   const userList = users.map((user, n) => {
-    user = calculateRankNumber(user, n)
+    user = calculateRankNumber(user, n, resType, hId)
     const img = arrowDirection(user, n)
     if(user.id === Number(org_id)){
       return  (<li className="highlighted-user-row" key={user.id}>
@@ -43,18 +42,17 @@ const userRanks = function(users, org_id){
   return userList
 }
 
-function calculateRankNumber(user, n){
+function calculateRankNumber(user, n, resType, hId){
   n += 1;
-  let type = localStorage.getItem("resource_type")
   let update = updateUser(user);
   let region = "House";
-  const path = 'api/v1/users/' + user.id + '/' + type
+  const path = 'api/v1/users/' + user.id + '/' + resType;
   if(user.rank === n && update){
     user.arrow = null;
     let userData = {
       user: user,
       region_type: region,
-      region_id: sessionStorage.getItem("house_id")
+      region_id: hId
     }
     put(path, undefined, userData)
       .then(data => console.log('success'))
@@ -66,7 +64,7 @@ function calculateRankNumber(user, n){
     let userData = {
       user: user,
       region_type: region,
-      region_id: sessionStorage.getItem("house_id")
+      region_id: hId
     }
     put(path, undefined, userData)
       .then(data => data)
@@ -79,7 +77,7 @@ function calculateRankNumber(user, n){
     let userData = {
       user: user,
       region_type: region,
-      region_id: sessionStorage.getItem("house_id")
+      region_id: hId
     }
     put(path, undefined, userData)
       .then(data => console.log(data))
@@ -91,7 +89,7 @@ function calculateRankNumber(user, n){
     let userData = {
       user: user,
       region_type: region,
-      region_id: sessionStorage.getItem("house_id")
+      region_id: hId
     }
     put(path, undefined, userData)
       .then(data => console.log(data))
@@ -124,8 +122,8 @@ class HouseUsersBoards extends Component{
     this.state ={
       loading: true,
       ids: props.users,
-      user_id: sessionStorage.getItem('user_id'),
-      house_id: sessionStorage.getItem('house_id'),
+      user_id: props.user_id,
+      house_id: props.house_id,
     }
   }
   componentDidMount(){
@@ -141,7 +139,7 @@ class HouseUsersBoards extends Component{
   }
 
   loadUsers(){
-    let resourceType = localStorage.getItem('resource_type')
+    let resourceType = this.props.resType
     let id = this.state.house_id
     let path = `api/v1/houses/${id}/users?resource=${resourceType}`
     get(path)
@@ -157,7 +155,7 @@ class HouseUsersBoards extends Component{
           </h1>
           <div className="house-rankings-div">
           <h4>House Rankings<span className="metric-house-rankings">({this.props.metric}/day)</span></h4>
-          {loading ? null : userRanks(this.state.users, this.state.user_id)}
+          {loading ? null : userRanks(this.state.users, this.state.user_id, this.props.resType, this.props.house_id )}
           </div>
       </div>
     )

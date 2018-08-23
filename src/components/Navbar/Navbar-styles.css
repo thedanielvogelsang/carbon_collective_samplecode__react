@@ -395,3 +395,18 @@ form.shrunken-landing-navbar-login-form{
     padding: 0;
   }
 }
+
+@media (max-width: 300px){
+  .log-svg{
+    width: 18px !important;
+  }
+  input.login-bar{
+    width: 70%;
+
+  }
+  input.login-bar::-webkit-input-placeholder{
+    padding-left:0px;
+  }
+  form.shrunken-landing-navbar-login-form{
+  }
+}
