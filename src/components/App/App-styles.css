@@ -49,9 +49,10 @@ html {
 }
 
 form {
-  padding: 0 10%;
+  padding: 0;
   font-size: 18px;
   display: flex;
+  width: 100vw;
 }
 
 input {
@@ -66,8 +67,9 @@ input {
   /* width: 98%; */
 }
 
-input:focus {
-
+input::-webkit-input-placeholder {
+    padding: -5px;
+    margin: 0;
 }
 
 select {

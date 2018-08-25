@@ -161,15 +161,13 @@ class InviteSomeonePage extends Component{
   }
 
   render(){
-    let math;
     let btn = this.state.messageDisplay
     if(btn === "none"){
       btn = false
     }
-    btn ? math = "Remove" : math = "Add"
     return(
       <div className="invite-list-page">
-        <h3 className="edit-header invite-page">Invite your friends!</h3>
+        <h4 className="edit-header invite-page">Invite your friends!</h4>
         <form
           onSubmit={this.handleForm}
           className="inviteSomeone-form"

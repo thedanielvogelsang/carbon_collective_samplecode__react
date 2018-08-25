@@ -91,13 +91,13 @@ header h1 {
   .landing-header-h1{
     margin-top: 80px;
     font-family: 'Merriweather', Garamond, serif;
-    font-size: 4.2em;
+    font-size: 3.8em;
     letter-spacing: 2px;
     font-weight: 400;
     color: #219a60;
   }
   .landing-subheader-h2{
-    font-size: 24px;
+    font-size: 20px;
     margin-left: 4px;
   }
 }

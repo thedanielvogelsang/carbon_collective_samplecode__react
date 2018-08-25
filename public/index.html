@@ -28,19 +28,22 @@
  <!-- End Single Page Apps for GitHub Pages -->
    </head>
    <body>
-     <noscript>
-       You need to enable JavaScript to run this app.
-     </noscript>
      <div id="app-background-image">
      </div>
      <div id="root"></div>
    </body>
-   <script type='text/javascript'>
-    setTimeout(500, function(){
-          var root = document.getElementById('root')
-          var image = document.getElementById('app-background-image')
-          image.style.height = root.offsetHeight + "px"
-          console.log(image.offsetHeight)
-        })
+   <script>
+      setTimeout(function(){
+        var el = document.getElementById("root").offsetHeight
+        var image = document.getElementById('app-background-image')
+        image.style.height = el + 'px'
+        console.log(image.offsetHeight, el)
+      }, 500)
+      setTimeout(function(){
+        var el = document.getElementById("root").offsetHeight
+        var image = document.getElementById('app-background-image')
+        image.style.height = el + 'px'
+        console.log(image.offsetHeight, el)
+      }, 1500)
    </script>
  </html>

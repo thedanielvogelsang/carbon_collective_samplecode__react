@@ -22,7 +22,7 @@ BasicChart.enter = function(elem_, props){
 
   elem_
       .attr("width", width)
-      .attr("height", barHeight); // excludes 2nd bar from showing
+      // .attr("height", barHeight); // excludes 2nd bar from showing
 
   var bar = elem_.selectAll("g")
       .data(data)

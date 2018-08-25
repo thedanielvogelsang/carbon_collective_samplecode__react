@@ -344,17 +344,21 @@ form.shrunken-landing-navbar-login-form{
   input.login-bar{
     font-size: 1.0em;
     width: 90%;
-    max-width: 350px;
+    max-width: 300px;
     padding-right: 40px;
   }
   .login-div{
     width: 85%;
+    max-width: 350px;
     margin-top: 20px;
     margin-left: 15px;
   }
   .landing-navbar{
     height: 100px;
-    width: 100vw;
+    width: 100%;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -382,6 +386,15 @@ form.shrunken-landing-navbar-login-form{
   }
 }
 
+@media (max-width: 400px){
+  input.login-bar{
+    max-width: 200px;
+  }
+  .login-div{
+    max-width: 260px;
+  }
+}
+
 @media (max-width: 340px){
   img.cc-logo.unloaded{
     display: none;
@@ -390,6 +403,7 @@ form.shrunken-landing-navbar-login-form{
     width: 85%;
     margin-top: 20px;
     padding-left: 0px;
+    margin-left: 0px;
   }
   .navbar-logo-menu-div{
     padding: 0;

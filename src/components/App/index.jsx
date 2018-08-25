@@ -175,7 +175,7 @@ class App extends Component {
     this.props.history.location.pathname === '/settings' ? fixbug = false : fixbug = true;
     if(!loaded && !id){
       return(
-        <div className="app-container">
+        <div className="app-container" id="app-container">
           <Navbar loaded={loaded}/>
           <Header />
           <Switch>
@@ -191,7 +191,7 @@ class App extends Component {
       )
     }else if(loaded){
         return (
-          <div className="app-container">
+          <div className="app-container" id="app-container">
             <Navbar loaded={loaded}/>
             <Header />
             {fixbug ? <FixBugLink /> :  null}

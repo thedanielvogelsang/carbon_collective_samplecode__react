@@ -22,7 +22,7 @@
   /* background-color: #2A2C33; */
   background-color: rgb(241, 246, 219);
   border-radius: 50%;
-  z-index: 1;
+  z-index: 3;
 }
 
 .bug-report-icon-container:hover{

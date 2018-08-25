@@ -126,8 +126,6 @@ class DashboardData extends Component {
   render() {
     var country = true;
     var color = this.props.color
-    var colorN = 'white';
-    var colorC = "white";
     var metric = this.props.dash_data.metric_sym
     var notCarbon;
     this.props.resource_type === 'carbon' ? notCarbon = false : notCarbon = true;

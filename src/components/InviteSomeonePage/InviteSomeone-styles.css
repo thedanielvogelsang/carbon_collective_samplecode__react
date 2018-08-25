@@ -24,13 +24,14 @@ form.inviteSomeone-form{
 }
 
 .inviteSomeone-form ul{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .add-email{
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 5px;
   justify-content: center;
   z-index: 1;
 }
@@ -51,11 +52,12 @@ label.invite-label{
   padding-left: 6px;
 }
 
-label.invite-label h4{
-  font-size: 1.1em;
+.invite-list-page h4{
+  font-size: 30px;
   text-align: left;
   padding-left: 5px;
   font-family: 'Merriweather', serif;
+  font-weight: 300;
 }
 
 .invite-invite-div{
@@ -74,7 +76,7 @@ label.invite-label h4{
 }
 
 .invite-invite-button{
-  z-index: 1;
+  z-index: 0;
 }
 
 .invitation-textBox{
@@ -86,14 +88,14 @@ label.invite-label h4{
 }
 
 .edit-header.invite-page{
-  margin-top: -10px;
-  padding: 35px 0px 35px 0px;
+  padding: 25px 0px 5px 0px;
   border-bottom: 1px dotted white;
+  color: #2a2c33;
 }
 
 label.invite-label textarea{
   font-size: 0.8em;
-  max-width: 300px;
+  max-width: 320px;
   box-sizing: border-box;
   color: #415B2F;
 }
@@ -111,4 +113,11 @@ label.invite-label textarea:-ms-input-placeholder {
 }
 label.invite-label textarea:-moz-placeholder {
   font-size: 1.1em;
+}
+
+@media (max-width: 700px){
+  form.inviteSomeone-form{
+    max-width: 320px;
+    min-width: 320px;
+  }
 }

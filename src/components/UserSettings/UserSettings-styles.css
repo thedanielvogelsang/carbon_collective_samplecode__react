@@ -1,25 +1,34 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Serif');
-
 .usrForm-cnt{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  width: 100vw;
 }
 
 .users-editform-container{
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  font-family: 'PT Serif', serif;
+  font-family: "Libre Franklin", Helvetica, sans-serif;
+  color: #2a2c33;
   width: 100%;
-  max-width: 400px;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding-bottom: 200px;
 }
 
-form.users-editform h4{font-size: 1.2em}
+form.users-editform {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+form.users-editform h4{font-size: 1.2em; margin-bottom: 14px; margin-left: 30px  }
+form.users-editform h4:not(:first-child){margin-top: 8px }
+form.users-editform input{
+  margin-left: 30px;
+  min-width: 350px;
+}
 
 .users-editform-container input{
   font-size: 1.3em;
@@ -30,15 +39,21 @@ form.users-editform h4{font-size: 1.2em}
 
 .users-editform-container input::placeholder{
   color: #415B2F;
+  padding: 5px;
+  font-size: 0.9em;
+  text-align: left;
 }
 
-h3.edit-header{
-  font-size: 26px;
-  margin: 20px 0px 25px 0px;
-  font-family: 'PT Serif', serif;
-  text-shadow: -1px -1px black;
-  width: 300px;
-  font-family: 'PT Serif', serif;
+h1.edit-header.user-settings{
+  font-family: "Libre Franklin", Helvetica, sans-serif;
+  font-size: 56px;
+  color: #219a60;
+  font-weight: 300;
+  width: 100%;
+  text-align: left;
+  padding-left: 30vw;
+  margin-bottom: 50px;
+  margin-top: 10px;
 }
 
 .users-editform{
@@ -58,9 +73,9 @@ div.passwordUpdate{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto;
-  width: 100px !important;
-  max-width: 100px !important;
+  height: 100%;
+  width: 100% !important;
+  /* max-width: 100px !important; */
 }
 
 form.password-form{
@@ -70,6 +85,7 @@ form.password-form{
   align-items: center;
   min-width: 100%;
   max-width: 350px;
+  height: 100%;
   margin: 0px;
   margin-left: -20px;
   padding-bottom: 30px;
@@ -80,9 +96,18 @@ form.password-form{
 .expandable-password{
   display: flex;
   flex-direction: column;
-  background-color: #2A2C33;
-  max-width: 350px;
+  background-color: #89868D;
+  color: white;
+  padding-top: 5px;
+  font-size: 0.9em;
+  max-width: 200px;
+  border-radius: 5px;
+  z-index: 1;
   /* width: 100vw; */
+}
+
+.expandable-password:hover {
+  cursor: pointer;
 }
 
 .passwordUpdate.expandable-listview_outerDiv{
@@ -102,6 +127,8 @@ form.password-form{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+
 }
 
 ul.expandable-listview_ul li {
@@ -120,7 +147,8 @@ ul.expandable-listview_ul li {
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  width: 50vw !important;
+  width: 100%;
+  max-width: 50vw !important;
   justify-content: flex-start;
   overflow-y: scroll !important;
 }
@@ -132,7 +160,9 @@ ul.expandable-listview_ul li {
 }
 
 .expandable-password .expandable-listview_listHeader {
-  background-color: #2A2C33;
+  background-color: #89868D;
+  color: white;
+  font-size: 0.9em;
   height: 20px;
   width: 50vw !important;
   max-width: 200px;
@@ -141,7 +171,6 @@ ul.expandable-listview_ul li {
   border-bottom-left-radius: 15px;
   padding: 4px 0px 4px 0px;
   font-size: 1.0em;
-  color: #1fa245;
 }
 
 .expandable-listview_listItems {
@@ -162,17 +191,15 @@ ul.expandable-listview_ul li {
 button.change-pass-button{
   bottom: -10;
   border-radius: 4px;
-  background-color: #2A2C33;
+  color: white;
+  font-family: "Libre Franklin", Garamond, sans-serif;
+  background-color: #105130;
   font-size: 14px;
   font-weight: bold;
   height: 40px;
   padding: 10px 20px 10px 20px;
   position: inherit;
   width: 40vw;
-  /* border-top: 2px black solid;
-  border-bottom: 2px black solid; */
-  text-shadow: 1px 2px black;
-  color: #1fa245 !important;
 }
 
 .error-box-pass{
@@ -182,22 +209,103 @@ button.change-pass-button{
   align-items: center;
   justify-content: center;
 }
+.house-info-link-div{
+  width: 100%;
+  justify-content: center;
+}
 
 button.address-link{
   padding: 5px;
   margin-top: 10px;
   margin-bottom: 20px;
-  background-color: #2A2C33;
-  font-size: 1.3em;
-  color: #1fa245;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+  max-width: 350px;
 }
 
 .form-outside-container{
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 700px){
+  button.address-link{
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 900px){
+  h1.edit-header.user-settings{
+    padding-left: 0px;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px){
+  h1.edit-header.user-settings{
+    font-size: 42px;
+    margin-bottom: 30px;
+  }
+  form.form-container.users-editform{
+    align-items: center;
+    justify-content: center;
+  }
+  form.form-container.users-editform h4{
+    padding: 0;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 425px){
+  form.users-editform input{
+    margin-left: 0;
+    min-width: 80%;
+
+  }
+  h1.edit-header.user-settings{
+    font-size: 38px;
+  }
+  form.users-editform h4{font-size: 1em}
+  form.password-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 350px;
+    width: 100%;
+    margin: 0px;
+    margin-left: -20px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .passwordUpdate.expandable-listview_outerDiv{
+    min-height: 400px;
+    width: 100%;
+  }
+  button.address-link{
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 300px){
+  h1.edit-header.user-settings{
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  form.form-container.users-editform{
+    align-items: center;
+    justify-content: center;
+  }
+  form.form-container.users-editform h4{
+    padding: 0;
+    margin-left: 0;
+  }
 }

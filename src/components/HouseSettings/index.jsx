@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {removeUserHouse} from '../../actions/userActions'
-import {get, put, post, destroy} from '../../api_client';
+import {get, put, post} from '../../api_client';
 import './HouseSettings-styles.css';
 
 const setTimer = function(data){
@@ -30,6 +30,7 @@ class HouseSettings extends Component{
     this.addressForm = this.addressForm.bind(this);
     this.removeUserHouse = this.removeUserHouse.bind(this);
     this.goToDashboard = this.goToDashboard.bind(this)
+    this.goToUserSettings = this.goToUserSettings.bind(this)
     this.disappear = this.disappear.bind(this);
     this.setNoHouseState = this.setNoHouseState.bind(this);
     this.clearAndGoToDash = this.clearAndGoToDash.bind(this);
@@ -46,9 +47,6 @@ class HouseSettings extends Component{
     }else(
       this.setNoHouseState()
     )
-  }
-
-  componentDidUpdate(){
   }
 
   logLanding(){
@@ -81,11 +79,9 @@ class HouseSettings extends Component{
     }else{
         house[name] = value
         this.updateHouseDetails(house)
-      // this.setState({
-      //   house: house
-      // })
     }
   }
+
   setAddressState(addressHash){
     const path = `api/v1/houses/${this.props.house_id}`;
     get(path)
@@ -121,6 +117,11 @@ class HouseSettings extends Component{
 
   goToDashboard(){
     let path = '/dashboard'
+    this.props.history.push(path)
+  }
+
+  goToUserSettings(){
+    let path = '/user_settings'
     this.props.history.push(path)
   }
 
@@ -160,15 +161,15 @@ class HouseSettings extends Component{
     return(
       <div className="deleteHouse-container">
         <div className="current-address">
-          <h3 className='current-address'> Current Address: </h3>
+          <h5 className='current-address'> Current Address: </h5>
           <h4> {this.state.full_address} </h4>
         </div>
         <div className="current-address">
-          <h3 className='current-address'> Neighborhood: </h3>
+          <h5 className='current-address'> Neighborhood: </h5>
           <h4> {this.state.neighborhood.name} </h4>
         </div>
         <div className="current-address">
-          <h3 className='current-address'> County: </h3>
+          <h5 className='current-address'> County: </h5>
           <h4> {this.state.county.name} </h4>
         </div>
         <div className='houseDelete'>
@@ -177,6 +178,12 @@ class HouseSettings extends Component{
             name="remove-house-btn"
             onClick={this.removeUserHouse}
             >Click To Remove House</button>
+        </div>
+        <div>
+          <button
+            className="address-link"
+            onClick={this.goToUserSettings}
+            >User Info</button>
         </div>
       </div>
     )
@@ -190,10 +197,11 @@ class HouseSettings extends Component{
           <div className="housesettings-error-box" onClick={this.disappear} style={this.state.errorStyle}>
             { this.state.errors }
           </div>
+          <h1 className="edit-header house-settings">House Settings</h1>
+          <h2 className="edit-header current-settings">Editable Details</h2>
           <form
             className="form-container house-editform"
             >
-              <h3 className="edit-header house-settings"> Edit House Specs</h3>
               <h5> Current Number of Residents </h5>
               <label>
                 <div className="number-form">
@@ -201,6 +209,7 @@ class HouseSettings extends Component{
                     onClick={ (e) => this.updateResidents(e) }
                   >-</button>
                   <input
+                    id="noRes-id"
                     type="text"
                     name="no_residents"
                     step="1"
@@ -218,6 +227,7 @@ class HouseSettings extends Component{
               <h5>Total Square Feet</h5>
               <label>
                 <input
+                  id="sq-ft"
                   type="number"
                   className="sq-feet"
                   name="total_sq_ft"
@@ -230,6 +240,7 @@ class HouseSettings extends Component{
                 />
               </label>
             </form>
+          <h2 className="edit-header current-settings">Static Details</h2>
             { addressLoaded ? this.addressForm() : null }
         </div>
       )

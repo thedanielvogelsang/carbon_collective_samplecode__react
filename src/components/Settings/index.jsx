@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FontIcon from 'material-ui/FontIcon';
 import { get, post } from '../../api_client';
   import DashLogo from './img/footprint.svg';
   import BillsLogo from './img/doc.svg';
@@ -14,20 +12,6 @@ import { get, post } from '../../api_client';
   import ContactLogo from './img/contact.svg';
   import LogoutLogo from './img/log_grey.svg';
   import './Settings-styles.css';
-
-const iconStyles = {
-  color: 'black',
-  height: 58,
-  width: 58,
-  fontSize: 36,
-}
-
-const iconStylesFirst = {
-  color: 'rgb(47, 157, 102)',
-  height: 58,
-  width: 64,
-  fontSize: 36,
-}
 
 class Settings extends Component {
   constructor(props){
@@ -210,12 +194,14 @@ class Settings extends Component {
             <li className="setting-desc">Contact</li>
           </ul>
         </div>
-        <ul className="options-list" onClick={this.logout}>
-          <li className="setting-icon">
-            <img alt="logout logo" className="settings-logo invite-logo" src={this.state.logoutLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.logout(e)}/>
-          </li>
-          <li className="setting-desc">Log Out</li>
-        </ul>
+        <div className="settings-div">
+          <ul className="options-list" onClick={this.logout}>
+            <li className="setting-icon">
+              <img alt="logout logo" className="settings-logo invite-logo" src={this.state.logoutLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.logout(e)}/>
+            </li>
+            <li className="setting-desc">Log Out</li>
+          </ul>
+        </div>
       </div>
     </div>
     </div>

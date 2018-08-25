@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
+form.bug-form{
+  color: #2a2c33;
+}
+form.bug-form p{
+  color: #89868D;
+}
+
 .bug-directions1{
   margin-top: 20px;
   font-size: 0.9em;
   line-height: 1.2em;
-  color: white;
   text-align: left;
-  text-shadow: 1px 1px 1px black;
   margin-bottom: 15px;
   width: 300px;
 }
@@ -14,16 +19,13 @@
 .bug-directions{
   margin-left: 10px;
   font-size: 0.8em;
-  color: white;
   text-align: left;
   padding: 2px;
   width: 250px;
-  text-shadow: 1px 1px 1px black;
 }
 
 .bug-textBox{
   margin: 40px 0px 20px;
-  font-family: 'PT Serif', serif;
   border-radius: 5%;
   padding: 15px;
 }
@@ -33,9 +35,7 @@
   height: 40px;
   min-width: 180px;
   font-size: 1.4em;
-  font-family: 'PT Serif', serif;
   padding: 5px 10px;
-  text-shadow: 1px 1px black;
   color: #1fa245;
   background-color: #2A2C33;
   margin-bottom: 100px;
@@ -43,11 +43,8 @@
 
 h3.bug-fix-title{
   font-size: 26px;
-  color: white;
   padding: 35px 0px 35px 0px;
   margin: 10px 0px 0px 0px;
-  font-family: 'PT Serif', serif;
-  text-shadow: -1px -1px black;
   width: 300px;
   border-bottom: 1px dotted white;
   font-weight: lighter;

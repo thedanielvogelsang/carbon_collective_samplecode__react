@@ -91,8 +91,8 @@ class UserSettings extends Component{
       return(
         <div className="usrForm-cnt">
         <div className="users-editform-container">
+        <h1 className="edit-header user-settings">{this.state.first + "'"}s User Info</h1>
         <div className="form-outside-container">
-          <h3 className="edit-header">{this.state.first + "'"}s User Info</h3>
           <form
             className="form-container users-editform"
           >
@@ -124,15 +124,15 @@ class UserSettings extends Component{
             type="text"
             />
           </form>
-          <div>
+          </div>
+          <div className='passwordUpdate'>
+            <PasswordInput />
+          </div>
+          <div className="house-info-link-div">
             <button
               className="address-link"
               onClick={this.goToHouseSettings}
               >House Info</button>
-          </div>
-          </div>
-          <div className='passwordUpdate'>
-            <PasswordInput />
           </div>
         </div>
         </div>
@@ -152,6 +152,13 @@ class PasswordForm extends Component{
 
     })
     this.handleForm = this.handleForm.bind(this)
+  }
+
+  checkImageHeight(){
+      var root = document.getElementById('root')
+      var image = document.getElementById('app-background-image')
+      image.style.height = root.offsetHeight + "px"
+      console.log(root.offsetHeight)
   }
 
   handleForm(event){
@@ -246,9 +253,6 @@ class PasswordInput extends Component{
     });
   }
 
-  componentDidUpdate(){
-  }
-
   disappear(){
     this.setState({errors: "", errorbox: {display: 'none'}})
   }
@@ -281,11 +285,11 @@ class PasswordInput extends Component{
   render(){
     if(this.state.loading){
     return(
-        <div className='list-container'>
+        <div className='list-container' >
           <div className="error-box-pass" style={this.state.errorbox} onClick={this.disappear}>
             { this.state.errors }
           </div>
-          <div id="passwordFile" className="expandable-password">
+          <div id="passwordFile" className="expandable-password" >
             <ReactExpandableViewList
               data={this.state.data}
               headerAttName="headerName"

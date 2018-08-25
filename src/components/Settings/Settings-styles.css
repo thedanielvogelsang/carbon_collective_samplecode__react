@@ -6,6 +6,7 @@ div.settings-dropdown{
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  height: 100%;
 }
 
 div.settings-header{
@@ -37,7 +38,7 @@ div.settings-page{
   background-color: white;
   color: black;
   padding-left: 10px;
-  height: 620px;
+  height: 680px;
 }
 
 ul.options-list{
