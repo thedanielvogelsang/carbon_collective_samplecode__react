@@ -124,21 +124,22 @@ class DashboardData extends Component {
   }
 
   render() {
-    var country = true;
+    var country = false;
     var color = this.props.color
     var metric = this.props.dash_data.metric_sym
     var notCarbon;
     this.props.resource_type === 'carbon' ? notCarbon = false : notCarbon = true;
     return (
+      <div className="dashboard-data-container_main">
+      <div className="regional-header">
+        <h5>Community Comparisons</h5>
+      </div>
       <div className="data-container">
           <div className="community-comps">
-              <div className="regional-header">
-                <h5 style={{color: color}}>Community Comparisons</h5>
-              </div>
-              <div className="community-comps-labels">
+            <div className="community-comps-labels">
                 <h6 className="label-rank">Rankings</h6>
-                <h6 className="label-consumption">Average Per Person Use Per Month (in {metric})</h6>
-              </div>
+                <h6 className="label-consumption">1 Year Average Per Person Use Per Month in {metric}</h6>
+            </div>
               { notCarbon ?
               <div className="data-item-row">
                 <MeComponent dashData={this.props.dash_data} color={color}/>
@@ -146,24 +147,31 @@ class DashboardData extends Component {
               }
               <div className="data-item-row">
                 <RegionComponent id={this.props.dash_data.household.id} regionType="Household" label="Household" linkAction={this.goToHouseholdPage} monthlyAvg={ this.props.dash_data.avg_monthly_consumption}  color={color}/>
+                  <div className="data-item-g">
+                    <BarGraph id={"household"} a={this.props.dash_data.neighborhood[2]} b={this.props.dash_data.neighborhood[3]} chartName="chart1" color={color} goToRegionPage={this.goToRegionPage} name="neighborhoods" regionName={"Household"}/>
+                  </div>
+                <h6 className="graph-Exp">other households in {this.props.dash_data.neighborhood[1]}</h6>
               </div>
               <div className="data-item-row">
                 <RegionComponent id={this.props.dash_data.neighborhood[0]} regionType="Neighborhood" label={this.props.dash_data.neighborhood[1]} linkAction={this.goToRegionPage} monthlyAvg={ this.props.dash_data.neighborhood_monthly_consumption } rank={this.props.dash_data.neighborhood[2]} outOf={this.props.dash_data.neighborhood[3]} color={color}/>
                 <div className="data-item-g">
                   <BarGraph id={this.props.dash_data.neighborhood[0]} a={this.props.dash_data.neighborhood[2]} b={this.props.dash_data.neighborhood[3]} chartName="chart2" color={color} goToRegionPage={this.goToRegionPage} name="neighborhoods" regionName={this.props.dash_data.neighborhood[1]}/>
                 </div>
+                <h6 className="graph-Exp">other {this.props.dash_data.city[1]} neighborhoods</h6>
               </div>
               <div className="data-item-row">
                 <RegionComponent id={this.props.dash_data.city[0]} regionType="City" label={this.props.dash_data.city[1]} linkAction={this.goToRegionPage} monthlyAvg={ this.props.dash_data.city_monthly_consumption } rank="1" outOf={this.props.dash_data.city[3]} color={color}/>
                 <div className="data-item-g">
                   <BarGraph id={this.props.dash_data.city[0]} a={1} b={1} chartName="chart3" color={color} name="cities" regionName={this.props.dash_data.city[1]}/>
                 </div>
+                <h6 className="graph-Exp">other {this.props.dash_data.region[1]} cities</h6>
               </div>
               {country ?
               <div>
               <RegionGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/>
               <CountryGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/></div> : <div></div> }
           </div>
+        </div>
       </div>
     )
   };
@@ -172,13 +180,12 @@ class DashboardData extends Component {
 const CountryGraphIcon = (props) => {
   // let country = throwEllipsis(props.data.country[1])
   let country = props.dash_data.country[1]
-  let colorC = 'white';
   if(props.resourceType === "gas"){
     return(
       <div className="data-item-row">
         <div className="data-item-t">
           <a id={props.dash_data.country[0]} name="countries" className="data-label-t">{country}</a>
-          <h6 className="data-value"  style={{color: props.color}} >{ props.dash_data.country_monthly_consumption }</h6>
+          <h6 className="data-value" >{ props.dash_data.country_monthly_consumption }</h6>
         </div>
       </div>
     )
@@ -187,8 +194,8 @@ const CountryGraphIcon = (props) => {
       <div className="data-item-row">
         <div className="data-item-t">
           <a id={props.dash_data.country[0]} name="countries" className="data-label-t clickable" onClick={props.goToRegionPage}>{country}</a>
-          <p className="data-item-rank" style={{color: colorC}}>#{props.dash_data.country[2]} / {props.dash_data.country[3]}</p>
-          <h6 className="data-value"  style={{color: props.color}} >{ props.dash_data.country_monthly_consumption }</h6>
+          <p className="data-item-rank">#{props.dash_data.country[2]} / {props.dash_data.country[3]}</p>
+          <h6 className="data-value" >{ props.dash_data.country_monthly_consumption }</h6>
         </div>
         <div className="data-item-g">
         <BarGraph id={props.dash_data.country[0]} a={props.dash_data.country[2]} b={props.dash_data.country[3]} chartName="chart6" color={props.color} goToRegionPage={props.goToRegionPage} name="countries" regionName={props.dash_data.country[1]}/>
@@ -199,14 +206,13 @@ const CountryGraphIcon = (props) => {
 };
 
 const RegionGraphIcon = (props) => {
-  let colorR = 'white';
   console.log(props)
   return(
       <div className="data-item-row">
         <div className="data-item-t">
           <a id={props.dash_data.region[0]} name="regions" className="data-label-t clickable" onClick={props.goToRegionPage}>{props.dash_data.region[1]}</a>
-          <p className="data-item-rank" style={{color: colorR}}>#{props.dash_data.region[2]} / {props.dash_data.region[3]}</p>
-          <h6  className="data-value" style={{color: props.color}}>{ props.dash_data.region_monthly_consumption }</h6>
+          <p className="data-item-rank" >#{props.dash_data.region[2]} / {props.dash_data.region[3]}</p>
+          <h6  className="data-value" >{ props.dash_data.region_monthly_consumption }</h6>
         </div>
         <div className="data-item-g">
           <BarGraph id={props.dash_data.region[0]} a={props.dash_data.region[2]} b={props.dash_data.region[3]} chartName="chart5" color={props.color} goToRegionPage={props.goToRegionPage} name="regions" regionName={props.dash_data.region[1]}/>

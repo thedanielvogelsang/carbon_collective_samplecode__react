@@ -134,8 +134,9 @@ div.landing-button{
       text-align: justify;
        font-weight: 400;
        color: #2a2c33;
-       font-size: .775em;
+       font-size: .75em;
        line-height: 1.6em;
+       max-width: 90%;
 
   }
 
@@ -185,5 +186,12 @@ div.landing-button{
     font-weight: 300;
     height: 45px;
     padding: 6px 10px;
+  }
+}
+
+@media (max-width: 275px){
+  .landing-text p{
+    padding-left: 3px;
+    margin-left: 0;
   }
 }
