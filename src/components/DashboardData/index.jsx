@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import {get, post} from '../../api_client';
 import './DashboardData-styles.css';
+import {checkImageHeight} from '../../helper-scripts/screenHelpers.js'
 import {connect} from 'react-redux'
 // import {triggerAnimation} from './scripts/no-bills-animation.js'
 import BarGraph from './scripts/ranking_d3_chart_basic.jsx';
@@ -39,7 +40,8 @@ class DashboardData extends Component {
     }
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
+    this.props.color !== prevProps.color ? checkImageHeight() : console.log()
     localStorage.setItem('resource_unit', this.props.dash_data.metric_sym)
   }
 
@@ -81,7 +83,6 @@ class DashboardData extends Component {
   goToRegionPage(event){
     // button
     event.preventDefault()
-    console.log(event.target)
     let region_type = event.target.getAttribute("name");
     let id = event.target.id;
     let resourceType = this.props.resource_type

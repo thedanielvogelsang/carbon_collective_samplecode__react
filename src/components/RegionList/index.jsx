@@ -20,9 +20,10 @@ class RegionList extends Component{
 
   componentDidMount(){
     let region = this.state.region;
-    let type = this.state.type;
+    let resource_type = this.state.type;
     let parent = this.props.region.parent;
-    const path = `api/v1/areas/${region}/${type}?parent=${parent}`
+    console.log(region, resource_type, parent)
+    const path = `api/v1/areas/${region}/${resource_type}?parent=${parent}`
     get(path)
       .then(data => this.setLoad(data))
       .catch(error => console.log(error))

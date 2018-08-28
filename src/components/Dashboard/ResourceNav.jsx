@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {fetchDashData} from '../../actions/userActions'
+import {fetchRegionalData} from '../../actions/areaActions'
 import {connect} from 'react-redux';
 import {post} from '../../api_client';
 
@@ -29,6 +30,10 @@ class ResourceNav extends Component {
 
   updateUserData(type){
     this.props.fetchDashData(this.props.user_id, type)
+  }
+
+  updateRegionData(type){
+    this.props.fetchRegionalData(this.props.user_id, this.props.house_id, type)
   }
 
   updateDashColors(){
