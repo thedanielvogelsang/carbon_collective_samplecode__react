@@ -1,5 +1,5 @@
-// const host = 'https://carboncollective.herokuapp.com'
-const host = 'http://localhost:3000'
+const host = 'https://carboncollective.herokuapp.com'
+// const host = 'http://localhost:3000'
 // const headers = {
 //   'content-type': 'application/json'
 // }
