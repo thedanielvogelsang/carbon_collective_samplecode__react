@@ -36,6 +36,7 @@ import CarbonCalc from '../CarbonCalculationsPage'
 import Page404 from '../Page404'
 import {connect} from 'react-redux'
 import {fetchUserData} from '../../actions/userActions'
+import {checkImageHeight} from '../../helper-scripts/screenHelpers'
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -47,7 +48,7 @@ const renderMergedProps = (component, ...rest) => {
 
 const PropsRoute = ({ component, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderMergedProps(component, routeProps, rest);
     }}/>
   );
@@ -63,7 +64,7 @@ const renderUnauthenticatedMergedProps = (component, loaded, ...rest) => {
 
 const UnauthenticatedRouteProps = ({ component, loaded, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderUnauthenticatedMergedProps(component, loaded, routeProps, rest);
     }}/>
   );
@@ -78,7 +79,7 @@ const renderAuthenticatedMergedProps = (component, loaded, ...rest) => {
 
 const AuthenticatedRouteProps = ({ component, loaded, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderAuthenticatedMergedProps(component, loaded, routeProps, rest);
     }}/>
   );
@@ -94,7 +95,7 @@ const renderHouselessMergedProps = (component, loaded, house, ...rest) => {
 
 const NoHouseRoute = ({ component, loaded, house, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderHouselessMergedProps(component, loaded, house, routeProps, rest);
     }}/>
   );
@@ -166,7 +167,7 @@ class App extends Component {
       [name]: value
     });
   };
-
+   onEnter={checkImageHeight}
   render() {
     let loaded = this.state.loaded;
     let house = this.props.house_id;

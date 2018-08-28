@@ -22,7 +22,6 @@ class RegionList extends Component{
     let region = this.state.region;
     let resource_type = this.state.type;
     let parent = this.props.region.parent;
-    console.log(region, resource_type, parent)
     const path = `api/v1/areas/${region}/${resource_type}?parent=${parent}`
     get(path)
       .then(data => this.setLoad(data))

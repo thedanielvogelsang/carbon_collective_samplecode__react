@@ -35,8 +35,6 @@ class Dashboard extends Component {
 };
 
   componentDidMount(){
-    console.log(this.props)
-    // this.updateUserData()
     this.props.dash_data ? this.showDashboardData() : console.log()
   }
 

@@ -55,7 +55,7 @@ function calculateRankNumber(user, n, resType, hId){
       region_id: hId
     }
     put(path, undefined, userData)
-      .then(data => console.log('success'))
+      .then(data => console.log())
       .catch(error => console.log(error))
     return user;
   }
@@ -67,7 +67,7 @@ function calculateRankNumber(user, n, resType, hId){
       region_id: hId
     }
     put(path, undefined, userData)
-      .then(data => data)
+      .then(data => console.log())
       .catch(error => console.log(error))
     return user
   }
@@ -80,7 +80,7 @@ function calculateRankNumber(user, n, resType, hId){
       region_id: hId
     }
     put(path, undefined, userData)
-      .then(data => console.log(data))
+      .then(data => console.log())
       .catch(error => console.log(error))
     return user
   }else if(user.rank < n){
@@ -92,7 +92,7 @@ function calculateRankNumber(user, n, resType, hId){
       region_id: hId
     }
     put(path, undefined, userData)
-      .then(data => console.log(data))
+      .then(data => console.log())
       .catch(error => console.log(error))
     return user
   }else{
@@ -127,7 +127,6 @@ class HouseUsersBoards extends Component{
     }
   }
   componentDidMount(){
-    console.log(this.props)
     this.loadUsers()
   }
 
