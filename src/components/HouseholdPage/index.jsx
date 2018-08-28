@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import {get} from '../../api_client';
+import {connect} from 'react-redux'
 
 import "typeface-roboto";
 import './HouseholdPage-styles.css';
@@ -39,13 +40,12 @@ class HouseholdPage extends Component{
       loaded: false,
     }
     this.setLoad = this.setLoad.bind(this);
-    this.reloadPage = this.reloadPage.bind(this);
     this.getData = this.getData.bind(this);
   }
 
   componentDidMount(){
     if(this.state.house_id === undefined){
-      let id = sessionStorage.getItem('house_id')
+      let id = this.props.house_id
       this.resetHouseId(id)
     }else{
       this.getData()
@@ -57,8 +57,8 @@ class HouseholdPage extends Component{
   }
 
   getData(){
-    let id = this.state.house_id;
-    let _res = localStorage.getItem("resource_type");
+    let id = this.props.house_id;
+    let _res = this.props.resource_type;
     const path = `api/v1/houses/${id}?resource=${_res}`;
     get(path)
       .then(data => this.setLoad(data))
@@ -78,10 +78,6 @@ class HouseholdPage extends Component{
     }, () => {
       this.getData()
     });
-  }
-
-  reloadPage(){
-    localStorage.setItem('house_id', this.state.house_id)
   }
 
   render(){
@@ -105,4 +101,14 @@ class HouseholdPage extends Component{
   }
 }
 
-export default HouseholdPage;
+
+const mapStateToProps = (state) => {
+  return({
+    house_id: state.userInfo.house_id,
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
+  })
+}
+
+
+export default connect(mapStateToProps, null)(HouseholdPage);

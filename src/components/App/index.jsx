@@ -6,6 +6,7 @@ import UnauthenticatedRoute from '../UnauthenticatedRoute';
 import HouselessRoute from '../HouselessRoute';
 import Header from '../Header'
 import Landing from '../Landing'
+import AboutUs from '../AboutUs'
 import AddAddress from '../AddAddress'
 import AddHousehold from '../AddHousehold'
 import HouseExists from '../HouseExists'
@@ -35,6 +36,7 @@ import CarbonCalc from '../CarbonCalculationsPage'
 import Page404 from '../Page404'
 import {connect} from 'react-redux'
 import {fetchUserData} from '../../actions/userActions'
+import {checkImageHeight} from '../../helper-scripts/screenHelpers'
 
 const renderMergedProps = (component, ...rest) => {
   const finalProps = Object.assign({}, ...rest);
@@ -46,7 +48,7 @@ const renderMergedProps = (component, ...rest) => {
 
 const PropsRoute = ({ component, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderMergedProps(component, routeProps, rest);
     }}/>
   );
@@ -62,7 +64,7 @@ const renderUnauthenticatedMergedProps = (component, loaded, ...rest) => {
 
 const UnauthenticatedRouteProps = ({ component, loaded, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderUnauthenticatedMergedProps(component, loaded, routeProps, rest);
     }}/>
   );
@@ -77,7 +79,7 @@ const renderAuthenticatedMergedProps = (component, loaded, ...rest) => {
 
 const AuthenticatedRouteProps = ({ component, loaded, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderAuthenticatedMergedProps(component, loaded, routeProps, rest);
     }}/>
   );
@@ -93,7 +95,7 @@ const renderHouselessMergedProps = (component, loaded, house, ...rest) => {
 
 const NoHouseRoute = ({ component, loaded, house, ...rest }) => {
   return (
-    <Route {...rest} render={routeProps => {
+    <Route {...rest} onEnter={checkImageHeight} render={routeProps => {
       return renderHouselessMergedProps(component, loaded, house, routeProps, rest);
     }}/>
   );
@@ -165,19 +167,22 @@ class App extends Component {
       [name]: value
     });
   };
-
+   onEnter={checkImageHeight}
   render() {
     let loaded = this.state.loaded;
     let house = this.props.house_id;
     let id = this.props.user_id;
+    let fixbug;
+    this.props.history.location.pathname === '/settings' ? fixbug = false : fixbug = true;
     if(!loaded && !id){
       return(
-        <div className="app-container">
+        <div className="app-container" id="app-container">
           <Navbar loaded={loaded}/>
           <Header />
           <Switch>
             <PropsRoute exact path="/" component={ Landing } updateState={this.updateState} /> } />
             <PropsRoute path="/login" component={ Login } data={this.state} updateState={this.updateState} /> } />
+            <PropsRoute path="/about" component={ AboutUs } /> } />
             <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
             <UnauthenticatedRouteProps path="/login-first-time" loaded={loaded} component={ FirstLogin } data={this.state} updateState={this.updateState} /> } />
             <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} /> } />
@@ -187,13 +192,14 @@ class App extends Component {
       )
     }else if(loaded){
         return (
-          <div className="app-container">
+          <div className="app-container" id="app-container">
             <Navbar loaded={loaded}/>
             <Header />
-            <FixBugLink/>
+            {fixbug ? <FixBugLink /> :  null}
             <Switch>
               <PropsRoute exact path="/" component={ Landing } loaded={loaded} updateState={this.updateState} /> } />
               <PropsRoute path="/login" component={ Login } loaded={loaded} data={this.state} updateState={this.updateState} /> } />
+              <PropsRoute path="/about" component={ AboutUs } /> } />
               <UnauthenticatedRouteProps path="/login-first-time" loaded={loaded} component={ FirstLogin } data={this.state} updateState={this.updateState} /> } />
               <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
               <UnauthenticatedRouteProps path="/confirm-address" loaded={loaded} component={ WaitConfirm } /> } />
@@ -204,7 +210,7 @@ class App extends Component {
               <NoHouseRoute path="/add_address" loaded={loaded} house={house} component={ AddAddress } addUserData={this.addUserData}/> } />
               <NoHouseRoute path="/add_household" loaded={loaded} house={house} component={ AddHousehold } addUserData={this.addUserData}/> } />
               <NoHouseRoute path="/house-exists" loaded={loaded} house={house} component={ HouseExists } addUserData={this.addUserData} data={this.state.userData}/> } />
-              <AuthenticatedRouteProps path="/dashboard" loaded={loaded} component={ Dashboard } user_id={this.state.user_id} updateState={this.updateState} userData={this.state.userData} /> } />
+              <AuthenticatedRouteProps path="/dashboard" loaded={loaded} component={ Dashboard } updateState={this.updateState} userData={this.state.userData} /> } />
               <AuthenticatedRouteProps path="/managebills" loaded={loaded}  component={ ManageBills } data={this.state} updateState={this.updateState} /> } />
               <AuthenticatedRouteProps path="/carbon-calculations" loaded={loaded} component={ CarbonCalc } /> } />
               <AuthenticatedRouteProps path="/regionPage" loaded={loaded}  component={ RegionPage} data={this.state} /> } />

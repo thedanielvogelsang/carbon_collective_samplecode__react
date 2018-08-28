@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import IconButton from 'material-ui/IconButton';
 // import FontIcon from 'material-ui/FontIcon';
 import {post} from '../../api_client';
@@ -96,6 +96,7 @@ class Navbar extends Component {
     this.goBack = this.goBack.bind(this)
     this.goToDash = this.goToDash.bind(this)
     this.goToSettings = this.goToSettings.bind(this)
+    this.goToAboutPage = this.goToAboutPage.bind(this)
     this.goToInvitePage = this.goToInvitePage.bind(this)
     this.checkLoginStatus = this.checkLoginStatus.bind(this)
     this.checkSettingsStatus = this.checkSettingsStatus.bind(this)
@@ -304,6 +305,15 @@ class Navbar extends Component {
         </div>
       )
     }
+    else if(!loaded){
+        return(
+          <div className="main-navbar navbar">
+            <div className="navbar-logo-menu-div navbar loaded">
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            </div>
+          </div>
+          )
+    }
     else if(['/'].indexOf(window.location.pathname) > -1 && loaded) {
       return(
         <div className="main-navbar">
@@ -331,7 +341,7 @@ class Navbar extends Component {
       return(
         <div className="main-navbar">
           <div className="navbar-logo-menu-div navbar loaded">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
           <div className="landing-navbar-links">
@@ -355,20 +365,15 @@ class Navbar extends Component {
     }
     else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){
       return(
-        <div className="landing-navbar navbar">
-          <div className="navbar-logo-menu-div navbar">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+        <div className="main-navbar navbar">
+          <div className="navbar-logo-menu-div navbar loaded">
+            <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
             <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
-            <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
           </div>
-
           <div className="landing-navbar-links">
             <ul className="navbar">
               <li className="header-button landing-nav-link">
-                <a onClick={(e) => this.goToAboutPage(e)}>About</a>
-              </li>
-              <li className="header-button landing-nav-link">
-                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+                <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
               </li>
             </ul>
           </div>
@@ -377,24 +382,18 @@ class Navbar extends Component {
     }
     else if(['/login', '/signup', '/add_address', '/add_household', '/login-first-time', '/expand-request'].indexOf(window.location.pathname) > -1){
         return(
-          <MuiThemeProvider>
-            <header>
-              <div className="header-navbar navbar">
-                <ul className="navbar">
-                  <li className="header-button">
-
-                  </li>
-                </ul>
-              </div>
-            </header>
-          </MuiThemeProvider>
+          <div className="main-navbar navbar">
+            <div className="navbar-logo-menu-div navbar loaded">
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            </div>
+          </div>
           )
     }
     else{
         return (
           <div className="main-navbar">
             <div className="navbar-logo-menu-div navbar loaded">
-              <img alt="carbon collective logo hompeage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
               <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
             </div>
             <div className="landing-navbar-links">
@@ -441,6 +440,12 @@ class Navbar extends Component {
       this.logPageChange("/settings")
       this.props.history.push('/settings')
     }
+  }
+
+  goToAboutPage(){
+    this.setState({settingsOpen: false})
+    this.logPageChange("/about")
+    this.props.history.push('/about')
   }
 
   goToInvitePage(){

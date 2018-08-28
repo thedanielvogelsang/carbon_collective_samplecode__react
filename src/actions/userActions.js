@@ -1,6 +1,7 @@
-import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR} from './types' ;
+import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_HOUSE} from './types' ;
 import {BrowserRouter} from 'react-router-dom';
-import {get, post} from '../api_client';
+import {get, post, destroy} from '../api_client';
+import {whichColor} from './helpers/whichColor'
 
 
 export const loginUser = (loginData) => dispatch => {
@@ -24,13 +25,14 @@ export const loginUser = (loginData) => dispatch => {
 }
 
 export function fetchDashData(id, type) {
+  let color = whichColor(type)
   return function(dispatch) {
     const path = `api/v1/users/${id}/resources?resource=${type}`
     get(path)
       .then(
         data => dispatch({
           type: DASH_INFO,
-          payload: data
+          payload: [data, type, color]
         })
       )
       .catch(error => console.log(error))
@@ -48,6 +50,19 @@ export function fetchUserData(id) {
         })
       )
       .catch(error => console.log(error))
+  }
+}
+
+export function removeUserHouse(id, hId) {
+  return function(dispatch) {
+    const path = `api/v1/users/${id}/houses/${hId}`
+    destroy(path)
+      .then(data => dispatch({
+          type: CLEAR_HOUSE,
+          payload: data
+      })
+    )
+    .catch(error => console.log(error))
   }
 }
 

@@ -8,7 +8,7 @@ import './InviteSomeone-styles.css';
 
 const EmailInputs = function(props){
     let placeholder;
-    props.num === 0 ? placeholder = "Enter a friend's email" : placeholder = "email"
+    props.num === 0 ? placeholder = "Enter a friend's email address" : placeholder = "Email address"
     return(
         <li className="email-input-row" key={props.num + 1}>
           <input
@@ -161,15 +161,13 @@ class InviteSomeonePage extends Component{
   }
 
   render(){
-    let math;
     let btn = this.state.messageDisplay
     if(btn === "none"){
       btn = false
     }
-    btn ? math = "Remove" : math = "Add"
     return(
       <div className="invite-list-page">
-        <h3 className="edit-header invite-page">Invite your friends!</h3>
+        <h4 className="edit-header invite-page">Invite your friends!</h4>
         <form
           onSubmit={this.handleForm}
           className="inviteSomeone-form"
@@ -178,25 +176,22 @@ class InviteSomeonePage extends Component{
             {this.state.emailInputs}
           </ul>
           <label className="invite-label" style={{display: this.state.messageDisplay}}>
-              <h4> Leave a personal note below </h4>
-              <textarea
-                required={true}
-                className="invitation-textBox"
-                onChange={this.handleValue}
-                name="message"
-                rows="10"
-                cols="40"
-                spellCheck="true"
-                placeholder="Hey All! It's me Chuck!...."
-                />
+            <Button  className="invite-sub-btn" variant="fab" name="add-invite-email-btn" onClick={this.addEmailInput} style={this.state.plusOneBtn}>Add another email address</Button>
+            <textarea
+              required={true}
+              className="invitation-textBox"
+              onChange={this.handleValue}
+              name="message"
+              rows="10"
+              cols="40"
+              spellCheck="true"
+              placeholder="Hey All! It's me Chuck!...."
+              />
           </label>
           <div className="add-email">
-            <p style={this.state.plusOneBtn} className="addP">Add Email:</p>
-            <Button className="plus-btn" variant="fab" color="#129941" name="add-invite-email-btn" onClick={this.addEmailInput} style={this.state.plusOneBtn}>+</Button>
-            <p>{math} Personal Message:</p>
             {btn ?
-            <Button className="plus-btn message" variant="fab" color="#129941" name="remove-invite-message-btn" onClick={this.removeMessage}>-</Button>
-            : <Button className="plus-btn message" variant="fab" color="#129941" name="add-invite-message-btn" onClick={this.addMessage}>+</Button> }
+            <Button className="invite-sub-btn" variant="fab" name="remove-invite-message-btn" onClick={this.removeMessage}>Remove personal message</Button>
+            : <Button className="invite-sub-btn" variant="fab" name="add-invite-message-btn" onClick={this.addMessage}>Add personal message</Button> }
           </div>
           <div
           className="invite-invite-div">

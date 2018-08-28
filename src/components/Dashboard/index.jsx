@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {fetchDashData} from '../../actions/userActions'
 import './Dashboard-styles.css';
 import Loader from '../Loader';
+import ResourceNav from './ResourceNav'
+import {ResourceTitleDash} from './ResourceTitle'
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -22,89 +24,28 @@ class Dashboard extends Component {
       loading: true,
       user_id: props.user_id,
       first: props.data.first,
-      avatar_url: props.data.avatar_url,
-      water_url: "./img/AQUA_blank_2.png",
-      elec_url: "./img/ELEC_blank_2.png",
-      carbon_url: "./img/Leaf final_blank.png",
-      flame_url: "./img/FLAME_blank_2.png",
       color: color,
       colorBack: "#D3D4D5",
       resourceType: resource,
     };
-    this.setDashboardData = this.setDashboardData.bind(this);
-    this.preSetDash = this.preSetDash.bind(this);
     this.goToPage = this.goToPage.bind(this);
-    this.updateUserData = this.updateUserData.bind(this);
     this.changeDashboardData = this.changeDashboardData.bind(this);
     this.showDashboardData = this.showDashboardData.bind(this);
+    this.updateLoader = this.updateLoader.bind(this);
 };
 
   componentDidMount(){
-    // this.updateUserData()
-    this.setDashboardData(this.state.resourceType)
     this.props.dash_data ? this.showDashboardData() : console.log()
   }
 
   componentDidUpdate(prevProps, prevState){
-    prevState.color !== this.state.color ? localStorage.setItem("accent_color", this.state.color) : console.log()
     prevProps.dash_data !== this.props.dash_data ? this.changeDashboardData(this.props.dash_data) : console.log()
   }
 
-  updateUserData(){
-    let type = this.state.resourceType
-    this.props.fetchDashData(this.props.user_id, type)
-  }
-
-  setDashboardData(type){
-    localStorage.setItem("resource_type", type)
-    switch(type){
-      case "carbon":
-        this.setState({
-          resourceType: type,
-          water_url: "./img/AQUA_blank_2.png",
-          elec_url: "./img/ELEC_blank_2.png",
-          carbon_url: "./img/Leaf final_fill.png",
-          flame_url: "./img/FLAME_blank_2.png",
-          color: "rgb(121,194,120)",
-          loading: true,
-        }, this.updateUserData);
-        break
-      case "electricity":
-        this.setState({
-          resourceType: type,
-          water_url: "./img/AQUA_blank_2.png",
-          elec_url: "./img/ELEC_fill_2.png",
-          carbon_url: "./img/Leaf final_blank.png",
-          flame_url: "./img/FLAME_blank_2.png",
-          color: "rgb(252,232,52)",
-          loading: true,
-        }, this.updateUserData);
-        break
-      case "water":
-        this.setState({
-          resourceType: type,
-          water_url: "./img/AQUA_fill_2.png",
-          elec_url: "./img/ELEC_blank_2.png",
-          carbon_url: "./img/Leaf final_blank.png",
-          flame_url: "./img/FLAME_blank_2.png",
-          color: "rgb(70,138,199)",
-          loading: true,
-        }, this.updateUserData);
-        break
-      case "gas":
-        this.setState({
-        resourceType: type,
-        water_url: "./img/AQUA_blank_2.png",
-        elec_url: "./img/ELEC_blank_2.png",
-        carbon_url: "./img/Leaf final_blank.png",
-        flame_url: "./img/FLAME_fill_2.png",
-        color: "rgb(239,98,93)",
-        loading: true,
-        }, this.updateUserData);
-        break
-      default:
-        break;
-    }
+  updateLoader(load){
+    this.setState({
+      loading: !load,
+    })
   }
 
   changeDashboardData(dash_data){
@@ -135,30 +76,14 @@ class Dashboard extends Component {
     this.props.history.push(path)
   }
 
-  preSetDash(e){
-   e.preventDefault();
-   let type = e.target.getAttribute('name')
-   let id = this.props.user_id
-   let page = this.props.history.location.pathname
-   let path = `${id}/presses-btn`
-   let datum = {user_behavior: {
-     buttonName: type,
-     pageName: page,
-   }
-                }
-   post(path, datum)
-    .then(data => {return data})
-    .catch(error => console.log(error))
-   this.setDashboardData(type)
-  }
-
 
   render() {
     let loading = this.state.loading
     let house = this.props.house_id
-    let title = capitalizeFirstLetter(this.state.resourceType)
-    let resource = this.state.resourceType
-    let color = this.state.color
+    let resource = this.props.resource_type
+    let title = capitalizeFirstLetter(resource)
+    let color = this.props.color
+    // console.log(loading, house, color)
     if(title === "Gas"){
       title = "Heat"
     }
@@ -167,51 +92,8 @@ class Dashboard extends Component {
         <div className="dashboard-page">
           <div className="dashboard-header-container">
             <div className="dashboard-overlay">
-              <GlobalSavings color={color} title={title} resourceType={resource} changePage={this.goToPage} />
-            </div>
-              <div className="dashboard-resource-nav">
-                  <button
-                    className="resource-btn carbon-btn"
-                    onClick={this.preSetDash}
-                    name="carbon"
-                    ><img
-                        className="carbon-img"
-                        alt="carbon collective logo carbon"
-                        name="carbon"
-                        src={require(`${this.state.carbon_url}`)} />
-                  </button>
-                  <button
-                  className="resource-btn electricity-btn"
-                  onClick={this.preSetDash}
-                  name="electricity"
-                  ><img
-                      className="elec-img"
-                      alt="carbon collective logo electricity"
-                      name="electricity"
-                      src={require(`${this.state.elec_url}`)} />
-                  </button>
-                  <button
-                  className="resource-btn water-btn"
-                  onClick={this.preSetDash}
-                  name="water"
-                  ><img
-                      className="water-img"
-                      alt="carbon collective logo water"
-                      name="water"
-                      src={require(`${this.state.water_url}`)} />
-                  </button>
-                  <button
-                  className="resource-btn gas-btn"
-                  onClick={this.preSetDash}
-                  name="gas"
-                  ><img
-                      className="gas-img"
-                      alt="carbon collective logo gas"
-                      name="gas"
-                      src={require(`${this.state.flame_url}`)} />
-                  </button>
-              </div>
-            <div>
+              <ResourceTitleDash color={color} title={title} resourceType={resource} changePage={this.goToPage} />
+              <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
             </div>
           </div>
           <div className="arrow-holder">
@@ -248,55 +130,16 @@ class Dashboard extends Component {
   };
 };
 
-const GlobalSavings = (props) => {
-  if(props.resourceType === "gas"){
-    return(
-      <div className="data-title-container">
-        <h6 className="data-title">Heat</h6>
-          <button
-          className="update-bill-button"
-          style={{color: props.color}}
-          onClick={(e) => props.changePage('/managebills')}
-              >
-            Manage {props.title}
-         </button>
-      </div>
-    )
-  }else if(props.resourceType === "carbon"){
-    return(
-      <div className="data-title-container">
-        <h6 className="data-title">{capitalizeFirstLetter(props.resourceType)}</h6>
-        <button
-          className="update-bill-button"
-          style={{color: props.color}}
-          onClick={(e) => props.changePage('/carbon-calculations')}
-              >
-            How We Calculate
-         </button>
-      </div>
-    )
-  }else{
-    return(
-      <div className="data-title-container">
-        <h6 className="data-title">{capitalizeFirstLetter(props.resourceType)}</h6>
-        <button
-          className="update-bill-button"
-          style={{color: props.color}}
-          onClick={(e) => props.changePage('/managebills')}
-              >
-            Manage {props.title}
-         </button>
-      </div>
-    )
-  }
-}
+
 
 const mapStateToProps = (state) => {
   return({
     user_id: state.userInfo.user_id,
     house_id: state.userInfo.house_id,
     data: state.userInfo.data,
-    dash_data: state.userInfo.dash_data
+    dash_data: state.userInfo.dash_data,
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
   })
 }
 

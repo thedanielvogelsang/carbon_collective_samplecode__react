@@ -179,7 +179,7 @@ li.landing-nav-link a:hover{
   padding: 2px;
 }
 
-.navbar img:hover:not(.log-svg){ -webkit-transform: scale(1.2); background-color: rgb(221,221,221); box-shadow: 0px 0px 10px rgb(251,230,73) !important}
+.navbar img:hover:not(.log-svg):not(.homepage){ -webkit-transform: scale(1.2); background-color: rgb(221,221,221); box-shadow: 0px 0px 10px rgb(251,230,73) !important}
 
 .shrunken-hamburger-menu{
   display: none;
@@ -235,6 +235,9 @@ li.landing-nav-link a:hover{
 }
 
 img.homepage{
+  display: block;
+}
+img.not-homepage{
   display: block;
 }
 
@@ -312,6 +315,9 @@ form.shrunken-landing-navbar-login-form{
   img.cc-logo.homepage.loaded {
     display: none;
   }
+  img.cc-logo.not-homepage.loaded {
+    display: none;
+  }
   .main-navbar{
     justify-content: center;
   }
@@ -335,9 +341,24 @@ form.shrunken-landing-navbar-login-form{
 }
 
 @media (max-width: 460px){
+  input.login-bar{
+    font-size: 1.0em;
+    width: 90%;
+    max-width: 300px;
+    padding-right: 40px;
+  }
+  .login-div{
+    width: 85%;
+    max-width: 350px;
+    margin-top: 20px;
+    margin-left: 15px;
+  }
   .landing-navbar{
     height: 100px;
-    width: 100vw;
+    width: 100%;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -346,17 +367,60 @@ form.shrunken-landing-navbar-login-form{
     width: 100vw;
     height: 100px;
   }
+  .navbar-logo-menu-div.unloaded{
+    width: 100vw;
+    height: 100px;
+  }
   .cc-logo.unloaded{
     padding: 0px;
     margin: 0px;
     position: absolute;
-    top: 13px;
-    left: 13px;
+    top: 23px;
+    left: 23px;
   }
   form.shrunken-landing-navbar-login-form{
     display: flex !important;
   }
   form.landing-navbar-login-form{
     display: none;
+  }
+}
+
+@media (max-width: 400px){
+  input.login-bar{
+    max-width: 200px;
+  }
+  .login-div{
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 340px){
+  img.cc-logo.unloaded{
+    display: none;
+  }
+  .login-div{
+    width: 85%;
+    margin-top: 20px;
+    padding-left: 0px;
+    margin-left: 5vw;
+  }
+  .navbar-logo-menu-div{
+    padding: 0;
+  }
+}
+
+@media (max-width: 300px){
+  .log-svg{
+    width: 18px !important;
+  }
+  input.login-bar{
+    width: 70%;
+
+  }
+  input.login-bar::-webkit-input-placeholder{
+    padding-left:0px;
+  }
+  form.shrunken-landing-navbar-login-form{
   }
 }

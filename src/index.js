@@ -16,8 +16,8 @@ const scrollTop = function(){
 const CarbonCollective = (
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persistor}>
-        <BrowserRouter onUpdate={() => scrollTop()}>
-          <App />
+        <BrowserRouter onUpdate={scrollTop}>
+          <App onUpdate={scrollTop}/>
         </BrowserRouter>
       </PersistGate>
     </Provider>
