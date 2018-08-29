@@ -107,6 +107,13 @@ button.home-icon-cont{
 
 .data-item-row{
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+.data-item-box{
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   /* border-top: 2px solid #d3d4d5; */
@@ -119,6 +126,7 @@ button.home-icon-cont{
   min-height:70px;
   margin-bottom: 10px;
   border: 1px solid #4c4e5b;
+  background-color: white;
   opacity: 0.7;
 }
 
@@ -179,7 +187,7 @@ button.home-icon-cont{
   /* text-shadow: 0 0 1px #468ac7 !important; */
 }
 
-h6.data-value{
+h6.data-value.main{
   font-weight: 400;
   color: #2a2c33;
   /* background-color: #2A2C33; */
@@ -190,6 +198,20 @@ h6.data-value{
   text-align: right !important;
   position: relative;
   top: 30px;
+}
+
+h6.data-value.secondary{
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #2a2c33;
+  /* background-color: #2A2C33; */
+  height: 50%;
+  width: 25%;
+  margin-right: 5px;
+  padding-right: 10px;
+  text-align: right !important;
+  position: relative;
+  top: 70px;
 }
 
 .graph-icon{

@@ -45,8 +45,8 @@ export class RegionComponent extends Component{
     return(
       <div className="data-item-t">
         <a id={this.props.id} name={name} className="data-label-t clickable" onClick={this.props.linkAction}>{this.props.label}</a>
-        <p className="data-item-rank" style={{visibility: visibility}}>#{this.props.rank} / {this.props.outOf}</p>
-        <h6 className="data-value" onClick={this.props.linkAction}>{this.props.monthlyAvg}</h6>
+        <h6 className="data-value main" onClick={this.props.linkAction}>{this.props.monthlyAvg}</h6>
+        <h6 className="data-value secondary" onClick={this.props.linkAction}>{this.props.parentAvg}</h6>
       </div>
     )
   }

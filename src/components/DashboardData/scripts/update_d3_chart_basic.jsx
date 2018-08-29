@@ -9,7 +9,7 @@ BasicChart.enter = function(elem_, props){
   var id = props.id
   let name = props.name
   let regionName = props.regionName
-  dataVal = percenting - dataVal + 1
+  dataVal = percenting - dataVal + props.c
   // using 1. to give percentage threshold to val
   var data = [dataVal, percenting];
 
