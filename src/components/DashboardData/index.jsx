@@ -204,9 +204,9 @@ const CountryGraphIcon = (props) => {
     return(
       <div className="data-item-row">
         <div className="data-item-box">
-          <RegionComponent id={props.dash_data.country[0]} regionType="Country" label={country} linkAction={props.goToRegionPage} monthlyAvg={ this.props.dash_data.country[2]}  parentAvg={ this.props.dash_data.country[3] } color={color}/>
+          <RegionComponent id={props.dash_data.country[0]} regionType="Country" label={country} linkAction={props.goToRegionPage} monthlyAvg={ props.dash_data.country[2]}  parentAvg={ props.dash_data.country[3] } color={props.color}/>
           <div className="data-item-g">
-            <BarGraph id={this.props.dash_data.country[0]} a={this.props.dash_data.country[2]} b={this.props.dash_data.country[3]} c={this.props.dash_data.country[4]} chartName="chart5" color={color} name="countries" regionName={this.props.dash_data.country[1]}/>
+            <BarGraph id={props.dash_data.country[0]} a={props.dash_data.country[2]} b={props.dash_data.country[3]} c={props.dash_data.country[4]} chartName="chart5" color={props.color} name="countries" regionName={props.dash_data.country[1]}/>
           </div>
           <h6 className="graph-Exp">other countries</h6>
         </div>
@@ -220,9 +220,9 @@ const RegionGraphIcon = (props) => {
   return(
     <div className="data-item-row">
       <div className="data-item-box">
-        <RegionComponent id={props.dash_data.region[0]} regionType="Region" label={country} linkAction={props.goToRegionPage} monthlyAvg={ this.props.dash_data.country[2]}  parentAvg={ this.props.dash_data.country[3] } color={color}/>
+        <RegionComponent id={props.dash_data.region[0]} regionType="Region" label={props.dash_data.region[1]} linkAction={props.goToRegionPage} monthlyAvg={ props.dash_data.country[2]}  parentAvg={ props.dash_data.country[3] } color={props.color}/>
         <div className="data-item-g">
-          <BarGraph id={this.props.dash_data.country[0]} a={this.props.dash_data.country[2]} b={this.props.dash_data.country[3]} c={this.props.dash_data.country[4]} chartName="chart5" color={color} name="regions" regionName={this.props.dash_data.country[1]}/>
+          <BarGraph id={props.dash_data.country[0]} a={props.dash_data.country[2]} b={props.dash_data.country[3]} c={props.dash_data.country[4]} chartName="chart5" color={props.color} name="regions" regionName={props.dash_data.country[1]}/>
         </div>
         <h6 className="graph-Exp">other countries</h6>
       </div>
