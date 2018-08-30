@@ -353,9 +353,6 @@ class Navbar extends Component {
                 <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
               </li>
               <li className="header-button landing-nav-link">
-                <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
-              </li>
-              <li className="header-button landing-nav-link">
                 <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
               </li>
             </ul>
@@ -403,9 +400,6 @@ class Navbar extends Component {
                 </li>
                 <li className="header-button landing-nav-link">
                   <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
-                </li>
-                <li className="header-button landing-nav-link">
-                  <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
                 </li>
                 <li className="header-button landing-nav-link">
                   <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
@@ -478,6 +472,10 @@ const mapStateToProps = (state) => ({
 // const mapDispatchToProps = (dispatch) => ({
 //
 // });
+
+//     <li className="header-button landing-nav-link">
+    //   <img alt="carbon collective logo" className="navbar-link bills-page-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+    // </li>
 
 // bypassing mapDispatchToProps for now:
 export default withRouter(connect(mapStateToProps, { loginUser })(Navbar));

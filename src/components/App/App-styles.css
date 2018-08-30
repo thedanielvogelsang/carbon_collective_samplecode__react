@@ -72,6 +72,7 @@ input {
 input::-webkit-input-placeholder {
     padding: -5px;
     margin: 0;
+    padding-top: -15px;
 }
 
 select {
@@ -129,21 +130,26 @@ input:hover{
 input::-webkit-input-placeholder {
   font-size: 1.2em;
   padding: 3px 0px 3px 5px;
+  height: 20px;
+  line-height: 18px;
 }
 input::-moz-placeholder {
   font-size: 1.2em;
   padding: 3px 0px 3px 5px;
-
+  height: 20px;
+  line-height: 18px;
 }
 input:-ms-input-placeholder {
   font-size: 1.2em;
   padding: 3px 0px 3px 5px;
-
+  height: 20px;
+  line-height: 18px;
 }
 input:-moz-placeholder {
   font-size: 1.2em;
   padding: 3px 0px 3px 5px;
-
+  height: 20px;
+  line-height: 18px;
 }
 
 @media (max-width: 600px){

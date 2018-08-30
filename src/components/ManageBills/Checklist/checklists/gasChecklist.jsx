@@ -7,6 +7,7 @@ import {get, put} from '../../../../api_client.js';
 class GasChecklist extends Component{
   constructor(props){
     super(props);
+    // console.log(props)
     this.state = {
       house_id: props.house,
       user_id: props.user,

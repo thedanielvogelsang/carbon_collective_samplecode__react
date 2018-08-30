@@ -98,21 +98,26 @@ label.invite-label textarea{
   max-width: 320px;
   box-sizing: border-box;
   color: #415B2F;
+  padding-top: -5px;
 }
 
 label.invite-label textarea::-webkit-input-placeholder {
+  padding-top: -5px;
   font-size: 1.1em;
 }
 label.invite-label textarea::-moz-placeholder {
   font-size: 1.1em;
+  padding-top: -5px;
 
 }
 label.invite-label textarea:-ms-input-placeholder {
   font-size: 1.1em;
+  padding-top: -5px;
 
 }
 label.invite-label textarea:-moz-placeholder {
   font-size: 1.1em;
+  padding-top: -5px;
 }
 
 @media (max-width: 700px){

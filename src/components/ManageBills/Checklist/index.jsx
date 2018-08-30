@@ -9,7 +9,7 @@ class Checklist extends Component{
   }
 
   componentDidUpdate(){
-    console.log('updating entire checklist')
+    // console.log('updating entire checklist')
   }
 
   shouldComponentUpdate(nextProps, nextState){
@@ -22,6 +22,7 @@ class Checklist extends Component{
 
   render(){
     let type = this.props.resource
+    // console.log(this.props)
     if(type === 'Gas'){
       return(
         <GasChecklist house={this.props.house} user={this.props.user} updateState={this.props.updateState} review={this.props.review}/>

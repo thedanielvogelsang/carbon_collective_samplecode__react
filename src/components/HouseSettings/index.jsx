@@ -25,6 +25,7 @@ class HouseSettings extends Component{
       house_exists: true,
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleUserHouseChange = this.handleUserHouseChange.bind(this);
     this.updateResidents = this.updateResidents.bind(this);
     this.updateHouseDetails = this.updateHouseDetails.bind(this);
     this.addressForm = this.addressForm.bind(this);
@@ -49,8 +50,12 @@ class HouseSettings extends Component{
     )
   }
 
+  componentDidUpdate(){
+    console.log(this.state)
+  }
+
   logLanding(){
-    let id = this.props.id
+    let id = this.props.user_id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -82,8 +87,22 @@ class HouseSettings extends Component{
     }
   }
 
+  handleUserHouseChange(event){
+    const house = this.state.house
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    if(value === ''){
+      let origVal = house[name]
+      target.placeholder = origVal
+    }else{
+        house[name] = value
+        this.updateUserHouseDetails(house)
+    }
+  }
+
   setAddressState(addressHash){
-    const path = `api/v1/houses/${this.props.house_id}`;
+    const path = `api/v1/houses/${this.props.house_id}?user_id=${this.props.user_id}`;
     get(path)
       .then(data => this.setState({
       full_address: addressHash.full_address,
@@ -151,6 +170,16 @@ class HouseSettings extends Component{
         .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
         .catch(error => this.setState({errors: 'house could not be saved'}))
     }
+  }
+
+  updateUserHouseDetails(house){
+    const path = `api/v1/houses`
+    const user_id = this.props.user_id
+    const houseData = {user_house: house, user_id: user_id}
+    const id = this.state.house_id
+    put(path, id, houseData)
+      .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
+      .catch(error => this.setState({errors: 'house could not be saved'}))
   }
 
   disappear(){
@@ -224,6 +253,16 @@ class HouseSettings extends Component{
                   >+</button>
                 </div>
               </label>
+              <h5>Move in Date</h5>
+              <label>
+                <input
+                  id="move-in"
+                  required="false"
+                  type="date"
+                  name="move_in_date"
+                  onChange={ this.handleUserHouseChange }
+                />
+              </label>
               <h5>Total Square Feet</h5>
               <label>
                 <input
@@ -256,7 +295,7 @@ class HouseSettings extends Component{
 
 const mapStateToProps = (state) => {
   return({
-    id: state.userInfo.user_id,
+    user_id: state.userInfo.user_id,
     house_id: state.userInfo.house_id
   })
 }
