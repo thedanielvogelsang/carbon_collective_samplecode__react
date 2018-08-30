@@ -69,14 +69,13 @@ class InviteSomeonePage extends Component{
     if(message.message === 'success'){
       var e;
       this.state.count > 1 ? e = "Emails" : e = "Email"
-      alert(`${e} Sent. Tell your friends to check their inboxes!`)
       this.setState({emails: {},
-      emailInputs: [],
-      count: 1,
-      message: null,
-      messageDisplay: 'inline-block',
-      emailDisplay: 'block',
-      plusOneBtn: {display: 'block'},})
+        emailInputs: [],
+        count: 1,
+        message: "",
+        messageDisplay: 'inline-block',
+        emailDisplay: 'block',
+        plusOneBtn: {display: 'block'}}, alert(`${e} Sent. Tell your friends to check their inboxes!`))
     }else{
       let emails = message.message
       alert(`Some of your invites could not be sent. The following people are already Carbon Collective members: ${emails}`)
@@ -162,6 +161,7 @@ class InviteSomeonePage extends Component{
 
   render(){
     let btn = this.state.messageDisplay
+    let {message} = this.state
     if(btn === "none"){
       btn = false
     }
@@ -181,6 +181,7 @@ class InviteSomeonePage extends Component{
               required={true}
               className="invitation-textBox"
               onChange={this.handleValue}
+              value={message}
               name="message"
               rows="10"
               cols="40"

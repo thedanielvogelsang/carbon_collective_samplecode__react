@@ -38,7 +38,6 @@
   border-bottom: 1px solid black;
   overflow-x: hidden;
   overflow-y: hidden;
-  font-family: 'PT Serif', serif;
 }
 
 .header-checklist-divider{
@@ -117,7 +116,6 @@ p.checklist-completion-pct{
   margin-left: 15px;
   height: auto;
   min-height: 200px;
-  background-color: #4c4e5b;
   padding: 5px;
 }
 

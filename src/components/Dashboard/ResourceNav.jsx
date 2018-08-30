@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {fetchDashData} from '../../actions/userActions'
-import {fetchRegionalData} from '../../actions/areaActions'
 import {connect} from 'react-redux';
 import {post} from '../../api_client';
 

@@ -41,8 +41,8 @@
 .number-form button {
   border-radius: 20px;
   font-size: 20px;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .number-form input:not(.sq-feet){

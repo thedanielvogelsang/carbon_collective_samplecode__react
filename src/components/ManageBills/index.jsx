@@ -5,6 +5,7 @@ import Checklist from './Checklist';
 import ChecklistQuestionDone from './Checklist/checklists/done.jsx';
 import { withRouter } from 'react-router-dom';
 import { get, post } from '../../api_client';
+import { connect } from 'react-redux'
 
 
 function assignMetric(res){
@@ -22,11 +23,14 @@ function capitalize(name){
 }
 
 class ManageBills extends Component {
-  constructor() {
-    super();
-    let resource = localStorage.getItem('resource_type') || 'electricity';
-    let color = localStorage.getItem('accent_color' || '#1fa245');
-    let user_id = sessionStorage.getItem('user_id');
+  constructor(props) {
+    super(props);
+    let resource = props.resource_type;
+    if(resource === 'carbon'){
+      resource = "electricity"
+    }
+    let color = props.color;
+    let user_id = props.user_id;
     let type = assignMetric(resource);
     let formResource = "total_" + type.toLowerCase()
     resource = capitalize(resource);
@@ -72,11 +76,11 @@ class ManageBills extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log(this.state.display, this.state.review, this.state.checklistDisplay)
+    // console.log(this.state.display, this.state.review, this.state.checklistDisplay)
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.user_id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -89,11 +93,11 @@ class ManageBills extends Component {
   }
 
   loadData(){
-    let user_id = sessionStorage.getItem("user_id")
-    let type = localStorage.getItem('resource_type')
+    let user_id = this.props.user_id
+    let type = this.props.resource_type
     let user_path = `api/v1/users/${user_id}/resources?resource=${type}`
     get(user_path)
-      .then(data => this.setState({house_id: data.household.id, no_residents: data.household.no_residents, org_count: data.household.no_residents, user_id: user_id, num_bills: data.num_bills, loading: false}))
+      .then(data => this.setState({house_id: data.house.id, no_residents: data.house.no_residents, org_count: data.house.no_residents, user_id: user_id, num_bills: data.num_bills, loading: false}))
       .catch(error => console.log(error))
   }
 
@@ -170,7 +174,7 @@ class ManageBills extends Component {
   handleAddBillsForm(event){
     event.preventDefault();
     let householdData = this.state;
-    let id = sessionStorage.getItem("user_id")
+    let id = this.props.user_id
     const appg = this.assignBillPath()
     let path = `api/v1/users/${id}/${appg}`
     //make API call to post new address
@@ -322,4 +326,12 @@ class ManageBills extends Component {
   };
 };
 
-export default withRouter(ManageBills);
+const mapStateToProps = (state) =>{
+  return({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
+  })
+}
+export default withRouter(connect(mapStateToProps, null)(ManageBills));

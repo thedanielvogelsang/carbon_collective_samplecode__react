@@ -75,6 +75,8 @@ h4.click-address-text{
   background-color: white !important;
   opacity: 1.0;
   cursor: default;
+  border: 1px solid #105130
+  
 }
 
 #noRes-id::-webkit-input-placeholder {
@@ -87,6 +89,8 @@ h4.click-address-text{
   background-color: white !important;
   opacity: 0.8;
   -webkit-appearance: textfield;
+  border: 1px solid #105130
+
 }
 
 #sq-ft:hover {
@@ -95,6 +99,20 @@ h4.click-address-text{
 
 #sq-ft::-webkit-input-placeholder {
       font-size: 0.9em
+
+}
+
+#move-in{
+  margin-left: 60px;
+  background-color: white !important;
+  opacity: 0.8;
+  -webkit-appearance: textfield;
+  text-align: center;
+  border: 1px solid #105130
+}
+
+#move-in:hover {
+  cursor: pointer;
 }
 
 .current-address{
@@ -190,6 +208,28 @@ button.deleteHouse{
   #sq-ft{
     margin-left: 0px;
   }
+  #move-in{
+    margin-left: 0px;
+  }
+
+    .current-address {
+      text-align: center;
+      align-items: center !important;
+    }
+
+    h5.current-address{
+      width: 100vw;
+      text-align: center;
+    }
+
+    .current-address h4{
+      max-width: auto;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      font-size: 1.2em;
+      padding-bottom: 0px;
+    }
 }
 
 @media (max-width: 600px){
@@ -227,19 +267,6 @@ button.deleteHouse{
     align-items: center;
   }
 
-  div.current-address {
-    text-align: center;
-    align-items: center !important;
-  }
-
-  .current-address h4{
-    max-width: auto;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    font-size: 1.2em;
-    padding-bottom: 0px;
-  }
 }
 
 @media (max-width: 400px){

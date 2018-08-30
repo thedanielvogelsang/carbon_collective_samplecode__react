@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {get} from '../../../api_client';
+import {connect} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import './PastBillsPage-styles.css';
@@ -10,25 +11,25 @@ const Bill = function(props){
     return(
       <div className="bill-container">
             <div className="past-bill-stat">
-              <h3 className="values"><span className="bill-time italic">{props.bill.who}</span></h3>
+              <h3 className="values"><span className="bill-time italic" onClick={props.handleBillChange}>{props.bill.who}</span></h3>
             </div>
             <div className="past-bill-stat">
-              <h3 className="values"><span className="bill-time">{props.bill.start_date}</span></h3>
+              <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.start_date}</span></h3>
             </div>
             <div className="past-bill-stat">
-              <h3 className="values"><span className="bill-time">{props.bill.end_date}</span></h3>
+              <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.end_date}</span></h3>
             </div>
             <div className="past-bill-stat">
-              <h3 className="values"><span className="bill-time">{props.bill.total_used}</span></h3>
+              <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.total_used}</span></h3>
             </div>
             <div className="past-bill-stat">
-              <h3 className="values"><span className="bill-time">{props.bill.no_residents}</span></h3>
+              <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.no_residents}</span></h3>
             </div>
             <div className="past-bill-stat usage">
-              <h3 className="values"><span className="bill-time">{props.bill.average_daily}</span></h3>
+              <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.average_daily}</span></h3>
             </div>
             <div className="past-bill-stat cost">
-              <h3 className="values"><span className="bill-time"> ${props.bill.price}</span></h3>
+              <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}> ${props.bill.price}</span></h3>
             </div>
       </div>
     )
@@ -85,7 +86,7 @@ class PastBillsPage extends Component{
   constructor(props){
     super(props)
     this.state = {
-      billType: localStorage.getItem('resource_type'),
+      billType: props.resource_type,
       loaded: false,
       foot_url: './img/FOOT_blank.png',
       num_bills: props.num,
@@ -113,7 +114,7 @@ class PastBillsPage extends Component{
   }
 
   loadBills(){
-    let id = sessionStorage.getItem("user_id")
+    let id = this.props.user_id
     const path = `api/v1/users/${id}/bills/${this.state.billType}`
     get(path)
       .then(data => this.sortBills(data))
@@ -172,6 +173,15 @@ class PastBillsPage extends Component{
   }
 }
 
+const mapStateToProps = (state) => {
+  return({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
+  })
+}
+
 // <img
 //     className="carbon-foot-print"
 //     alt="carbon collective logo"
@@ -179,4 +189,4 @@ class PastBillsPage extends Component{
 //     style={{height: '50%', width: '50%'}}
 //     src={require(`${props.foot_url}`)} />
 
-export default withRouter(PastBillsPage);
+export default withRouter(connect(mapStateToProps, null)(PastBillsPage));
