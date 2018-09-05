@@ -46,10 +46,6 @@ span.italics {
   font-style: italic;
 }
 
-.landing-btn-div{
-
-}
-
 button.landing-button {
   bottom: 40px;
   font-size: 30px;
@@ -102,7 +98,7 @@ div.landing-button{
 
   }
 
-  .landing-text span{
+  .landing-text span.opening-line{
     font-family: 'Libre Franklin', Helvetica, sans-serif;
              font-weight: 800;
              color: #219a60;
@@ -128,13 +124,30 @@ div.landing-button{
   }
 }
 
+@media (max-width: 400px){
+  .landing-text p{
+    font-family: 'Libre Franklin', Helvetica, sans-serif;
+      text-align: justify;
+       font-weight: 400;
+       color: #2a2c33;
+       font-size: .70em;
+  }
+  span.span-cc-name{
+    font-size: .8rem;
+  }
+  h1.landing-header-h1{
+    font-size: 3.2em;
+  }
+}
 
 @media (max-width: 330px){
-  .landing-text{
+  div.landing-text{
     max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-
-
 
   .landing-text p{
     font-family: 'Libre Franklin', Helvetica, sans-serif;
@@ -147,7 +160,11 @@ div.landing-button{
 
   }
 
-  .landing-text span{
+  h2.landing-subheader-h2{
+    font-size: 16px;
+  }
+
+  .landing-text span.opening-line{
     font-family: 'Libre Franklin', Helvetica, sans-serif;
              font-weight: 800;
              color: #219a60;
@@ -180,14 +197,20 @@ div.landing-button{
   .landing-text p{
     font-family: 'Libre Franklin', Helvetica, sans-serif;
        text-align: justify;
-       font-weight: 400;
-       color: #2a2c33;
        font-size: .6em;
        line-height: 2.4em;
        padding: 10px;
        width: 90%;
 
   }
+
+  .landing-text span.opening-line{
+    font-family: 'Libre Franklin', Helvetica, sans-serif;
+             font-weight: 700;
+             font-size: .8rem;
+             margin-right: 5px;
+  }
+
   button.landing-button {
     font-size: 20px;
     font-weight: 300;
@@ -200,5 +223,29 @@ div.landing-button{
   .landing-text p{
     padding-left: 3px;
     margin-left: 0;
+  }
+}
+
+@media (max-height: 611px){
+  header.landing-header{
+    padding-top: 0;
+    margin-top: 0;
+  }
+  div.header-text.landing-page{
+    margin-top: 15px;
+    margin-bottom: 25px;
+
+  }
+  .landing-header-h1{
+    margin-top: 0;
+  }
+  button.landing-button {
+    position: static;
+  }
+  .landing-body{
+    justify-content: space-between;
+    height: 50vh;
+    max-height: 50vh;
+    min-height: 0;
   }
 }
