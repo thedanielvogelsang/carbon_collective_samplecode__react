@@ -25,7 +25,7 @@ class Landing extends Component {
       <div className='landing-body'>
           <div className="landing-text">
           <p>
-            <span className="opening-line">Envisioning and fostering</span> an empowered, global community ready to transform our world through collective and strategic action. <span className="span-cc-name">Carbon Collective</span>&apos;s vision is a necessarily inclusive movement which aims, above all, to work together to <span className='italics'>revolutionize</span> humanity's relationship with the natural world, in favor of a collective symbiosis founde on: environmental responsibility, fairness, egalitarianism, and hope.
+            <span className="opening-line">Envisioning and fostering</span> an empowered, global community ready to transform our world through collective and strategic action. <span className="span-cc-name">Carbon Collective</span>&apos;s vision is an inclusive movement which aims to work together to <span className='italics'>revolutionize</span> humanity's relationship with the natural world. We seek a collective symbiosis founded on: environmental responsibility, fairness, egalitarianism, and hope.
           </p>
           </div>
           <button
