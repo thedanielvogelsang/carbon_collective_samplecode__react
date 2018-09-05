@@ -14,7 +14,6 @@
 
 .landing-text{
   max-width: 350px;
-
 }
 
 .landing-text p{
@@ -31,11 +30,20 @@
   font-family: 'Libre Franklin', Helvetica, sans-serif;
 
 }
+span.span-cc-name {
+  color: #219a60;
+  font-style: italic;
+  font-weight: 400;
+}
 
 span.opening-line{
   font-weight: 800;
   color: #219a60;
   font-size: .9rem;
+}
+
+span.italics {
+  font-style: italic;
 }
 
 .landing-btn-div{
