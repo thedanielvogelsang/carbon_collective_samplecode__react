@@ -201,14 +201,13 @@ div.landing-button{
        line-height: 2.4em;
        padding: 10px;
        width: 90%;
-
   }
 
   .landing-text span.opening-line{
     font-family: 'Libre Franklin', Helvetica, sans-serif;
-             font-weight: 700;
-             font-size: .8rem;
-             margin-right: 5px;
+     font-weight: 700;
+     font-size: .8rem;
+     margin-right: 5px;
   }
 
   button.landing-button {
