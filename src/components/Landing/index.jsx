@@ -25,7 +25,7 @@ class Landing extends Component {
       <div className='landing-body'>
           <div className="landing-text">
           <p>
-            <span>Envisioning a sustainable</span> green vision based movement which is necessarily inclusive of every buzz-word I can think of all in one sentence, the Carbon Collective brings to this vital community the evolution of environmental responsibility, fairness, egalitarianism, and hope.
+            <span className="opening-line">Envisioning and fostering</span> an empowered, global community ready to transform our world through collective and strategic action. <span className="span-cc-name">Carbon Collective's</span> vision is a necessarily inclusive movement which is necessarily inclusive movement which aims, above all, to work together to increase awareness about, and ultimately <i>revolutionize</i>,  humanity's relationship with the natural world, in favor of a collective symbiosis based in environmental responsibility, fairness, egalitarianism, and hope.
           </p>
           </div>
           <button

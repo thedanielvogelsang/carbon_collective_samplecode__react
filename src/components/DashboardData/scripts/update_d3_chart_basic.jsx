@@ -9,7 +9,7 @@ BasicChart.enter = function(elem_, props){
   var id = props.id
   let name = props.name
   let regionName = props.regionName
-  dataVal = percenting - dataVal + props.c
+  // dataVal = percenting - dataVal + 1
   // using 1. to give percentage threshold to val
   var data = [dataVal, percenting];
 
@@ -17,12 +17,12 @@ BasicChart.enter = function(elem_, props){
       barHeight = 30;
 
   var x = d3.scaleLinear()
-      .domain([0, d3.max(data)])
+      .domain([0, props.c])
       .range([0, width]);
 
   elem_
       .attr("width", width)
-      // .attr("height", barHeight); // excludes 2nd bar from showing
+      .attr("height", barHeight); // excludes 2nd bar from showing
 
   var bar = elem_.selectAll("g")
       .data(data)
@@ -37,7 +37,7 @@ BasicChart.enter = function(elem_, props){
       .attr("width", 0)
       .transition()
       .duration(1500)
-      .attr("width", x)
+      .attr("width", props.a)
       .attr("fill", color)
       .attr("height", barHeight - 1)
       .attr("name", name)
@@ -53,7 +53,7 @@ BasicChart.update = function(elem_, props){
   var id = props.id
   let name = props.name
   let regionName = props.regionName
-  dataVal = percenting - dataVal + 1
+  // dataVal = percenting - dataVal + 1
   // using 1. to give percentage threshold to val
   var data = [dataVal, percenting];
 
@@ -62,7 +62,7 @@ BasicChart.update = function(elem_, props){
       barHeight = 30;
 
   var x = d3.scaleLinear()
-      .domain([0, d3.max(data)])
+      .domain([0, props.c])
       .range([0, width]);
 
   var bar = elem_.selectAll("g").data(data)
@@ -71,7 +71,7 @@ BasicChart.update = function(elem_, props){
       .attr("width", 0)
       .transition()
       .duration(1500)
-      .attr("width", x)
+      .attr("width", props.a)
       .attr("fill", color)
       .attr("name", name)
       .attr("id", id)

@@ -296,7 +296,8 @@ class HouseSettings extends Component{
 const mapStateToProps = (state) => {
   return({
     user_id: state.userInfo.user_id,
-    house_id: state.userInfo.house_id
+    house_id: state.userInfo.house_id,
+    move_in_date: state.userInfo.move_in_date
   })
 }
 

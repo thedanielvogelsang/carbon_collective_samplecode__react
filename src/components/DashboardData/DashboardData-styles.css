@@ -128,7 +128,7 @@ div.textfit-div > div{
   flex-direction: row;
   width: 100%;
   padding: 3px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .data-item-box{
@@ -186,6 +186,15 @@ div.textfit-div > div{
   height: 60px;
   overflow-x: visible;
   margin-top: 5px;
+}
+
+.bargraph-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  height: 100%;
+  max-width: 240px;
 }
 
 .data-label-t{
