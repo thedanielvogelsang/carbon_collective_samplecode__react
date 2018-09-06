@@ -18,27 +18,28 @@ export const ResourceTitleDash = (props) => {
     return(
       <div className="data-title-container">
         <h6 className="data-title">Heat</h6>
-        <BarGraphIcon props={props} />
+        {props.graph ? <BarGraphIcon props={props} /> : null }
       </div>
     )
   }else if(props.resourceType === "carbon"){
     return(
       <div className="data-title-container">
         <h6 className="data-title">{capitalizeFirstLetter(props.resourceType)}</h6>
+        {props.graph ?
         <button
           className="update-bill-button"
           style={{color: props.color}}
           onClick={(e) => props.changePage('/carbon-calculations')}
               >
             How We Calculate
-         </button>
+        </button> : null }
       </div>
     )
   }else{
     return(
       <div className="data-title-container">
         <h6 className="data-title">{capitalizeFirstLetter(props.resourceType)}</h6>
-        <BarGraphIcon props={props} />
+        {props.graph ? <BarGraphIcon props={props} /> : null }
       </div>
     )
   }

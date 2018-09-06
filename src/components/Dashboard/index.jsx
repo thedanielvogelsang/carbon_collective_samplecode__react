@@ -92,7 +92,7 @@ class Dashboard extends Component {
         <div className="dashboard-page">
           <div className="dashboard-header-container">
             <div className="dashboard-overlay">
-              <ResourceTitleDash color={color} title={title} resourceType={resource} changePage={this.goToPage} />
+              <ResourceTitleDash color={color} title={title} graph={true} resourceType={resource} changePage={this.goToPage} />
               <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
             </div>
           </div>

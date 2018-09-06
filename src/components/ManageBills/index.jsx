@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './ManageBills-styles.css';
 import PastBills from './PastBillsPage';
 import Checklist from './Checklist';
+import ResourceNav from '../Dashboard/ResourceNav'
+import {ResourceTitleDash} from '../Dashboard/ResourceTitle'
 import ChecklistQuestionDone from './Checklist/checklists/done.jsx';
-import ArrowDiv from './ArrowDiv';
+import ManageSection from './ManageSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import { get, post } from '../../api_client';
@@ -200,9 +202,19 @@ class ManageBills extends Component {
     this.setState({message: error.errors, messageStyle: {color: "#ED3838", display: 'block'}})
   }
 
+  openDiv(name){
+    this.setState({
+      [name]: true,
+    })
+  }
+
+  closeDiv(name){
+    this.setState({
+
+    })
+  }
+
   render(){
-    let color;
-    this.state.resource === 'Water' ? color = 'white' : color = this.state.color;
     let { start_date, end_date, price, resource, no_residents} = this.state;
     let isFormValid = true;
     // (start_date !== "" && end_date !== "" && total_kwatts !== 0 && bill_cost !== 0);
@@ -211,6 +223,9 @@ class ManageBills extends Component {
     let loading = this.state.loading;
     let percent = this.state.percentage;
     let review = this.state.review;
+    let house = this.props.house_id
+    let title = capitalize(this.props.resource_type)
+    let color = this.props.color
     if(loading){
       return(
         <div></div>
@@ -219,7 +234,15 @@ class ManageBills extends Component {
     return (
       <div className="bills-page-container">
         <div className='bills-page-overlay'>
-          <ArrowDiv />
+          <div className="manage-bills-header-container">
+            <div className="manage-bills-overlay">
+              <ResourceTitleDash color={color} title={title} graph={false} resourceType={resource} changePage={this.goToPage} />
+              <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
+            </div>
+          </div>
+          <ManageSection name="checklist" title="Overview"/>
+          <ManageSection name="checklist" title="Bill Entry"/>
+          <ManageSection name="checklist" title="Past Bills"/>
           <h6 className="bill-type-header"  >{this.state.resource} Bills</h6>
           {percent === 100 && !review ? <ChecklistQuestionDone updateState={this.updateState} user_id={this.state.user_id} house_id={this.state.house_id}/> :
           <div className="expandable-checklist">
