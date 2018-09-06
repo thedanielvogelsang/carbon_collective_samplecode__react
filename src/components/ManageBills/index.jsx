@@ -3,6 +3,8 @@ import './ManageBills-styles.css';
 import PastBills from './PastBillsPage';
 import Checklist from './Checklist';
 import ChecklistQuestionDone from './Checklist/checklists/done.jsx';
+import ArrowDiv from './ArrowDiv';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import { get, post } from '../../api_client';
 import { connect } from 'react-redux'
@@ -217,6 +219,7 @@ class ManageBills extends Component {
     return (
       <div className="bills-page-container">
         <div className='bills-page-overlay'>
+          <ArrowDiv />
           <h6 className="bill-type-header"  >{this.state.resource} Bills</h6>
           {percent === 100 && !review ? <ChecklistQuestionDone updateState={this.updateState} user_id={this.state.user_id} house_id={this.state.house_id}/> :
           <div className="expandable-checklist">

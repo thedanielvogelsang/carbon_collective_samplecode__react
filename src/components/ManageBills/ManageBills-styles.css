@@ -202,3 +202,13 @@ h4.bills-errors{
   text-shadow: none;
   font-weight: 300;
 }
+
+svg.fa-caret-right:active{
+  transform: rotate(90deg);
+  transition: all .2s;
+}
+
+svg.fa-caret-down:active{
+  transform: rotate(-90deg);
+  transition: all .2s;
+}

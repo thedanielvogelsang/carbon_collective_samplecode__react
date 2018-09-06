@@ -8,7 +8,6 @@ import {connect} from 'react-redux'
 import BarGraph from './scripts/ranking_d3_chart_basic.jsx';
 import ArrowIcon from './ArrowIcon'
 import RegionComponent from './RegionComponent'
-
 // function throwEllipsis(string){
 //   if(string.length >= 17){
 //     let str = string.slice(0, 18)
