@@ -31,14 +31,10 @@ class ResourceNav extends Component {
     this.props.fetchDashData(this.props.user_id, type)
   }
 
-  updateRegionData(type){
-    this.props.fetchRegionalData(this.props.user_id, this.props.house_id, type)
-  }
-
   updateDashColors(){
     let type = this.props.resource_type
     this.updateUserData(type)
-    setTimeout(this.setDashboardData, 500, type)
+    setTimeout(this.setDashboardData, 800, type)
   }
 
   setDashboardData(type){

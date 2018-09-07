@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Checklist from './Checklist';
+import ManageBillsSection from './ManageBillsSection';
+import PastBills from './PastBillsPage';
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-class ManageSection extends Component{
-  constructor(){
-    super();
+class PageSection extends Component{
+  constructor(props){
+    super(props);
     this.state = {
       open: false,
       arrow: 'caret-right',
@@ -18,8 +21,7 @@ class ManageSection extends Component{
     this.changeArrow = this.changeArrow.bind(this);
   }
 
-  componentDidUpdate(){
-
+  componentDidMount(){
   }
 
   changeArrow(e){
@@ -37,20 +39,37 @@ class ManageSection extends Component{
   }
 
   render(){
+    let overview = false;
+    let manage = false;
+    let past = false;
+    switch(this.props.title){
+      case "Overview":
+         overview = true
+         break
+      case "Bill Entry":
+        manage = true
+        break
+      case "Past Bills":
+        past = true
+        break
+      default:
+        break
+    }
     return(
       <div className="manage-section-master-div">
         <div className="section-title-row">
-          <div className="arrow-div" name={this.props.name} onClick={(e) => this.changeArrow(e)}>
+          <div className="arrow-div" onClick={(e) => this.changeArrow(e)}>
             <FontAwesomeIcon icon={this.state.arrow} size="lg"/>
           </div>
-          <div name={this.props.name} className="section-title-div" onClick={(e) => this.changeArrow(e)}>
+          <div className="section-title-div" onClick={(e) => this.changeArrow(e)}>
             <h1>{this.props.title}</h1>
           </div>
         </div>
         <div className={this.state.sectionName} >
             <div className={this.state.sectionContent}>
-              <h1> Here it is!</h1>
-              <p>a;lsdkfj asdfl; nyd d ymdasl;gj;l y ;lkj ucuc y aopdgjop ay mepe py yoyoel cuany apl yjsaeuzou;uey. </p>
+              {overview ? <Checklist resource={this.props.capRes} house={this.props.house_id} user={this.props.user_id} /> : null }
+              {manage ? <ManageBillsSection noResidents={this.props.noResidents} numBills={this.props.numBills} orgCount={this.props.orgCount} type={this.props.type}/> : null }
+              {past ? <PastBills num={this.props.numBills} metric={this.props.type}/> : null }
             </div>
         </div>
       </div>
@@ -66,4 +85,4 @@ const mapStateToProps = (state) =>{
     color: state.userInfo.color,
   })
 }
-export default connect(mapStateToProps, null)(ManageSection);
+export default connect(mapStateToProps, null)(PageSection);

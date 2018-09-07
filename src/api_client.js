@@ -3,6 +3,7 @@ const host = 'https://carboncollective.herokuapp.com'
 // const headers = {
 //   'content-type': 'application/json'
 // }
+
 const token = process.env.REACT_APP_XCRF_TOKEN
 
 function handleResponse(response) {

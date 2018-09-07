@@ -22,22 +22,22 @@ class Checklist extends Component{
 
   render(){
     let type = this.props.resource
-    // console.log(this.props)
+    console.log(this.props)
     if(type === 'Gas'){
       return(
-        <GasChecklist house={this.props.house} user={this.props.user} updateState={this.props.updateState} review={this.props.review}/>
+        <GasChecklist house={this.props.house} user={this.props.user}/>
       )
     }else if(type === 'Carbon'){
       return(
-        <div className="checklist-dropdown">Hello Carbon</div>
+        <div className="checklist-dropdown">No carbon checklist yet</div>
       )
     }else if(type === 'Electricity'){
       return(
-        <ElectricityChecklist house={this.props.house} user={this.props.user} updateState={this.props.updateState} review={this.props.review}/>
+        <ElectricityChecklist house={this.props.house} user={this.props.user}/>
       )
     }else if(type === 'Water'){
       return(
-        <WaterChecklist house={this.props.house} user={this.props.user} updateState={this.props.updateState} review={this.props.review}/>
+        <WaterChecklist house={this.props.house} user={this.props.user}/>
       )
     }else{
       return(

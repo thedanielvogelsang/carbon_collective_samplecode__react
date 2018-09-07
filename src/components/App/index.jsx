@@ -11,7 +11,7 @@ import AddAddress from '../AddAddress'
 import AddHousehold from '../AddHousehold'
 import HouseExists from '../HouseExists'
 import Dashboard from '../Dashboard'
-import ManageBills from '../ManageBills'
+import ManageBillsPage from '../ManageBillsPage'
 import Settings from '../Settings'
 import Login from '../Login'
 import FirstLogin from '../FirstLogin'
@@ -211,7 +211,7 @@ class App extends Component {
               <NoHouseRoute path="/add_household" loaded={loaded} house={house} component={ AddHousehold } addUserData={this.addUserData}/> } />
               <NoHouseRoute path="/house-exists" loaded={loaded} house={house} component={ HouseExists } addUserData={this.addUserData} data={this.state.userData}/> } />
               <AuthenticatedRouteProps path="/dashboard" loaded={loaded} component={ Dashboard } updateState={this.updateState} userData={this.state.userData} /> } />
-              <AuthenticatedRouteProps path="/managebills" loaded={loaded}  component={ ManageBills } data={this.state} updateState={this.updateState} /> } />
+              <AuthenticatedRouteProps path="/managebills" loaded={loaded}  component={ ManageBillsPage } data={this.state} updateState={this.updateState} /> } />
               <AuthenticatedRouteProps path="/carbon-calculations" loaded={loaded} component={ CarbonCalc } /> } />
               <AuthenticatedRouteProps path="/regionPage" loaded={loaded}  component={ RegionPage} data={this.state} /> } />
               <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} /> } />

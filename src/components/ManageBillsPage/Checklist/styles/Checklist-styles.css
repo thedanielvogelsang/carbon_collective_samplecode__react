@@ -236,10 +236,6 @@ p.checklist-completion-pct{
   margin-right: 20px;
 }
 
-.checklist-dropdown.review{
-
-}
-
 .close-review{
   color: #1fa245;
   background-color: #4c4e5a;
@@ -251,9 +247,6 @@ p.checklist-completion-pct{
   text-shadow: 0 0 3px red;
 }
 
-.reset-form-btn{
-
-}
 
 @keyframes disappear {
   0% { opacity: 1}
