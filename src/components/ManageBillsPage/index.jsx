@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import './ManageBills-styles.css';
-import Checklist from './Checklist';
 import ResourceNav from '../Dashboard/ResourceNav'
 import {ResourceTitleDash} from '../Dashboard/ResourceTitle'
-import ChecklistQuestionDone from './Checklist/checklists/done.jsx';
 import PageSection from './PageSection';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import { get, post } from '../../api_client';
 import { connect } from 'react-redux'

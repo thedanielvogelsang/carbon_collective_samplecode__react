@@ -2,16 +2,6 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { post } from '../../api_client';
 
-function assignMetric(res){
-  if(res==='electricity'){
-    return 'kWhs'
-  }else if(res === 'water'){
-    return 'gallons'
-  }else if(res === 'gas'){
-    return 'therms'
-  }
-}
-
 function capitalize(name){
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -107,7 +97,7 @@ class ManageBillsSection extends Component{
   }
 
   render(){
-    let { start_date, end_date, price, resource, no_residents} = this.state;
+    let { start_date, end_date, price, no_residents} = this.state;
     let formResource = "total_" + this.state.type.toLowerCase();
     let formResourceAmt = this.state[formResource];
     let isFormValid = true;

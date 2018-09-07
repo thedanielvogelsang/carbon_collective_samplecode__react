@@ -5,10 +5,6 @@ import Checklist from './Checklist';
 import ManageBillsSection from './ManageBillsSection';
 import PastBills from './PastBillsPage';
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 class PageSection extends Component{
   constructor(props){
     super(props);
@@ -26,7 +22,7 @@ class PageSection extends Component{
 
   changeArrow(e){
     let a, name, s_name;
-    open = this.state.open
+    let open = this.state.open
     !open ? a = 'caret-down' : a = 'caret-right'
     !open ? name = "section-content-div appear" : name = "section-content-div disappear"
     !open ? s_name = "section-content appear" : s_name = "section-content disappear"

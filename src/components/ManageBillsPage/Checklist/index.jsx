@@ -22,7 +22,6 @@ class Checklist extends Component{
 
   render(){
     let type = this.props.resource
-    console.log(this.props)
     if(type === 'Gas'){
       return(
         <GasChecklist house={this.props.house} user={this.props.user}/>

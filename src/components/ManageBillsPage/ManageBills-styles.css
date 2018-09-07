@@ -305,7 +305,7 @@ h4.bills-errors{
   -webkit-animation-name: disappear;
    -webkit-animation-duration: 0.5s;
    -webkit-animation-timing-function: forwards;
-  animation: disappear 0.5s ease-in forwards;
+  animation: disappearDiv 0.5s ease-in forwards;
 }
 
 
@@ -323,16 +323,22 @@ h4.bills-errors{
    -webkit-animation-timing-function: forwards;
   animation: appear 0.5s ease-in forwards;
 }
+
 .section-content.disappear{
   height: auto;
   -webkit-animation-name: disappear;
    -webkit-animation-duration: 0.5s;
    -webkit-animation-timing-function: forwards;
-  animation: disappear 0.5s ease-in forwards;
+  animation: disappearDiv 0.5s ease-in forwards;
 }
 
 
 @keyframes appear {
   0% { opacity: 0}
   100% { opacity: 1; height: auto;}
+}
+
+@keyframes disappearDiv {
+  0% { opacity: 1}
+  100% { opacity: 0; height: 0}
 }
