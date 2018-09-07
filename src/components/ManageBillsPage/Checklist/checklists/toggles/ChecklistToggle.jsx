@@ -39,7 +39,6 @@ class ChecklistToggle extends Component{
     return(
       <form className={this.props.cName}>
         <div className="checklist-toggle-div">
-        <label className="checklist-question-label">
         <h3>{this.state.question}</h3>
         <div className="toggle-btn">
           <h1 className="toggle-btn-txt">NO</h1>
@@ -74,7 +73,6 @@ class ChecklistToggle extends Component{
             </MuiThemeProvider>
             <h1 className="toggle-btn-txt">YES</h1>
           </div>
-        </label>
         </div>
       </form>
     )

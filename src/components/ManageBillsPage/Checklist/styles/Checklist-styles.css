@@ -110,8 +110,9 @@ p.checklist-completion-pct{
 }
 
 .checklist-dropdown{
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  max-width: 350px;
   min-width: 300px;
   margin-left: 15px;
   height: auto;
@@ -119,69 +120,45 @@ p.checklist-completion-pct{
   padding: 5px;
 }
 
-.percentage-checklist-complete{
-  overflow-x: visible;
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  bottom: 30px;
-  width: 44px;
-  margin-top: -2px;
-  background-color: white;
-  padding-top: 2px;
-  top: 0;
-  border-left: 1px dotted #4c4e5b;
-}
-
-.percentage-checklist-complete p{
-  height: 25px;
-  width: 120px;
-  overflow-x: visible;
-  font-size: 0.7em;
-  text-shadow: 1px 1px black;
-}
-
 .checklist-form{
-  width: 95% !important;
-  height: 70px;
+  display: block;
+  float: left;
+  width: 40%;
+  min-width: 315px;
+  max-height: 100px;
+  min-height: 80px;
   font-size: 0.8em;
   padding: 5px;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 20px 0px;
-  border-top: 1px solid #bdbec0;
 }
 
-.checklist-form.disappear{
-  width: 95% !important;
-  height: 70px;
-  font-size: 0.8em;
-  padding: 5px;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 20px 0px;
-  border-top: 1px solid #bdbec0;
-  animation: disappear 0.3s ease-out forwards;
+form.checklist-form > div {
+  height: 100%;
+  padding: 10px 5px 0px 5px;
 }
 
-.checklist-question-div{
-  width: 340px;
-  max-width: 340px;
-  height: 60px;
-  max-height: 60px;
-  padding-top: 10px;
+form.checklist-form h3{
+  max-width: 60%;
+  text-align: left;
+}
+
+.checklist-toggle-div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.checklist-question-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .checklist-question-label{
-  width: 320px;
-  max-width: 320px;
+  max-width: 370px;
   height: 50px;
   max-height: 50px;
-  padding-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -193,7 +170,7 @@ p.checklist-completion-pct{
   font-size: 1.1em;
   text-align: left;
   width: 50%;
-  margin-top: 12px;
+  height: 100%;
 }
 
 .checklist-question-div h3{
@@ -206,26 +183,7 @@ p.checklist-completion-pct{
 
 .checklist-select-dropdown{
   max-width: 120px;
-}
-
-.checklist-done-div{
-  width: 100%;
-  margin-top: 5px;
-  max-width: 350px;
-  min-width: 300px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  height: 30px;
-  min-height: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-size: 0.8em;
-}
-
-.checklist-done-div h3{
-  max-width: 60%;
-  text-align: left;
+  margin: 0px;
 }
 
 .toggle-btn{
@@ -241,12 +199,6 @@ p.checklist-completion-pct{
   background-color: #4c4e5a;
   margin-bottom: 20px;
 }
-
-#highlighted{
-  color: white;
-  text-shadow: 0 0 3px red;
-}
-
 
 @keyframes disappear {
   0% { opacity: 1}

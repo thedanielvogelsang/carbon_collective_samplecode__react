@@ -222,7 +222,7 @@ h4.bills-errors{
   width: 100vw;
   padding: 0;
   padding-top: 30px;
-  margin: 0
+  margin: 0;
 }
 
 .manage-bills-overlay{
@@ -238,16 +238,19 @@ h4.bills-errors{
 .manage-bills-overlay .data-title-container{
   min-width: 200px;
   margin-left: 13vw;
+  color: #105130;
 }
 
 .manage-section-master-div{
   width: 100vw;
-  justify-content: flex-start;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding-left: 14%;
+  margin-top: 8vh;
 }
 
 .section-title-row{
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -255,16 +258,16 @@ h4.bills-errors{
 
 .arrow-div{
   display: flex;
-  padding: 10px 0px 5px 7px;
+  padding: 5px 0px 5px 7px;
   text-align: left;
   width: 36px;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 13vw;
-  background-color: white;
+  /* background-color: white; */
 }
 .section-title-div{
-  background-color: gray
+  color: #2a2c33;
+  /* background-color: gray */
 }
 
 .section-title-div h1{
@@ -279,6 +282,7 @@ h4.bills-errors{
 .section-title-row div:active svg.fa-caret-right{
   transform: rotate(90deg);
   transition: all .2s;
+
 }
 
 .section-title-row div:active svg.fa-caret-down{
@@ -286,59 +290,78 @@ h4.bills-errors{
   transition: all .2s;
 }
 
+.fa-lg{
+  font-size: 1.8em !important;
+}
+
 .section-content-div {
   height: 0;
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 .section-content-div.appear {
-  height: auto;
+  margin-top: 14px;
   -webkit-animation-name: appear;
-   -webkit-animation-duration: 0.5s;
-   -webkit-animation-timing-function: forwards;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-timing-function: forwards;
   animation: appear 0.5s ease-in forwards;
 }
 .section-content-div.disappear {
-  height: auto;
-  -webkit-animation-name: disappear;
-   -webkit-animation-duration: 0.5s;
-   -webkit-animation-timing-function: forwards;
+  margin-top: 14px;
+  -webkit-animation-name: disappearDiv;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-timing-function: forwards;
   animation: disappearDiv 0.5s ease-in forwards;
 }
 
-
 .section-content{
   height: 0;
-  width: 80%;
-  margin-left: 20vw;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 .section-content.appear{
-  height: 100px;
   -webkit-animation-name: appear;
-   -webkit-animation-duration: 0.5s;
-   -webkit-animation-timing-function: forwards;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-timing-function: forwards;
   animation: appear 0.5s ease-in forwards;
 }
 
 .section-content.disappear{
-  height: auto;
-  -webkit-animation-name: disappear;
-   -webkit-animation-duration: 0.5s;
-   -webkit-animation-timing-function: forwards;
+  -webkit-animation-name: disappearDiv;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-timing-function: forwards;
   animation: disappearDiv 0.5s ease-in forwards;
 }
 
 
 @keyframes appear {
-  0% { opacity: 0}
+  0% { opacity: 0; height: 0;}
   100% { opacity: 1; height: auto;}
 }
 
 @keyframes disappearDiv {
-  0% { opacity: 1}
+  0% { opacity: 1; height: auto}
   100% { opacity: 0; height: 0}
+}
+
+
+@media (max-width: 750px){
+  .manage-section-master-div{
+    margin-left: 5vw;
+    padding-left: 0;
+  }
+  .data-title-container{
+    margin-left: 2vw !important;
+  }
+}
+
+@media (max-width: 650px){
+  .checklist-form{
+    max-width: 200px;
+  }
 }
