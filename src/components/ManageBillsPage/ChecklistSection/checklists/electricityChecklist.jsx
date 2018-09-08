@@ -74,23 +74,28 @@ class ElectricityChecklist extends Component{
   updateAll(data, quest, ans){
     this.setState({[quest]: ans, completed: data.completed})
   }
+  handleChecklist(){
+    alert("Thank you. Your data has been saved")
+    this.props.closeDiv('checklist')
+  }
 
   render(){
     let loading = this.state.loading;
     if(!loading){
       return(
         <div className="checklist-dropdown">
-              <ChecklistToggle q='quest1' question={questions.quest1.question} updateChecklist={this.updateChecklist} cName='checklist-form'/>
-              <ChecklistQuestion q='quest2' question={questions.quest2.question} answers={questions.quest2.answers} updateChecklist={this.updateChecklist} cName='checklist-form' />
-              <ChecklistToggle q='quest3' question={questions.quest3.question} updateChecklist={this.updateChecklist} cName='checklist-form'/>
-              <ChecklistQuestion q='quest4' question={questions.quest4.question} answers={questions.quest4.answers} updateChecklist={this.updateChecklist} cName='checklist-form' />
-              <ChecklistQuestion q='quest5' question={questions.quest5.question} answers={questions.quest5.answers} updateChecklist={this.updateChecklist} cName='checklist-form'/>
-                <div className="checklist-button-div">
-                  <button
-                    className="checklist-button"
-                    type="submit"
-                    >Save Response</button>
-                </div>
+          <ChecklistToggle q='quest1' a={this.state.quest1} question={questions.quest1.question} updateChecklist={this.updateChecklist}  cName='checklist-form'/>
+          <ChecklistQuestion q='quest2' a={this.state.quest2} r={true} question={questions.quest2.question} answers={questions.quest2.answers} updateChecklist={this.updateChecklist}  cName='checklist-form'/>
+          <ChecklistToggle q='quest3' a={this.state.quest3} question={questions.quest3.question} updateChecklist={this.updateChecklist} cName='checklist-form'/>
+          <ChecklistQuestion q='quest4' a={this.state.quest4} r={true} question={questions.quest4.question} answers={questions.quest4.answers} updateChecklist={this.updateChecklist} cName='checklist-form' />
+          <ChecklistQuestion q='quest5' a={this.state.quest5} r={true} question={questions.quest5.question} answers={questions.quest5.answers} updateChecklist={this.updateChecklist} cName='checklist-form'/>
+          <div className="checklist-button-div">
+            <button
+              className="checklist-button"
+              onClick={(e) => this.handleChecklist(e)}
+              type="submit"
+              >Save Response</button>
+          </div>
         </div>
       )
     }else{

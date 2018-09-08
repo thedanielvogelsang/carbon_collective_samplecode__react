@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../styles/Checklist-styles.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class ChecklistQuestion extends Component{
   constructor(props){
@@ -37,6 +38,7 @@ class ChecklistQuestion extends Component{
       <select
         className="checklist-select-dropdown"
         onChange={this.handleChange}
+        value={this.props.a}
         required
         >
         {this.props.r ? null :
@@ -61,7 +63,10 @@ class ChecklistQuestion extends Component{
       <form className={this.props.cName}>
         <div className="checklist-question-div">
             <h3 id={this.applyClass()}>{this.state.question}</h3>
-            {this.selections()}
+            <div className="checklist-question-selection-div">
+              {this.selections()}
+              <FontAwesomeIcon icon={"caret-down"} size="sm"/>
+            </div>
         </div>
       </form>
     )

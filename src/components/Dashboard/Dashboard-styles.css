@@ -79,7 +79,8 @@
   align-content: space-between;
   height: 45px;
   vertical-align: bottom !important;
-  width: 200px
+  width: 100%;
+  max-width: 200px;
 }
 
 .dashboard-resource-nav button{
@@ -506,6 +507,7 @@ span.material-icons.carbon-logo{
   }
   .data-title-container{
     width: 100% !important;
+    max-width: 200px;
     justify-content: center;
     padding: 0px;
     margin: 0px;

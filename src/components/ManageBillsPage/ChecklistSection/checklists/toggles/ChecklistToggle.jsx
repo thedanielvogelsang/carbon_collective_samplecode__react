@@ -18,8 +18,6 @@ class ChecklistToggle extends Component{
   }
 
   componentDidMount(){
-
-    console.log(this.state)
   }
 
   componentDidUpdate(){

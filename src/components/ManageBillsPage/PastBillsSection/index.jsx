@@ -100,11 +100,14 @@ class PastBillsPage extends Component{
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.num !== this.props.num && this._ismounted == true){
+    if(prevProps.num !== this.props.num && this._ismounted === true){
       this.setState({billArray: {}}, this.loadBills())
     }
-    if(prevProps.resource_type !== this.props.resource_type && this._ismounted == true){
+    if(prevProps.resource_type !== this.props.resource_type && this._ismounted === true){
       this.loadBills()
+    }
+    if(this.props.reloadPosts){
+      this.setState({loaded: false}, this.loadBills)
     }
   }
 

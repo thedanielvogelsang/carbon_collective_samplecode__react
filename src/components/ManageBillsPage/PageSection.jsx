@@ -13,16 +13,39 @@ class PageSection extends Component{
       arrow: 'caret-right',
       sectionName: 'section-content-div',
       sectionContent: 'section-content',
+      reloadPosts: false,
     };
     this.changeArrow = this.changeArrow.bind(this);
+    this.closeDiv = this.closeDiv.bind(this);
+    this.reloadPosts = this.reloadPosts.bind(this)
+    this.stopReload = this.stopReload.bind(this);
   }
 
   componentDidMount(){
   }
 
   componentDidUpdate(){
+   }
+
+  closeDiv(name){
+    if(name==="checklist"){
+      return this.setState({
+        open: false,
+        arrow: 'caret-right',
+        sectionName: "section-content-div disappear",
+        sectionContent: 'section-content disappear'
+      })
+    }else{
+      return this.setState({
+        open: false,
+        arrow: 'caret-right',
+        sectionName: "section-content-div disappear",
+        sectionContent: 'section-content disappear'
+      }, this.reloadPosts())
+    }
+
   }
-  
+
   changeArrow(e){
     let a, name, s_name;
     let open = this.state.open
@@ -35,6 +58,21 @@ class PageSection extends Component{
       sectionName: name,
       sectionContent: s_name,
     })
+  }
+
+  reloadPosts(){
+    console.log('TRYING')
+    this.setState({
+      reloadPosts: true,
+    }, this.stopReload)
+  }
+
+  stopReload(){
+    setTimeout(
+      this.setState({
+        reloadPosts: false
+      }), 500
+    )
   }
 
   render(){
@@ -66,9 +104,9 @@ class PageSection extends Component{
         </div>
         <div className={this.state.sectionName} >
             <div className={this.state.sectionContent}>
-              {overview ? <Checklist resource={this.props.capRes} house={this.props.house_id} user={this.props.user_id} /> : null }
-              {manage ? <ManageBillsSection noResidents={this.props.noResidents} numBills={this.props.numBills} orgCount={this.props.orgCount} type={this.props.type}/> : null }
-              {past ? <PastBills num={this.props.numBills} metric={this.props.type}/> : null }
+              {overview ? <Checklist resource={this.props.capRes} house={this.props.house_id} user={this.props.user_id} closeDiv={this.closeDiv}/> : null }
+              {manage ? <ManageBillsSection noResidents={this.props.noResidents} numBills={this.props.numBills} closeDiv={this.closeDiv} orgCount={this.props.orgCount} type={this.props.type} reloadPosts={this.reloadPosts}/> : null }
+              {past ? <PastBills num={this.props.numBills} reloadPosts={this.state.reloadPosts} metric={this.props.type}/> : null }
             </div>
         </div>
       </div>

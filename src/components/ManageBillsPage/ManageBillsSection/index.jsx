@@ -20,6 +20,7 @@ class ManageBillsSection extends Component{
       messageStyle: {
         display: 'none',
       },
+      house_id: this.props.house_id,
       start_date: "",
       end_date: "",
       no_residents: props.noResidents,
@@ -77,6 +78,7 @@ class ManageBillsSection extends Component{
   }
 
   resetForm() {
+    alert("Bill save was a success!")
     let formResource = "total_" + this.props.type.toLowerCase()
     this.setState({
       errors: "",
@@ -85,9 +87,7 @@ class ManageBillsSection extends Component{
       price: 0,
       [formResource]: 0,
       house_id: null,
-      message: "success!",
-      messageStyle: {color: "#1fa245", fontSize: "1.3em", display: 'block'},
-    }, this.loadData())
+    }, this.props.closeDiv('bills'))
   }
 
   assignBillPath(){
@@ -101,7 +101,6 @@ class ManageBillsSection extends Component{
     let formResource = "total_" + this.state.type.toLowerCase();
     let formResourceAmt = this.state[formResource];
     let isFormValid = true;
-    let color = this.props.color
     return(
       <div>
         <form
@@ -121,6 +120,17 @@ class ManageBillsSection extends Component{
             />
           </div>
           <div>
+            <h5>End Date</h5>
+            <input
+              id="calendar-2"
+              required="true"
+              type="date"
+              name="end_date"
+              value={ end_date }
+              onChange={ this.handleChange }
+              />
+          </div>
+          <div>
             <h5>Total {capitalize(this.state.type)}</h5>
             <input
               id="total-amt"
@@ -130,17 +140,6 @@ class ManageBillsSection extends Component{
               placeholder="Total Consumption"
               min="0"
               value={ formResourceAmt }
-              onChange={ this.handleChange }
-              />
-          </div>
-          <div>
-            <h5>End Date</h5>
-            <input
-              id="calendar-2"
-              required="true"
-              type="date"
-              name="end_date"
-              value={ end_date }
               onChange={ this.handleChange }
               />
           </div>

@@ -14,7 +14,7 @@ class Checklist extends Component{
 
   shouldComponentUpdate(nextProps, nextState){
     // console.log(nextProps.resource, this.props.resource)
-    if(nextProps.resource !== this.props.resource  && this._ismounted == true){
+    if(nextProps.resource !== this.props.resource  && this._ismounted === true){
       return true
     }else{
       return false
@@ -25,7 +25,7 @@ class Checklist extends Component{
     let type = this.props.resource
     if(type === 'Gas'){
       return(
-        <GasChecklist house={this.props.house} user={this.props.user}/>
+        <GasChecklist house={this.props.house} user={this.props.user} closeDiv={this.props.closeDiv}/>
       )
     }else if(type === 'Carbon'){
       return(
@@ -33,11 +33,11 @@ class Checklist extends Component{
       )
     }else if(type === 'Electricity'){
       return(
-        <ElectricityChecklist house={this.props.house} user={this.props.user}/>
+        <ElectricityChecklist house={this.props.house} user={this.props.user}  closeDiv={this.props.closeDiv}/>
       )
     }else if(type === 'Water'){
       return(
-        <WaterChecklist house={this.props.house} user={this.props.user}/>
+        <WaterChecklist house={this.props.house} user={this.props.user}  closeDiv={this.props.closeDiv}/>
       )
     }else{
       return(
