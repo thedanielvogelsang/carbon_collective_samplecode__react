@@ -8,7 +8,13 @@ import { get, post } from '../../api_client';
 import { connect } from 'react-redux'
 import Loader from '../Loader';
 
-
+const NoCarbonBillsDiv = () => {
+  return (
+    <div className="carbon-no-bills">
+        <h1>No bills to report</h1>
+    </div>
+  )
+}
 
 function assignMetric(res){
   if(res==='electricity'){
@@ -27,22 +33,14 @@ function capitalize(name){
 class ManageBillsPage extends Component {
   constructor(props) {
     super(props);
-    let resource = props.resource_type;
-    if(resource === 'carbon'){
-      resource = "electricity"
-    }
-    let type = assignMetric(resource);
-    resource = capitalize(resource);
     this.state = {
-      type: type,
-      resource: resource,
       loading: true,
       navLoading: true,
     };
     this.loadData = this.loadData.bind(this);
     this.goToPage = this.goToPage.bind(this);
     this.updateLoader = this.updateLoader.bind(this);
-
+    this.determineReload = this.determineReload.bind(this);
   }
 
   componentDidMount(){
@@ -51,6 +49,11 @@ class ManageBillsPage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
+    if(prevProps.resource_type !== this.props.resource_type){
+      this.setState({
+        navLoading: true
+      }, this.loadData("reload"))
+    }
   }
 
   updateLoader(load){
@@ -72,17 +75,42 @@ class ManageBillsPage extends Component {
      .catch(error => console.log(error))
   }
 
-  loadData(){
+  loadData(reload){
     let user_id = this.props.user_id
     let type = this.props.resource_type
     let user_path = `api/v1/users/${user_id}/resources?resource=${type}`
     get(user_path)
-      .then(data => this.setState({no_residents: data.house.no_residents, org_count: data.house.no_residents, num_bills: data.num_bills, loading: false}))
+      .then(data => this.determineReload(data, reload))
       .catch(error => console.log(error))
   }
 
   goToPage(path) {
     this.props.history.push(path)
+  }
+
+  determineReload(data, reload){
+    switch(reload){
+      case "reload":
+        return this.setState({
+          no_residents: data.house.no_residents,
+          org_count: data.house.no_residents,
+          num_bills: data.num_bills,
+          loading: false, navLoading: false})
+      default:
+        return this.setState({
+            no_residents: data.house.no_residents,
+            org_count: data.house.no_residents,
+            num_bills: data.num_bills, loading: false})
+    }
+  }
+
+  checkResourceType(){
+    switch(this.props.resource_type){
+      case "carbon":
+        return false
+      default:
+        return true
+    }
   }
 
 
@@ -92,11 +120,17 @@ class ManageBillsPage extends Component {
     let navLoading = this.state.navLoading;
     let title = capitalize(this.props.resource_type)
     let color = this.props.color
+    let notCarbon = this.checkResourceType();
+    let resource = this.props.resource_type;
+    if(resource === 'carbon'){
+      resource = "electricity"
+    }
+    let type = assignMetric(resource);
     if(loading){
       return(
         <div></div>
       )
-    }else if(!loading){
+    }else if(!loading && notCarbon){
     return (
       <div className="bills-page-container">
         <div className='bills-page-overlay'>
@@ -107,10 +141,24 @@ class ManageBillsPage extends Component {
             </div>
           </div>
           {!navLoading ? <div>
-            <PageSection title="Overview" capRes={this.state.resource} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={this.state.type}/>
-            <PageSection title="Bill Entry" capRes={this.state.resource} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={this.state.type}/>
-            <PageSection title="Past Bills" capRes={this.state.resource} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={this.state.type}/>
+            <PageSection title="Overview" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
+            <PageSection title="Bill Entry" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
+            <PageSection title="Past Bills" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
           </div> : <Loader /> }
+        </div>
+      </div>
+    )
+  }else{
+    return(
+      <div className="bills-page-container">
+        <div className='bills-page-overlay'>
+          <div className="manage-bills-header-container">
+            <div className="manage-bills-overlay">
+              <ResourceTitleDash color={color} title={title} graph={false} resourceType={this.props.resource_type} changePage={this.goToPage} />
+              <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
+            </div>
+          </div>
+        <NoCarbonBillsDiv />
         </div>
       </div>
     )

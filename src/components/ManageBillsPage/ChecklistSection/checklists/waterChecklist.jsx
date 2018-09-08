@@ -23,14 +23,17 @@ class WaterChecklist extends Component{
   }
 
   componentDidMount(){
-    const path = `api/v1/users/${this.state.user_id}/houses/${this.state.house_id}/questions?resource=water`
+    const path = `api/v1/users/${this.props.user}/houses/${this.props.house}/questions?resource=water`
     get(path)
       .then(data => this.syncState(data))
       .catch(error => console.log(error))
   }
 
   componentDidUpdate(){
-    // console.log(this.state)
+  }
+
+  handleChecklist(){
+    alert("Thank you. Your data has been saved")
   }
 
   syncState(data){
@@ -49,22 +52,20 @@ class WaterChecklist extends Component{
         return q
       }
     })
-    data.completion_percentage === null ? percent = 0 : percent = data.completion_percentage;
     this.setState({
       quest1: no_nulls[0],
       quest2: no_nulls[1],
       quest3: no_nulls[2],
       quest4: no_nulls[3],
       quest5: no_nulls[4],
-      percent: percent,
       completed: data.completed,
       loading: false,
-    }, this.updateDisplay(data.completion_percentage, !data.completed))
+    })
   }
 
   updateChecklist(quest, ans){
-    let uId = this.state.user_id
-    let hId = this.state.house_id
+    let uId = this.props.user
+    let hId = this.props.house
     const path = `api/v1/users/${uId}/houses/${hId}/questions?resource=water`
     const data = {question: quest, answer: ans}
     put(path, undefined, data)
@@ -86,6 +87,13 @@ class WaterChecklist extends Component{
           <ChecklistToggle q='quest3' question={questions.quest3.question} updateChecklist={this.updateChecklist} cName='checklist-form'/>
           <ChecklistQuestion q='quest4' question={questions.quest4.question} answers={questions.quest4.answers} updateChecklist={this.updateChecklist} cName='checklist-form' />
           <ChecklistQuestion q='quest5' question={questions.quest5.question} answers={questions.quest5.answers}updateChecklist={this.updateChecklist} cName='checklist-form'/>
+            <div className="checklist-button-div">
+              <button
+                className="checklist-button"
+                onSubmit={(e) => this.handleChecklist(e)}
+                type="submit"
+                >Save Response</button>
+            </div>
         </div>
       )
     }else{

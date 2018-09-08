@@ -86,10 +86,8 @@ class PastBillsPage extends Component{
   constructor(props){
     super(props)
     this.state = {
-      billType: props.resource_type,
       loaded: false,
       foot_url: './img/FOOT_blank.png',
-      num_bills: props.num,
       billArray: {},
     }
     this.loadBills = this.loadBills.bind(this);
@@ -102,8 +100,11 @@ class PastBillsPage extends Component{
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.num !== this.props.num){
+    if(prevProps.num !== this.props.num && this._ismounted == true){
       this.setState({billArray: {}}, this.loadBills())
+    }
+    if(prevProps.resource_type !== this.props.resource_type && this._ismounted == true){
+      this.loadBills()
     }
   }
 
@@ -115,14 +116,14 @@ class PastBillsPage extends Component{
 
   loadBills(){
     let id = this.props.user_id
-    const path = `api/v1/users/${id}/bills/${this.state.billType}`
+    const path = `api/v1/users/${id}/bills/${this.props.resource_type}`
     get(path)
       .then(data => this.sortBills(data))
       .catch(error => error)
   }
 
   sortBills(data){
-    let billArray = this.state.billArray
+    let billArray = {}
     data.forEach((bill) => {
       billArray[bill.year] = billArray[bill.year] || []
       billArray[bill.year].push(bill)
@@ -150,7 +151,7 @@ class PastBillsPage extends Component{
       return Object.keys(this.state.billArray).reverse().map((year, n) => {
         let bills = this.state.billArray[year]
         return (
-          <BillYear key={n} year={year} n={n} bills={bills} billType={this.state.billType} num={this.state.num_bills} metric={this.props.metric}/>
+          <BillYear key={n} year={year} n={n} bills={bills} billType={this.props.resource_type} num={this.props.num} metric={this.props.metric}/>
         )
       });
     }
@@ -161,9 +162,6 @@ class PastBillsPage extends Component{
     return(
       <div className="bills-container">
         <div className='bills-container-2'>
-          <div className="bills-page-header">
-            <h1> Past Bills</h1>
-          </div>
           <div className="bills-page-div">
             {loaded ? this.returnBills() : null }
           </div>

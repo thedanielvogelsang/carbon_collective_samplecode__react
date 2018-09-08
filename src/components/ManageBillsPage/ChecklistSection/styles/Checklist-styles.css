@@ -114,7 +114,7 @@ p.checklist-completion-pct{
   flex-wrap: wrap;
   width: 100%;
   min-width: 300px;
-  margin-left: 15px;
+  margin-left: 25px;
   height: auto;
   min-height: 200px;
   padding: 5px;
@@ -128,12 +128,15 @@ p.checklist-completion-pct{
   max-height: 100px;
   min-height: 80px;
   font-size: 0.8em;
-  padding: 5px;
+  line-height: 1.1em;
+  padding: 5px 5px 5px 0px;
 }
 
 form.checklist-form > div {
   height: 100%;
-  padding: 10px 5px 0px 5px;
+  padding: 10px 5px 0px 0px;
+  font-family: "Libre Franklin", Garamond, sans-serif;
+  font-size: 14px;
 }
 
 form.checklist-form h3{
@@ -153,6 +156,7 @@ form.checklist-form h3{
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  padding-right: 15px !important;
 }
 
 .checklist-question-label{
@@ -167,7 +171,6 @@ form.checklist-form h3{
 
 .checklist-question-label h3{
   line-height: 1.2em;
-  font-size: 1.1em;
   text-align: left;
   width: 50%;
   height: 100%;
@@ -177,7 +180,6 @@ form.checklist-form h3{
   line-height: 1.2em;
   max-width: 160px;
   text-align: left;
-  font-size: 1.1em;
   width: 50%;
 }
 
@@ -186,12 +188,90 @@ form.checklist-form h3{
   margin: 0px;
 }
 
+.manage-bills input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+  font-size: 13px;
+  line-height: 18px;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.manage-bills input::-moz-placeholder { /* Firefox 19+ */
+  font-size: 13px;
+  color: black;
+  line-height: 22px;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.manage-bills input:-ms-input-placeholder { /* IE 10+ */
+  font-size: 13px;
+  color: black;
+  line-height: 22px;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.manage-bills input:-moz-placeholder { /* Firefox 18- */
+  font-size: 13px;
+  color: black;
+  line-height: 22px;
+  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+}
+
+.checklist-question-div select{
+  margin: 0 !important;
+  background-color: white;
+  color: black;
+  padding: 2px 5px;
+  height: 28px;
+  line-height: 18px;
+  max-width: 120px;
+  font-size: 13px;
+}
+
+.checklist-question-div select{
+  font-weight: 700;
+  text-align: center;
+}
+
+.checklist-button-div{
+  display: block;
+  float: left;
+  width: 40%;
+  min-width: 315px;
+  max-height: 100px;
+  min-height: 80px;
+  font-size: 0.8em;
+  line-height: 1.1em;
+  padding: 0px;
+}
+
+.checklist-button{
+  width: 100%;
+  height: 7vh;
+  margin: 0;
+  font-size: 14px;
+  color: #2a2c33;
+  background-color: white;
+  padding: 0;
+  border: none;
+  opacity: 0.8;
+  font-family: "Libre Franklin Semi-Bold", Helvetica, sans-serif;
+}
+
+button.checklist-button:hover{
+  background-color: white;
+  opacity: 1.0
+}
+
 .toggle-btn{
   display: flex;
+  font-family: "Libre Franklin Semi-Bold", Helvetica, sans-serif;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 90px;
+  min-height: 32px;
   margin-right: 20px;
+  font-size: 1.1em;
 }
 
 .close-review{

@@ -13,7 +13,8 @@ class Checklist extends Component{
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.resource !== this.props.resource){
+    // console.log(nextProps.resource, this.props.resource)
+    if(nextProps.resource !== this.props.resource  && this._ismounted == true){
       return true
     }else{
       return false

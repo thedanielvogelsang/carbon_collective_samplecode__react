@@ -17,6 +17,11 @@ class ChecklistToggle extends Component{
     this.handleToggle = this.handleToggle.bind(this);
   }
 
+  componentDidMount(){
+
+    console.log(this.state)
+  }
+
   componentDidUpdate(){
   }
 
@@ -65,8 +70,8 @@ class ChecklistToggle extends Component{
               activeLabel=""
               activeLabelStyle={{width: '10px'}}
               inactiveLabelStyle={{width: '10px'}}
-              trackStyle={{height: '10px', width: '40px', margin:'1px 5px'}}
-              thumbStyle={{height: '10px', width: '10px'}}
+              trackStyle={{height: '16px', width: '40px', margin:'-3px 5px'}}
+              thumbStyle={{height: '16px', width: '16px'}}
               thumbAnimateRange={[2, 38]}
               value={ this.state.value || false }
               onToggle={(value) => this.handleToggle(value)} />

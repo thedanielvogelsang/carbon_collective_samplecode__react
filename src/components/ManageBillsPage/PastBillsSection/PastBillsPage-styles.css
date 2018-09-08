@@ -16,7 +16,6 @@
 }
 
 .bills-container-2{
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -247,7 +246,6 @@ span.bill-time{
 }
 
 .white-space{
-  background-color: white;
   height: 25px;
   padding-top: 1px;
   width: 100%;

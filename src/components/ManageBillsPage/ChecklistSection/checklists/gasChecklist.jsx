@@ -25,7 +25,7 @@ class GasChecklist extends Component{
   }
 
   componentDidMount(){
-    const path = `api/v1/users/${this.state.user_id}/houses/${this.state.house_id}/questions?resource=gas`
+    const path = `api/v1/users/${this.props.user}/houses/${this.props.house}/questions?resource=gas`
     get(path)
       .then(data => this.syncState(data))
       .catch(error => console.log(error))
@@ -82,12 +82,18 @@ class GasChecklist extends Component{
     if(!loading){
       return(
         <div className="checklist-dropdown">
-              <ChecklistQuestion q='quest1' a={this.state.quest1} question={questions.quest1.question} answers={questions.quest1.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
-              <ChecklistToggle q='quest2' question={questions.quest2.question} updateChecklist={this.updateChecklist} cName="checklist-form"/>
-              <ChecklistQuestion q='quest3' a={this.state.quest3} question={questions.quest3.question} answers={questions.quest3.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
-              <ChecklistToggle q='quest4' question={questions.quest4.question} updateChecklist={this.updateChecklist} cName="checklist-form"/>
-              <ChecklistQuestion q='quest5' a={this.state.quest5} question={questions.quest5.question} answers={questions.quest5.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
-              <ChecklistQuestion q='quest6' a={this.state.quest6} question={questions.quest6.question} answers={questions.quest6.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+          <ChecklistQuestion q='quest1' a={this.state.quest1} question={questions.quest1.question} answers={questions.quest1.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+          <ChecklistToggle q='quest2' question={questions.quest2.question} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+          <ChecklistQuestion q='quest3' a={this.state.quest3} question={questions.quest3.question} answers={questions.quest3.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+          <ChecklistToggle q='quest4' question={questions.quest4.question} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+          <ChecklistQuestion q='quest5' a={this.state.quest5} question={questions.quest5.question} answers={questions.quest5.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+          <ChecklistQuestion q='quest6' a={this.state.quest6} question={questions.quest6.question} answers={questions.quest6.answers} updateChecklist={this.updateChecklist} cName="checklist-form"/>
+            <div className="checklist-button-div">
+              <button
+                className="checklist-button"
+                type="submit"
+                >Save Response</button>
+            </div>
         </div>
       )
     }else{

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Checklist from './Checklist';
+import Checklist from './ChecklistSection';
 import ManageBillsSection from './ManageBillsSection';
-import PastBills from './PastBillsPage';
+import PastBills from './PastBillsSection';
 
 class PageSection extends Component{
   constructor(props){
@@ -20,6 +20,9 @@ class PageSection extends Component{
   componentDidMount(){
   }
 
+  componentDidUpdate(){
+  }
+  
   changeArrow(e){
     let a, name, s_name;
     let open = this.state.open

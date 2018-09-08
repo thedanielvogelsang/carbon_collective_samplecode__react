@@ -37,9 +37,10 @@ class ChecklistQuestion extends Component{
       <select
         className="checklist-select-dropdown"
         onChange={this.handleChange}
+        required
         >
         {this.props.r ? null :
-        <option value="0">Select:</option>}
+        <option value="">Select:</option>}
         {this.mapOptions()}
       </select>
     )

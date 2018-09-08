@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
 
+.carbon-no-bills{
+  margin-top: 15vh;
+  font-size: 20px;
+  font-style: italic;
+}
 .bills-page-container{
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 100vw;
   align-items: center;
   justify-content: flex-start;
   height: 100%;
+  min-height: 1500px;
 }
 
 .bills-page-overlay{
@@ -31,85 +36,17 @@
   padding-top: 2px;
 }
 
-.manage-bills-container{
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  max-width: 350px;
-  min-height: 300px;
-  padding: 0;
-  border-top: 2px solid white;
-  justify-content: center;
-  align-items: center;
-}
-
 .manage-bills {
-  flex-direction: column;
-  flex: 1;
-  align-items: center;
-  padding: 0px !important;
   width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 25px;
+  height: auto;
+  min-height: 200px;
+  padding: 5px !important;
+  box-sizing: border-box;
+  max-width: 1000px;
 }
-
-.manage-bills input{
-  background-color: white;
-  color: black;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-  padding: 2px 5px;
-  height: 28px;
-  line-height: 18px;
-  max-width: 170px;
-  font-size: 13px;
-}
-
-.manage-bills input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: black;
-  font-size: 13px;
-  line-height: 18px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-}
-
-.manage-bills input::-moz-placeholder { /* Firefox 19+ */
-  font-size: 13px;
-  color: black;
-  line-height: 22px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-}
-
-.manage-bills input:-ms-input-placeholder { /* IE 10+ */
-  font-size: 13px;
-  color: black;
-  line-height: 22px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-}
-
-.manage-bills input:-moz-placeholder { /* Firefox 18- */
-  font-size: 13px;
-  color: black;
-  line-height: 22px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-}
-
-
-input#calendar-1{
-  font-size: 14px;
-  color: black;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-  text-align: center;
-}
-input#calendar-2{
-  font-size: 14px;
-  color: black;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-  text-align: center;
-}
-input#no_residents{
-  width: 35%;
-  text-align: center;
-  color: black;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
-}
-
 .bills-form-line1{
   display: flex;
   flex-direction: row;
@@ -141,36 +78,61 @@ input#no_residents{
   padding-top: 10px;
 }
 
-form.manage-bills label{
-  padding: 5px 0px 5px 2px;
+form.manage-bills > div{
+  max-width: 320px;
   height: 7vh;
-  width: 45%;
-  margin: 2px 2px;
-  text-shadow: 1px 1px black;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  float: left;
+  width: 40%;
+  min-width: 315px;
+  /* max-height: 100px; */
+  /* min-height: 80px; */
+  font-size: 0.8em;
+  padding: 5px 5px 5px 0px;
+  box-sizing: border-box;
+  margin-right: 60px;
 }
 
-form.manage-bills label.start-date-label{
+form.manage-bills input{
+  font-family: "Libre Franklin", Garamond, sans-serif;
+  font-size: 14px;
+  background-color: white;
+  color: #2a2c33;
+  opacity: 0.8;
+  max-width: 140px;
+}
+form.manage-bills input:focus{
+  background-color: white;
+  color: #2a2c33;
+  opacity: 1.0;
+}
+form.manage-bills input:hover{
+  background-color: white;
+  color: #2a2c33;
+  opacity: 100%;
 }
 
-.labels{
-  width: 100%;
+form.manage-bills h5{
+  padding-bottom: 5px;
+  line-height: 1.8em;
+  font-family: "Libre Franklin", Garamond, sans-serif;
+  font-size: 14px;
+}
+
+.no-res-div{
   display: flex;
   flex-direction: column;
 }
 
-.labels h5{
-  padding-bottom: 5px;
+.no-res-div h5, p{
+  width: 100%;
+  text-align: left;
 }
 
 p.no_people_ptag{
   font-size: 0.8em;
-  padding: 6px 0px;
-}
-p.no-bills-ptag{
-  text-align :center;
-}
-
-label.bill-cost {
 }
 
 h3.bills-title{
@@ -197,20 +159,24 @@ h6.bill-type-header{
 
 h4.bills-errors{
   margin-top: 40px;
-
-}
-
-.bills-button-container {
-  padding-top: 10px;
 }
 
 .bills-button{
-  width: 120px;
-  height: 60px;
+  width: 40%;
+  min-width: 315px;
+  height: 7vh;
   margin: 0;
   font-size: 14px;
-  text-shadow: none;
-  font-weight: 300;
+  color: #2a2c33;
+  background-color: #f5f5f5;
+  border: none;
+  opacity: 0.5;
+  font-family: "Libre Franklin Semi-Bold", Garamond, sans-serif;
+}
+
+button.bills-button:hover{
+  background-color: white;
+  opacity: 1.0
 }
 
 .manage-bills-header-container {
@@ -314,6 +280,8 @@ h4.bills-errors{
   -webkit-animation-duration: 0.5s;
   -webkit-animation-timing-function: forwards;
   animation: disappearDiv 0.5s ease-in forwards;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .section-content{
@@ -355,13 +323,44 @@ h4.bills-errors{
     margin-left: 5vw;
     padding-left: 0;
   }
-  .data-title-container{
+  .manage-bills-header-container .data-title-container{
     margin-left: 2vw !important;
+  }
+}
+
+@media (max-width: 667px){
+  .manage-bills-overlay{
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .manage-bills-header-container{
+    padding-top: 0;
   }
 }
 
 @media (max-width: 650px){
   .checklist-form{
     max-width: 200px;
+  }
+}
+
+@media (max-width: 468px){
+  .manage-section-master-div{
+    margin-left: 0;
+  }
+  .section-content.appear{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .section-title-row{
+    padding-left: 30px;
+  }
+  .checklist-dropdown{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
