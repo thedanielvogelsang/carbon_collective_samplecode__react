@@ -102,6 +102,8 @@ form.manage-bills input{
   color: #2a2c33;
   opacity: 0.8;
   max-width: 140px;
+  border: 1px solid #c0c2c2;
+  border-radius: 4px;
 }
 form.manage-bills input:focus{
   background-color: white;
@@ -172,6 +174,8 @@ h4.bills-errors{
   border: none;
   opacity: 0.5;
   font-family: "Libre Franklin Semi-Bold", Garamond, sans-serif;
+  border: 1px solid #c0c2c2;
+  border-radius: 4px;
 }
 
 button.bills-button:hover{

@@ -277,7 +277,7 @@ form.checklist-form h3{
 
 button.checklist-button:hover{
   background-color: white;
-  opacity: 1.0
+  opacity: 1.0;
 }
 
 .toggle-btn{
