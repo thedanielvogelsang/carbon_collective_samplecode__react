@@ -445,6 +445,9 @@ svg.fa-caret-down.fa-sm{
     min-width: 100%;
     max-width: 100%;
   }
+  .section-title-row{
+    padding-left: 15px;
+  }
 }
 @media (max-width: 350px){
   form.manage-bills > div{

@@ -76,8 +76,13 @@ form.landing-navbar-login-form{
   padding: 0px;
 }
 
+
 img.log-svg{
   padding-bottom: 5px;
+}
+
+img.dash-logo.landing{
+  padding-top: 3px;
 }
 
 input.login-bar{
@@ -130,11 +135,15 @@ li.header-button{
   align-items: baseline;
   vertical-align: top;
   justify-content: center;
-
 }
 
 li.landing-nav-link{
   margin-right: 40px;
+  line-height: 2.5em;
+}
+
+li.landing-nav-link.hamburger{
+  padding-top: 5px;
 }
 
 li.landing-nav-link a:hover{

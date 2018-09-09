@@ -36,7 +36,7 @@
   flex-direction: column;
   color: #2a2c33;
   margin-top: 0px;
-  max-width: 380px;
+  max-width: 450px;
   min-width: 330px;
   max-height: 100%;
   overflow-x: hidden;
@@ -61,7 +61,7 @@
   /* background-color: white; */
   max-height: 44px;
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
 }
 
 .regional-header h5{
@@ -99,8 +99,9 @@ button.home-icon-cont{
   padding: 0;
   margin: 0;
   width: 100%;
-  max-width: 360px;
+  max-width: 410px;
   opacity: 0.7;
+  overflow-x: visible;
 }
 
 .arrow-div{
@@ -278,6 +279,7 @@ h6.data-value.secondary{
   width: 100%;
   padding: 0 0px 10px 10px;
   color: #2a2c33;
+  box-sizing: border-box;
 }
 
 .community-comps-labels{
