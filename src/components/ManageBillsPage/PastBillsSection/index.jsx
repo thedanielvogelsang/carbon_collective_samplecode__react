@@ -6,26 +6,29 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import './PastBillsPage-styles.css';
 
+function rowColor(num){
+  return num % 2 === 0 ? "#f5f5f5" : "#FFFFFF"
+}
 const Bill = function(props){
-  // let color = localStorage.getItem("accent_color")
+  let color = rowColor(props.n)
     return(
-      <div className="bill-container">
-            <div className="past-bill-stat">
+      <div className="bill-container" style={{backgroundColor: color}}>
+            <div className="past-bill-stat who-div">
               <h3 className="values"><span className="bill-time italic" onClick={props.handleBillChange}>{props.bill.who}</span></h3>
             </div>
-            <div className="past-bill-stat">
+            <div className="past-bill-stat who-div">
               <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.start_date}</span></h3>
             </div>
-            <div className="past-bill-stat">
+            <div className="past-bill-stat who-div">
               <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.end_date}</span></h3>
             </div>
-            <div className="past-bill-stat">
+            <div className="past-bill-stat who-div">
               <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.total_used}</span></h3>
             </div>
             <div className="past-bill-stat">
               <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.no_residents}</span></h3>
             </div>
-            <div className="past-bill-stat usage">
+            <div className="past-bill-stat usage wide-cell">
               <h3 className="values"><span className="bill-time" onClick={props.handleBillChange}>{props.bill.average_daily}</span></h3>
             </div>
             <div className="past-bill-stat cost">
@@ -53,26 +56,26 @@ const BillYear = function(props){
         <h4>{props.year}</h4>
       </div>
       <div className="bills-titles">
-        <div className="past-bill-title">
-          <h3 className='xtra' style={{color: color, textShadow: "1px 1px black"}}>who :  </h3>
+        <div className="past-bill-title" >
+          <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Who:  </h3>
         </div>
         <div className="past-bill-title time">
-        <h3 className='xtra' style={{color: color, textShadow: "1px 1px black"}}>start :  </h3>
+        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Start Date:  </h3>
         </div>
         <div className="past-bill-title time">
-        <h3 className='xtra end' style={{color: color, textShadow: "1px 1px black"}}>end :  </h3>
+        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>End Date:  </h3>
         </div>
         <div className="past-bill-title usage">
-        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>total use ({props.metric}):  </h3>
+        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Use ({props.metric}):  </h3>
         </div>
         <div className="past-bill-title no-residents">
-        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>no. residents :  </h3>
+        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Residents :  </h3>
         </div>
-        <div className="past-bill-title daily-avg">
-        <h3 className='xtra wide avg' style={{color: color, textShadow: "1px 1px black"}}>daily average use per person ({props.metric}):  </h3>
+        <div className="past-bill-title daily-avg wide-cell">
+        <h3 className='xtra wide avg' style={{color: color, textShadow: "1px 1px black"}}>Daily Average use per Person ({props.metric}):  </h3>
         </div>
         <div className="past-bill-title">
-        <h3 className='xtra' style={{color: color, textShadow: "1px 1px black"}}>cost :  </h3>
+        <h3 className='xtra cost' style={{color: color, textShadow: "1px 1px black"}}>Cost :  </h3>
         </div>
       </div>
       <div className="billyear-bills-container">

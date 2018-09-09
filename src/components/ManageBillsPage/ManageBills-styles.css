@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   max-width: 400px;
   margin-top: 20px;
   border-top: 3px solid #2A2C33;
@@ -212,7 +212,7 @@ button.bills-button:hover{
 }
 
 .manage-section-master-div{
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-left: 14%;
@@ -333,14 +333,20 @@ svg.fa-caret-down.fa-sm{
 }
 
 
-@media (max-width: 750px){
-  .manage-section-master-div{
-    margin-left: 5vw;
-    padding-left: 0;
+@media (max-width: 780px){
+  .manage-bills-overlay{
+    justify-content: center;
   }
   .manage-bills-header-container .data-title-container{
     margin-left: 2vw !important;
   }
+}
+@media (max-width: 750px){
+  .manage-section-master-div{
+    margin-left: 5vw;
+    padding-left: 60px;
+  }
+
 }
 
 @media (max-width: 667px){
@@ -350,29 +356,44 @@ svg.fa-caret-down.fa-sm{
     max-width: 100%;
     min-width: 0;
   }
-  .manage-bills-overlay{
+  /* .manage-bills-overlay{
     width: 100%;
     min-width: 0;
     justify-content: center;
     margin: 0;
     padding: 0;
-  }
+  } */
   .manage-bills-header-container{
     padding-top: 0;
   }
   .data-title-container h6{
     margin: 0;
   }
-  .manage-section-master-div{
+  /* .manage-section-master-div{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-  }
+  } */
   .section-title-row{
     justify-content: flex-start;
 
+  }
+}
+@media(max-width: 667px){
+  .manage-bills-overlay .data-title-container{
+    max-width: 100%;
+    margin-left: 0 !important;
+  }
+  .manage-bills-overlay{
+    padding-left: 0;
+    width: 100%;
+  }
+  .bills-container{
+    max-width: 90% !important;
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 
@@ -388,6 +409,8 @@ svg.fa-caret-down.fa-sm{
 @media (max-width: 468px){
   .manage-section-master-div{
     margin-left: 0;
+    padding-left: 5px;
+    box-sizing: border-box;
   }
   .section-content.appear{
     flex-direction: column;
@@ -397,6 +420,7 @@ svg.fa-caret-down.fa-sm{
   .section-title-row{
     padding-left: 30px;
     margin: 0;
+    box-sizing: border-box;
   }
   .checklist-dropdown{
     flex-direction: column;

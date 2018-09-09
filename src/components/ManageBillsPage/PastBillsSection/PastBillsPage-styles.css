@@ -2,6 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
 @import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
 
+.billyear-container{
+  padding-top: 10px;
+  overflow-x: scroll;
+  padding-bottom: 30px;
+  min-height: 180px;
+  font-family: "Libre Franklin", Helvetica, sans-serif;
+}
 
 .bills-container{
   display: flex;
@@ -9,9 +16,9 @@
   align-content: center;
   justify-content: flex-start;
   padding: 0px 5px 5px 5px;
-  width: 100vw;
+  width: 100%;
   min-height: 500px;
-  max-width: 350px;
+  max-width: 80%;
   overflow-x: visible;
 }
 
@@ -21,7 +28,6 @@
   align-content: space-between;
   justify-content: flex-start;
   width: 100%;
-  max-width: 100%;
   overflow-x: visible;
   padding: 2px 0;
   margin-bottom: 80px;
@@ -30,12 +36,16 @@
 
 .bills-page-div{
   width: 97%;
-  max-width: 350px;
   align-self: center;
   max-height: 375px;
   overflow-y: scroll;
   padding: 0px;
   border-style: inset;
+  border: 3px solid #2a2c33;
+  border-radius: 6px;
+  background-color: white;
+  margin-left: 15px;
+
 }
 
 .bill-container{
@@ -54,10 +64,13 @@
   position: -webkit-sticky;
   font-size: 1.1em;
   max-height: 30px;
-  padding: 5px 0px 5px 0px;
+  padding: 5px 0px 15px 0px;
   display: flex;
   flex-direction: row;
-  margin-bottom: 8px;
+  width: 100%;
+  min-width: 700px;
+  max-width: 73vw;
+  background-color: #89868D;
 }
 
 .bills-page-header{
@@ -75,20 +88,10 @@
   min-height: 175px;
 }
 
-.billyear-container{
-  border-top: 1px solid #1fa245;
-  padding-top: 20px;
-  overflow-x: scroll;
-  padding-bottom: 30px;
-  min-height: 180px;
-}
-
-.billyear-bills-container{
-}
-
 .billyear{
   width: 80px;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  padding-bottom: 8px;
 }
 
 .no-bills-title{
@@ -118,9 +121,9 @@
   max-width: 100px;
 }
 
-.past-bill-stat.usage{
-  margin-left: 20px;
-}
+/* .past-bill-stat.usage{
+  margin-left: 10px;
+} */
 
 .past-bill-stat.cost{
   margin-left: -8px;
@@ -152,6 +155,14 @@
   font-size: 0.9em;
 }
 
+.bills-page-div h3{
+  width: auto;
+  min-width: 100px;
+  max-width: 180px;
+  margin: 0;
+  margin-top: 0 !important;
+}
+
 h3.sml{
   color: green;
   padding: 2px;
@@ -161,15 +172,19 @@ h3.sml{
   height: 25px;
 }
 
-
 h3.sml.used{
   font-size: 1.1em;
   align-items: center;
   line-height: 20px;
 }
-h3.sml.cost{
+/* h3.sml.cost{
   font-size: 1.2em;
-  line-height: 40px;
+  /* line-height: 40px; */
+/* } */
+
+h3.cost{
+  text-align: left;
+  margin-left: 5px;
 }
 
 /* h3.sml.carbon{
@@ -199,28 +214,20 @@ h3.sml.cost{
   margin-left: 10px;
 } */
 
-.past-bill-title.usage{
-  margin-left: -15px;
-  margin-right: 15px;
-}
 
 h3.xtra{
-  margin: 2px 0;
   font-size: 14px;
-  padding: 3px;
   height: 25px;
   padding-right: 10px;
   vertical-align: baseline;
   align-items: baseline;
-}
-
-h3.xtra.wide{
-  width: 90px;
+  color: white;
+  font-family: "Libre Franklin Semi Bold", Helvetica, sans-serif;
+  text-shadow: none !important;
 }
 
 h3.avg{
-  margin-top: -23px !important;
-  padding: 0px 5px;
+  margin-top: -3px !important;
 }
 
 span.bill-time.italic{
@@ -260,6 +267,78 @@ span.bill-time{
 }
 .bill-no-text{
   color: rgb(245,245, 245);
-  text-shadow: 0 0 2px #4c4e5b;
   margin: 2px 0 0 4px;
 }
+
+.wide-cell{
+  min-width: 150px;
+}
+
+@media (max-width: 1100px){
+  .bills-page-div h3{
+    font-size: 0.8em;
+    width: auto;
+    min-width: 100px;
+    max-width: 120px;
+    margin: 0;
+    margin-top: 0 !important;
+  }
+  .wide-cell{
+    min-width: 120px;
+  }
+  h3.avg{
+    margin-top: -10px !important;
+  }
+}
+
+@media (max-width: 1000px){
+  .bills-page-div h3{
+    font-size: 0.7em;
+    width: auto;
+    min-width: 0px;
+    max-width: 100px;
+    margin: 0;
+    margin-top: 0 !important;
+  }
+  .wide-cell{
+    min-width: 120px;
+  }
+  h3.avg{
+    margin-top: -6px !important;
+  }
+}
+
+@media (max-width: 447px){
+  .bills-container{
+    max-width: 95% !important;
+  }
+}
+
+
+@media (max-width: 400px){
+
+  .bills-titles{
+    font-size: 1.1em;
+    max-height: 30px;
+    padding: 5px 0px 5px 0px;
+    width: 100%;
+    min-width: 650px;
+  }
+}
+/* @media (min-width: 787px){
+  div.past-bill-stat:not(.who-div){
+    min-width: 90px;
+  }
+}
+
+@media (min-width: 830px){
+  div.past-bill-stat:not(.who-div){
+    min-width: 100px;
+  }
+}
+
+@media (min-width: 856px){
+  div.past-bill-stat:not(.who-div){
+    margin-left: 10px;
+  }
+} */

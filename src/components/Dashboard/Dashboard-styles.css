@@ -483,7 +483,6 @@ span.material-icons.carbon-logo{
   }
   .dashboard-overlay{
     width: 100%;
-    justify-content: flex-start;
   }
   .bug-report-icon-fixed-div{
     max-width: 600px;
@@ -493,7 +492,6 @@ span.material-icons.carbon-logo{
 @media (max-width: 667px){
   .dashboard-overlay{
     width: 100%;
-    justify-content: flex-start;
     align-items: center;
     padding: 0;
   }
