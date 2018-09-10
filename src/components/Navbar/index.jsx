@@ -330,7 +330,7 @@ class Navbar extends Component {
                 <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
               </li>
               <li className="header-button landing-nav-link">
-                <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
+                <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '20px', height: '28px'}} onClick={(e) => this.goToDash(e)}/>
               </li>
               <li className="header-button landing-nav-link hamburger">
                 <FontAwesomeIcon icon={faEllipsisH} className="hamburger-menu-landing" onClick={this.goToSettings}/>
