@@ -17,7 +17,8 @@ form.inviteSomeone-form{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  max-width: 350px;
+  align-items: center;
+  width: 100%;
   min-width: 350px;
   padding: 0px !important;
   margin-top: 30px;
@@ -25,6 +26,10 @@ form.inviteSomeone-form{
 
 .inviteSomeone-form ul{
   margin-bottom: 10px;
+  width: auto;
+  min-width: 450px;
+  display: flex !important;
+  flex-direction :column;
 }
 
 .add-email{
@@ -36,11 +41,38 @@ form.inviteSomeone-form{
   z-index: 1;
 }
 
-li.email-input-row{
+div.invite-row-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+div.invite-row-div.invited{
+  padding-left: 10vw;
+}
+
+li.email-input-email{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 310px;
+}
+
+li.email-input-email.invited{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 310px;
+}
+
+li.email-input-accepted{
   display: flex;
   flex-direction: row;
   align-items: center;
   padding-left: 6px;
+  width: 184px;
 }
 
 label.invite-label{
@@ -76,6 +108,7 @@ h4.leave-a-message{
   justify-content: center;
   align-items: center;
   padding-bottom: 10vh;
+  padding-left:
 }
 
 .invite-sub-btn{
@@ -100,6 +133,11 @@ h4.leave-a-message{
   padding: 25px 0px 5px 0px;
   border-bottom: 1px dotted white;
   color: #2a2c33;
+}
+
+h5.accepted-text{
+  font-size: 14px;
+  font-style: italic;
 }
 
 label.invite-label textarea{
@@ -129,9 +167,57 @@ label.invite-label textarea:-moz-placeholder {
   padding-top: -5px;
 }
 
+.invite-cancel-btn{
+  border-radius: 20px;
+  font-size: 20px;
+  height: 24px;
+  width: 24px;
+  font-size: 14px;
+  margin-right: 2vw;
+  padding: 0;
+  padding-bottom: 1px !important;
+  padding-top: 2px !important;
+}
+
 @media (max-width: 700px){
   form.inviteSomeone-form{
     max-width: 320px;
     min-width: 320px;
+  }
+}
+
+@media (max-width: 450px){
+  h5.accepted-text{
+    font-size: 10px;
+    font-style: italic;
+  }
+  .inviteSomeone-form ul{
+    min-width: 0;
+  }
+  div.invite-row-div.invited{
+    padding-left: 2vw;
+  }
+}
+
+@media (max-width: 350px){
+  h5.email-text{
+    font-size: 16px;
+  }
+  h5.accepted-text{
+    font-size: 10px;
+    font-style: italic;
+  }
+  .inviteSomeone-form ul{
+    min-width: 0;
+  }
+  div.invite-row-div.invited{
+    padding-left: 5px;
+  }
+  li.email-input-email.invited{
+    width: 100%;
+    max-width: 64%;
+  }
+  li.email-input-accepted{
+    padding-left: 0;
   }
 }

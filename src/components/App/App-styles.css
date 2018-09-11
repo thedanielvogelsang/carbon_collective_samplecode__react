@@ -127,6 +127,10 @@ input:hover{
   opacity: 1.0;
 }
 
+input:focus{
+  opacity: 1.0;
+}
+
 input::-webkit-input-placeholder {
   font-size: 1.2em;
   padding: 3px 0px 3px 5px;

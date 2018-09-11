@@ -38,9 +38,7 @@ class Timer extends React.Component {
     let elapsed = getElapsedTime(baseTime);
     elapsed = elapsed.toString().toHHMMSS()
     return (
-      <div>
-        <div>Time left: {elapsed}</div>
-      </div>
+        <h5 className="accepted-text">Time left: {elapsed}</h5>
     );
   }
 }

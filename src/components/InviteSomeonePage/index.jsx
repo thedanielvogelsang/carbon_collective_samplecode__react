@@ -11,7 +11,7 @@ const EmailInputs = function(props){
     props.num === 0 ? placeholder = "Enter a friend's email address" : placeholder = "Email address"
     return(
       <div className="invite-row-div">
-        <li className="email-input-row" key={props.myKey}>
+        <li className="email-input-email" key={props.myKey}>
           <input
             type="text"
             name={props.num}
@@ -24,19 +24,28 @@ const EmailInputs = function(props){
       )
   }
 const EmailInvite = function(props, n){
-    console.log(props)
-    let placeholder = props.email;
-    let color, text
+    let email = props.email;
+    let color, text, textKey;
     props.emailActivated ? color = "green" : color = "red"
     props.emailActivated ? text = ("Accepted: " + props.invited) : text = (<Timer seconds={props.seconds} id={props.id}/>)
+    textKey = props.myKey + parseInt(n)
+    console.log(textKey)
     return(
-      <div className="invite-row-div" style={{color: color}}>
-        <li className="email-input-row" key={props.myKey} >
-          <h5> {placeholder} </h5>
+      <div className="invite-row-div invited" style={{color: color}}>
+        <li className="email-input-email invited" key={props.myKey} >
+          <div className="invite-cancel-div">
+            <button
+              className="invite-cancel-btn"
+              name={email}
+              onClick={(e) => props.deleteUserInvite(e, props.id)}
+              >X
+            </button>
+          </div>
+          <h5 className="email-text"> {email} </h5>
         </li>
-        <div>
-            <h5>{text}</h5>
-        </div>
+        <li className="email-input-accepted">
+            <h5 className="accepted-text">{text}</h5>
+        </li>
       </div>
       )
   }
@@ -50,7 +59,6 @@ class InviteSomeonePage extends Component{
       count: 1,
       message: "",
       messageDisplay: 'inline-block',
-      emailDisplay: 'block',
       plusOneBtn: {display: 'block'},
       loading: true,
     }
@@ -63,6 +71,8 @@ class InviteSomeonePage extends Component{
     this.renderEmails = this.renderEmails.bind(this);
     this.goBackToDash = this.goBackToDash.bind(this);
     this.setInvitesToState = this.setInvitesToState.bind(this);
+    this.deleteUserInvite = this.deleteUserInvite.bind(this);
+    this.confirmSuccess = this.confirmSuccess.bind(this);
   }
 
   componentDidMount(){
@@ -73,7 +83,7 @@ class InviteSomeonePage extends Component{
   }
 
   componentDidUpdate(prevState, prevProps){
-
+    console.log(this.state)
   }
 
   loadInvites(id){
@@ -113,8 +123,7 @@ class InviteSomeonePage extends Component{
         count: 1,
         message: "",
         messageDisplay: 'inline-block',
-        emailDisplay: 'block',
-        plusOneBtn: {display: 'block'}}, alert(`${e} Sent. Tell your friends to check their inboxes!`))
+        plusOneBtn: {display: 'block'}}, this.confirmSuccess(e))
     }else{
       let emails = message.message
       alert(`Some of your invites could not be sent. The following people are already Carbon Collective members: ${emails}`)
@@ -123,8 +132,28 @@ class InviteSomeonePage extends Component{
       count: 1,
       message: null,
       messageDisplay: 'inline-block',
-      emailDisplay: 'block',
       plusOneBtn: {display: 'block'},})
+    }
+  }
+
+  confirmSuccess(e){
+    if(confirm(`${e} Sent. Tell your friends to check their inboxes!`)){
+      this.setState({
+        loading: true
+      }, this.loadInvites(this.props.id))
+    }
+  }
+
+  deleteUserInvite(e, invite_id){
+    e.preventDefault();
+    let name = e.target.name;
+    if(confirm(`Are you sure you want to remove ${name} from your list of invites? (Doing so will allow you to invite someone else, but can't be undone...)`)){
+      let id = this.props.id
+      let path = `${id}/cancel-invite/${invite_id}`
+      this.setState({emailInputs: [], loading: true})
+      post(path)
+        .then(data => this.loadInvites(id))
+        .catch(error => console.log(error))
     }
   }
 
@@ -168,7 +197,7 @@ class InviteSomeonePage extends Component{
       let em;
       if(user){
         let key = user[0] + user[1]
-         em = (<EmailInvite key={key} myKey={key} num={i} id={user[0]} email={user[1]} seconds={user[2]} invited={user[3]} emailActivated={user[4]} handleChange={change}/>)
+         em = (<EmailInvite key={key} myKey={key} num={i} id={user[0]} email={user[1]} seconds={user[2]} invited={user[3]} emailActivated={user[4]} deleteUserInvite={this.deleteUserInvite}/>)
       }else{
          em = (<EmailInputs key={i} myKey={i} num={i} handleChange={change}/>)
       }
@@ -224,13 +253,12 @@ class InviteSomeonePage extends Component{
           onSubmit={this.handleForm}
           className="inviteSomeone-form"
           >
-          <ul ref="invite-list" style={{display: this.state.emailDisplay}}>
+          <ul ref="invite-list">
             {this.state.emailInputs}
           </ul>
           <h4 className="leave-a-message">Leave a personal message:</h4>
           <label className="invite-label" style={{display: this.state.messageDisplay}}>
             <textarea
-              required={true}
               className="invitation-textBox"
               onChange={this.handleValue}
               value={message}
@@ -247,7 +275,7 @@ class InviteSomeonePage extends Component{
             type="submit"
             className="invite-invite-button"
             name="invite-form-btn"
-            onClick={this.handleForm}
+            onClick={(e) => this.handleForm(e)}
             >Invite</button>
           </div>
         </form> }
