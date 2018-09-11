@@ -171,7 +171,7 @@ class Navbar extends Component {
     const stateData = { ...this.state };
     const loginData = {user: stateData}
     this.props.loginUser(loginData)
-    setTimeout(this.logLogin, 1000)
+    setTimeout(this.logLogin, 2000)
   }
 
   resetWithErrors(error){
@@ -186,12 +186,10 @@ class Navbar extends Component {
   logLogin(){
     if(this.props.id){
       let path = `${this.props.id }/user-logs-in`
-      // if successful, add to redux
       post(path)
         .then(ans => this.goToPage('/dashboard'))
         .catch(error => console.log(error))
     }else{
-      console.log(this.props.error)
       alert(this.props.error.errors)
     }
     this.clearAll()
@@ -469,7 +467,7 @@ class Navbar extends Component {
 const mapStateToProps = (state) => ({
     id: state.userInfo.user_id,
     data: state.userInfo.data,
-    error: state.userInfo.error
+    error: state.userInfo.error,
 });
 
 // const mapDispatchToProps = (dispatch) => ({
