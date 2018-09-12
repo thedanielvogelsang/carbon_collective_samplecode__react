@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import Button from 'muicss/lib/react/button';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {post} from '../../api_client';
+import Timer from './Timer';
+import {get, post} from '../../api_client';
 import './InviteSomeone-styles.css';
-
 
 const EmailInputs = function(props){
     let placeholder;
     props.num === 0 ? placeholder = "Enter a friend's email address" : placeholder = "Email address"
     return(
-        <li className="email-input-row" key={props.num + 1}>
+      <div className="invite-row-div">
+        <li className="email-input-email" key={props.myKey}>
           <input
             type="text"
             name={props.num}
@@ -19,6 +20,33 @@ const EmailInputs = function(props){
             onChange={props.handleChange}
             />
         </li>
+      </div>
+      )
+  }
+const EmailInvite = function(props, n){
+    let email = props.email;
+    let color, text, textKey;
+    props.emailActivated ? color = "green" : color = "red"
+    props.emailActivated ? text = ("Accepted: " + props.invited) : text = (<Timer seconds={props.seconds} id={props.id}/>)
+    textKey = props.myKey + parseInt(n)
+    console.log(textKey)
+    return(
+      <div className="invite-row-div invited" style={{color: color}}>
+        <li className="email-input-email invited" key={props.myKey} >
+          <div className="invite-cancel-div">
+            <button
+              className="invite-cancel-btn"
+              name={email}
+              onClick={(e) => props.deleteUserInvite(e, props.id)}
+              >X
+            </button>
+          </div>
+          <h5 className="email-text"> {email} </h5>
+        </li>
+        <li className="email-input-accepted">
+            <h5 className="accepted-text">{text}</h5>
+        </li>
+      </div>
       )
   }
 
@@ -29,10 +57,10 @@ class InviteSomeonePage extends Component{
       emails: {},
       emailInputs: [],
       count: 1,
-      message: null,
+      message: "",
       messageDisplay: 'inline-block',
-      emailDisplay: 'block',
       plusOneBtn: {display: 'block'},
+      loading: true,
     }
     this.handleValue = this.handleValue.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -42,14 +70,35 @@ class InviteSomeonePage extends Component{
     this.removeMessage = this.removeMessage.bind(this);
     this.renderEmails = this.renderEmails.bind(this);
     this.goBackToDash = this.goBackToDash.bind(this);
+    this.setInvitesToState = this.setInvitesToState.bind(this);
+    this.deleteUserInvite = this.deleteUserInvite.bind(this);
+    this.confirmSuccess = this.confirmSuccess.bind(this);
   }
 
   componentDidMount(){
-    this.renderEmails()
+    this.loadInvites(this.props.id)
+    // this should come after fetch call with invite_max as num
+    // this.renderEmails(3)
     this.logLanding()
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevState, prevProps){
+    console.log(this.state)
+  }
+
+  loadInvites(id){
+    let path = `${id}/invites`
+    get(path)
+      .then(data => this.setInvitesToState(data))
+      .catch(error => console.log(error))
+  }
+
+  setInvitesToState(data){
+    this.setState({
+      userInvites: data,
+      loading: false
+    })
+    setTimeout(this.renderEmails, 1000, this.props.invite_max)
   }
 
   logLanding(){
@@ -74,8 +123,7 @@ class InviteSomeonePage extends Component{
         count: 1,
         message: "",
         messageDisplay: 'inline-block',
-        emailDisplay: 'block',
-        plusOneBtn: {display: 'block'}}, alert(`${e} Sent. Tell your friends to check their inboxes!`))
+        plusOneBtn: {display: 'block'}}, this.confirmSuccess(e))
     }else{
       let emails = message.message
       alert(`Some of your invites could not be sent. The following people are already Carbon Collective members: ${emails}`)
@@ -84,8 +132,28 @@ class InviteSomeonePage extends Component{
       count: 1,
       message: null,
       messageDisplay: 'inline-block',
-      emailDisplay: 'block',
       plusOneBtn: {display: 'block'},})
+    }
+  }
+
+  confirmSuccess(e){
+    if(confirm(`${e} Sent. Tell your friends to check their inboxes!`)){
+      this.setState({
+        loading: true
+      }, this.loadInvites(this.props.id))
+    }
+  }
+
+  deleteUserInvite(e, invite_id){
+    e.preventDefault();
+    let name = e.target.name;
+    if(confirm(`Are you sure you want to remove ${name} from your list of invites? (Doing so will allow you to invite someone else, but can't be undone...)`)){
+      let id = this.props.id
+      let path = `${id}/cancel-invite/${invite_id}`
+      this.setState({emailInputs: [], loading: true})
+      post(path)
+        .then(data => this.loadInvites(id))
+        .catch(error => console.log(error))
     }
   }
 
@@ -120,11 +188,22 @@ class InviteSomeonePage extends Component{
   }
 
   renderEmails(num){
-    let inputs = this.state.emailInputs;
-    let i = inputs.length
-    const em = (<EmailInputs key={i} num={i} handleChange={this.handleChange}/>)
-    inputs.push(em)
-    this.setState({
+    let inputs, i, userInvites;
+    let change = this.handleChange;
+    inputs = this.state.emailInputs;
+    userInvites = this.state.userInvites;
+    for(i = 0; i < num; i++){
+      let user = userInvites[i]
+      let em;
+      if(user){
+        let key = user[0] + user[1]
+         em = (<EmailInvite key={key} myKey={key} num={i} id={user[0]} email={user[1]} seconds={user[2]} invited={user[3]} emailActivated={user[4]} deleteUserInvite={this.deleteUserInvite}/>)
+      }else{
+         em = (<EmailInputs key={i} myKey={i} num={i} handleChange={change}/>)
+      }
+      inputs.push(em)
+    }
+    return this.setState({
       emailInputs: inputs
     })
   }
@@ -161,24 +240,25 @@ class InviteSomeonePage extends Component{
 
   render(){
     let btn = this.state.messageDisplay
-    let {message} = this.state
+    let {message} = this.state.message
+    let loading = this.state.loading
     if(btn === "none"){
       btn = false
     }
     return(
       <div className="invite-list-page">
         <h4 className="edit-header invite-page">Invite your friends!</h4>
+        {loading ? <div></div> :
         <form
           onSubmit={this.handleForm}
           className="inviteSomeone-form"
           >
-          <ul ref="invite-list" style={{display: this.state.emailDisplay}}>
+          <ul ref="invite-list">
             {this.state.emailInputs}
           </ul>
+          <h4 className="leave-a-message">Leave a personal message:</h4>
           <label className="invite-label" style={{display: this.state.messageDisplay}}>
-            <Button  className="invite-sub-btn" variant="fab" name="add-invite-email-btn" onClick={this.addEmailInput} style={this.state.plusOneBtn}>Add another email address</Button>
             <textarea
-              required={true}
               className="invitation-textBox"
               onChange={this.handleValue}
               value={message}
@@ -189,21 +269,16 @@ class InviteSomeonePage extends Component{
               placeholder="Hey All! It's me Chuck!...."
               />
           </label>
-          <div className="add-email">
-            {btn ?
-            <Button className="invite-sub-btn" variant="fab" name="remove-invite-message-btn" onClick={this.removeMessage}>Remove personal message</Button>
-            : <Button className="invite-sub-btn" variant="fab" name="add-invite-message-btn" onClick={this.addMessage}>Add personal message</Button> }
-          </div>
           <div
           className="invite-invite-div">
           <button
             type="submit"
             className="invite-invite-button"
             name="invite-form-btn"
-            onClick={this.handleForm}
+            onClick={(e) => this.handleForm(e)}
             >Invite</button>
           </div>
-        </form>
+        </form> }
       </div>
     )
   }
@@ -211,7 +286,9 @@ class InviteSomeonePage extends Component{
 
 const mapStateWithProps = (state) => {
   return({
-    id: state.userInfo.user_id
+    id: state.userInfo.user_id,
+    dash_data: state.userInfo.dash_data,
+    invite_max: state.userInfo.data.invite_max,
   })
 }
 export default withRouter(connect(mapStateWithProps, null)(InviteSomeonePage));

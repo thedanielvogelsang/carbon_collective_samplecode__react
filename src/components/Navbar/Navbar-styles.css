@@ -25,6 +25,8 @@ div.header-navbar{
   font-size: 1.3em;
   color: #219a60;
   padding-left: 40px;
+  padding-bottom: 5px;
+  
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -53,7 +55,7 @@ div.header-navbar{
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 5px 0px 5px 0px;
+  padding: 5px 0px 0px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -82,7 +84,7 @@ img.log-svg{
 }
 
 img.dash-logo.landing{
-  padding-top: 3px;
+  padding-top: 6px;
 }
 
 input.login-bar{

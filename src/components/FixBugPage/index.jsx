@@ -55,8 +55,8 @@ class FixBugPage extends Component{
           >
           <h3 className="bug-fix-title"> Have you detected an issue?</h3>
           <p className="bug-directions1">CarbonCollective is in its alpha phase of development, and issues are to be expected. Please tell us in as much detail as you can about the problem. Please make sure to include the following:</p><br/>
-          <p className="bug-directions"> (1) What url (or webpage) did the issue occur on?</p>
-          <p className="bug-directions"> (2) What triggered the issue?</p>
+          <p className="bug-directions">(1) What url (or webpage) did the issue occur on?</p>
+          <p className="bug-directions">(2) What triggered the issue?</p>
           <p className="bug-directions">(3) What is the issue?</p>
           <textarea
             required={true}

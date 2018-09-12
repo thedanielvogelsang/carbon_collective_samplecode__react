@@ -1,53 +1,56 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Serif');
-
 form.bug-form{
   color: #2a2c33;
-}
-form.bug-form p{
-  color: #89868D;
+  width: 100%;
+  max-width: 350px;
 }
 
 .bug-directions1{
   margin-top: 20px;
   font-size: 0.9em;
   line-height: 1.2em;
-  text-align: left;
-  margin-bottom: 15px;
-  width: 300px;
+  text-align: justify;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 320px;
 }
 
 .bug-directions{
   margin-left: 10px;
   font-size: 0.8em;
-  text-align: left;
+  text-align: center;
   padding: 2px;
-  width: 250px;
+  padding-bottom: 6px;
+  width: 280px;
+  font-weight: bold;
 }
 
 .bug-textBox{
-  margin: 40px 0px 20px;
+  margin: 30px 0px 20px;
   border-radius: 5%;
   padding: 15px;
 }
 
 .bug-btn{
-  max-width: 200px;
+  width: 100%;
+  max-width: 350px;
   height: 40px;
-  min-width: 180px;
   font-size: 1.4em;
   padding: 5px 10px;
-  color: #1fa245;
-  background-color: #2A2C33;
+  color: white;
+  background-color: #105130;
   margin-bottom: 100px;
 }
 
 h3.bug-fix-title{
-  font-size: 26px;
+  font-size: 30px;
   padding: 35px 0px 35px 0px;
-  margin: 10px 0px 0px 0px;
-  width: 300px;
+  margin: 0px;
+  width: 100%;
+  max-width: 350px;
+  font-weight: 300;
   border-bottom: 1px dotted white;
   font-weight: lighter;
+  font-family: 'Merriweather', serif;
 }
 
 .email-form-container{
@@ -56,8 +59,8 @@ h3.bug-fix-title{
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin-top: 10px;
-  min-height: 500px;
+  width: 100%;
+  max-width: 350px;
 }
 
 .email-form-container textarea{
@@ -67,14 +70,11 @@ h3.bug-fix-title{
   color: #415B2F;
 }
 
-
 form.form-container.bug-form {
   display: flex;
   flex-direction: column;
   min-height: 70vh;
   justify-content: flex-start;
-  color: black;
-  font-weight: bold;
   max-width: 350px;
   align-items: center;
 }

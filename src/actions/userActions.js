@@ -68,9 +68,8 @@ export function removeUserHouse(id, hId) {
 
 function sortLoginPageChange(data){
   if(!data.privacy_policy){
-    setTimeout(BrowserRouter.push('/privacy-policy'), 1000)
+    setTimeout(BrowserRouter.push, 1000, '/privacy-policy')
   }else{
-    // console.log(BrowserRouter)
-    setTimeout(BrowserRouter.push('/dashboard'), 1000)
+    setTimeout(BrowserRouter.push, 1000, '/dashboard')
   }
 }
