@@ -181,7 +181,6 @@ class App extends Component {
           <Header />
           <Switch>
             <PropsRoute exact path="/" component={ Landing } updateState={this.updateState} /> } />
-            <PropsRoute path="/login" component={ Login } data={this.state} updateState={this.updateState} /> } />
             <PropsRoute path="/about" component={ AboutUs } /> } />
             <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
             <UnauthenticatedRouteProps path="/login-first-time" loaded={loaded} component={ FirstLogin } data={this.state} updateState={this.updateState} /> } />
@@ -198,7 +197,6 @@ class App extends Component {
             {fixbug ? <FixBugLink /> :  null}
             <Switch>
               <PropsRoute exact path="/" component={ Landing } loaded={loaded} updateState={this.updateState} /> } />
-              <PropsRoute path="/login" component={ Login } loaded={loaded} data={this.state} updateState={this.updateState} /> } />
               <PropsRoute path="/about" component={ AboutUs } /> } />
               <UnauthenticatedRouteProps path="/login-first-time" loaded={loaded} component={ FirstLogin } data={this.state} updateState={this.updateState} /> } />
               <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
@@ -252,5 +250,6 @@ const mapStateToProps = (state) => {
 //     fetchUserData: fetchUserData
 //   })
 // }
+// <PropsRoute path="/login" component={ Login } data={this.state} updateState={this.updateState} /> } />
 
 export default withRouter(connect(mapStateToProps, {fetchUserData})(App));

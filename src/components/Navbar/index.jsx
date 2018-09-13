@@ -118,7 +118,7 @@ class Navbar extends Component {
   componentDidMount(){
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
     this.checkLoginStatus()
     this.checkSettingsStatus()
   }
@@ -189,7 +189,7 @@ class Navbar extends Component {
       post(path)
         .then(ans => this.goToPage('/dashboard'))
         .catch(error => console.log(error))
-    }else{
+    }else if(this.props.error){
       alert(this.props.error.errors)
     }
     this.clearAll()
