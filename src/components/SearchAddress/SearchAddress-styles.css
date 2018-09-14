@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+.address-signup-expander{
+  min-height: 6000px;
+  width: 100%;
+}
 
+.address-signup-expander.neighborhood{
+  min-height: 3000px;
+}
 
 .search_address_page {
   display: flex;
@@ -30,16 +36,17 @@ form.regional-form{
   margin-bottom: -20px;
 }
 
-
 .search_address_page h3{
-  margin: 10px 0px;
-  font-family: 'PT Serif', serif;
+  margin: 10px 0px 10px 0px
 }
 
 .search_address_page h1{
-  margin: -10px 0px 10px 0px;
-  font-size: 1.5em;
-  font-family: 'PT Serif', serif;
+  font-size: 24px;
+  text-align: center;
+  padding: 0px 15px 0px 15px;
+  font-weight: 300;
+  font-weight: lighter;
+  font-family: 'Merriweather', serif;
 }
 
 #country-select{
@@ -103,19 +110,15 @@ form.regional-form{
 }
 
 .regional-form-btns{
-  width: 350px;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  height: 40px;
+  background-color: #F1F6DB !important;
 }
 
-.regional-form-btns.backbtns{
-  width: 200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
+/*
 .region-start-over{
   color: #1fa245;
   background-color: #2A2C33;
@@ -123,15 +126,21 @@ form.regional-form{
   z-index: 0;
   margin-bottom: 40px;
   font-weight: bolder;
-  text-shadow: 1px 1px 1px black;
-}
+} */
 
 #region-start-over-icon{
-  color: #1fa245 !important;
-  font-size: 2em !important;
+  color: white !important;
+  background-color: #105130 !important;
+  font-size: 1.5em !important;
   bottom: 6px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
   font-weight: bolder;
-  text-shadow: 1px 1px 1px black;
+  border-radius: 50%;
+}
+#region-start-over-icon:hover{
+  cursor: pointer;
 }
 
 #go-to-neighborhoods-icon{
@@ -139,34 +148,31 @@ form.regional-form{
   font-size: 2em !important;
   top: 10px;
   font-weight: bolder;
-  text-shadow: 2px 1px 2px black;
   animation: fade 2.5s ease 1 forwards;
   animation-iteration-count: infinite;
 }
 
 .searchAddress-next{
-  color: #1fa245;
-  background-color: #2A2C33;
+  background-color: #89868D;
+  color: white;
+  font-size: 0.9em;
   position: relative;
   margin-top: 40px;
   bottom: 0;
-  font-weight: bolder;
-  text-shadow: 2px 1px 2px black;
   animation: fade 2.5s ease 1 forwards;
   animation-iteration-count: infinite;
 }
 
-span.expansion-link{
-  display: block;
+button.expansion-link{
   margin: 5px 0px;
-  color: #129941;
+  background-color: #89868D;
+  color: white;
+  font-size: 0.9em;
 }
 
 /*the container must be positioned relative:*/
 .search_address_page .custom-select {
   position: relative;
-  text-shadow: 1px 1px black;
-  font-family: 'PT Serif', serif;
   width: 100% !important;
   max-height: 80px;
   margin-bottom: 10px;
@@ -178,7 +184,7 @@ span.expansion-link{
 
 .search_address_page .select-selected{
   width: 90%;
-  background-color: #1fa245;
+  background-color: #105130;
   color: white;
   z-index: -1;
 }
@@ -212,7 +218,6 @@ span.expansion-link{
 
 .search_address_page .select-items div{
   color: black;
-  text-shadow: -1px 1px #ffffff;
   background-color: #bdbec0;
   z-index: 1;
   font-size: 14px;
@@ -232,7 +237,6 @@ span.expansion-link{
 }
 .search_address_page .select-items div:hover, .same-as-selected {
   color: white;
-  text-shadow: -1px 1px black;
   background-color: #2A2C33;
 }
 

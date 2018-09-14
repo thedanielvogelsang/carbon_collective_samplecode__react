@@ -61,9 +61,9 @@ BasicChart.update = function(elem_, props){
   var width = 220,
       barHeight = 30;
 
-  var x = d3.scaleLinear()
-      .domain([0, props.c])
-      .range([0, width]);
+  // var x = d3.scaleLinear()
+  //     .domain([0, props.c])
+  //     .range([0, width]);
 
   var bar = elem_.selectAll("g").data(data)
 

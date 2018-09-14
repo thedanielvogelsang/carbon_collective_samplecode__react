@@ -5,27 +5,61 @@ form.suggestion-form {
   justify-content: flex-start !important;
   color: black;
   font-weight: bold;
+  font-family: "Libre Franklin", Garamond, sans-serif;
 }
 
 h4.expand-request-directions{
-  font-family: "PT Serif", serif;
-  font-size: 1.4em;
-  color: white;
-  text-shadow: 0 0 1px black;
-  margin: 20px 0px 30px 0;
-  padding: 0px;
+  font-size: 24px;
+  text-align: left;
+  padding: 0px 15px 30px 15px;
+  font-weight: 300;
+  font-weight: lighter;
+  font-family: 'Merriweather', serif;
 }
-.expansion-textBox{
+
+label.expand-label textarea{
+  font-size: 0.8em;
+  max-width: 320px;
+  box-sizing: border-box;
+  color: #415B2F;
+  text-indent: 8px;
+  padding: 5px 2px;
+  opacity: 0.5;
+  border: 1px solid #c0c2c2;
+}
+
+label.expand-label textarea:focus{
+  opacity: 1.0;
+}
+
+label.expand-label textarea::-webkit-input-placeholder {
+  padding-top: -5px;
+  font-size: 1.1em;
+}
+label.expand-label textarea::-moz-placeholder {
+  font-size: 1.1em;
+  padding-top: -5px;
+
+}
+label.expand-label textarea:-ms-input-placeholder {
+  font-size: 1.1em;
+  padding-top: -5px;
+
+}
+label.expand-label textarea:-moz-placeholder {
+  font-size: 1.1em;
+  padding-top: -5px;
+}
+
+/* .expansion-textBox{
   margin: 30px 0px 80px 0px;
   max-width: 250px;
   height: 140px;
   vertical-align: text-top;
   font-size: 0.9em;
   padding: 5px;
-}
+} */
 
-.suggestion-btn{
-  max-width: 300px;
-  height: 70px;
-  font-size: 1.2em;
+.expand-form-btn{
+  height: 60px !important;
 }

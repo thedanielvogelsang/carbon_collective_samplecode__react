@@ -33,7 +33,7 @@ class Timer extends React.Component {
   }
 
   render() {
-    let { baseTime, startedAt } = this.props;
+    let { baseTime } = this.props;
     baseTime = new Date(baseTime[this.props.id])
     let elapsed = getElapsedTime(baseTime);
     elapsed = elapsed.toString().toHHMMSS()

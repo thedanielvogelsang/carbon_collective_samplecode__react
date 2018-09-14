@@ -13,7 +13,7 @@ import HouseExists from '../HouseExists'
 import Dashboard from '../Dashboard'
 import ManageBillsPage from '../ManageBillsPage'
 import Settings from '../Settings'
-import Login from '../Login'
+// import Login from '../Login'
 import FirstLogin from '../FirstLogin'
 import NewUserSignup from '../NewUser'
 import Navbar from '../Navbar'
@@ -215,7 +215,7 @@ class App extends Component {
               <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} /> } />
               <AuthenticatedRouteProps path="/household" loaded={loaded}  component={ HouseholdPage } data={this.state} /> } />
               <AuthenticatedRouteProps path="/user_settings" loaded={loaded} component={ UserSettings } userData={this.state.userData}/> } />
-              <AuthenticatedRouteProps path="/house_settings" loaded={loaded} component={ HouseSettings} userData={this.state.userData} /> } />
+              <AuthenticatedRouteProps path="/house_settings" loaded={loaded} component={ HouseSettings} /> } />
               <AuthenticatedRouteProps path="/bugs" loaded={loaded}  component={ FixBugPage } userData={this.state.userData}/> } />
               <AuthenticatedRouteProps path="/userboards" loaded={loaded}  component={ UserboardPage } /> } />
               <AuthenticatedRouteProps path="/suggestions" loaded={loaded} component={ SuggestionEmailPage } userData={this.state.userData} /> } />

@@ -29,12 +29,7 @@ class Settings extends Component {
       contactLogo: ContactLogo,
       logoutLogo: LogoutLogo,
     };
-    this.goToDash = this.goToDash.bind(this);
-    this.goToInvitePage = this.goToInvitePage.bind(this);
-    this.goToUserUpdatePage = this.goToUserUpdatePage.bind(this);
-    this.goToHouseUpdatePage = this.goToHouseUpdatePage.bind(this);
-    this.suggestionsPage = this.suggestionsPage.bind(this);
-    this.goToAboutPage = this.goToAboutPage.bind(this);
+    this.goToPage = this.goToPage.bind(this);
     this.goToContactPage = this.goToContactPage.bind(this);
     this.bugsPage = this.bugsPage.bind(this);
     this.logout = this.logout.bind(this);
@@ -48,33 +43,14 @@ class Settings extends Component {
       .catch(error => console.log(error))
   }
 
-  goToDash(event){
-    this.logPageChange('/dashboard')
-    this.props.history.push('/dashboard')
-  }
-
-  goToInvitePage(event){
-    this.logPageChange('/invites')
-    this.props.history.push('/invites')
-  }
-
-  goToUserUpdatePage(event){
-    this.logPageChange('/user_settings')
-    this.props.history.push('/user_settings')
-  }
-
-  goToHouseUpdatePage(event){
-    this.logPageChange('/house_settings')
-    this.props.history.push('/house_settings')
+  goToPage(name){
+    this.logPageChange(name)
+    this.props.history.push(name)
   }
 
   goToBugsPage(event){
     this.logPageChange('/bugs')
     this.props.history.push('/bugs')
-  }
-  goToAboutPage(event){
-    this.logPageChange('/about')
-    this.props.history.push('/about')
   }
 
   goToGoalsPage(event){
@@ -83,11 +59,6 @@ class Settings extends Component {
 
   goToContactPage(event){
     console.log('not built yet')
-  }
-
-  suggestionsPage(){
-    this.logPageChange('/suggestions')
-    this.props.history.push('/suggestions')
   }
 
   bugsPage(){
@@ -111,8 +82,6 @@ class Settings extends Component {
     return location.reload()
   }
 
-
-
   logPageChange(path){
     let id = this.props.user_id
     let page = this.props.history.location.pathname
@@ -134,7 +103,7 @@ class Settings extends Component {
       <ul className="shrunken-subnav-list">
         <li className="shrunken-nav-buttons">
           <div className="shrunken-nav-icon-container dash">
-            <div className='shrunken-nav-label' onClick={(e) => this.goToDash(e)}>Dash</div>
+            <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/dashboard')}>Dash</div>
             <img alt="carbon collective logo" className="navbar-link dash-log dropdown-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
           </div>
         </li>
@@ -147,7 +116,7 @@ class Settings extends Component {
       </ul>
     </div>
     <div className="settings-dropdown">
-      <div className='settings-header' onClick={() => this.props.history.push('/dashboard')}>
+      <div className='settings-header' onClick={(e) => this.goToPage('/dashboard')}>
         <div className="settings-email">
           <p className="first">{this.state.first} {this.state.last}</p><br/>
           <p className="second">{this.state.email}</p>
@@ -155,35 +124,35 @@ class Settings extends Component {
       </div>
       <div className="settings-page">
         <div className="settings-div">
-          <ul className="options-list" onClick={this.goToUserUpdatePage}>
+          <ul className="options-list" onClick={(e) => this.goToPage('/user_settings')}>
             <li className="setting-icon">
-              <img alt="profile logo" className="settings-logo first" src={this.state.profileLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToUserUpdatePage(e)}/>
+              <img alt="profile logo" className="settings-logo first" src={this.state.profileLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/user_settings')}/>
             </li>
             <li className="setting-desc setting-desc-first first" >Profile</li>
           </ul>
-          <ul className="options-list" onClick={this.goToHouseUpdatePage}>
+          <ul className="options-list" onClick={(e) => this.goToPage('/house_settings')}>
             <li className="setting-icon">
-              <img alt="house settings logo" className="settings-logo invite-logo" src={this.state.houseLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToHouseUpdatePage(e)}/>
+              <img alt="house settings logo" className="settings-logo invite-logo" src={this.state.houseLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/house_settings')}/>
             </li>
             <li className="setting-desc">Household</li>
           </ul>
-          <ul className="options-list" onClick={this.goToInvitePage}>
+          <ul className="options-list" onClick={(e) => this.goToPage('/invites')}>
             <li className="setting-icon">
-              <img alt="invite logo" className="settings-logo invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
+              <img alt="invite logo" className="settings-logo invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/invites')}/>
             </li>
             <li className="setting-desc">Invite</li>
           </ul>
-          <ul className="options-list" onClick={this.suggestionsPage}>
+          <ul className="options-list" onClick={(e) => this.goToPage('/suggestions')}>
             <li className="setting-icon">
-              <img alt="feedback logo" className=" settings-logo invite-logo" src={this.state.feedbackLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.suggestionsPage(e)}/>
+              <img alt="feedback logo" className=" settings-logo invite-logo" src={this.state.feedbackLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/suggestions')}/>
             </li>
             <li className="setting-desc">Feedback</li>
           </ul>
         </div>
         <div className="settings-div">
-          <ul className="options-list" onClick={this.goToAboutPage}>
+          <ul className="options-list" onClick={(e) => this.goToPage('/about')}>
             <li className="setting-icon">
-              <img alt="about us logo" className="settings-logo invite-logo" src={this.state.aboutLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToAboutPage(e)}/>
+              <img alt="about us logo" className="settings-logo invite-logo" src={this.state.aboutLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/about')}/>
             </li>
             <li className="setting-desc">About</li>
           </ul>

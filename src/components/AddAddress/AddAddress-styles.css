@@ -4,11 +4,11 @@ form.add-address {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  min-height: 600px;
-  max-width: 450px;
+  width: 100%;
+  min-height: 500px;
+  max-width: 400px;
   padding-top: 20px;
   text-align: center;
-
 }
 
 .add-address-page{
@@ -17,35 +17,54 @@ form.add-address {
   align-items: center;
 }
 
-.add-address h4 {
-  /* color: #129941; */
-  margin: 0;
-
+form.add-address input{
+  width: 90% !important;
 }
 
-.add-address h5 {
-  font-size: 16px;
-  padding-left: 20px;
-  text-decoration: underline;
+.add-address h4 {
+  /* color: #129941; */
+  text-align: center;
+  padding: 0px 15px 10px 15px;
+  font-weight: 300;
+  font-weight: lighter;
+  font-family: 'Merriweather', serif;
+}
+
+h5.movein-label{
+  color: #89868d;
+  text-align: center;
+  padding: 0px 15px 10px 15px;
+  font-size: 24px;
+  font-weight: 300;
+  font-weight: lighter;
+  font-family: 'Merriweather', serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#movein-calendar::placeholder{
+  color: #415B2F;
+  padding: 5px;
+  font-size: 0.9em;
+  text-align: left;
 }
 
 .add-address label {
   display: block;
-  margin: 5px;
-  width: 350px;
-  text-align: left;
+  margin: 5%;
+  width: 100%;
+  text-align: center;
 }
 
 .address-button-container {
   flex-basis: 10vh;
   margin-bottom: 100px;
+  width: 90%;
   max-width: 350px;
-
 }
 
 button.address-submit{
-  background-color: #2A2C33;
-  color: #1fa245;
+  width: 100%;
   font-size: 1em;
   font-weight: normal;
   transform: scale(1, 1.25)

@@ -52,7 +52,7 @@ class ExpandForm extends Component{
           className="form-container suggestion-form"
           onSubmit={this.postSuggestion}
           >
-          <label>
+          <label className="expand-label">
             <h4 className="expand-request-directions"> Let us know where you live so we can prioritize your area next!</h4>
             <textarea
               required={true}
@@ -60,7 +60,7 @@ class ExpandForm extends Component{
               rows="30"
               className="expansion-textBox"
               type="textarea"
-              spellcheck="true"
+              spellCheck="true"
               onChange={this.handleValue}
               name="message"
               placeholder="Where should we go next?"
@@ -69,7 +69,7 @@ class ExpandForm extends Component{
           <button
             type="submit"
             name="expand-form-btn"
-            className="suggestion-btn"
+            className="suggestion-btn expand-form-btn"
             >Send Suggestion</button>
         </form>
       </div>

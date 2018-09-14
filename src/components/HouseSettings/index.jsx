@@ -8,7 +8,6 @@ import './HouseSettings-styles.css';
 const setTimer = function(data){
     let promise = new Promise(function(resolve, reject){
       setTimeout(function(){
-        console.log(data);
         resolve('success');
     }, 2000);
     })
@@ -39,9 +38,9 @@ class HouseSettings extends Component{
 
   componentDidMount(){
     this.logLanding()
-    let house = this.props.userData.household
+    let house = this.props.userData.data.household
     if(house !== null){
-      const path = `api/v1/addresses/${this.props.userData.household.address_id}`
+      const path = `api/v1/addresses/${house.address_id}`
       get(path)
         .then(data => this.setAddressState(data))
         .catch(error => console.log(error))
@@ -51,7 +50,6 @@ class HouseSettings extends Component{
   }
 
   componentDidUpdate(){
-    console.log(this.state)
   }
 
   logLanding(){
@@ -107,7 +105,7 @@ class HouseSettings extends Component{
       .then(data => this.setState({
       full_address: addressHash.full_address,
       addressLoaded: true,
-      house_id: this.props.userData.house_ids[0],
+      house_id: this.props.userData.data.house_ids[0],
       user_id: this.props.userData.id,
       house: data,
       neighborhood: addressHash.neighborhood,
@@ -118,12 +116,13 @@ class HouseSettings extends Component{
   }
 
   removeUserHouse(){
-    let id = this.state.user_id
-    let hId = this.state.house_id
+    let id = this.props.user_id
+    let hId = this.props.house_id
     if(confirm("Are you sure you want to remove your house from your profile? Warning:: You can't undo this.")){
       this.props.removeUserHouse(id, hId)
+      setTimeout(this.goToDashboard, 1000)
     }else{
-      this.forceUpdate()
+      this.forceUpdateApp()
     }
   }
 
@@ -165,7 +164,7 @@ class HouseSettings extends Component{
     if(confirm("Are you sure? This effects everyone in the house.")){
       const path = `api/v1/houses`
       const houseData = {house: house}
-      const id = this.state.house_id
+      const id = this.props.house_id
       put(path, id, houseData)
         .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
         .catch(error => this.setState({errors: 'house could not be saved'}))
@@ -176,7 +175,7 @@ class HouseSettings extends Component{
     const path = `api/v1/houses`
     const user_id = this.props.user_id
     const houseData = {user_house: house, user_id: user_id}
-    const id = this.state.house_id
+    const id = this.props.house_id
     put(path, id, houseData)
       .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
       .catch(error => this.setState({errors: 'house could not be saved'}))
@@ -297,7 +296,8 @@ const mapStateToProps = (state) => {
   return({
     user_id: state.userInfo.user_id,
     house_id: state.userInfo.house_id,
-    move_in_date: state.userInfo.move_in_date
+    move_in_date: state.userInfo.move_in_date,
+    userData: state.userInfo
   })
 }
 

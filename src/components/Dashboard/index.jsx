@@ -35,7 +35,7 @@ class Dashboard extends Component {
 };
 
   componentDidMount(){
-    this.props.dash_data ? this.showDashboardData() : console.log()
+    this.props.dash_data ? this.showDashboardData() : this.props.fetchDashData(this.props.user_id, this.props.resource_type)
   }
 
   componentDidUpdate(prevProps, prevState){

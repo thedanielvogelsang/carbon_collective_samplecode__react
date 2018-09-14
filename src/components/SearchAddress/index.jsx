@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {get, post} from '../../api_client';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import FontIcon from 'material-ui/FontIcon';
 import './SearchAddress-styles.css';
 import {renderFormStyles} from './form-search.js';
 import {renderSubFormStyles} from './form-search.js';
+import {capitalizeFirstLetter} from '../../helper-scripts/textHelpers.js';
+import {scrollTop} from '../../helper-scripts/screenHelpers.js';
 
 
 function cleanId(id){
@@ -52,14 +53,14 @@ class SearchAddressPage extends Component{
   componentDidMount(){
     this.loadCountries();
     this.logLanding();
+    scrollTop()
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log(this.state)
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -138,11 +139,13 @@ class SearchAddressPage extends Component{
     id = parseInt(id, 10)
     if(id === 194){
       this.setState({country_id: id, selection: name, regionDisplay: 'block'}, () => this.loadRegions(id));
+      scrollTop()
     }else{
       if(confirm(`Did you mean to choose ${name}?`)){
         this.sendGeoData('Country', id)
         this.setState({country_id: id, regionDisplay: 'block', cityDisplay: 'none', countyDisplay: 'none', region_id: -1, county_id: -1, city_id: -1, nextBtn: 'none'}, () => this.loadRegions(id))
       }
+      scrollTop()
     }
   }
 
@@ -153,6 +156,7 @@ class SearchAddressPage extends Component{
     id = parseInt(id, 10)
     if(Number(id) === 6){
       this.setState({region_id: id, selection: name, cities: null, city_id: -1, message: true, countyDisplay: 'block'}, () => this.loadCounties(id))
+      scrollTop()
     }else{
       if(confirm(`Did you mean to choose ${name}?`)){
         this.sendGeoData('Region', id)
@@ -167,6 +171,7 @@ class SearchAddressPage extends Component{
           nextBtn: 'none'
         }, () => this.loadCities(id))
       }
+      scrollTop()
     }
   }
 
@@ -174,8 +179,10 @@ class SearchAddressPage extends Component{
     var index = event.nativeEvent.target.selectedIndex;
     let id = event.target.value
     let name = event.nativeEvent.target[index].text
+    // [8, 1, 31, 3, 17]
     this.loadCities(this.state.region_id)
     this.setState({county_id: id, cityDisplay: 'block', selection: name})
+    scrollTop()
   }
 
   setCity(event){
@@ -183,10 +190,11 @@ class SearchAddressPage extends Component{
     let id = event.target.value
     let name = event.nativeEvent.target[index].text
     this.setState({city_id: id, selection: name, message: false, nextBtn: 'block'})
+    scrollTop()
   }
 
   sendGeoData(type, id){
-    let uId = sessionStorage.getItem('user_id')
+    let uId = this.props.id
     let paramsData = {
       geographical_data: {
         area: type,
@@ -257,19 +265,19 @@ class SearchAddressPage extends Component{
     let regionName;
     switch(this.assumeRegionName(id)){
       case 1:
-        regionName = "State"
+        regionName = "state"
         break
       case 2:
-        regionName = "Province"
+        regionName = "province"
         break
       default:
-        regionName = "Region"
+        regionName = "region"
     }
     return regionName
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -278,7 +286,7 @@ class SearchAddressPage extends Component{
         }
       }
     post(url, datum)
-     .then(data => console.log(data))
+     .then(data => console.log())
      .catch(error => console.log(error))
   }
 
@@ -288,6 +296,7 @@ class SearchAddressPage extends Component{
     let message = this.state.message;
     let id = this.state.country_id
     let name = this.sortRegionalTitle(id);
+    let nameCap = capitalizeFirstLetter(name);
     if(name === "Region" && id !== -1){
       message = true;
     }
@@ -297,6 +306,7 @@ class SearchAddressPage extends Component{
       )
     }else{
       return(
+        <div className="address-signup-expander">
         <div  className="search_address_page">
           <h1>Help us locate your house</h1>
           <form
@@ -316,7 +326,7 @@ class SearchAddressPage extends Component{
                 display="none"
                 required
                 >
-                 <option value={-1}>Select your option</option>
+                 <option value={-1}>Select yours...</option>
                   {this.mapOptions(this.state.countries)}
               </select>
               </div>
@@ -324,7 +334,7 @@ class SearchAddressPage extends Component{
             </div>
             <div id="custom-select-region" className="custom-select" style={{display: this.state.regionDisplay, width: '250px', height: '100px'}}>
               <label>
-                <h3>{name}s</h3>
+                <h3>{nameCap}s</h3>
                 <div>
                   <select
                     id='region-select'
@@ -335,7 +345,7 @@ class SearchAddressPage extends Component{
                     display="none"
                     required
                     >
-                     <option value={-1} disabled>Select your {name}</option>
+                     <option value={-1} disabled>Select yours...</option>
                      {this.mapOptions(this.state.regions)}
                   </select>
                 </div>
@@ -354,7 +364,7 @@ class SearchAddressPage extends Component{
                 display="none"
                 required
                 >
-                 <option value={-1} disabled>Select your county</option>
+                 <option value={-1} disabled>Select yours...</option>
                  {this.mapOptions(this.state.counties)}
                 </select>
                 </div>
@@ -373,7 +383,7 @@ class SearchAddressPage extends Component{
                   display="none"
                   required
                   >
-                  <option value={-1} disabled>Select your city</option>
+                  <option value={-1} disabled>Select yours...</option>
                   {this.mapOptions(this.state.cities)}
                   </select>
                 </div>
@@ -381,33 +391,30 @@ class SearchAddressPage extends Component{
             </div>
             {message ?
             <div className="city-notThere-container">
-              <h3 className="city-notThere-message">Don't see your area listed?
-              Contact our developers <span className="expansion-link" onClick={() => this.goToExpansionPage()}>here</span> to suggest we expand to you asap!</h3>
+              <h3 className="city-notThere-message">Don't see your area?</h3>
+              <button className="expansion-link" onClick={() => this.goToExpansionPage()}>Contact Us</button>
             </div> : null}
             <div className="regional-form-btns" style={{display: this.state.nextBtn}}>
                 <button
-                type="submit"
-                className="searchAddress-next"
-                >Choose Neighborhood</button>
-              <MuiThemeProvider>
-                <FontIcon className="material-icons" id="go-to-neighborhoods-icon" onClick={(e) => this.goToNeighborhoods(e)}>arrow_forward</FontIcon>
-              </MuiThemeProvider>
+                  type="submit"
+                  className="searchAddress-next"
+                  onClick={(e) => this.goToNeighborhoods(e)}
+                  >Choose Neighborhood
+                </button>
             </div>
           </form>
-            <div className="regional-form-btns backbtns">
-              <MuiThemeProvider>
-                <FontIcon className="material-icons" id="region-start-over-icon" onClick={(e) => this.goToLanding(e)}>arrow_back</FontIcon>
-              </MuiThemeProvider>
-              <button
-              className="region-start-over"
-              onClick={(e) => this.goToLanding(e)}
-              style={this.state.startOverBtn}
-              >back to home</button>
-            </div>
+         </div>
        </div>
       )
     }
   }
 }
 
-export default withRouter(SearchAddressPage);
+const mapStateToProps = (state) => {
+  return({
+    id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+  })
+}
+
+export default withRouter(connect(mapStateToProps, null)(SearchAddressPage));

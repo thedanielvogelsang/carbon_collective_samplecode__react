@@ -171,7 +171,7 @@ class Navbar extends Component {
     const stateData = { ...this.state };
     const loginData = {user: stateData}
     this.props.loginUser(loginData)
-    setTimeout(this.logLogin, 2000)
+    setTimeout(this.logLogin, 3000)
   }
 
   resetWithErrors(error){
@@ -183,11 +183,17 @@ class Navbar extends Component {
     this.props.history.push(path)
   };
 
+
   logLogin(){
-    if(this.props.id){
+    if(this.props.id && this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
         .then(ans => this.goToPage('/dashboard'))
+        .catch(error => console.log(error))
+    }else if(!this.props.data.privacy_policy){
+      let path = `${this.props.id }/user-logs-in`
+      post(path)
+        .then(ans => this.goToPage('/privacy-policy'))
         .catch(error => console.log(error))
     }else if(this.props.error){
       alert(this.props.error.errors)
@@ -361,24 +367,7 @@ class Navbar extends Component {
         </div>
       )
     }
-    else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){
-      return(
-        <div className="main-navbar navbar">
-          <div className="navbar-logo-menu-div navbar loaded">
-            <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
-            <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
-          </div>
-          <div className="landing-navbar-links">
-            <ul className="navbar">
-              <li className="header-button landing-nav-link">
-                <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
-              </li>
-            </ul>
-          </div>
-        </div>
-      )
-    }
-    else if(['/login', '/signup', '/add_address', '/add_household', '/login-first-time', '/expand-request'].indexOf(window.location.pathname) > -1){
+    else if(['/login', '/signup'].indexOf(window.location.pathname) > -1){
         return(
           <div className="main-navbar navbar">
             <div className="navbar-logo-menu-div navbar loaded">
@@ -469,6 +458,24 @@ const mapStateToProps = (state) => ({
     data: state.userInfo.data,
     error: state.userInfo.error,
 });
+//
+// else if(['/search_address', '/add_neighborhood', '/add_county'].indexOf(window.location.pathname) > -1){
+//   return(
+//     <div className="main-navbar navbar">
+//       <div className="navbar-logo-menu-div navbar loaded">
+//         <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+//         <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
+//       </div>
+//       <div className="landing-navbar-links">
+//         <ul className="navbar">
+//           <li className="header-button landing-nav-link">
+//             <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
+//           </li>
+//         </ul>
+//       </div>
+//     </div>
+//   )
+// }
 
 // const mapDispatchToProps = (dispatch) => ({
 //

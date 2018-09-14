@@ -3,10 +3,11 @@ import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FontIcon from 'material-ui/FontIcon';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {get, post} from '../../api_client';
 import {renderFormStyles} from './form-search.js';
 import './Neighborhood-styles.css';
-
+import {scrollTop} from '../../helper-scripts/screenHelpers.js';
 
 class NeighborhoodInput extends Component{
   constructor(props){
@@ -87,6 +88,7 @@ class NeighborhoodInput extends Component{
   setNeighborhood(event){
     let id = event.target.value
     this.setState({neighborhood: id, disabled: true, nextBtn: 'flex'}  );
+    scrollTop();
   }
 
   setNeighborhoods(data){
@@ -111,9 +113,12 @@ class NeighborhoodInput extends Component{
     }
   }
 
-  backToRegionPick(){
-    this.logPageChange('/search_address')
-    this.props.history.push('/search_address')
+  backToRegionPick(e){
+    e.preventDefault();
+    if(confirm("Are you sure you want to go back?")){
+      this.logPageChange('/search_address')
+      this.props.history.push('/search_address')
+    }
   }
 
   renderNeighborhoodForm(){
@@ -137,7 +142,8 @@ class NeighborhoodInput extends Component{
     })
   }
 
-  storeAndGoToAddressPage(){
+  storeAndGoToAddressPage(e){
+    e.preventDefault();
     let nId = this.state.neighborhood
     if(nId !== null && nId !== '' && nId !== -1){
       localStorage.setItem('neighborhood_id', nId)
@@ -154,7 +160,7 @@ class NeighborhoodInput extends Component{
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -175,19 +181,20 @@ class NeighborhoodInput extends Component{
       )
     }else{
       return(
+        <div className="address-signup-expander neighborhood">
         <div>
           {header ?
           <div className="neighborhood-header">
-            <p>Neighborhood Select</p>
+            <h1>Neighborhood Select</h1>
           </div> : <div></div> }
           <div className="neighborhood-welcome" style={this.state.welcomeStyle}>
-            <div id="first-clause" className={this.state.first.class} onClick={this.text2}><h3 className="welcome-text">We at CarbonCollective are passionate about thinking locally -- as this is where we can impact the most change!</h3><p className="click-to-continue">Click to continue</p></div>
-            <div id="second-clause" className={this.state.second.class} onClick={this.text3}><h3 className="welcome-text"> As such, we invite you to start thinking in terms of small localities -- like your neighborhood!</h3><p className="click-to-continue">Click to continue</p></div>
+            <div id="first-clause" className={this.state.first.class} onClick={this.text2}><h3 className="welcome-text">We at <span>CarbonCollective</span> are passionate about thinking locally &#8212; as this is where we can impact the most change!</h3><button className="click-to-continue">Click to continue</button></div>
+            <div id="second-clause" className={this.state.second.class} onClick={this.text3}><h3 className="welcome-text"> As such, we invite you to start thinking in terms of small localities &#8212; like your neighborhood!</h3><button className="click-to-continue">Click to continue</button></div>
             <div id="third-clause" className={this.state.third.class}>
               <h3 className={this.state.thirdH.class}>
                 We see you're in {this.state.cityName}.
               </h3>
-              <p id="blw-p" className={this.state.thirdP.class}> Below you'll find a link to {this.state.cityName}'s officially recognized neighborhoods:</p>
+              <p id="blw-p" className={this.state.thirdP.class}> Below you'll find a link to {this.state.cityName}s officially recognized neighborhoods:</p>
               <button
               className={this.state.buttonFind.class}
               onClick={this.renderNeighborhoodForm}
@@ -200,7 +207,7 @@ class NeighborhoodInput extends Component{
             onSubmit={(e) => this.storeAndGoToAddressPage(e)}
             className="regional-form neighborhoods"
             >
-            <div id="custom-select-neighborhood" className="custom-select" style={{display: this.state.cityDisplay, width: '250px', height: '100px'}}>
+            <div id="custom-select-neighborhood" className="custom-select" style={{display: this.state.cityDisplay, width: '300px', height: 'auto'}}>
               <label>
               <h3></h3>
               <div>
@@ -213,7 +220,7 @@ class NeighborhoodInput extends Component{
                   display="none"
                   required
                   >
-                  <option value={-1} disabled>Select your option</option>
+                  <option value={-1} disabled>Select your neighborhood...</option>
                   {this.mapOptions(this.state.neighborhoods)}
                 </select>
               </div>
@@ -225,26 +232,24 @@ class NeighborhoodInput extends Component{
               className="searchNeighborhood-next"
               style={{display: this.state.nextBtn}}
               >Next</button>
-              <MuiThemeProvider>
-                <FontIcon className="material-icons" id="go-to-address-icon" onClick={(e) => this.goToAddressPage(e)}>arrow_forward</FontIcon>
-              </MuiThemeProvider>
             </div>
             </form>
             <div className="regional-form-btns neighborhoods">
               <MuiThemeProvider>
-                <FontIcon className="material-icons" id="region-start-over-icon" onClick={(e) => this.goToLanding(e)}>arrow_back</FontIcon>
+                <FontIcon className="material-icons" id="region-start-over-icon" onClick={(e) => this.backToRegionPick(e)}>arrow_back</FontIcon>
               </MuiThemeProvider>
-              <button
-              className="region-start-over"
-              onClick={(e) => this.backToRegionPick(e)}
-              style={this.state.startOverBtn}
-              >back to geo-locator</button>
             </div>
           </div>
+        </div>
        </div>
       )
     }
   }
 }
 
-export default withRouter(NeighborhoodInput);
+const mapStateToProps = (state) => {
+  return({
+    id: state.userInfo.user_id,
+  })
+}
+export default withRouter(connect(mapStateToProps, null)(NeighborhoodInput));
