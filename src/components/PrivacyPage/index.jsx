@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {put, post} from '../../api_client';
 import "./PrivacyPage-styles.css";
@@ -26,7 +27,7 @@ class PrivacyPage extends Component{
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -39,7 +40,7 @@ class PrivacyPage extends Component{
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -62,8 +63,7 @@ class PrivacyPage extends Component{
     e.preventDefault();
     let accept = e.target.name
     let answer = this.state.accept
-    let id = sessionStorage.getItem('user_id')
-    console.log(answer === true)
+    let id = this.props.id
     if(accept === "true" && answer === true){
       const path = `users`
       const data = {user: {privacy_policy: answer}}
@@ -83,7 +83,7 @@ class PrivacyPage extends Component{
 
   handleResponse(data){
     let priv = data.privacy_policy
-    let house = sessionStorage.getItem('house_id')
+    let house = this.props.house_id
     if(priv && house){
       this.goToPage('/dashboard')
     }else if(priv === true && !house){
@@ -152,4 +152,11 @@ class PrivacyPage extends Component{
   }
 }
 
-export default withRouter(PrivacyPage);
+const mapStateToProps = (state) => {
+  return({
+    id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+  })
+}
+
+export default withRouter(connect(mapStateToProps, null)(PrivacyPage));

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Button from 'muicss/lib/react/button';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Timer from './Timer';
@@ -25,11 +24,9 @@ const EmailInputs = function(props){
   }
 const EmailInvite = function(props, n){
     let email = props.email;
-    let color, text, textKey;
+    let color, text;
     props.emailActivated ? color = "green" : color = "red"
-    props.emailActivated ? text = ("Accepted: " + props.invited) : text = (<Timer seconds={props.seconds} id={props.id}/>)
-    textKey = props.myKey + parseInt(n)
-    console.log(textKey)
+    props.emailActivated ? text = (<h5 className="accepted-text">{"Accepted: " + props.invited}</h5>) : text = (<Timer seconds={props.seconds} id={props.id}/>)
     return(
       <div className="invite-row-div invited" style={{color: color}}>
         <li className="email-input-email invited" key={props.myKey} >
@@ -44,7 +41,7 @@ const EmailInvite = function(props, n){
           <h5 className="email-text"> {email} </h5>
         </li>
         <li className="email-input-accepted">
-            <h5 className="accepted-text">{text}</h5>
+            {text}
         </li>
       </div>
       )
@@ -83,7 +80,7 @@ class InviteSomeonePage extends Component{
   }
 
   componentDidUpdate(prevState, prevProps){
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   loadInvites(id){

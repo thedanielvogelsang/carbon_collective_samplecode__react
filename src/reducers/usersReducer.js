@@ -18,9 +18,11 @@ const usersReducer = (state = initialState, action) => {
         data: action.payload
       }
     case USER_INFO:
+      let house;
+      action.payload.household ? house = action.payload.household.id : house = null
       return {
         ...state,
-        house_id: action.payload.household.id,
+        house_id: house,
         data: action.payload
       }
     case DASH_INFO:

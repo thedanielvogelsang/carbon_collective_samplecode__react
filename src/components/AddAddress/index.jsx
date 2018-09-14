@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './AddAddress-styles.css'
 import { withRouter } from 'react-router-dom';
+import {fetchUserData} from '../../actions/userActions'
+import { connect } from 'react-redux';
 import { countries } from '../utilities';
 import { get, post } from '../../api_client'
 
@@ -12,9 +14,10 @@ class AddAddress extends Component {
     let county_id = localStorage.getItem('county_id')
     this.state = {
       message: "Please enter your address below",
-      messageColor: {color: '#1fa245', fontFamily: 'PT Serif', fontSize: '1em'},
+      messageColor: {color: '#89868d', fontSize: '24px'},
       address_line1: "",
       address_line2: "",
+      move_in_date: "",
       city_id: city_id,
       city: "",
       region: "",
@@ -49,7 +52,7 @@ class AddAddress extends Component {
   }
 
   logLanding(){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let path = `${id}/page-land`
     let datum = {user_behavior: {
@@ -68,7 +71,7 @@ class AddAddress extends Component {
   resetForm() {
     this.setState({
       message: "Please enter your address below",
-      messageColor: {color: '#1fa245'},
+      messageColor: {color: '#89868d'},
       address_line1: "",
       address_line2: "",
       city: "",
@@ -98,15 +101,14 @@ class AddAddress extends Component {
   }
 
   setSession(data){
-    sessionStorage.setItem('address_id', data.id);
-    sessionStorage.setItem('house_id', data.house.id);
+    this.props.fetchUserData(this.props.id)
     this.resetForm();
     this.logPageChange('/dashboard')
-    this.goToPage('/dashboard');
+    setTimeout(this.goToPage, 2000, '/dashboard');
   }
 
   logPageChange(path){
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
     let page = this.props.history.location.pathname
     let url = `${id}/page-leave`
     let datum = {user_behavior: {
@@ -121,7 +123,8 @@ class AddAddress extends Component {
 
   handleAddressForm(event) {
     event.preventDefault();
-    let id = sessionStorage.getItem('user_id')
+    let id = this.props.id
+    let move_in_date = this.state.move_in_date
     let addressData = {
       address_line1: this.state.address_line1,
       address_line2: this.state.address_line2,
@@ -129,7 +132,7 @@ class AddAddress extends Component {
       county_id: this.state.county_id,
       neighborhood_id: this.state.neighborhood_id,
       };
-    addressData = {address: addressData, zipcode: this.state.zip, user_id: id};
+    addressData = {address: addressData, zipcode: this.state.zip, user_id: id, move_in_date: move_in_date};
     const apiPath = `addresses`
     let addressConf = `${this.state.address_line1}, ${this.state.city}, ${this.state.region} ${this.state.zip}`
     //make API call to post new address
@@ -153,8 +156,6 @@ class AddAddress extends Component {
     }
   }
 
-
-
   render() {
     let loading = this.state.loading;
     if(loading){
@@ -171,37 +172,47 @@ class AddAddress extends Component {
       >
         <h4 style={this.state.messageColor}>{this.state.message}</h4>
         <label>
-          <h5>Address Line 1</h5>
           <input
             type="text"
             autoFocus
             required={ true }
-            spellcheck="true"
+            spellCheck="true"
             inputMode="text"
             name="address_line1"
+            placeholder="Address line 1"
             onChange={ this.handleChange }
           />
         </label>
         <label>
-          <h5>Address Line 2</h5>
           <input
             type="text"
             required={ false }
-            spellcheck="true"
+            spellCheck="true"
             inputMode="text"
             name="address_line2"
+            placeholder="Address line 2"
             onChange={ this.handleChange }
           />
         </label>
         <label>
-          <h5>Zipcode</h5>
           <input
             type="text"
             required={ true }
             inputMode="numeric"
             name="zip"
+            placeholder="Zipcode"
             onChange={ this.handleChange }
           />
+        </label>
+        <label>
+            <h5 className="movein-label">When did you move in?</h5>
+            <input
+              id="movein-calendar"
+              required="true"
+              type="date"
+              name="move_in_date"
+              onChange={ this.handleChange }
+              />
         </label>
         <div className="button-containers address-button-container">
         <button
@@ -216,4 +227,11 @@ class AddAddress extends Component {
   };
 };
 
-export default withRouter(AddAddress);
+const mapStateToProps = (state) => {
+  return({
+    id: state.userInfo.user_id,
+    resource_type: state.userInfo.resource_type,
+  })
+}
+
+export default withRouter(connect(mapStateToProps, {fetchUserData})(AddAddress));
