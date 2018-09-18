@@ -142,14 +142,8 @@ class PastBillsPage extends Component{
     if(Object.keys(this.state.billArray).length === 0){
       return(
         <div className="no-bills-container">
-          <h3 className="no-bills-title">No Bills to Date</h3>
-          <p className="no-bills-ptag">add new bill
-            <a className="no-bills-link" href="" onClick={this.highlightForm}>
-            HERE
-            <MuiThemeProvider>
-                <FontIcon className="material-icons add_new_arrow">keyboard_arrow_right</FontIcon>
-            </MuiThemeProvider>
-            </a>
+          <h4 className="no-bills-title">No Bills to Date</h4>
+          <p className="no-bills-ptag">add new bill above
           </p>
         </div>
       );

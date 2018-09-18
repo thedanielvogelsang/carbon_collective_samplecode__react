@@ -144,7 +144,7 @@ class InviteSomeonePage extends Component{
   deleteUserInvite(e, invite_id){
     e.preventDefault();
     let name = e.target.name;
-    if(confirm(`Are you sure you want to remove ${name} from your list of invites? (Doing so will allow you to invite someone else, but can't be undone...)`)){
+    if(confirm(`Are you sure you want to remove ${name} from your list of invites?`)){
       let id = this.props.id
       let path = `${id}/cancel-invite/${invite_id}`
       this.setState({emailInputs: [], loading: true})

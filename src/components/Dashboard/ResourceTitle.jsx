@@ -1,5 +1,6 @@
 import React from 'react';
-import barGraphIcon from './img/barGraph_icon.svg'
+import barGraphIcon from './img/barGraph_icon.svg';
+import billsLogo from './img/doc.svg';
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -8,7 +9,7 @@ function capitalizeFirstLetter(string) {
 const BarGraphIcon = (props) => {
   return(
     <div className="manage-bills-div" onClick={(e) => props.props.changePage('/managebills')}>
-      <img alt="manage bills button" className="manage-bills-button" src={barGraphIcon} />
+      <img alt="carbon collective logo" className="bills-page-logo" src={billsLogo} style={{width: '36px', height: '42px'}} onClick={(e) => props.props.changePage('/managebills')}/>
     </div>
   )
 }

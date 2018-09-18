@@ -8,10 +8,10 @@ const ArrowIcon = (props) => {
   props.arrow ? arr = arrowUp : arr = arrowDown
   props.rank === 1 ? arr = arrowUp : console.log()
   return(
-      <div style={{width: '30px', height: '40px'}}>
+      <div className="arrow-holder-div">
         <h1 className="rank">{props.rank}</h1>
         <img src={arr} alt="arrow icon" className={className}/>
-        <p className="outof">{props.outOf}</p>
+        <h1 className="outof">of <span> {props.outOf}</span></h1>
       </div>
   )
 }

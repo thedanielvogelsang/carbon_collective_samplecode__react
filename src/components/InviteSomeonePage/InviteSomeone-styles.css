@@ -26,8 +26,7 @@ form.inviteSomeone-form{
 
 .inviteSomeone-form ul{
   margin-bottom: 10px;
-  width: auto;
-  min-width: 450px;
+  width: 420px;
   display: flex !important;
   flex-direction :column;
 }
@@ -46,9 +45,6 @@ div.invite-row-div{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-div.invite-row-div.invited{
-  padding-left: 10vw;
 }
 
 li.email-input-email{
@@ -73,6 +69,10 @@ li.email-input-accepted{
   align-items: center;
   padding-left: 6px;
   width: 184px;
+}
+
+li.email-input-accepted h5{
+  font-size: 14px;
 }
 
 label.invite-label{
@@ -184,9 +184,39 @@ label.invite-label textarea:-moz-placeholder {
     max-width: 320px;
     min-width: 320px;
   }
+  .inviteSomeone-form ul{
+    max-width: 350px;
+  }
 }
 
 @media (max-width: 450px){
+  /* div.invite-row-div{
+    justify-content: center;
+    align-items: center;
+  }
+  div.invite-row-div.invited{
+    padding-left: 10vw;
+  } */
+  .inviteSomeone-form ul{
+    max-width: 100%;
+  }
+  li.email-input-email{
+    width: 100%;
+  }
+  h5.email-text{
+    font-size: 14px;
+  }
+  li.email-input-email.invited{
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  li.email-input-accepted{
+    /* align-items: center;
+    padding-left: 6px;
+    width: 184px; */
+  }
   h5.accepted-text{
     font-size: 10px;
     font-style: italic;
@@ -200,9 +230,6 @@ label.invite-label textarea:-moz-placeholder {
 }
 
 @media (max-width: 350px){
-  h5.email-text{
-    font-size: 16px;
-  }
   h5.accepted-text{
     font-size: 10px;
     font-style: italic;
@@ -218,6 +245,7 @@ label.invite-label textarea:-moz-placeholder {
     max-width: 64%;
   }
   li.email-input-accepted{
-    padding-left: 0;
+    padding-left: 10px;
+    width: 80px;
   }
 }

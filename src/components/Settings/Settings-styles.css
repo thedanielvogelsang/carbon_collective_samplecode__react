@@ -179,10 +179,10 @@ div.shrunken-nav-label{
     display: flex;
     position: absolute;
     top: 14px;
-    left: 7px;
+    left: 3px;
+    font-size: 15px;
     font-weight: 400;
     font-style: italic;
-    background-color: rgb(245,245,245);
     padding: 1px;
   }
   .shrunken-nav-icon-container.dash:hover .shrunken-nav-label{
@@ -192,7 +192,6 @@ div.shrunken-nav-label{
     left: 3px;
     font-weight: 400;
     font-style: italic;
-    background-color: rgb(245,245,245);
     padding: 1px;
   }
   div.settings-div{

@@ -13,8 +13,22 @@ BasicChart.enter = function(elem_, props){
   // using 1. to give percentage threshold to val
   var data = [dataVal, percenting];
 
-  var width = 220,
-      barHeight = 30;
+  let windowWidth = document.getElementById('root').clientWidth
+
+  let wcw = function(ww){
+    if(ww > 360){
+      return 220
+    }else if(ww > 319){
+      return 180
+    }else if(ww > 290){
+      return 200
+    }else{
+      return 180
+    }
+  }
+
+  var width = wcw(windowWidth);
+  var barHeight = 30;
 
   var x = d3.scaleLinear()
       .domain([0, props.c])
@@ -58,8 +72,20 @@ BasicChart.update = function(elem_, props){
   var data = [dataVal, percenting];
 
 
-  var width = 220,
-      barHeight = 30;
+  let windowWidth = document.getElementById('root').clientWidth
+
+  let wcw = function(ww){
+    if(ww > 360){
+      return 220
+    }else if(ww > 310){
+      return 200
+    }else{
+      return 180
+    }
+  }
+
+  var width = wcw(windowWidth);
+  var barHeight = 30;
 
   // var x = d3.scaleLinear()
   //     .domain([0, props.c])

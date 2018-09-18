@@ -189,9 +189,15 @@ button.update-bill-button:hover{
 }
 
 .manage-bills-div{
-  padding: 5px 7px;
-  background-color: white;
+  height: 50px;
+  width: 40px;
+  padding: 15px 7px 0px 7px;
 }
+
+.manage-bills-div:hover{
+  cursor: pointer;
+}
+
 img.manage-bills-button{
   width: 100px;
   height: 60px;
@@ -460,29 +466,39 @@ span.material-icons.carbon-logo{
     height: 48px;
   }
 }
+
 @media (max-width: 780px){
-  .dashboard-resource-nav{
+  .dashboard-overlay{
+    padding-left: 0;
+  }
+  .dashboard-overlay .dashboard-resource-nav{
     width: 100%;
     margin-left: 0;
   }
-  .data-title-container{
+  .dashboard-overlay .data-title-container{
     width: 100%;
     padding: 0;
     justify-content: center;
   }
-  h6.data-title{
-    margin-right: 50px;
+  .data-container{
+    width: 420px;
+    min-width: 0;
   }
-  .dashboard-overlay{
-    padding-left: 0;
+  .dashboard-overlay h6.data-title{
+    margin-right: 50px;
   }
 }
 @media (max-width: 743px){
-  .dashboard-header-container{
-    padding-top: 0;
+  .dashboard-data-container{
+    width: 100vw;
+    justify-content: center;
+    align-items: flex-start;
   }
-  .dashboard-overlay{
-    width: 100%;
+  .dashboard-data-container_main{
+    padding-left: 0;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
   }
   .bug-report-icon-fixed-div{
     max-width: 600px;
@@ -492,6 +508,7 @@ span.material-icons.carbon-logo{
 @media (max-width: 667px){
   .dashboard-overlay{
     width: 100%;
+    min-width: 0;
     align-items: center;
     padding: 0;
   }
@@ -500,13 +517,13 @@ span.material-icons.carbon-logo{
     width: 80vw;
   }
   .dashboard-data-container_main{
-    width: 80vw;
+    width: 100%;
     padding-left: 0;
   }
-  .data-title-container{
-    width: 100% !important;
-    max-width: 200px;
-    justify-content: center;
+  .dashboard-overlay .data-title-container{
+    width: 90%;
+    max-width: 360px !important;
+    justify-content: space-between;
     padding: 0px;
     margin: 0px;
     margin-left: 0 !important;
@@ -529,6 +546,9 @@ span.material-icons.carbon-logo{
     padding: 8px 6px;
     max-width: 110px;
     font-weight: bolder;
+  }
+  .data-item-box{
+    min-width: 310px;
   }
 
   button.resource-btn:not(:first-child){
@@ -553,6 +573,35 @@ span.material-icons.carbon-logo{
   }
 }
 
+@media (max-width: 450px){
+  .data-container{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+}
+@media (max-width: 426px){
+  .community-comps{
+    padding: 0;
+  }
+  .data-item-box{
+    max-width: 330px;
+  }
+  .rank-arrow-div{
+    -webkit-transform: scale(0.9)
+  }
+}
+
+@media (max-width: 400px){
+  h6.data-value.main{
+    font-size: 18px;
+  }
+  h6.data-value.secondary{
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 370px){
   button.resource-btn{
     color: #129941;
@@ -562,11 +611,18 @@ span.material-icons.carbon-logo{
     min-width: 50px;
     font-weight: bolder;
   }
-  .dashboard-overlay{
-    min-width: 100vw;
-  }
   .dashboard-data-container{
-    width: 100vw;
+    width: 100%;
+  }
+  .dashboard-page{
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .dashboard-header-container{
+    width: 100%;
+  }
+  .data-title-container{
+    box-sizing: border-box;
   }
   .water-img {
     height: 30px;
@@ -586,5 +642,58 @@ span.material-icons.carbon-logo{
   .gas-img{
     height: 30px;
     width: 20px;
+  }
+}
+
+@media (max-width: 370px){
+  .data-title-container{
+    box-sizing: border-box;
+    padding-right: 10px;
+    min-width: 100%;
+  }
+  h6.data-title{
+    font-size: 38px;
+    padding-left: 10px;
+  }
+  .data-item-box{
+    max-width: 300px;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 360px){
+  .regional-header > h5{
+    padding-left: 10px;
+  }
+  h6.data-title{
+    margin-right: 20px !important;
+  }
+}
+
+@media (max-width: 330px){
+  .regional-header > h5{
+    padding-left: 10px;
+  }
+  .rank-arrow-div{
+    display: none;
+  }
+  .data-container{
+    padding: 5px;
+  }
+  .data-item-box{
+    max-width: 100%;
+    width: 100%;
+  }
+  .backup-rank-arrow-div{
+    display: flex;
+    position: absolute;
+    right: 40px;
+    margin-top: -26px;
+  }
+}
+
+@media (max-width: 310px){
+  h6.data-title{
+    font-size: 32px;
   }
 }
