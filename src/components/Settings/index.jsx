@@ -3,7 +3,6 @@ import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { get, post } from '../../api_client';
   import DashLogo from './img/footprint.svg';
-  import BillsLogo from './img/doc.svg';
   import ProfileLogo from './img/profile.svg';
   import HouseLogo from './img/household.svg';
   import InviteLogo from './img/invite.svg';
@@ -20,7 +19,6 @@ class Settings extends Component {
       email: '',
       avatar_url: "./fake_avatar_img.jpg",
       dashLogo: DashLogo,
-      billsLogo: BillsLogo,
       profileLogo: ProfileLogo,
       houseLogo: HouseLogo,
       inviteLogo: InviteLogo,

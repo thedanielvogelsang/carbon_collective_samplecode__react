@@ -189,9 +189,15 @@ button.update-bill-button:hover{
 }
 
 .manage-bills-div{
-  padding: 5px 7px;
-  background-color: white;
+  height: 50px;
+  width: 40px;
+  padding: 15px 7px 0px 7px;
 }
+
+.manage-bills-div:hover{
+  cursor: pointer;
+}
+
 img.manage-bills-button{
   width: 100px;
   height: 60px;
