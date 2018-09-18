@@ -32,7 +32,7 @@ class ElectricityChecklist extends Component{
 
   componentDidUpdate(){
 
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   syncState(data){

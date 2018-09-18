@@ -82,8 +82,12 @@
 }
 
 .no-bills-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2em;
-  padding: 85px 0px 45px 0px;
+  padding: 15px 0px 35px 0px;
   margin: 20px 0 0 0;
   min-height: 175px;
 }
@@ -95,13 +99,14 @@
 }
 
 .no-bills-title{
-  margin-bottom: 15px;
+  margin-bottom: 45px;
+  width: 100%;
+  text-align: center;
 }
 
-.no-bills-link{
-  display: block;
-  height: 30px;
-  align-items: center;
+.no-bills-ptag{
+  width: 100%;
+  text-align: center;
 }
 
 .add_new_arrow{

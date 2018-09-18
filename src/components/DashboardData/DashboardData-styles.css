@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin|Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
 
 .dashboard-data-container_main{
   display: flex;
@@ -37,7 +38,7 @@
   color: #2a2c33;
   margin-top: 0px;
   max-width: 450px;
-  min-width: 330px;
+  min-width: 390px;
   max-height: 100%;
   overflow-x: hidden;
   align-items: center;
@@ -99,16 +100,19 @@ button.home-icon-cont{
   padding: 0;
   margin: 0;
   width: 100%;
-  max-width: 410px;
   opacity: 0.7;
   overflow-x: visible;
 }
 
-.arrow-div{
+.rank-arrow-div{
   width: 10%;
   position: relative;
   z-index: 3;
   margin-right: 10px;
+}
+
+.backup-rank-arrow-div{
+  display: none;
 }
 
 .arrow-icon{
@@ -277,7 +281,7 @@ h6.data-value.secondary{
 
 .community-comps{
   width: 100%;
-  padding: 0 0px 10px 10px;
+  padding: 0 0px 10px 0px;
   color: #2a2c33;
   box-sizing: border-box;
 }
@@ -345,4 +349,39 @@ svg.chart {
 
 .wrap{
   width: 130;
+}
+
+.arrow-holder-div{
+  width: 45px;
+  height: 55px;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  justify-content: center;
+}
+
+h1.rank{
+  font-family: 'Alfa Slab One', cursive;
+  position: absolute;
+  font-weight: bold;
+  z-index: 2;
+  color: white;
+  min-width: 15px;
+}
+
+h1.outof{
+  position: absolute;
+  z-index: 2;
+  margin-top: 38px;
+}
+
+h1.outof span{
+  font-weight: bold;
+}
+
+@media (max-width: 330px){
+  .backup-rank-arrow-div h1.outof{
+    margin-top: 0;
+    left: 46px;
+  }
 }

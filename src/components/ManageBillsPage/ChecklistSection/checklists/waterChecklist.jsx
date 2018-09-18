@@ -75,7 +75,7 @@ class WaterChecklist extends Component{
   }
 
   updateAll(data, quest, ans){
-    console.log('data updated:', data)
+    // console.log('data updated:', data)
     this.setState({[quest]: ans, completed: data.completed})
   }
 
