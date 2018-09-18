@@ -109,8 +109,8 @@ class Settings extends Component {
         </li>
         <li className="shrunken-nav-buttons">
           <div className="shrunken-nav-icon-container bills">
-            <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/managebills')}>Bills</div>
-            <img alt="carbon collective logo" className="navbar-link bills-page-logo dropdown-logo" src={this.state.billsLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+            <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/invites')}>Invite</div>
+            <img alt="invite logo" className="settings-logo dropdown-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/invites')}/>
           </div>
         </li>
       </ul>
@@ -135,12 +135,6 @@ class Settings extends Component {
               <img alt="house settings logo" className="settings-logo invite-logo" src={this.state.houseLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/house_settings')}/>
             </li>
             <li className="setting-desc">Household</li>
-          </ul>
-          <ul className="options-list" onClick={(e) => this.goToPage('/invites')}>
-            <li className="setting-icon">
-              <img alt="invite logo" className="settings-logo invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/invites')}/>
-            </li>
-            <li className="setting-desc">Invite</li>
           </ul>
           <ul className="options-list" onClick={(e) => this.goToPage('/suggestions')}>
             <li className="setting-icon">
