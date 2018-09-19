@@ -37,7 +37,7 @@
   margin-left: 32vw;
   font-weight: 200;
   border-bottom: 1px dotted white;
-  margin-bottom: 10px !important;
+  margin-bottom: 17px !important;
   width: 100%;
   max-width: 450px;
   text-align: left;
@@ -115,7 +115,7 @@ h4.click-address-text{
   opacity: 0.8;
   -webkit-appearance: textfield;
   padding-left: 30px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   border: 1px solid #105130;
   height: 50px;
   width: 190px;
@@ -134,7 +134,7 @@ h4.click-address-text{
 
 .current-address h4{
   max-width: 400px;
-  padding-left: 32vw;
+  padding-left: 33vw;
   font-size: 1.2em;
   padding-bottom: 0px;
   margin: 8px 0px;
@@ -145,6 +145,10 @@ h4.click-address-text{
   margin: 20px 0px 10px 0px;
   position: relative;
   z-index: 0;
+}
+
+h2.static-details{
+  margin-top: 20px;
 }
 
 button.deleteHouse{
@@ -173,6 +177,7 @@ button.deleteHouse{
 @media (max-width: 750px){
   .house-editform{
     margin: 0;
+    max-width: 100vw;
   }
 
   .houseSettings-container h1 {
@@ -181,7 +186,7 @@ button.deleteHouse{
     font-weight: 300;
     margin-bottom: 40px;
     width: 100%;
-    max-width: 100%;
+    max-width: 100vw;
     padding: 0px;
     text-align: center;
     margin-top: 10px;
@@ -204,10 +209,18 @@ button.deleteHouse{
     font-weight: 200;
     border-bottom: 1px dotted white;
     width: 100%;
-    max-width: 100%;
     padding: 0px;
     margin: 0;
     text-align: center;
+  }
+
+  h2.current-settings{
+    max-width: 100vw;
+    padding: 3px;
+    box-sizing: border-box;
+  }
+  h2.static-details{
+    margin-top: 20px;
   }
 
   .houseSettings-container h5 {
@@ -278,8 +291,8 @@ button.deleteHouse{
     justify-content: center;
     align-items: center;
   }
-
 }
+
 
 @media (max-width: 400px){
   .houseSettings-container h1 {

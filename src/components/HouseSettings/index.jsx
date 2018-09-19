@@ -15,7 +15,6 @@ const setTimer = function(data){
   }
 
 const formatDate = function(date){
-  console.log(date)
   let formattedDate = new Date(date)
   let year = formattedDate.getFullYear();
   let month = formattedDate.getMonth() + 1;
@@ -27,7 +26,6 @@ const formatDate = function(date){
     month = "0" + month
   }
   formattedDate = year+'-'+month+'-'+dt
-  console.log(formattedDate)
   return formattedDate
 }
 
@@ -315,7 +313,7 @@ class HouseSettings extends Component{
                 />
               </label>
             </form>
-          <h2 className="edit-header current-settings">Static Details</h2>
+          <h2 className="edit-header current-settings static-details">Static Details</h2>
             { addressLoaded ? this.addressForm() : null }
         </div>
       )
