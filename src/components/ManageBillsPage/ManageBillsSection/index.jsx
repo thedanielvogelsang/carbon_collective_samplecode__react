@@ -6,6 +6,11 @@ function capitalize(name){
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
+function checkDateFormat(date){
+  var regExp = (/^\d{4}\-\d{2}\-\d{2}$/)
+  return regExp.test(date)
+}
+
 class ManageBillsSection extends Component{
   constructor(props){
     super(props);
@@ -60,12 +65,21 @@ class ManageBillsSection extends Component{
     let id = this.props.user_id
     const appg = this.assignBillPath()
     let path = `api/v1/users/${id}/${appg}`
-    //make API call to post new address
-    householdData = {[appg]: householdData}
-      post(path, householdData)
-        .then(data => this.resetForm())
-        .catch(error => this.catchError(error))
-    // API call above
+    if(checkDateFormat(householdData['end_date']) && checkDateFormat(householdData['start_date'])){
+      //make API call to post new bill
+      householdData = {[appg]: householdData}
+        post(path, householdData)
+          .then(data => this.resetForm())
+          .catch(error => this.catchError(error))
+      // API call above
+    }else{
+      alert("One or more of your dates was not in the correct format: 'mm/dd/yyyy'")
+      this.setState({
+        start_date: "",
+        end_date: "",
+      })
+    }
+
   };
 
   disappear(){
@@ -115,6 +129,7 @@ class ManageBillsSection extends Component{
               required="true"
               type="date"
               name="start_date"
+              placeholder="dd/mm/yyyy"
               value={ start_date }
               onChange={ this.handleChange }
             />
@@ -124,6 +139,7 @@ class ManageBillsSection extends Component{
             <input
               id="calendar-2"
               required="true"
+              placeholder="dd/mm/yyyy"
               type="date"
               name="end_date"
               value={ end_date }
@@ -137,7 +153,6 @@ class ManageBillsSection extends Component{
               required="true"
               type="number"
               name={ formResource }
-              placeholder="Total Consumption"
               min="0"
               value={ formResourceAmt }
               onChange={ this.handleChange }
@@ -150,7 +165,6 @@ class ManageBillsSection extends Component{
               required="true"
               type="number"
               name="price"
-              placeholder="Total Bill Cost"
               min="0"
               value={ price }
               onChange={ this.handleChange }

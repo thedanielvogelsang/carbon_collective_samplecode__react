@@ -80,7 +80,7 @@ class UserSettings extends Component{
     const userUpdateData = {user: {[name]: userUpdate}}
     const path = `users`
     put(path, id, userUpdateData)
-      .then(data => console.log(data))
+      .then(data => console.log())
       .catch(error => console.log(error))
     }
   }
@@ -91,12 +91,12 @@ class UserSettings extends Component{
       return(
         <div className="usrForm-cnt">
         <div className="users-editform-container">
-        <h1 className="edit-header user-settings">{this.state.first + "'"}s User Info</h1>
+        <h1 className="edit-header user-settings">{this.state.first + "'"}s Profile</h1>
         <div className="form-outside-container">
           <form
             className="form-container users-editform"
           >
-          <h4> First Name </h4>
+          <h5> First Name </h5>
           <input
             onChange={this.handleChange}
             onFocus={(e) => e.target.placeholder = ''}
@@ -105,7 +105,7 @@ class UserSettings extends Component{
             name="first"
             type="text"
             />
-          <h4> Last Name </h4>
+          <h5> Last Name </h5>
           <input
             onChange={this.handleChange}
             onFocus={(e) => e.target.placeholder = ''}
@@ -114,7 +114,7 @@ class UserSettings extends Component{
             name="last"
             type="text"
             />
-          <h4> Email </h4>
+          <h5> Email </h5>
           <input
             onChange={this.handleChange}
             onFocus={(e) => e.target.placeholder = ''}

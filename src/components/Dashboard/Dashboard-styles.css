@@ -130,21 +130,37 @@ button.resource-btn:not(:first-child){
 
 button.carbon-btn:hover{
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  background-color: rgb(223,223,223);
+  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
+
   /* background-color: rgb(191,130,54);
   color: #2A2C33; */
 }
 button.electricity-btn:hover{
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  background-color: rgb(223,223,223);
+  padding-top: 15px;
+  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
   /* background-color: rgb(118,204,223);
   color: #2A2C33; */
 }
 button.water-btn:hover{
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  background-color: rgb(223,223,223);
+  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
+
   /* background-color: rgb(67,83,161);
   color: #2A2C33; */
 }
 button.gas-btn:hover{
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  background-color: rgb(223,223,223);
+  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
+
   /* background-color: rgb(211,35,46);
   color: #e23606; */
 }
@@ -196,6 +212,9 @@ button.update-bill-button:hover{
 
 .manage-bills-div:hover{
   cursor: pointer;
+  -webkit-transform: scale(1.1);
+  background-color: rgb(221,221,221);
+  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
 }
 
 img.manage-bills-button{
