@@ -69,9 +69,22 @@ input {
 }
 
 input::-webkit-input-placeholder {
-    padding: -5px;
     margin: 0;
     padding-top: -15px;
+    font-size: 0.8em;
+}
+
+input[type="date"]
+{
+    display:block;
+
+    /* Solution 1 */
+     -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    min-height: 1.2em;
+
+    /* Solution 2 */
+    /* min-width: 96%; */
 }
 
 select {
@@ -131,28 +144,28 @@ input:focus{
 }
 
 input::-webkit-input-placeholder {
-  font-size: 1.2em;
-  padding: 3px 0px 3px 5px;
+  font-size: 14px;
+  padding: 0px 0px 0px 5px;
   height: 20px;
-  line-height: 18px;
+  line-height: 1.2em;
 }
 input::-moz-placeholder {
-  font-size: 1.2em;
+  font-size: 14px;
   padding: 3px 0px 3px 5px;
   height: 20px;
-  line-height: 18px;
+  line-height: 1.2em;
 }
 input:-ms-input-placeholder {
-  font-size: 1.2em;
+  font-size: 14px;
   padding: 3px 0px 3px 5px;
   height: 20px;
-  line-height: 18px;
+  line-height: 1.2em;
 }
 input:-moz-placeholder {
-  font-size: 1.2em;
+  font-size: 14px;
   padding: 3px 0px 3px 5px;
   height: 20px;
-  line-height: 18px;
+  line-height: 1.2em;
 }
 
 @media (max-width: 700px){

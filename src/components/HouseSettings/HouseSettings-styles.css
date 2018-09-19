@@ -14,18 +14,19 @@
 .houseSettings-container{
   display: flex;
   flex-direction: column;
+  padding-top: 18px;
 }
 
 .houseSettings-container h1 {
   /* font-family: 'Merriweather', Garamond, serif; */
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Merriweather', Garamond, serif;
   font-size: 56px;
   color: #219a60;
   font-weight: 300;
   width: 100%;
   text-align: left;
   padding-left: 30vw;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   margin-top: 10px;
 }
 
@@ -45,15 +46,21 @@
 .houseSettings-container h5 {
   font-family: "Libre Franklin", Helvetica, sans-serif;
   font-size: 26px;
-  margin: 20px 0 15px;
+  margin: 10px 0px;
   text-align: left;
   width: 100%;
   padding-left: 32vw;
+  color: #89868D;
 }
 
 
 form.house-editform{
   align-items: flex-start;
+}
+
+form.house-editform input{
+  border: 1px solid #c0c2c2;
+  border-radius: 4px;
 }
 
 .house-editform label{
@@ -66,8 +73,9 @@ h4.click-address-text{
   color: #1fa245;
 }
 
-.number-form{
+.number-residents{
   min-width: 300px;
+  margin-top: 0 !important;
 }
 
 #noRes-id{
@@ -76,7 +84,7 @@ h4.click-address-text{
   opacity: 1.0;
   cursor: default;
   border: 1px solid #105130
-  
+
 }
 
 #noRes-id::-webkit-input-placeholder {
@@ -99,16 +107,19 @@ h4.click-address-text{
 
 #sq-ft::-webkit-input-placeholder {
       font-size: 0.9em
-
 }
 
 #move-in{
-  margin-left: 60px;
+  margin-left: 54px;
   background-color: white !important;
   opacity: 0.8;
   -webkit-appearance: textfield;
-  text-align: center;
-  border: 1px solid #105130
+  padding-left: 30px;
+  letter-spacing: 3px;
+  border: 1px solid #105130;
+  height: 50px;
+  width: 190px;
+  text-align: left;
 }
 
 #move-in:hover {
@@ -126,6 +137,8 @@ h4.click-address-text{
   padding-left: 32vw;
   font-size: 1.2em;
   padding-bottom: 0px;
+  margin: 8px 0px;
+  color: #2a2c33;
 }
 
 .houseDelete{
@@ -166,11 +179,11 @@ button.deleteHouse{
     font-family: 'Merriweather', Garamond, serif;
     font-size: 56px;
     font-weight: 300;
+    margin-bottom: 40px;
     width: 100%;
     max-width: 100%;
     padding: 0px;
     text-align: center;
-    margin-bottom: 50px;
     margin-top: 10px;
   }
 
@@ -195,7 +208,6 @@ button.deleteHouse{
     padding: 0px;
     margin: 0;
     text-align: center;
-    margin-top: 50px;
   }
 
   .houseSettings-container h5 {

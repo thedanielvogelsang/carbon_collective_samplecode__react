@@ -14,6 +14,23 @@ const setTimer = function(data){
     return promise;
   }
 
+const formatDate = function(date){
+  console.log(date)
+  let formattedDate = new Date(date)
+  let year = formattedDate.getFullYear();
+  let month = formattedDate.getMonth() + 1;
+  let dt = formattedDate.getDate();
+  if(dt < 10){
+    dt = "0" + dt;
+  }
+  if(month < 10){
+    month = "0" + month
+  }
+  formattedDate = year+'-'+month+'-'+dt
+  console.log(formattedDate)
+  return formattedDate
+}
+
 class HouseSettings extends Component{
   constructor(){
     super()
@@ -22,11 +39,12 @@ class HouseSettings extends Component{
       errors: "",
       errorStyle: {display: 'none'},
       house_exists: true,
+      house: {move_in_date: "", no_residents: 1},
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleUserHouseChange = this.handleUserHouseChange.bind(this);
     this.updateResidents = this.updateResidents.bind(this);
     this.updateHouseDetails = this.updateHouseDetails.bind(this);
+    this.updateUserHouseDetails = this.updateUserHouseDetails.bind(this);
     this.addressForm = this.addressForm.bind(this);
     this.removeUserHouse = this.removeUserHouse.bind(this);
     this.goToDashboard = this.goToDashboard.bind(this)
@@ -34,6 +52,7 @@ class HouseSettings extends Component{
     this.disappear = this.disappear.bind(this);
     this.setNoHouseState = this.setNoHouseState.bind(this);
     this.clearAndGoToDash = this.clearAndGoToDash.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
   componentDidMount(){
@@ -50,6 +69,15 @@ class HouseSettings extends Component{
   }
 
   componentDidUpdate(){
+    return this.state.errors !== "" ? this.countdownClear() : null
+  }
+
+  countdownClear(){
+    setTimeout(this.clearErrors, 3000)
+  }
+
+  clearErrors(){
+    this.setState({errors: "", errorStyle: {display: 'none'}})
   }
 
   logLanding(){
@@ -71,8 +99,9 @@ class HouseSettings extends Component{
     })
   }
 
+  // used for onChange to update state
   handleChange(event){
-    const house = this.state.house
+    let house = this.state.house
     const target = event.target;
     const name = target.name;
     const value = target.value;
@@ -80,22 +109,10 @@ class HouseSettings extends Component{
       let origVal = house[name]
       target.placeholder = origVal
     }else{
-        house[name] = value
-        this.updateHouseDetails(house)
-    }
-  }
-
-  handleUserHouseChange(event){
-    const house = this.state.house
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-    if(value === ''){
-      let origVal = house[name]
-      target.placeholder = origVal
-    }else{
-        house[name] = value
-        this.updateUserHouseDetails(house)
+      house[name] = value
+      this.setState({
+        house: house,
+      })
     }
   }
 
@@ -143,46 +160,58 @@ class HouseSettings extends Component{
     this.props.history.push(path)
   }
 
+
   updateResidents(e, type) {
     e.preventDefault();
-    let userCt = this.state.no_users;
-    let newVal = this.state.house.no_residents;
-    if (type === "add") {
-      newVal += 1;
-      e.target.placeholder = newVal
-    } else if (newVal > userCt) {
-      newVal -= 1;
-      e.target.placeholder = newVal
+    if(confirm("Are you sure? This effects everyone in the house.")){
+      let userCt = this.state.no_users;
+      let newVal = this.state.house.no_residents;
+      if (type === "add") {
+        newVal += 1;
+        e.target.placeholder = newVal
+      } else if (newVal > userCt) {
+        newVal -= 1;
+        e.target.placeholder = newVal
+      }
+        let house = this.state.house
+        house.no_residents = newVal
+        this.updateHouseDetails(house)
     }
-    let house = this.state.house
-    house.no_residents = newVal
-    this.updateHouseDetails(house)
-    // this.setState({ house: house });
   }
 
-  updateHouseDetails(house){
-    if(confirm("Are you sure? This effects everyone in the house.")){
+  // exclusively used for the no_resident buttons + and -
+  updateHouseDetails(house = this.state.house){
       const path = `api/v1/houses`
       const houseData = {house: house}
       const id = this.props.house_id
       put(path, id, houseData)
         .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
         .catch(error => this.setState({errors: 'house could not be saved'}))
-    }
   }
 
-  updateUserHouseDetails(house){
-    const path = `api/v1/houses`
-    const user_id = this.props.user_id
-    const houseData = {user_house: house, user_id: user_id}
-    const id = this.props.house_id
-    put(path, id, houseData)
-      .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
-      .catch(error => this.setState({errors: 'house could not be saved'}))
+  // used for onBlur to put and save data
+  updateUserHouseDetails(){
+      const path = `api/v1/houses`
+      const user_id = this.props.user_id
+      const house = this.state.house
+      const moveInDate = this.state.house.move_in_date
+      const houseData = {user_house: {move_in_date: moveInDate}, house: house, user_id: user_id}
+      const id = this.props.house_id
+      put(path, id, houseData)
+        .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
+        .catch(error => this.sortErrors(error))
+  }
+
+  sortErrors(err){
+    err.error == 'ignore date nil' ? null : this.setState({errors: 'house could not be saved'})
   }
 
   disappear(){
     this.setState({errors: ""})
+  }
+
+  changePlaceholder(e){
+    e.target.value = ''
   }
 
   addressForm(){
@@ -219,6 +248,9 @@ class HouseSettings extends Component{
 
   render(){
     let addressLoaded = this.state.addressLoaded
+    let { move_in_date, no_residents, total_sq_ft } = this.state.house
+    console.log(move_in_date)
+    // move_in_date = formatDate(move_in_date)
     if(this.state.house_exists && addressLoaded){
       return(
         <div className="houseSettings-container">
@@ -232,7 +264,7 @@ class HouseSettings extends Component{
             >
               <h5> Current Number of Residents </h5>
               <label>
-                <div className="number-form">
+                <div className="number-residents number-form">
                   <button
                     onClick={ (e) => this.updateResidents(e) }
                   >-</button>
@@ -244,8 +276,7 @@ class HouseSettings extends Component{
                     min="1"
                     max="1000"
                     readOnly={true}
-                    placeholder={ this.state.house.no_residents }
-                    onBlur={ this.handleChange }
+                    value={ no_residents }
                   />
                   <button
                     onClick={ (e) => this.updateResidents(e, "add") }
@@ -259,7 +290,11 @@ class HouseSettings extends Component{
                   required="false"
                   type="date"
                   name="move_in_date"
-                  onChange={ this.handleUserHouseChange }
+                  placeholder={ move_in_date }
+                  value={ move_in_date }
+                  onFocus={(e) => {return e.target.value = ''}}
+                  onChange={(e) => this.handleChange(e) }
+                  onBlur={ this.updateUserHouseDetails }
                 />
               </label>
               <h5>Total Square Feet</h5>
@@ -269,12 +304,14 @@ class HouseSettings extends Component{
                   type="number"
                   className="sq-feet"
                   name="total_sq_ft"
-                  placeholder={ this.state.house.total_sq_ft }
-                  step="1"
+                  value ={ total_sq_ft }
+                  step="any"
                   min="0"
                   max="50000"
-                  onFocus={(e) => e.target.placeholder = ''}
-                  onBlur={ this.handleChange }
+                  placeholder={ total_sq_ft }
+                  onFocus={(e) => this.changePlaceholder(e)}
+                  onChange={(e) => this.handleChange(e) }
+                  onBlur={(e) => this.updateHouseDetails() }
                 />
               </label>
             </form>

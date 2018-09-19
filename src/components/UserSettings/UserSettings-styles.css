@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  font-family: "Libre Franklin", Helvetica, sans-serif;
   color: #2a2c33;
   width: 100%;
   align-items: flex-start;
@@ -23,11 +22,20 @@ form.users-editform {
   justify-content: flex-start;
 }
 
-form.users-editform h4{font-size: 1.2em; margin-bottom: 14px; margin-left: 30px  }
-form.users-editform h4:not(:first-child){margin-top: 8px }
+form.users-editform h5{
+  margin-bottom: 14px;
+  margin-left: 30px;
+  font-family: "Libre Franklin", Helvetica, sans-serif;
+  font-size: 26px;
+  text-align: left;
+  width: 100%;
+  color: #89868D;
+}
+form.users-editform h5:not(:first-child){margin-top: 8px }
 form.users-editform input{
   margin-left: 30px;
   min-width: 350px;
+  background-color: white;
 }
 
 .users-editform-container input{
@@ -45,14 +53,14 @@ form.users-editform input{
 }
 
 h1.edit-header.user-settings{
-  font-family: "Libre Franklin", Helvetica, sans-serif;
+  font-family: 'Merriweather', Garamond, serif;
   font-size: 56px;
   color: #219a60;
   font-weight: 300;
   width: 100%;
   text-align: left;
   padding-left: 30vw;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   margin-top: 10px;
 }
 
@@ -286,7 +294,7 @@ button.address-link{
     align-items: center;
     justify-content: center;
   }
-  form.form-container.users-editform h4{
+  form.form-container.users-editform h5{
     padding: 0;
     margin-left: 0;
   }
@@ -296,12 +304,11 @@ button.address-link{
   form.users-editform input{
     margin-left: 0;
     min-width: 80%;
-
   }
   h1.edit-header.user-settings{
     font-size: 38px;
   }
-  form.users-editform h4{font-size: 1em}
+  form.users-editform h5{font-size: 1em}
   form.password-form{
     display: flex;
     flex-direction: column;
@@ -336,7 +343,7 @@ button.address-link{
     align-items: center;
     justify-content: center;
   }
-  form.form-container.users-editform h4{
+  form.form-container.users-editform h5{
     padding: 0;
     margin-left: 0;
   }
