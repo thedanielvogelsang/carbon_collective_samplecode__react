@@ -318,6 +318,7 @@ svg.fa-caret-down.fa-sm{
   -webkit-animation-duration: 0.5s;
   -webkit-animation-timing-function: forwards;
   animation: appear 0.5s ease-in forwards;
+  min-width: 80vw;
 }
 
 .section-content.disappear{
