@@ -139,7 +139,7 @@ div.shrunken-nav-label{
     vertical-align: top;
     justify-content: center;
   }
-  .shrunken-nav-icon-container.bills{
+  .shrunken-nav-icon-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap-reverse;
@@ -154,18 +154,8 @@ div.shrunken-nav-label{
     z-index: 1;
   }
   .shrunken-nav-icon-container.dash{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap-reverse;
-    height: 35px !important;
-    width: 35px !important;
-    padding: 4px 3px 6px 7px;
-    margin-right: 11px;
-    border: 1px solid #1fa245;
+    padding: 6px 6px 4px 6px;
     /* background-color: #2A2C33; */
-    background-color: rgb(241, 246, 219);
-    border-radius: 50%;
-    z-index: 1;
   }
   .shrunken-nav-icon-container:hover {
     background-color: white;
@@ -179,6 +169,16 @@ div.shrunken-nav-label{
     display: flex;
     position: absolute;
     top: 14px;
+    left: 7px;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    padding: 1px;
+  }
+  .shrunken-nav-icon-container.invites:hover .shrunken-nav-label{
+    display: flex;
+    position: absolute;
+    top: 14px;
     left: 3px;
     font-size: 15px;
     font-weight: 400;
@@ -189,7 +189,7 @@ div.shrunken-nav-label{
     display: flex;
     position: absolute;
     top: 14px;
-    left: 3px;
+    left: 4px;
     font-weight: 400;
     font-style: italic;
     padding: 1px;

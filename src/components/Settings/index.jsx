@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { get, post } from '../../api_client';
-  import DashLogo from './img/footprint.svg';
+  import DashLogo from './img/baseline-assessment-24px.svg';
+  import BillsLogo from './img/doc.svg';
   import ProfileLogo from './img/profile.svg';
   import HouseLogo from './img/household.svg';
   import InviteLogo from './img/invite.svg';
@@ -18,6 +19,7 @@ class Settings extends Component {
     this.state = {
       email: '',
       avatar_url: "./fake_avatar_img.jpg",
+      billsLogo: BillsLogo,
       dashLogo: DashLogo,
       profileLogo: ProfileLogo,
       houseLogo: HouseLogo,
@@ -102,11 +104,17 @@ class Settings extends Component {
         <li className="shrunken-nav-buttons">
           <div className="shrunken-nav-icon-container dash">
             <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/dashboard')}>Dash</div>
-            <img alt="carbon collective logo" className="navbar-link dash-log dropdown-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
+            <img alt="carbon collective logo" className="navbar-link dash-log dropdown-logo" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
           </div>
         </li>
         <li className="shrunken-nav-buttons">
           <div className="shrunken-nav-icon-container bills">
+            <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/managebills')}>Bills</div>
+            <img alt="carbon collective logo" className="navbar-link dropdown-logo" src={this.state.billsLogo} style={{width: '24px', height: '30px', paddingBottom: "2px"}} onClick={(e) => this.goToDash(e)}/>
+          </div>
+        </li>
+        <li className="shrunken-nav-buttons">
+          <div className="shrunken-nav-icon-container invites">
             <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/invites')}>Invite</div>
             <img alt="invite logo" className="settings-logo dropdown-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/invites')}/>
           </div>
@@ -134,9 +142,9 @@ class Settings extends Component {
             </li>
             <li className="setting-desc">Household</li>
           </ul>
-          <ul className="options-list" onClick={(e) => this.goToPage('/suggestions')}>
+          <ul className="options-list" onClick={(e) => this.goToPage('/bugs')}>
             <li className="setting-icon">
-              <img alt="feedback logo" className=" settings-logo invite-logo" src={this.state.feedbackLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/suggestions')}/>
+              <img alt="feedback logo" className=" settings-logo invite-logo" src={this.state.feedbackLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/bugs')}/>
             </li>
             <li className="setting-desc">Feedback</li>
           </ul>

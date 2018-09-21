@@ -14,20 +14,7 @@ const setTimer = function(data){
     return promise;
   }
 
-const formatDate = function(date){
-  let formattedDate = new Date(date)
-  let year = formattedDate.getFullYear();
-  let month = formattedDate.getMonth() + 1;
-  let dt = formattedDate.getDate();
-  if(dt < 10){
-    dt = "0" + dt;
-  }
-  if(month < 10){
-    month = "0" + month
-  }
-  formattedDate = year+'-'+month+'-'+dt
-  return formattedDate
-}
+
 
 class HouseSettings extends Component{
   constructor(){
@@ -201,7 +188,7 @@ class HouseSettings extends Component{
   }
 
   sortErrors(err){
-    err.error == 'ignore date nil' ? null : this.setState({errors: 'house could not be saved'})
+    err.error === 'ignore date nil' ? console.log() : this.setState({errors: 'house could not be saved'})
   }
 
   disappear(){
@@ -246,9 +233,7 @@ class HouseSettings extends Component{
 
   render(){
     let addressLoaded = this.state.addressLoaded
-    let { move_in_date, no_residents, total_sq_ft } = this.state.house
-    console.log(move_in_date)
-    // move_in_date = formatDate(move_in_date)
+    let { move_in_date } = this.state.house
     if(this.state.house_exists && addressLoaded){
       return(
         <div className="houseSettings-container">
@@ -260,27 +245,7 @@ class HouseSettings extends Component{
           <form
             className="form-container house-editform"
             >
-              <h5> Current Number of Residents </h5>
-              <label>
-                <div className="number-residents number-form">
-                  <button
-                    onClick={ (e) => this.updateResidents(e) }
-                  >-</button>
-                  <input
-                    id="noRes-id"
-                    type="text"
-                    name="no_residents"
-                    step="1"
-                    min="1"
-                    max="1000"
-                    readOnly={true}
-                    value={ no_residents }
-                  />
-                  <button
-                    onClick={ (e) => this.updateResidents(e, "add") }
-                  >+</button>
-                </div>
-              </label>
+
               <h5>Move in Date</h5>
               <label>
                 <input
@@ -295,23 +260,7 @@ class HouseSettings extends Component{
                   onBlur={ this.updateUserHouseDetails }
                 />
               </label>
-              <h5>Total Square Feet</h5>
-              <label>
-                <input
-                  id="sq-ft"
-                  type="number"
-                  className="sq-feet"
-                  name="total_sq_ft"
-                  value ={ total_sq_ft }
-                  step="any"
-                  min="0"
-                  max="50000"
-                  placeholder={ total_sq_ft }
-                  onFocus={(e) => this.changePlaceholder(e)}
-                  onChange={(e) => this.handleChange(e) }
-                  onBlur={(e) => this.updateHouseDetails() }
-                />
-              </label>
+
             </form>
           <h2 className="edit-header current-settings static-details">Static Details</h2>
             { addressLoaded ? this.addressForm() : null }

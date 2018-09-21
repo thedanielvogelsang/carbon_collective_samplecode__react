@@ -196,10 +196,9 @@ class PastBillsPage extends Component{
     }else{
       let user_id = this.props.user_id
       let resource = this.props.resource_type
-      let value = e.target.value
       let name = sortName(e.target.name, resource)
       let type = sortType(resource)
-      name === "start_date" || name === "end_date" ? value = sortDate(value, year) : null
+      let value = (name === "start_date" || name === "end_date") ? sortDate(e.target.value, year) : e.target.value
       const path = `api/v1/users/${user_id}/bills/${resource}/${id}`
       const billData = {[type]: {[name]: value}}
       put(path, undefined, billData)
@@ -211,7 +210,7 @@ class PastBillsPage extends Component{
   addAndLoadBills(data, scroll = false){
     this.setState({loaded: false})
     this.loadBills()
-    scroll ? scrollTop() : null
+    scroll ? scrollTop() : console.log()
     this.props.addError(data)
   }
 

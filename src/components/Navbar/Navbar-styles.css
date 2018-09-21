@@ -144,8 +144,13 @@ li.landing-nav-link{
   line-height: 2.5em;
 }
 
+li.landing-nav-link.spacer{
+  margin-top: 8px;
+}
+
 li.landing-nav-link.hamburger{
   padding-top: 5px;
+
 }
 
 li.landing-nav-link a:hover{

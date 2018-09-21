@@ -12,9 +12,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import LogGrey from "./img/log_grey.svg";
   import LogGreen from "./img/log_green.svg";
   import CCLogo from './img/CC_logo.svg';
-  import DashFoot from './img/input_component-24px.svg';
+  import DashFoot from './img/baseline-assessment-24px.svg';
   import InviteLogo from './img/invite.svg';
   import BillsPageLogo from './img/doc.svg';
+  import billsLogo from './img/doc.svg';
 
 import "typeface-roboto";
 import './Navbar-styles.css'
@@ -282,16 +283,16 @@ class Navbar extends Component {
           </div>
           <div className="landing-navbar-links">
             <ul className="navbar">
-              <li className="header-button landing-nav-link">
+              <li className="header-button landing-nav-link spacer">
                 <a onClick={(e) => this.goToAboutPage(e)}>About</a>
               </li>
-              <li className="header-button landing-nav-link">
+              <li className="header-button landing-nav-link spacer">
                 <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
               </li>
               <li className="header-button landing-nav-link">
-                <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '20px', height: '28px'}} onClick={(e) => this.goToDash(e)}/>
+                <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
               </li>
-              <li className="header-button landing-nav-link hamburger">
+              <li className="header-button landing-nav-link hamburger spacer">
                 <FontAwesomeIcon icon={faEllipsisH} className="hamburger-menu-landing" onClick={this.goToSettings}/>
               </li>
             </ul>
@@ -309,12 +310,15 @@ class Navbar extends Component {
           <div className="landing-navbar-links">
             <ul className="navbar">
               <li className="header-button landing-nav-link">
-                <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
+                <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
               </li>
               <li className="header-button landing-nav-link">
+                <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={billsLogo} style={{width: '24px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+              </li>
+              <li className="header-button landing-nav-link spacer">
                 <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
               </li>
-              <li className="header-button landing-nav-link">
+              <li className="header-button landing-nav-link spacer">
                 <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
               </li>
             </ul>
@@ -341,12 +345,15 @@ class Navbar extends Component {
             <div className="landing-navbar-links">
               <ul className="navbar">
                 <li className="header-button landing-nav-link">
-                  <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToDash(e)}/>
+                  <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
                 </li>
                 <li className="header-button landing-nav-link">
+                  <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={billsLogo} style={{width: '24px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+                </li>
+                <li className="header-button landing-nav-link spacer">
                   <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
                 </li>
-                <li className="header-button landing-nav-link">
+                <li className="header-button landing-nav-link spacer">
                   <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
                 </li>
               </ul>
