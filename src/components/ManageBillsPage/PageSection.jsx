@@ -13,7 +13,6 @@ class PageSection extends Component{
       arrow: 'caret-right',
       sectionName: 'section-content-div',
       sectionContent: 'section-content',
-      reloadPosts: false,
     };
     this.changeArrow = this.changeArrow.bind(this);
     this.closeDiv = this.closeDiv.bind(this);
@@ -23,6 +22,9 @@ class PageSection extends Component{
   }
 
   componentDidUpdate(){
+    if(this.state.reloadPosts === true){
+      setTimeout(1000, this.setState({reloadPosts: false}))
+    }
   }
 
   closeDiv(name){
@@ -38,8 +40,8 @@ class PageSection extends Component{
         open: false,
         arrow: 'caret-right',
         sectionName: "section-content-div disappear",
-        sectionContent: 'section-content disappear'
-      }, this.reloadPosts())
+        sectionContent: 'section-content disappear',
+      }, this.props.reloadPosts)
     }
 
   }
@@ -75,6 +77,7 @@ class PageSection extends Component{
       default:
         break
     }
+    let reload = this.props.reload;
     return(
       <div className="manage-section-master-div">
         <div className="section-title-row">
@@ -89,7 +92,7 @@ class PageSection extends Component{
             <div className={this.state.sectionContent}>
               {overview ? <Checklist resource={this.props.capRes} house={this.props.house_id} user={this.props.user_id} closeDiv={this.closeDiv}/> : null }
               {manage ? <ManageBillsSection noResidents={this.props.noResidents} numBills={this.props.numBills} closeDiv={this.closeDiv} orgCount={this.props.orgCount} type={this.props.type} reloadPosts={this.reloadPosts}/> : null }
-              {past ? <PastBillsPage num={this.props.numBills} metric={this.props.type} addError={this.props.addError}/> : null }
+              {past ? <PastBillsPage num={this.props.numBills} metric={this.props.type} addError={this.props.addError} reloadPosts={reload}/> : null }
             </div>
         </div>
       </div>

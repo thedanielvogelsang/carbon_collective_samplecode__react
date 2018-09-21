@@ -38,9 +38,12 @@ class ManageBillsPage extends Component {
       loading: true,
       navLoading: true,
       errors: "",
+      reloadPosts: false,
     };
     this.loadData = this.loadData.bind(this);
     this.goToPage = this.goToPage.bind(this);
+    this.stopReload = this.stopReload.bind(this);
+    this.reloadPosts = this.reloadPosts.bind(this);
     this.addNewError = this.addNewError.bind(this);
     this.removeNewError = this.removeNewError.bind(this);
     this.updateLoader = this.updateLoader.bind(this);
@@ -123,6 +126,18 @@ class ManageBillsPage extends Component {
     }
   }
 
+  reloadPosts(){
+    this.setState({
+      reloadPosts: true,
+    }, this.stopReload)
+  }
+
+  stopReload(){
+    this.setState({
+      reloadPosts: false,
+    })
+  }
+
   checkResourceType(){
     switch(this.props.resource_type){
       case "carbon":
@@ -142,6 +157,7 @@ class ManageBillsPage extends Component {
     let notCarbon = this.checkResourceType();
     let resource = this.props.resource_type;
     let errors = this.state.errors;
+    let reload = this.state.reloadPosts;
     if(resource === 'carbon'){
       resource = "electricity"
     }
@@ -163,8 +179,8 @@ class ManageBillsPage extends Component {
           {!navLoading ? <div>
             <div className="error-box">{errors}</div>
             <PageSection title="Overview" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
-            <PageSection title="Bill Entry" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
-            <PageSection title="Past Bills" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type} addError={this.addNewError}/>
+            <PageSection title="Bill Entry" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type} reloadPosts={this.reloadPosts}/>
+            <PageSection title="Past Bills" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type} addError={this.addNewError} reload={reload}/>
           </div> : <Loader /> }
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {get, put} from '../../../api_client';
+import {get, put, destroy} from '../../../api_client';
+import {scrollTop} from '../../../helper-scripts/screenHelpers.js'
 import {connect} from 'react-redux';
 import './PastBillsPage-styles.css';
 
@@ -53,7 +54,7 @@ const Bill = function(props){
               <button
                 className="bill-delete-btn"
                 name="bill"
-                onClick={(e) => console.log(props.bill.id)}
+                onClick={(e) => props.deleteBill(e, props.bill.id)}
                 >X
               </button>
             </div>
@@ -61,10 +62,10 @@ const Bill = function(props){
               <h3 name="who" className="values">{props.bill.who}</h3>
             </div>
             <div className="past-bill-stat larger">
-              <input name="start_date" className="values larger" onChange={props.handleBillChange} onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.start_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
+              <input name="start_date" className="values larger" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.start_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
             </div>
             <div className="past-bill-stat larger">
-              <input name="end_date" className="values larger" onChange={props.handleBillChange} onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.end_date}></input>
+              <input name="end_date" className="values larger" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.end_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
             </div>
             <div className="past-bill-stat usage larger">
               <h3 name="total_used" className="values">{props.bill.total_used}</h3>
@@ -76,17 +77,17 @@ const Bill = function(props){
               <h3 name="avg_daily" className="values usage larger">{props.bill.average_daily}</h3>
             </div>
             <div className="past-bill-stat cost">
-              <input name="price" className="values smaller cost" onChange={props.handleBillChange} onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id)} placeholder={`$${props.bill.price}`}></input>
+              <input name="price" className="values smaller cost" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id)} placeholder={`$${props.bill.price}`} onFocus={(e) => {e.target.placeholder = ''}}></input>
             </div>
       </div>
     )
   }
 
-const renderBills = function(billChangeFunc, billUpdateFunc, bills, billType, i, num, year){
+const renderBills = function(deleteBillFunc, billUpdateFunc, bills, billType, i, num, year){
   return bills.map((bill, n) => {
       return(
         <div key={n}>
-          <Bill n={n+i} bill={bill} type={billType} handleBillChange={billChangeFunc} updateBillAndChangeToInactive={billUpdateFunc} year={year}/>
+          <Bill n={n+i} bill={bill} type={billType} deleteBill={deleteBillFunc} updateBillAndChangeToInactive={billUpdateFunc} year={year}/>
         </div>
       );
   });
@@ -123,7 +124,7 @@ const BillYear = function(props){
         </div>
       </div>
       <div className="billyear-bills-container">
-        {renderBills(props.billChangeFunc, props.billUpdateFunc, props.bills, props.billType, props.n, props.num, props.year)}
+        {renderBills(props.deleteBillFunc, props.billUpdateFunc, props.bills, props.billType, props.n, props.num, props.year)}
       </div>
     </div>
   )
@@ -136,12 +137,10 @@ class PastBillsPage extends Component{
       loaded: false,
       foot_url: './img/FOOT_blank.png',
       billArray: {},
-      reload: props.reloadPosts,
     }
     this.loadBills = this.loadBills.bind(this);
-    this.highlightForm = this.highlightForm.bind(this);
     this.sortBills = this.sortBills.bind(this);
-    this.handleBillChange = this.handleBillChange.bind(this);
+    this.deleteBill = this.deleteBill.bind(this);
     this.addAndLoadBills = this.addAndLoadBills.bind(this);
     this.updateBillAndChangeToInactive = this.updateBillAndChangeToInactive.bind(this);
   }
@@ -157,12 +156,9 @@ class PastBillsPage extends Component{
     if(prevProps.resource_type !== this.props.resource_type && this._ismounted === true){
       this.loadBills()
     }
-  }
-
-  highlightForm(e){
-    e.preventDefault();
-    this.props.highlightForm('formHighlight', '#29d967')
-    return document.body.scrollTop = document.documentElement.scrollTop = 0;
+    if(this.props.reloadPosts){
+      this.loadBills()
+    }
   }
 
   loadBills(){
@@ -183,8 +179,15 @@ class PastBillsPage extends Component{
     this.setState({billArray, loaded: true})
   }
 
-  handleBillChange(e){
-    // console.log(e.target.value)
+  deleteBill(event, id){
+    event.preventDefault();
+    event.target.parentNode.parentNode.classList.add("disappear")
+    let uId = this.props.user_id
+    let type = sortType(this.props.resource_type)
+    let path = `api/v1/users/${uId}/${type}?id=${id}`
+    destroy(path)
+      .then(data => console.log())
+      .catch(error => this.addAndLoadBills(error, true))
   }
 
   updateBillAndChangeToInactive(e, id, year){
@@ -201,13 +204,14 @@ class PastBillsPage extends Component{
       const billData = {[type]: {[name]: value}}
       put(path, undefined, billData)
         .then(data => this.addAndLoadBills(data))
-        .catch(error => this.addAndLoadBills(error))
+        .catch(error => this.addAndLoadBills(error, true))
     }
   }
 
-  addAndLoadBills(data){
+  addAndLoadBills(data, scroll = false){
     this.setState({loaded: false})
     this.loadBills()
+    scroll ? scrollTop() : null
     this.props.addError(data)
   }
 
@@ -224,7 +228,7 @@ class PastBillsPage extends Component{
       return Object.keys(this.state.billArray).reverse().map((year, n) => {
         let bills = this.state.billArray[year]
         return (
-          <BillYear key={n} year={year} n={n} bills={bills} billType={this.props.resource_type} num={this.props.num} metric={this.props.metric} billChangeFunc={this.handleBillChange} billUpdateFunc={this.updateBillAndChangeToInactive}/>
+          <BillYear key={n} year={year} n={n} bills={bills} billType={this.props.resource_type} num={this.props.num} metric={this.props.metric} deleteBillFunc={this.deleteBill} billUpdateFunc={this.updateBillAndChangeToInactive}/>
         )
       });
     }
