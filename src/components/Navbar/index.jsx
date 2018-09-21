@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import LogGrey from "./img/log_grey.svg";
   import LogGreen from "./img/log_green.svg";
   import CCLogo from './img/CC_logo.svg';
-  import DashFoot from './img/footprint.svg';
+  import DashFoot from './img/input_component-24px.svg';
   import InviteLogo from './img/invite.svg';
   import BillsPageLogo from './img/doc.svg';
 
@@ -46,51 +46,6 @@ class Navbar extends Component {
       password_logged: false,
       password: '',
       loaded: false,
-      styles: {
-        mediumIcon: {
-          color: 'rgb(240, 250, 250)',
-          opacity: 0.8,
-          width: 36,
-          height: 36,
-          alignContent: 'center',
-          justifyContent: 'center',
-          paddingBottom: '10px',
-        },
-        mediumIcon4: {
-          color: 'rgb(240, 250, 250)',
-          opacity: 0.8,
-          width: 36,
-          height: 36,
-          alignContent: 'center',
-          justifyContent: 'center',
-          paddingBottom: '10px',
-        },
-        left: {
-          width: 48,
-          height: 38,
-          padding: 12,
-          position: 'relative',
-          top: 5,
-        },
-        middle: {
-          width: 48,
-          height: 38,
-          padding: 12,
-          position: 'relative',
-          top: 5,
-        },
-        right: {
-          width: 48,
-          height: 38,
-          padding: 12,
-          position: 'relative',
-          top: 5,
-          verticalAlign: 'center'
-        },
-        color: {
-          color: "#bdbec0"
-        }
-    },
       settingsOpen: false,
   };
     this.goBack = this.goBack.bind(this)

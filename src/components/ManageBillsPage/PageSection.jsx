@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Checklist from './ChecklistSection';
 import ManageBillsSection from './ManageBillsSection';
-import PastBills from './PastBillsSection';
+import PastBillsPage from './PastBillsSection';
 
 class PageSection extends Component{
   constructor(props){
@@ -13,19 +13,19 @@ class PageSection extends Component{
       arrow: 'caret-right',
       sectionName: 'section-content-div',
       sectionContent: 'section-content',
-      reloadPosts: false,
     };
     this.changeArrow = this.changeArrow.bind(this);
     this.closeDiv = this.closeDiv.bind(this);
-    this.reloadPosts = this.reloadPosts.bind(this)
-    this.stopReload = this.stopReload.bind(this);
   }
 
   componentDidMount(){
   }
 
   componentDidUpdate(){
-   }
+    if(this.state.reloadPosts === true){
+      setTimeout(1000, this.setState({reloadPosts: false}))
+    }
+  }
 
   closeDiv(name){
     if(name==="checklist"){
@@ -40,8 +40,8 @@ class PageSection extends Component{
         open: false,
         arrow: 'caret-right',
         sectionName: "section-content-div disappear",
-        sectionContent: 'section-content disappear'
-      }, this.reloadPosts())
+        sectionContent: 'section-content disappear',
+      }, this.props.reloadPosts)
     }
 
   }
@@ -60,29 +60,14 @@ class PageSection extends Component{
     })
   }
 
-  reloadPosts(){
-    console.log('TRYING')
-    this.setState({
-      reloadPosts: true,
-    }, this.stopReload)
-  }
-
-  stopReload(){
-    setTimeout(
-      this.setState({
-        reloadPosts: false
-      }), 500
-    )
-  }
-
   render(){
     let overview = false;
     let manage = false;
     let past = false;
     switch(this.props.title){
       case "Overview":
-         overview = true
-         break
+        overview = true
+        break
       case "Bill Entry":
         manage = true
         break
@@ -92,6 +77,7 @@ class PageSection extends Component{
       default:
         break
     }
+    let reload = this.props.reload;
     return(
       <div className="manage-section-master-div">
         <div className="section-title-row">
@@ -106,7 +92,7 @@ class PageSection extends Component{
             <div className={this.state.sectionContent}>
               {overview ? <Checklist resource={this.props.capRes} house={this.props.house_id} user={this.props.user_id} closeDiv={this.closeDiv}/> : null }
               {manage ? <ManageBillsSection noResidents={this.props.noResidents} numBills={this.props.numBills} closeDiv={this.closeDiv} orgCount={this.props.orgCount} type={this.props.type} reloadPosts={this.reloadPosts}/> : null }
-              {past ? <PastBills num={this.props.numBills} reloadPosts={this.state.reloadPosts} metric={this.props.type}/> : null }
+              {past ? <PastBillsPage num={this.props.numBills} metric={this.props.type} addError={this.props.addError} reloadPosts={reload}/> : null }
             </div>
         </div>
       </div>
