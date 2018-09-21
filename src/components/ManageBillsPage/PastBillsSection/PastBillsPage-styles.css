@@ -5,7 +5,7 @@
 .billyear-container{
   padding-top: 10px;
   overflow-x: scroll;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   min-height: 180px;
   font-family: "Libre Franklin", Helvetica, sans-serif;
 }
@@ -45,7 +45,6 @@
   border-radius: 6px;
   background-color: white;
   margin-left: 15px;
-
 }
 
 .bill-container{
@@ -55,7 +54,8 @@
   padding: 0px;
   display: flex;
   flex-direction: row;
-  max-width: 93%;
+  width: 100%;
+  min-width: 725px;
   margin-left: 3px;
 }
 
@@ -68,9 +68,9 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  min-width: 700px;
-  max-width: 73vw;
+  min-width: 728px;
   background-color: #89868D;
+  border-top: 1px solid #2a2c33;
 }
 
 .bills-page-header{
@@ -118,30 +118,13 @@
   color: rgb(31, 152, 69) !important;
 }
 
-.past-bill-stat{
-  margin: 0 2px;
-  padding: 0px 2px 0px 0px;
-  margin-bottom: 0px;
-  min-width: 80px;
-  max-width: 100px;
-}
-
-/* .past-bill-stat.usage{
-  margin-left: 10px;
-} */
-
-.past-bill-stat.cost{
-  margin-left: -8px;
-}
 .past-bill-title{
   margin: 0 2px;
   padding: 8px 2px 2px 2px;
   margin-bottom: 0px;
-  min-width: 80px;
-  max-width: 100px;
+  min-width: 100px;
+  max-width: 120px;
 }
-
-
 
 .past-bill-title.no-residents{
   margin-top: 0px !important;
@@ -151,13 +134,78 @@
   margin-top: 0px !important;
   margin-left: 5px;
 }
+
+.past-bill-stat{
+  margin: 0 2px;
+  padding: 0px 2px 0px 0px;
+  margin-bottom: 0px;
+  min-width: 100px;
+  max-width: 120px;
+}
+
+.past-bill-stat.who-div{
+  margin-left: -5px;
+}
+
+.past-bill-stat.no_residents{
+  margin-left: 15px;
+  min-width: 40px;
+  width: 40px;
+}
+
+.past-bill-stat.cost{
+  margin-left: 5px;
+}
+
+.past-bill-stat.avg_use{
+  margin-left: 55px;
+}
+
 .past-bill-stat h3.values{
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  width: 90px;
+  overflow-x: scroll;
+  font-family: 'Merriweather', serif;
+  opacity: 0.5;
+  font-size: 14px;
+  padding-top: 5px;
+  color: #2a2c33;
+}
+
+.past-bill-stat input.values{
   height: 30px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   font-size: 0.9em;
+  max-width: 90px;
+  overflow-x: scroll;
+  background-color: inherit;
+}
+
+.past-bill-stat input.values.larger{
+  max-width: 110px;
+}
+.past-bill-stat h3.values.larger{
+  max-width: 110px;
+}
+
+.past-bill-stat input.values.smaller{
+  max-width: 50px;
+}
+
+.past-bill-stat h3.values.smaller{
+  max-width: 50px;
+}
+
+.past-bill-stat input.values.cost{
+  max-width: 90px;
 }
 
 .bills-page-div h3{
@@ -182,43 +230,11 @@ h3.sml.used{
   align-items: center;
   line-height: 20px;
 }
-/* h3.sml.cost{
-  font-size: 1.2em;
-  /* line-height: 40px; */
-/* } */
 
 h3.cost{
   text-align: left;
   margin-left: 5px;
 }
-
-/* h3.sml.carbon{
-  font-size: 1.2em;
-  text-shadow: 1px 1px black;
-  width: 50%;
-  line-height: 20px;
-  position: relative;
-  margin-top: 28px;
-  margin-right: 10px;
-} */
-
-/* h3.sml.number{
-  font-family: 'Black Ops One', cursive;
-  max-width: 45%;
-  text-shadow: 1px 1px black;
-} */
-
-/* h3.sml.number.carbon{
-  font-family: 'Black Ops One', cursive;
-  font-size: 1em;
-  border-radius: 50%;
-  max-width: 80px;
-  line-height: 10px;
-  margin-top: 22px;
-  text-align: right;
-  margin-left: 10px;
-} */
-
 
 h3.xtra{
   font-size: 14px;
@@ -275,8 +291,24 @@ span.bill-time{
   margin: 2px 0 0 4px;
 }
 
-.wide-cell{
-  min-width: 150px;
+.bill-delete-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.bill-delete-btn{
+  height: 15px;
+  width: 15px;
+  background-color: #89868D;
+  color: white;
+  font-size: 0.6em;
+  padding: 0;
+  padding-top: 1px;
+  margin: 0;
 }
 
 @media (max-width: 1100px){
@@ -330,20 +362,22 @@ span.bill-time{
     min-width: 650px;
   }
 }
-/* @media (min-width: 787px){
-  div.past-bill-stat:not(.who-div){
-    min-width: 90px;
+
+@media (min-width: 1026px){
+  div.past-bill-stat.cost{
+    margin-left: 2vw;
+  }
+  .bill-delete-div{
+    margin-top: -2px;
+    margin-left: -1px;
   }
 }
 
-@media (min-width: 830px){
-  div.past-bill-stat:not(.who-div){
-    min-width: 100px;
+@media (min-width: 1060px){
+  div.past-bill-stat.avg_use{
+    margin-left: 75px;
+  }
+  div.past-bill-stat.cost{
+    margin-left: 3vw;
   }
 }
-
-@media (min-width: 856px){
-  div.past-bill-stat:not(.who-div){
-    margin-left: 10px;
-  }
-} */

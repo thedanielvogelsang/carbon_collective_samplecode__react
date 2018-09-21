@@ -121,7 +121,9 @@ class ManageBillsSection extends Component{
           className="form-container manage-bills"
           onSubmit={ this.handleAddBillsForm }
           >
-          <h4 className="bills-errors" onClick={this.disappear} style={this.state.messageStyle}>{this.state.message}</h4>
+          <div style={this.state.messageStyle}>
+            <h4 className="bills-errors" onClick={this.disappear} style={this.state.messageStyle}>{this.state.message}</h4>
+          </div>
           <div>
             <h5>Start Date</h5>
             <input

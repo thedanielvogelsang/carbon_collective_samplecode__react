@@ -4,6 +4,7 @@ import ResourceNav from '../Dashboard/ResourceNav'
 import {ResourceTitleDash} from '../Dashboard/ResourceTitle'
 import PageSection from './PageSection';
 import { withRouter } from 'react-router-dom';
+import {scrollTop} from '../../helper-scripts/screenHelpers';
 import { get, post } from '../../api_client';
 import { connect } from 'react-redux'
 import Loader from '../Loader';
@@ -36,9 +37,12 @@ class ManageBillsPage extends Component {
     this.state = {
       loading: true,
       navLoading: true,
+      errors: "",
     };
     this.loadData = this.loadData.bind(this);
     this.goToPage = this.goToPage.bind(this);
+    this.addNewError = this.addNewError.bind(this);
+    this.removeNewError = this.removeNewError.bind(this);
     this.updateLoader = this.updateLoader.bind(this);
     this.determineReload = this.determineReload.bind(this);
   }
@@ -59,6 +63,21 @@ class ManageBillsPage extends Component {
   updateLoader(load){
     this.setState({
       navLoading: !load,
+    })
+  }
+
+  addNewError(errors){
+    if(errors.error !== ""){
+      this.setState({
+        errors: errors.error,
+      })
+      setTimeout(this.removeNewError, 3000)
+    }
+  }
+
+  removeNewError(){
+    this.setState({
+      errors: ""
     })
   }
 
@@ -122,6 +141,7 @@ class ManageBillsPage extends Component {
     let color = this.props.color
     let notCarbon = this.checkResourceType();
     let resource = this.props.resource_type;
+    let errors = this.state.errors;
     if(resource === 'carbon'){
       resource = "electricity"
     }
@@ -141,9 +161,10 @@ class ManageBillsPage extends Component {
             </div>
           </div>
           {!navLoading ? <div>
+            <div className="error-box">{errors}</div>
             <PageSection title="Overview" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
             <PageSection title="Bill Entry" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
-            <PageSection title="Past Bills" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type}/>
+            <PageSection title="Past Bills" capRes={title} noResidents={this.state.no_residents} orgCount={this.state.org_count} numBills={this.state.numBills} type={type} addError={this.addNewError}/>
           </div> : <Loader /> }
         </div>
       </div>
