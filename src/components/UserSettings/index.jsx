@@ -91,14 +91,15 @@ class UserSettings extends Component{
     const userUpdateData = {user: {[name]: userUpdate}}
     const path = `users`
     put(path, id, userUpdateData)
-      .then(data => console.log(data))
-      .catch(error => alert("We're sorry, something went wrong. If this issue continues, report the issue to our developers and we'll respond asap"))
+      .then(data => console.log())
+      .catch(error => console.log(error))
     }
   }
 
   confirmAndLogout(){
     alert('user account deleted')
-    setTimeout(this.goToPage, 1000, '/')
+    localStorage.clear();
+    setTimeout(this.goToPage, 500, '/')
   }
 
   render(){

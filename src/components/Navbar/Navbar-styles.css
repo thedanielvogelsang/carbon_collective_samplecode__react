@@ -67,8 +67,8 @@ div.header-navbar{
 }
 
 div.landing-navbar-links{
-  min-width: 25vw;
-  margin-left: 10vw;
+  margin-left: 5vw;
+  margin-right: 20px;
 }
 
 form.landing-navbar-login-form{
@@ -76,6 +76,7 @@ form.landing-navbar-login-form{
   flex-direction: row;
   justify-content: flex-start;
   padding: 0px;
+  max-width: 70vw;
 }
 
 
@@ -100,6 +101,7 @@ input.login-bar{
 input.login-bar::-webkit-input-placeholder{
   font-family: 'Libre Franklin', Helvetica, sans-serif;
   font-size: 1.1em;
+  line-height: 1.1em;
   text-align: center;
   padding-right: 10px;
   color: rgb(192,194,194);
@@ -107,6 +109,7 @@ input.login-bar::-webkit-input-placeholder{
 
 .cc-logo{
   margin-right: 25vw;
+  margin-left: 25px;
 }
 
 header {
@@ -140,6 +143,9 @@ li.header-button{
 }
 
 li.landing-nav-link{
+  line-height: 2.5em;
+}
+li.landing-nav-link:not(.contactUs){
   margin-right: 40px;
   line-height: 2.5em;
 }
@@ -198,6 +204,10 @@ li.landing-nav-link a:hover{
 .navbar img:hover:not(.log-svg):not(.homepage){ -webkit-transform: scale(1.2); background-color: rgb(221,221,221); box-shadow: 0px 0px 10px rgb(251,230,73) !important}
 
 .shrunken-hamburger-menu{
+  display: none;
+}
+
+.navbar-logo-menu-div.unloaded{
   display: none;
 }
 
@@ -273,21 +283,52 @@ form.shrunken-landing-navbar-login-form{
   flex-direction: row;
   justify-content: flex-start;
   padding: 0px;
+  margin-top: -5px;
+}
+
+.passwordReset-div{
+  position: absolute;
+  top: 65px;
+  color: #89868D;
+  width: 180px;
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  margin-left: -10px;
+}
+.passwordReset-div:hover{
+  opacity: 1;
+}
+.passwordReset-hide > h6.passwordReset{
+  display: none;
+}
+.passwordReset-div > h6.passwordReset{
+  display: block;
+}
+h6.passwordReset > span{ color: #1fa245}
+h6.passwordReset > span:hover{
+    cursor: pointer;
 }
 
 @media (max-width: 900px){
   div.landing-navbar-links{
-    min-width: 25vw;
-    margin-left: 12vw;
+    /* margin-left: 8vw; */
   }
-
+  .cc-logo.unloaded{
+    margin-right: 20vw;
+  }
+  .passwordReset-div{
+    margin-left: -35px;
+  }
   input.login-bar{
     font-size: 1.0em;
     min-width: 200px;
     max-width: 280px;
     padding-right: 40px;
   }
-
   input.login-bar::-webkit-input-placeholder{
     font-family: 'Libre Franklin', Helvetica, sans-serif;
     font-size: 1.1em;
@@ -300,21 +341,13 @@ form.shrunken-landing-navbar-login-form{
 
 @media (max-width: 780px){
   div.landing-navbar-links{
-    min-width: 0px;
-    margin-left: 20vw;
-  }
-  form.landing-navbar-login-form{
-    margin-left: 20px;
+    /* margin-left: 5vw; */
   }
   .navbar-logo-menu-div{
     width: 40vw;
   }
   .cc-logo.unloaded{
-    padding: 0px;
-    margin: 0px;
-    position: absolute;
-    top: 18px;
-    left: 23px;
+    margin-right: 15vw
   }
 }
 
@@ -322,9 +355,6 @@ form.shrunken-landing-navbar-login-form{
 @media (max-width: 667px){
   form.landing-navbar-login-form{
     margin-left: 0px;
-  }
-  .navbar-logo-menu-div.unloaded{
-    width: 50px;
   }
   .navbar-logo-menu-div.loaded{
     text-align: center;
@@ -334,6 +364,9 @@ form.shrunken-landing-navbar-login-form{
   }
   div.landing-navbar-links{
     display: none;
+  }
+  .passwordReset-div{
+    margin-left: 0;
   }
   img.cc-logo.homepage.loaded {
     display: none;
@@ -363,6 +396,15 @@ form.shrunken-landing-navbar-login-form{
   }
 }
 
+@media (max-width: 495px){
+  .landing-navbar.unloaded{
+    justify-content: space-around;
+  }
+  .cc-logo.unloaded{
+    margin: 0;
+  }
+}
+
 @media (max-width: 460px){
   input.login-bar{
     font-size: 1.0em;
@@ -387,12 +429,22 @@ form.shrunken-landing-navbar-login-form{
     justify-content: center;
   }
   .navbar-logo-menu-div{
+    padding-left: 0;
     width: 100vw;
     height: 100px;
   }
   .navbar-logo-menu-div.unloaded{
-    width: 100vw;
+    display: flex;
     height: 100px;
+    max-width: 70vw;
+  }
+  .passwordReset-hide{
+    display: none;
+    top: 0px;
+  }
+  .passwordReset-div{
+    position: static;
+    top: 0px;
   }
   .cc-logo.unloaded{
     padding: 0px;
@@ -403,6 +455,7 @@ form.shrunken-landing-navbar-login-form{
   }
   form.shrunken-landing-navbar-login-form{
     display: flex !important;
+    max-width: 80vw;
   }
   form.landing-navbar-login-form{
     display: none;
@@ -423,10 +476,21 @@ form.shrunken-landing-navbar-login-form{
     display: none;
   }
   .login-div{
-    width: 85%;
+    width: 100%;
     margin-top: 20px;
     padding-left: 0px;
-    margin-left: 5vw;
+    margin-left: 0vw;
+  }
+  .navbar-logo-menu-div.unloaded{
+    display: flex;
+    height: 100px;
+    max-width: 100vw;
+    align-items: center;
+    justify-content: center;
+  }
+  form.shrunken-landing-navbar-login-form{
+    display: flex !important;
+    max-width: 80vw;
   }
   .navbar-logo-menu-div{
     padding: 0;
@@ -445,5 +509,11 @@ form.shrunken-landing-navbar-login-form{
     padding-left:0px;
   }
   form.shrunken-landing-navbar-login-form{
+  }
+}
+
+@media (min-width: 940px){
+  .passwordReset-div{
+    margin-left: -2vw;
   }
 }

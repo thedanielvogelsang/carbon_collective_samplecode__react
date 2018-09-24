@@ -16,6 +16,8 @@ import Settings from '../Settings'
 // import Login from '../Login'
 import FirstLogin from '../FirstLogin'
 import NewUserSignup from '../NewUser'
+import RequestReset from '../RequestReset'
+import ResetPasswordPage from '../ResetPasswordPage'
 import Navbar from '../Navbar'
 import WaitConfirm from '../WaitConfirm'
 import RegionPage from '../RegionPage'
@@ -183,6 +185,8 @@ class App extends Component {
             <PropsRoute exact path="/" component={ Landing } updateState={this.updateState} /> } />
             <PropsRoute path="/about" component={ AboutUs } /> } />
             <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
+            <UnauthenticatedRouteProps path="/request-reset" loaded={loaded} component={ RequestReset }/> } />
+            <UnauthenticatedRouteProps path="/reset-password/:id" loaded={loaded} component={ ResetPasswordPage }/> } />
             <UnauthenticatedRouteProps path="/login-first-time" loaded={loaded} component={ FirstLogin } data={this.state} updateState={this.updateState} /> } />
             <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} /> } />
             <AuthenticatedRouteProps component={Page404} loaded={loaded}/>

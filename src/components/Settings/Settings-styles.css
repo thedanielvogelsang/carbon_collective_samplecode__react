@@ -110,7 +110,7 @@ div.shrunken-nav-label{
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 667px) {
   .shrunken-subnav-div{
     display: flex;
     flex-direction: row;
