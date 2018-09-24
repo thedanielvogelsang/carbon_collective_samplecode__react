@@ -13,8 +13,10 @@ class UserSettings extends Component{
     }
     this.updateUser = this.updateUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.goToHouseSettings = this.goToHouseSettings.bind(this);
+    this.goToPage = this.goToPage.bind(this);
     this.setInitialSettingState = this.setInitialSettingState.bind(this);
+    this.removeUserAccount = this.removeUserAccount.bind(this);
+    this.confirmAndLogout = this.confirmAndLogout.bind(this);
   }
 
   componentDidMount(){
@@ -50,9 +52,18 @@ class UserSettings extends Component{
     });
   }
 
-  goToHouseSettings(){
-    this.logPageChange('/house_settings')
-    this.props.history.push('/house_settings')
+  removeUserAccount(){
+    if(confirm("Warning: this cannot be undone!\nAre you sure you want to delete your account? You will need to be invited back by a CarbonCollective member to create a new one!")){
+      let id = this.props.id
+      let path = `${id}/delete-account`
+      post(path)
+        .then(data => this.confirmAndLogout())
+        .catch(error => alert("We're sorry, something went wrong. If this issue continues, report the issue to our developers and we'll respond asap"))
+    }
+  }
+
+  goToPage(path){
+    this.props.history.push(path)
   }
 
   logPageChange(path){
@@ -83,6 +94,12 @@ class UserSettings extends Component{
       .then(data => console.log())
       .catch(error => console.log(error))
     }
+  }
+
+  confirmAndLogout(){
+    alert('user account deleted')
+    localStorage.clear();
+    setTimeout(this.goToPage, 500, '/')
   }
 
   render(){
@@ -130,9 +147,9 @@ class UserSettings extends Component{
           </div>
           <div className="house-info-link-div">
             <button
-              className="address-link"
-              onClick={this.goToHouseSettings}
-              >House Info</button>
+              className="delete-acct-link"
+              onClick={this.removeUserAccount}
+              >delete account?</button>
           </div>
         </div>
         </div>
@@ -181,7 +198,7 @@ class PasswordForm extends Component{
   render(){
     return(
       <form
-        className='password-form'
+        className='password-form user-settings'
         onSubmit={this.handleForm}
         >
         <label>
@@ -241,7 +258,7 @@ class PasswordInput extends Component{
     data: [{
       headerName: 'PASSWORD CHANGE',
       isOpened: false,
-      height: 400,
+      height: 340,
       isReactComponent: true,
       items: [
         (

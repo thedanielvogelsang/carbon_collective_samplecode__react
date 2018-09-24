@@ -66,7 +66,7 @@ class InviteSomeonePage extends Component{
     this.addMessage = this.addMessage.bind(this);
     this.removeMessage = this.removeMessage.bind(this);
     this.renderEmails = this.renderEmails.bind(this);
-    this.goBackToDash = this.goBackToDash.bind(this);
+    this.renderMessage = this.renderMessage.bind(this);
     this.setInvitesToState = this.setInvitesToState.bind(this);
     this.deleteUserInvite = this.deleteUserInvite.bind(this);
     this.confirmSuccess = this.confirmSuccess.bind(this);
@@ -111,7 +111,7 @@ class InviteSomeonePage extends Component{
      .catch(error => console.log(error))
   }
 
-  goBackToDash(message){
+  renderMessage(message){
     if(message.message === 'success'){
       var e;
       this.state.count > 1 ? e = "Emails" : e = "Email"
@@ -127,7 +127,7 @@ class InviteSomeonePage extends Component{
       this.setState({emails: {},
       emailInputs: [],
       count: 1,
-      message: null,
+      message: "",
       messageDisplay: 'inline-block',
       plusOneBtn: {display: 'block'},})
     }
@@ -180,8 +180,8 @@ class InviteSomeonePage extends Component{
     const id = this.props.id
     const path = `users/invite/${id}`
     post(path, emailData)
-      .then(data => this.goBackToDash(data))
-      .catch(error => this.goBackToDash(error))
+      .then(data => this.renderMessage(data))
+      .catch(error => this.renderMessage(error))
   }
 
   renderEmails(num){

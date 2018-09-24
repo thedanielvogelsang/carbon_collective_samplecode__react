@@ -114,12 +114,14 @@ header h1 {
     width: 100vw;
     max-width: 100vw;
     text-align: center;
+    padding-left: 0;
   }
 }
 
 @media (max-width: 328px){
   .landing-subheader-h2{
     font-size: 18px;
+
   }
 }
 @media (max-width: 300px){

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { post } from '../../api_client';
 
-import './NewUser-styles.css'
+import './ResetPasswordPage-styles.css'
 
 // this component is for a new-user who has been invited
-class NewUserSignup extends Component {
+class ResetPasswordPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,7 +20,6 @@ class NewUserSignup extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSignupForm = this.handleSignupForm.bind(this);
     this.goToPage = this.goToPage.bind(this);
-    this.setSession = this.setSession.bind(this);
     this.disappear = this.disappear.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
     this.handleSuccess = this.handleSuccess.bind(this);
@@ -36,11 +35,6 @@ class NewUserSignup extends Component {
   goToPage(path) {
     this.props.history.push(path)
   };
-
-  setSession(data){
-    alert("Your sign-up was successful. Now go check your email to confirm your registration!")
-    this.goToPage('/confirm-address')
-  }
 
   disappear(){
     this.setState({errors: ""})
@@ -68,7 +62,7 @@ class NewUserSignup extends Component {
   }
 
   handleSuccess(){
-    alert("Welcome to Carbon Collective! Your email has been confirmed. Please sign in to the app to continue.")
+    alert("Password reset successful. Please sign in with your email and new password to continue.")
     const path = '/'
     this.goToPage(path)
   }
@@ -76,41 +70,19 @@ class NewUserSignup extends Component {
   handleErrors(error){
     if(error.errors !== "Please confirm your email address to continue"){
       this.setState({errors: error.errors})
-    }else{
-      this.props.history.push('/confirm-address')
-      alert("Please confirm your email address to continue!")
     }
   }
 
   render() {
     return (
       <div className="signup-page-div">
-      <h3 className="edit-header signup-page"> New User Signup </h3>
+        <h3 className="edit-header reset-password-page"> Password Reset </h3>
         <form
           className="form-container signup-form"
           onSubmit={ this.handleSignupForm }
         >
         <label>
-        <h4 className="new-user-label"> First Name </h4>
-        <input
-          autoFocus
-          required={true}
-          name="first"
-          type="text"
-          onChange={this.handleChange}
-        />
-        </label>
-        <label>
-        <h4 className="new-user-label"> Last Name </h4>
-        <input
-          required={true}
-          name="last"
-          type="text"
-          onChange={this.handleChange}
-        />
-        </label>
-        <label>
-        <h4 className="new-user-label"> Password </h4>
+        <h4 className="new-user-label"> New password </h4>
         <input
           name="password"
           required={true}
@@ -119,7 +91,7 @@ class NewUserSignup extends Component {
          />
         </label>
         <label>
-        <h4 className="new-user-label"> Confirm Password </h4>
+        <h4 className="new-user-label"> Confirm new password </h4>
         <input
           name="passwordConfirmation"
           type="password"
@@ -127,14 +99,14 @@ class NewUserSignup extends Component {
           onChange={this.handleChange}
         />
         </label>
-        <div className="signup-error-box" onClick={this.disappear}>
+        <div className="reset-error-box" onClick={this.disappear}>
           { this.state.errors }
         </div>
         <div className="button-containers signup-button-container">
           <button
             className="form-submit signup-btn-submit"
             type="submit"
-            >Sign Up!</button>
+            >Confirm Reset!</button>
         </div>
         </form>
       </div>
@@ -142,4 +114,4 @@ class NewUserSignup extends Component {
   };
 };
 
-export default withRouter(NewUserSignup);
+export default withRouter(ResetPasswordPage);

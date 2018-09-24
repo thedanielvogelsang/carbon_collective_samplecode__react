@@ -48,6 +48,7 @@ class Navbar extends Component {
       password: '',
       loaded: false,
       settingsOpen: false,
+      forgotPassword: "passwordReset-div"
   };
     this.goBack = this.goBack.bind(this)
     this.goToDash = this.goToDash.bind(this)
@@ -61,6 +62,7 @@ class Navbar extends Component {
     this.handleLoginForm = this.handleLoginForm.bind(this)
     this.highlightLogin = this.highlightLogin.bind(this)
     this.unhighlightLogin = this.unhighlightLogin.bind(this)
+    this.goToResetPasswordPage = this.goToResetPasswordPage.bind(this)
     this.logLogin = this.logLogin.bind(this)
     this.goToPage = this.goToPage.bind(this)
     this.inputBox = this.inputBox.bind(this)
@@ -95,9 +97,14 @@ class Navbar extends Component {
       password_logged: false,
       password: '',
       loaded: false,
+      forgotPassword: "passwordReset-hide"
     });
   }
 
+  goToResetPasswordPage(){
+    localStorage.clear();
+    this.goToPage('/request-reset')
+  }
   checkLoginStatus(){
     // check for state user_id here, if it exists then loaded = true
     if(this.props.id && !this.state.loaded){
@@ -141,12 +148,12 @@ class Navbar extends Component {
 
 
   logLogin(){
-    if(this.props.id && this.props.data.privacy_policy){
+    if(this.props.id && this.props.data && this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
         .then(ans => this.goToPage('/dashboard'))
         .catch(error => console.log(error))
-    }else if(!this.props.data.privacy_policy){
+    }else if(this.props.data && !this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
         .then(ans => this.goToPage('/privacy-policy'))
@@ -237,8 +244,8 @@ class Navbar extends Component {
     if (['/'].indexOf(window.location.pathname) > -1 && !loaded) {
       return(
         <div className="landing-navbar navbar unloaded">
-          <div className="navbar-logo-menu-div unloaded">
-            <img alt="carbon collective logo homepage" className="cc-logo homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+          <img alt="carbon collective logo homepage" className="cc-logo homepage unloaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+          <div className="navbar-logo-menu-div unloaded shrunken">
             <form className="shrunken-landing-navbar-login-form unloaded" style={{display: 'none'}} onSubmit={(e) => this.handleLoginForm(e)}>
               <div className={this.state.logDiv}>
                 <img alt="log logo" className="log-svg" src={this.state.log} style={{ width: '26px' }} />
@@ -252,12 +259,15 @@ class Navbar extends Component {
               {this.inputBox()}
             </div>
           </form>
+          <div className={this.state.forgotPassword}>
+            <h6 className="passwordReset">forgot your <span className="password-reset-link" onClick={(e) => this.goToResetPasswordPage()}>password</span>?</h6>
+          </div>
           <div className="landing-navbar-links">
             <ul className="navbar">
               <li className="header-button landing-nav-link">
                 <a onClick={(e) => this.goToAboutPage(e)}>About</a>
               </li>
-              <li className="header-button landing-nav-link">
+              <li className="header-button landing-nav-link contactUs">
                 <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
               </li>
             </ul>

@@ -1,3 +1,9 @@
+.edit-header.invite-page{
+  padding: 25px 0px 5px 0px;
+  border-bottom: 1px dotted white;
+  color: #2a2c33;
+}
+
 .invite-list-page{
   display: flex;
   flex-direction: column;
@@ -126,12 +132,6 @@ h4.leave-a-message{
   padding: 15px;
   max-width: 320px;
   box-sizing: content-box;
-}
-
-.edit-header.invite-page{
-  padding: 25px 0px 5px 0px;
-  border-bottom: 1px dotted white;
-  color: #2a2c33;
 }
 
 h5.accepted-text{
