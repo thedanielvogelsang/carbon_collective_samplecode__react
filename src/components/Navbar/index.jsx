@@ -141,12 +141,12 @@ class Navbar extends Component {
 
 
   logLogin(){
-    if(this.props.id && this.props.data.privacy_policy){
+    if(this.props.id && this.props.data && this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
         .then(ans => this.goToPage('/dashboard'))
         .catch(error => console.log(error))
-    }else if(!this.props.data.privacy_policy){
+    }else if(this.props.data && !this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
         .then(ans => this.goToPage('/privacy-policy'))

@@ -9,6 +9,7 @@
 }
 
 .signup-form {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -18,17 +19,25 @@
 }
 
 .signup-form h3{
-  max-width: 350px;
+  font-family: 'Merriweather', serif;
+  padding: 25px 0px 5px 0px;
+  border-bottom: 1px dotted white;
+  color: #2a2c33;
+  width: 90%;
+  max-width: 400px;
 }
 
 .signup-form label{
-  max-width: 350px;
+  width: 90%;
+  max-width: 400px;
 }
 
 .signup-button-container {
   flex-basis: 10vh;
   margin-bottom: 80px;
   margin-top: 0;
+  width: 90%;
+  max-width: 400px;
 }
 
 .signup-error-box{
@@ -38,13 +47,12 @@
   color: #ED3838;
 }
 
-.form-submit{
-  max-width: 350px;
-}
-
-.signup-btn-submit{
-  color: #1fa245;
-  background-color: #2A2C33;
+.form-submit.signup-btn-submit {
+  width: 90%;
+  max-width: 400px;
+  background-color: #89868D;
+  color: white;
+  font-size: 0.9em;
 }
 
 h4.new-user-label{

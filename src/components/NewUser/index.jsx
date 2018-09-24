@@ -130,12 +130,12 @@ class NewUserSignup extends Component {
         <div className="signup-error-box" onClick={this.disappear}>
           { this.state.errors }
         </div>
-          <div className="button-containers signup-button-container">
-            <button
-              className="form-submit signup-btn-submit"
-              type="submit"
-              >Sign Up!</button>
-          </div>
+        <div className="button-containers signup-button-container">
+          <button
+            className="form-submit signup-btn-submit"
+            type="submit"
+            >Sign Up!</button>
+        </div>
         </form>
       </div>
     )
