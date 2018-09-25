@@ -303,6 +303,9 @@ class Navbar extends Component {
               <li className="header-button landing-nav-link">
                 <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
               </li>
+              <li className="header-button landing-nav-link hamburger spacer">
+                <FontAwesomeIcon icon={faEllipsisH} className="hamburger-menu-landing" onClick={this.goToSettings}/>
+              </li>
             </ul>
           </div>
         </div>
