@@ -62,7 +62,7 @@ class ResetPasswordPage extends Component {
   }
 
   handleSuccess(){
-    alert("Password reset successful. Please sign in with your email and new password to continue.")
+    alert("Password reset successful. Please login with your email and new password to continue.")
     const path = '/'
     this.goToPage(path)
   }
