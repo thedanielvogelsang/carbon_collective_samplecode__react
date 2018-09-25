@@ -196,7 +196,7 @@ class App extends Component {
     }else if(loaded){
         return (
           <div className="app-container" id="app-container">
-            <Navbar loaded={loaded}/>
+            <Navbar loaded={loaded} house={house}/>
             <Header />
             {fixbug ? <FixBugLink /> :  null}
             <Switch>
@@ -216,7 +216,7 @@ class App extends Component {
               <AuthenticatedRouteProps path="/managebills" loaded={loaded}  component={ ManageBillsPage } data={this.state} updateState={this.updateState} /> } />
               <AuthenticatedRouteProps path="/carbon-calculations" loaded={loaded} component={ CarbonCalc } /> } />
               <AuthenticatedRouteProps path="/regionPage" loaded={loaded}  component={ RegionPage} data={this.state} /> } />
-              <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} /> } />
+              <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} house={house}/> } />
               <AuthenticatedRouteProps path="/household" loaded={loaded}  component={ HouseholdPage } data={this.state} /> } />
               <AuthenticatedRouteProps path="/user_settings" loaded={loaded} component={ UserSettings } userData={this.state.userData}/> } />
               <AuthenticatedRouteProps path="/house_settings" loaded={loaded} component={ HouseSettings} /> } />

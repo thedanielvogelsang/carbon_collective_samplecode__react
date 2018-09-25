@@ -27,6 +27,7 @@ class NewUserSignup extends Component {
   }
 
   componentDidMount(){
+    localStorage.clear();
     let id = this.props.location.pathname.match(/\d+/)[0]
     this.setState({
       id: id,
@@ -68,7 +69,7 @@ class NewUserSignup extends Component {
   }
 
   handleSuccess(){
-    alert("Welcome to Carbon Collective! Your email has been confirmed. Please sign in to the app to continue.")
+    alert("Welcome to Carbon Collective! Your email has been confirmed. Please log in to the app to continue.")
     const path = '/'
     this.goToPage(path)
   }

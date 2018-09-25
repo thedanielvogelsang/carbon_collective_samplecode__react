@@ -95,6 +95,7 @@ class SearchAddressPage extends Component{
   }
 
   loadCities(id){
+    console.log(id)
     if(Number(id) === 6){
       const path = `api/v1/areas/cities?region_id=${id}`
       return get(path)
@@ -144,6 +145,8 @@ class SearchAddressPage extends Component{
       if(confirm(`Did you mean to choose ${name}?`)){
         this.sendGeoData('Country', id)
         this.setState({country_id: id, regionDisplay: 'block', cityDisplay: 'none', countyDisplay: 'none', region_id: -1, county_id: -1, city_id: -1, nextBtn: 'none'}, () => this.loadRegions(id))
+        alert("Sorry, your region is not supported yet. We will let you know when it is!")
+        this.props.history.push('/')
       }
       scrollTop()
     }
@@ -171,17 +174,25 @@ class SearchAddressPage extends Component{
           nextBtn: 'none'
         }, () => this.loadCities(id))
       }
+      alert("Sorry, your region is not supported yet. We will let you know when it is!")
+      this.props.history.push('/')
       scrollTop()
     }
   }
 
   setCounty(event){
+    let id = event.target.value;
     var index = event.nativeEvent.target.selectedIndex;
-    let id = event.target.value
-    let name = event.nativeEvent.target[index].text
-    // [8, 1, 31, 3, 17]
-    this.loadCities(this.state.region_id)
-    this.setState({county_id: id, cityDisplay: 'block', selection: name})
+    let name = event.nativeEvent.target[index].text;
+    if(Number(id) === 17){
+      this.setState({county_id: id, selection: name, cities: null, city_id: -1, message: true, countyDisplay: 'block'}, () => this.loadCities(this.state.region_id))
+    }else{
+      if(confirm(`Did you mean to choose ${name}?`)){
+        this.sendGeoData('County', id)
+        alert("Sorry, your region is not supported yet. We will let you know when it is!")
+        this.props.history.push('/')
+      }
+    }
     scrollTop()
   }
 

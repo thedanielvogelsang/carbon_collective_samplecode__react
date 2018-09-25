@@ -40,7 +40,7 @@ class Navbar extends Component {
       dashLogo: DashFoot,
       inviteLogo: InviteLogo,
       billsLogo: BillsPageLogo,
-      placeholder: 'log in',
+      placeholder: 'log in (email)',
       user_id: props.user_id || false,
       email: false,
       email_logged: false,
@@ -90,14 +90,14 @@ class Navbar extends Component {
       login_input: "",
       logDiv: "login-div",
       log: LogGrey,
-      placeholder: 'log in',
+      placeholder: 'log in (email)',
       user_id: this.props.user_id || false,
       email: false,
       email_logged: false,
       password_logged: false,
       password: '',
       loaded: false,
-      forgotPassword: "passwordReset-hide"
+      forgotPassword: "passwordReset-div"
     });
   }
 
@@ -199,7 +199,7 @@ class Navbar extends Component {
       this.setState({
         log: LogGrey,
         logDiv: 'login-div',
-        placeholder: 'log in'
+        placeholder: 'log in (email)'
       })
     }
   }
@@ -241,6 +241,7 @@ class Navbar extends Component {
 
   render() {
     let loaded = this.state.loaded;
+    let house = this.props.house;
     if (['/'].indexOf(window.location.pathname) > -1 && !loaded) {
       return(
         <div className="landing-navbar navbar unloaded">
@@ -284,7 +285,30 @@ class Navbar extends Component {
           </div>
           )
     }
-    else if(['/'].indexOf(window.location.pathname) > -1 && loaded) {
+    else if(['/'].indexOf(window.location.pathname) > -1 && loaded && !house) {
+      return(
+        <div className="main-navbar">
+          <div className="navbar-logo-menu-div navbar loaded">
+            <img alt="carbon collective logo homepage" className="cc-logo homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+            <FontAwesomeIcon icon={faEllipsisH} className="shrunken-hamburger-menu" onClick={this.goToSettings}/>
+          </div>
+          <div className="landing-navbar-links">
+            <ul className="navbar">
+              <li className="header-button landing-nav-link spacer">
+                <a onClick={(e) => this.goToAboutPage(e)}>About</a>
+              </li>
+              <li className="header-button landing-nav-link spacer">
+                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+              </li>
+              <li className="header-button landing-nav-link">
+                <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )
+    }
+    else if(['/'].indexOf(window.location.pathname) > -1 && loaded && house) {
       return(
         <div className="main-navbar">
           <div className="navbar-logo-menu-div navbar loaded">
@@ -311,6 +335,7 @@ class Navbar extends Component {
       )
     }
     else if(['/settings'].indexOf(window.location.pathname) > - 1){
+      let house = this.props.house
       return(
         <div className="main-navbar">
           <div className="navbar-logo-menu-div navbar loaded">
@@ -322,12 +347,14 @@ class Navbar extends Component {
               <li className="header-button landing-nav-link">
                 <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
               </li>
+              { house ?
+              <span>
               <li className="header-button landing-nav-link">
                 <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={billsLogo} style={{width: '24px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
               </li>
               <li className="header-button landing-nav-link spacer">
                 <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
-              </li>
+              </li></span>: null }
               <li className="header-button landing-nav-link spacer">
                 <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
               </li>
@@ -345,7 +372,7 @@ class Navbar extends Component {
           </div>
           )
     }
-    else{
+    else if(house){
         return (
           <div className="main-navbar">
             <div className="navbar-logo-menu-div navbar loaded">
@@ -362,6 +389,26 @@ class Navbar extends Component {
                 </li>
                 <li className="header-button landing-nav-link spacer">
                   <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
+                </li>
+                <li className="header-button landing-nav-link spacer">
+                  <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )
+      }
+      else{
+        return (
+          <div className="main-navbar">
+            <div className="navbar-logo-menu-div navbar loaded">
+              <img alt="carbon collective logo homepage" className="cc-logo not-homepage loaded" src={this.state.logo} style={{width: '26px'}} onClick={(e) => this.goToPage('/')}/>
+              <img alt="carbon collective logo dropdown" className="cc-logo dropdown-logo" src={this.state.logo} style={{width: '26px'}} onClick={this.goToSettings}/>
+            </div>
+            <div className="landing-navbar-links">
+              <ul className="navbar">
+                <li className="header-button landing-nav-link">
+                  <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
                 </li>
                 <li className="header-button landing-nav-link spacer">
                   <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>

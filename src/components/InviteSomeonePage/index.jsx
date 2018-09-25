@@ -30,14 +30,16 @@ const EmailInvite = function(props, n){
     return(
       <div className="invite-row-div invited" style={{color: color}}>
         <li className="email-input-email invited" key={props.myKey} >
+        { !props.emailActivated ?
           <div className="invite-cancel-div">
             <button
               className="invite-cancel-btn"
               name={email}
+              type="submit"
               onClick={(e) => props.deleteUserInvite(e, props.id)}
               >X
             </button>
-          </div>
+          </div> : null }
           <h5 className="email-text"> {email} </h5>
         </li>
         <li className="email-input-accepted">
