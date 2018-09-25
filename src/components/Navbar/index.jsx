@@ -97,7 +97,7 @@ class Navbar extends Component {
       password_logged: false,
       password: '',
       loaded: false,
-      forgotPassword: "passwordReset-hide"
+      forgotPassword: "passwordReset-div"
     });
   }
 
