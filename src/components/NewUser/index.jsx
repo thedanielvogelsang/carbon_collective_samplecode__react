@@ -27,6 +27,7 @@ class NewUserSignup extends Component {
   }
 
   componentDidMount(){
+    localStorage.clear();
     let id = this.props.location.pathname.match(/\d+/)[0]
     this.setState({
       id: id,
