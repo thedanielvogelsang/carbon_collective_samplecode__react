@@ -34,7 +34,9 @@ form.inviteSomeone-form{
   margin-bottom: 10px;
   width: 420px;
   display: flex !important;
-  flex-direction :column;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-email{
@@ -51,6 +53,8 @@ div.invite-row-div{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 350px;
+  box-sizing: border-box;
 }
 
 li.email-input-email{
@@ -58,7 +62,10 @@ li.email-input-email{
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 310px;
+  width: 320px;
+}
+li.email-input-email:not(.invited){
+  margin-top: 10px;
 }
 
 li.email-input-email.invited{
@@ -66,7 +73,7 @@ li.email-input-email.invited{
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 310px;
+  width: 320px;
 }
 
 li.email-input-accepted{
@@ -75,6 +82,8 @@ li.email-input-accepted{
   align-items: center;
   padding-left: 6px;
   width: 184px;
+  text-align: right;
+  padding-top: 10px;
 }
 
 li.email-input-accepted h5{
@@ -176,6 +185,11 @@ label.invite-label textarea:-moz-placeholder {
   padding: 0;
   padding-bottom: 1px !important;
   padding-top: 2px !important;
+}
+
+.invite-cancel-div.invisible{
+  visibility: hidden;
+  margin-left: -35px;
 }
 
 @media (max-width: 700px){

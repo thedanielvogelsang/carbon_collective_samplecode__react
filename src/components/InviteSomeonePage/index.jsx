@@ -24,14 +24,14 @@ const EmailInputs = function(props){
   }
 const EmailInvite = function(props, n){
     let email = props.email;
-    let color, text;
+    let color, text, xbox;
     props.emailActivated ? color = "green" : color = "red"
     props.emailActivated ? text = (<h5 className="accepted-text">{"Accepted: " + props.invited}</h5>) : text = (<Timer seconds={props.seconds} id={props.id}/>)
+    props.emailActivated ? xbox = "invite-cancel-div invisible" : xbox = "invite-cancel-div"
     return(
       <div className="invite-row-div invited" style={{color: color}}>
         <li className="email-input-email invited" key={props.myKey} >
-        { !props.emailActivated ?
-          <div className="invite-cancel-div">
+          <div className={xbox}>
             <button
               className="invite-cancel-btn"
               name={email}
@@ -39,7 +39,7 @@ const EmailInvite = function(props, n){
               onClick={(e) => props.deleteUserInvite(e, props.id)}
               >X
             </button>
-          </div> : null }
+          </div> 
           <h5 className="email-text"> {email} </h5>
         </li>
         <li className="email-input-accepted">

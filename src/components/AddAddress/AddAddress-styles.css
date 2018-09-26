@@ -41,6 +41,15 @@ h5.movein-label{
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.add-address label {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
 
 #movein-calendar::placeholder{
   color: #415B2F;
@@ -49,17 +58,10 @@ h5.movein-label{
   text-align: left;
 }
 
-.add-address label {
-  display: block;
-  margin: 5%;
-  width: 100%;
-  text-align: center;
-}
-
 .address-button-container {
   flex-basis: 10vh;
   margin-bottom: 100px;
-  width: 90%;
+  width: 100vw;
   max-width: 350px;
 }
 
