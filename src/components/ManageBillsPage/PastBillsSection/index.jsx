@@ -181,6 +181,7 @@ class PastBillsPage extends Component{
 
   deleteBill(event, id){
     event.preventDefault();
+    if(confirm("Are you sure you want to delete this bill record? Warning:: You can't undo this.")){
     event.target.parentNode.parentNode.classList.add("disappear")
     let uId = this.props.user_id
     let type = sortType(this.props.resource_type)
@@ -188,6 +189,7 @@ class PastBillsPage extends Component{
     destroy(path)
       .then(data => console.log())
       .catch(error => this.addAndLoadBills(error, true))
+    }
   }
 
   updateBillAndChangeToInactive(e, id, year){

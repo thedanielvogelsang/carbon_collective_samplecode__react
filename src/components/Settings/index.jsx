@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { get, post } from '../../api_client';
-  import DashLogo from './img/baseline-assessment-24px.svg';
+  import DashLogo from './img/outline-assessment-24px.svg';
   import BillsLogo from './img/doc.svg';
   import ProfileLogo from './img/profile.svg';
   import HouseLogo from './img/household.svg';

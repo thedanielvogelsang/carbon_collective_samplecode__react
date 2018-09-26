@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import LogGrey from "./img/log_grey.svg";
   import LogGreen from "./img/log_green.svg";
   import CCLogo from './img/CC_logo.svg';
-  import DashFoot from './img/baseline-assessment-24px.svg';
+  import DashFoot from './img/outline-assessment-24px.svg';
   import InviteLogo from './img/invite.svg';
   import BillsPageLogo from './img/doc.svg';
   import billsLogo from './img/doc.svg';

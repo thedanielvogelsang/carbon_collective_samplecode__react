@@ -154,7 +154,7 @@ div.shrunken-nav-label{
     z-index: 1;
   }
   .shrunken-nav-icon-container.dash{
-    padding: 6px 6px 4px 6px;
+    padding: 7px 6px 3px 6px;
     /* background-color: #2A2C33; */
   }
   .shrunken-nav-icon-container:hover {
