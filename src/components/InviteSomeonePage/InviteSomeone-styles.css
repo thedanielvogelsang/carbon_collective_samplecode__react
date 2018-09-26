@@ -256,12 +256,26 @@ label.invite-label textarea:-moz-placeholder {
 }
 
 @media (max-width: 350px){
+  label.invite-label textarea{
+    font-size: 0.8em;
+    max-width: 300px;
+    box-sizing: border-box;
+    color: #415B2F;
+    padding-top: -5px;
+  }
+  .invite-invite-div{
+    max-width: 310px;
+  }
   h5.accepted-text{
     font-size: 10px;
     font-style: italic;
   }
   .inviteSomeone-form ul{
     min-width: 0;
+  }
+  label.invite-label{
+    padding: 6px;
+    box-sizing: border-box;
   }
   div.invite-row-div.invited{
     padding-left: 10px;
