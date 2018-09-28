@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { post } from '../../api_client';
+import { scrollTop } from '../../helper-scripts/screenHelpers.js';
 
 import './NewUser-styles.css'
 
@@ -28,7 +29,8 @@ class NewUserSignup extends Component {
 
   componentDidMount(){
     localStorage.clear();
-    let id = this.props.location.pathname.match(/\d+/)[0]
+    let id = this.props.location.pathname
+    id = id.replace(/(\/signup\/)/, "")
     this.setState({
       id: id,
     })
@@ -63,9 +65,7 @@ class NewUserSignup extends Component {
     const newUserPath=`users`
     post(newUserPath, newUserData)
       .then(data => this.handleSuccess())
-      .catch(
-        error => this.handleErrors(error)
-      )
+      .catch(error => this.handleErrors(error))
   }
 
   handleSuccess(){
@@ -76,7 +76,14 @@ class NewUserSignup extends Component {
 
   handleErrors(error){
     if(error.errors !== "Please confirm your email address to continue"){
-      this.setState({errors: error.errors})
+      if(error.errors !== "Unregistered User. Please try your email invite again."){
+        this.setState({errors: error.errors})
+        scrollTop()
+      }else{
+        this.setState({errors: error.errors})
+        setTimeout(this.props.history.push, 1500, '/')
+        scrollTop()
+      }
     }else{
       this.props.history.push('/confirm-address')
       alert("Please confirm your email address to continue!")
@@ -91,9 +98,13 @@ class NewUserSignup extends Component {
           className="form-container signup-form"
           onSubmit={ this.handleSignupForm }
         >
+        <div className="signup-error-box" onClick={this.disappear}>
+          { this.state.errors }
+        </div>
         <label>
         <h4 className="new-user-label"> First Name </h4>
         <input
+          className="signup-input"
           autoFocus
           required={true}
           name="first"
@@ -104,6 +115,7 @@ class NewUserSignup extends Component {
         <label>
         <h4 className="new-user-label"> Last Name </h4>
         <input
+          className="signup-input"
           required={true}
           name="last"
           type="text"
@@ -113,6 +125,7 @@ class NewUserSignup extends Component {
         <label>
         <h4 className="new-user-label"> Password </h4>
         <input
+          className="signup-input"
           name="password"
           required={true}
           type="password"
@@ -122,15 +135,13 @@ class NewUserSignup extends Component {
         <label>
         <h4 className="new-user-label"> Confirm Password </h4>
         <input
+          className="signup-input"
           name="passwordConfirmation"
           type="password"
           required={true}
           onChange={this.handleChange}
         />
         </label>
-        <div className="signup-error-box" onClick={this.disappear}>
-          { this.state.errors }
-        </div>
         <div className="button-containers signup-button-container">
           <button
             className="form-submit signup-btn-submit"

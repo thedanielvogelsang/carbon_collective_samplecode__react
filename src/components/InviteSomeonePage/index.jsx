@@ -39,7 +39,7 @@ const EmailInvite = function(props, n){
               onClick={(e) => props.deleteUserInvite(e, props.id)}
               >X
             </button>
-          </div> 
+          </div>
           <h5 className="email-text"> {email} </h5>
         </li>
         <li className="email-input-accepted">
@@ -249,7 +249,7 @@ class InviteSomeonePage extends Component{
         <h4 className="edit-header invite-page">Invite your friends!</h4>
         {loading ? <div></div> :
         <form
-          onSubmit={this.handleForm}
+          onSubmit={(e) => this.handleForm(e)}
           className="inviteSomeone-form"
           >
           <ul ref="invite-list">
