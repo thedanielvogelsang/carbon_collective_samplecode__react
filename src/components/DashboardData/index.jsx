@@ -125,7 +125,6 @@ class DashboardData extends Component{
   }
 
   render() {
-    // console.log(this.props.dash_data)
     var country = true;
     var color = this.props.color
     var metric = this.props.dash_data.metric_sym

@@ -14,7 +14,7 @@ const usersReducer = (state = initialState, action) => {
     case LOGIN_USER:
       return {
         ...state,
-        user_id: action.payload.id,
+        user_id: action.payload.slug,
         data: action.payload
       }
     case USER_INFO:

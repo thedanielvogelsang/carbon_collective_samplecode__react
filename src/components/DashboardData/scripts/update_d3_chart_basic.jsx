@@ -5,15 +5,15 @@ var BasicChart = {}
 BasicChart.enter = function(elem_, props){
   var color = props.color
   var dataVal = props.a
-  var percenting = props.b
   var id = props.id
   let name = props.name
   let regionName = props.regionName
   // dataVal = percenting - dataVal + 1
   // using 1. to give percentage threshold to val
-  var data = [dataVal, percenting];
+  var data = [dataVal];
 
   let windowWidth = document.getElementById('root').clientWidth
+  console.log(dataVal, props.c)
 
   let wcw = function(ww){
     if(ww > 360){
