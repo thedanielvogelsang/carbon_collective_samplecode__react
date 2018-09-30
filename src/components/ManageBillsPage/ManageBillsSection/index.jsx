@@ -46,6 +46,10 @@ class ManageBillsSection extends Component{
     this.setState({message: error.errors, messageStyle: {color: "#ED3838", display: 'block'}})
   }
 
+  componentDidUpdate(){
+    console.log(this.state)
+  }
+
   handleChange(event){
     const target = event.target;
     const name = target.name;

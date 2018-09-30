@@ -33,7 +33,7 @@ class Checklist extends Component{
       )
     }else if(type === 'Electricity'){
       return(
-        <ElectricityChecklist house={this.props.house} user={this.props.user}  closeDiv={this.props.closeDiv}/>
+        <ElectricityChecklist house={this.props.house} user={this.props.user} closeDiv={this.props.closeDiv}/>
       )
     }else if(type === 'Water'){
       return(
