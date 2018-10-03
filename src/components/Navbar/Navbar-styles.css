@@ -315,7 +315,7 @@ h6.passwordReset > span:hover{
 
 @media (min-width: 1251px){
   .cc-logo.unloaded{
-    margin-right: 32vw;
+    margin-right: 30vw;
   }
 }
 @media (min-width: 1350px){
@@ -347,34 +347,40 @@ h6.passwordReset > span:hover{
 
 @media (max-width: 1250px){
   .cc-logo.unloaded{
-    margin-right: 30vw;
+    margin-right: 29vw;
   }
 }
-@media (max-width: 1150px){
+@media (max-width: 1200px){
   .cc-logo.unloaded{
-    margin-right: 30vw;
+    margin-right: 28vw;
   }
 }
 @media (max-width: 1050px){
   .cc-logo.unloaded{
-    margin-right: 29vw;
+    margin-right: 27vw;
   }
 }
-@media (max-width: 1035px){
+@media (max-width: 1000px){
   .cc-logo.unloaded{
-    margin-right: 28vw;
+    margin-right: 26vw;
   }
 }
 
 @media (max-width: 1020px){
   .cc-logo.unloaded{
-    /* margin-right: 27vw; */
+    margin-right: 25vw;
   }
 }
 
-@media (max-width: 970px){
+@media (max-width: 980px){
   .cc-logo.unloaded{
-    margin-right: 27vw;
+    margin-right: 24vw;
+  }
+}
+
+@media (max-width: 940px){
+  .cc-logo.unloaded{
+    margin-right: 23vw;
   }
 }
 
@@ -384,7 +390,7 @@ h6.passwordReset > span:hover{
     /* margin-left: 8vw; */
   }
   .cc-logo.unloaded{
-    margin-right: 25vw;
+    margin-right: 22vw;
   }
   .passwordReset-div{
     margin-left: -15px;
@@ -406,9 +412,15 @@ h6.passwordReset > span:hover{
 }
 
 
+@media (max-width: 880px){
+  .cc-logo.unloaded{
+    margin-right: 21vw;
+  }
+}
+
 @media (max-width: 850px){
   .cc-logo.unloaded{
-    margin-right: 24vw;
+    margin-right: 20vw;
   }
 }
 
@@ -420,7 +432,7 @@ h6.passwordReset > span:hover{
     width: 40vw;
   }
   .cc-logo.unloaded{
-    margin-right: 20vw
+    margin-right: 18vw
   }
 }
 
