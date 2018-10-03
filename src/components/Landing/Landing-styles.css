@@ -82,6 +82,8 @@ div.landing-button{
   margin-bottom: 60px;
 }
 
+
+
 @media (max-width: 600px){
   .landing-text{
     max-width: 300px;
@@ -110,10 +112,10 @@ div.landing-button{
     font-size: 28px;
     font-weight: 300;
     height: 55px;
-    padding: 8px 18px;
+    padding: 8px 10px;
     position: absolute;
     margin-bottom: 15px;
-    width: 100vw;
+    width: 100%;
     max-width: 300px;
     text-transform: uppercase;
     background-color: #fce834;
@@ -121,6 +123,14 @@ div.landing-button{
     transition: opacity .3s;
     color: #2A2C33;
     border-radius: 5px;
+  }
+  h2.landing-subheader-h2{
+    margin-left: 0;
+    min-width: 0;
+    max-width: 100%;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -190,6 +200,52 @@ div.landing-button{
   }
 }
 
+
+@media (max-height: 611px){
+  header.landing-header{
+    padding-top: 10px;
+  }
+  div.header-text.landing-page{
+    margin-top: 15px;
+    margin-bottom: 25px;
+
+  }
+  .landing-header-h1{
+    margin-top: 0;
+  }
+  button.landing-button {
+    position: static;
+  }
+  .landing-body{
+    justify-content: space-between;
+    height: 50vh;
+    max-height: 50vh;
+    min-height: 258px;
+  }
+}
+
+@media (max-height: 525px){
+  div.header-text.landing-page{
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-height: 500px){
+  h1.landing-header-h1{
+    font-size: 3.1em;
+    letter-spacing: 12px;
+    padding-left: 10px;
+    margin-bottom: 5px
+  }
+}
+
+@media (max-width: 310px){
+  h1.landing-header-h1{
+    font-size: 2.8em;
+  }
+}
+
 @media (max-width: 300px){
   .landing-text{
     width: 100%;
@@ -224,40 +280,16 @@ div.landing-button{
     margin-left: 0;
   }
 }
-
-@media (max-height: 611px){
+@media (min-height: 500px){
   header.landing-header{
-    padding-top: 0;
-    margin-top: 0;
-  }
-  div.header-text.landing-page{
-    margin-top: 15px;
-    margin-bottom: 25px;
-
-  }
-  .landing-header-h1{
-    margin-top: 0;
-  }
-  button.landing-button {
-    position: static;
-  }
-  .landing-body{
-    justify-content: space-between;
-    height: 50vh;
-    max-height: 50vh;
-    min-height: 0;
+    padding-top: 40px;
   }
 }
 
-@media (max-height: 440px){
-  h1.landing-header-h1{
-    font-size: 3em;
-    letter-spacing: 20px;
-    padding-left: 16px;
-    margin-bottom: 5px
-  }
+@media (max-height: 490px){
   div.landing-body{
-    padding-top: 0;
+    max-height: 250px;
+    min-height: 250px;
   }
   div.landing-text > p{
     font-size: 12px;
@@ -269,4 +301,21 @@ div.landing-button{
     margin-top: 10px;
     margin-bottom: 18px;
   }
+}
+@media (max-height: 430px){
+  .landing-text > p{
+    overflow-y: scroll;
+  }
+  div.landing-text{
+    margin-bottom: 5px;
+  }
+}
+@media (max-height: 280px){
+  h1.landing-header-h1{
+    font-size: 1.8em;
+  }
+  h2.landing-subheader-h2{
+    font-size: 10px;
+  }
+
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 import './Header-styles.css';
 
-const Header = () => {
+const Header = (props) => {
   if (window.location.pathname === '/') {
+    let className;
+    props.loaded ? className="landing-header" : className="landing-header unloaded"
     return (
-      <header className="landing-header">
+      <header className={className}>
         <div className="header-text landing-page">
           <h1 className="landing-header-h1">Carbon</h1>
           <h2 className="landing-subheader-h2">COLLECTIVE</h2>
