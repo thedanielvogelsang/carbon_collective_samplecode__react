@@ -51,7 +51,6 @@ button.landing-button {
   font-size: 30px;
   font-weight: 300;
   height: 60px;
-  padding: 8px 20px;
   position: absolute;
   margin-bottom: 15px;
   width: 100vw;
@@ -62,6 +61,7 @@ button.landing-button {
   transition: opacity .3s;
   color: #2A2C33;
   border-radius: 5px;
+  box-sizing: content-box;
 }
 
 button.landing-button:hover{
@@ -246,5 +246,27 @@ div.landing-button{
     height: 50vh;
     max-height: 50vh;
     min-height: 0;
+  }
+}
+
+@media (max-height: 440px){
+  h1.landing-header-h1{
+    font-size: 3em;
+    letter-spacing: 20px;
+    padding-left: 16px;
+    margin-bottom: 5px
+  }
+  div.landing-body{
+    padding-top: 0;
+  }
+  div.landing-text > p{
+    font-size: 12px;
+  }
+  button.landing-button{
+    font-size: 24px;
+  }
+  div.header-text.landing-page{
+    margin-top: 10px;
+    margin-bottom: 18px;
   }
 }

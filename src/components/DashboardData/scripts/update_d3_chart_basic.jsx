@@ -13,7 +13,7 @@ BasicChart.enter = function(elem_, props){
   var data = [dataVal];
 
   let windowWidth = document.getElementById('root').clientWidth
-  console.log(dataVal, props.c)
+  // console.log(dataVal, props.c)
 
   let wcw = function(ww){
     if(ww > 360){

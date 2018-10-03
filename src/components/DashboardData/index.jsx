@@ -75,21 +75,21 @@ class DashboardData extends Component{
 
   goToHouseholdPage(event){
     // button and page change
-    let path = '/household'
-    this.logPageChange(path)
-    this.props.history.push(path)
+    // let path = '/household'
+    // this.logPageChange(path)
+    // this.props.history.push(path)
   }
 
   goToRegionPage(event){
     // button
     event.preventDefault()
-    let region_type = event.target.getAttribute("name");
-    let id = event.target.id;
-    let resourceType = this.props.resource_type
-    let name = event.target.textContent || event.target.className.baseVal;
-    get(`api/v1/areas/${region_type}/${id}/${resourceType}`)
-      .then(data => this.applyDataOnState(data, name, region_type))
-      .catch(error => console.log(error))
+    // let region_type = event.target.getAttribute("name");
+    // let id = event.target.id;
+    // let resourceType = this.props.resource_type
+    // let name = event.target.textContent || event.target.className.baseVal;
+    // get(`api/v1/areas/${region_type}/${id}/${resourceType}`)
+    //   .then(data => this.applyDataOnState(data, name, region_type))
+    //   .catch(error => console.log(error))
   }
 
   applyDataOnState(region, name, region_type){
@@ -125,7 +125,7 @@ class DashboardData extends Component{
   }
 
   render() {
-    var country = true;
+    var country = false;
     var color = this.props.color
     var metric = this.props.dash_data.metric_sym
     var notCarbon;
