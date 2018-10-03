@@ -93,7 +93,7 @@ h6.data-title{
   flex-direction: row;
   border-top-left-radius: 20%;
   border-top-right-radius: 20%;
-  padding: 30px 0 5px 0px;
+  padding: 20px 0 5px 0px;
   text-align: left;
   justify-content: flex-start;
   align-content: center;
@@ -121,6 +121,9 @@ button.resource-btn{
   min-width: 50px;
   font-weight: bolder;
   background-color: transparent;
+  height: 68px;
+  box-sizing: border-box;
+
 }
 
 button.resource-btn:not(:first-child){
@@ -690,6 +693,12 @@ span.material-icons.carbon-logo{
 }
 
 @media (max-width: 360px){
+  h6.data-value.main{
+    font-size: 16px;
+  }
+  h6.data-value.secondary{
+    font-size: 12px;
+  }
   h6.data-title{
     margin-right: 20px !important;
   }
@@ -727,5 +736,11 @@ span.material-icons.carbon-logo{
 @media (max-width: 310px){
   h6.data-title{
     font-size: 32px;
+  }
+  h6.data-value.main{
+    font-size: 13px;
+  }
+  h6.data-value.secondary{
+    font-size: 10px;
   }
 }
