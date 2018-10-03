@@ -180,7 +180,7 @@ class App extends Component {
       return(
         <div className="app-container" id="app-container">
           <Navbar loaded={loaded}/>
-          <Header />
+          <Header loaded={loaded} />
           <Switch>
             <PropsRoute exact path="/" component={ Landing } updateState={this.updateState} /> } />
             <PropsRoute path="/about" component={ AboutUs } /> } />
@@ -197,7 +197,7 @@ class App extends Component {
         return (
           <div className="app-container" id="app-container">
             <Navbar loaded={loaded} house={house}/>
-            <Header />
+            <Header loaded={loaded} />
             {fixbug ? <FixBugLink /> :  null}
             <Switch>
               <PropsRoute exact path="/" component={ Landing } loaded={loaded} updateState={this.updateState} /> } />
@@ -232,7 +232,7 @@ class App extends Component {
       return(
         <div>
           <Navbar />
-          <Header />
+          <Header loaded={loaded} />
           <FixBugLink/>
           <UnauthenticatedRouteProps component={Page404} loaded={loaded}/>
         </div>
