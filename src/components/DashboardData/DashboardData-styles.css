@@ -210,6 +210,7 @@ div.textfit-div > div{
   align-content: center;
   height: 100%;
   max-width: 240px;
+  margin-left: -1px;
 }
 
 .data-label-t{
@@ -340,7 +341,7 @@ svg.chart {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  border: 1px solid lightgray;
+  border: 1px solid #2a2c33;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   overflow-x: visible;

@@ -150,15 +150,15 @@ class DashboardData extends Component{
                   <div className="backup-rank-arrow-div">
                     <ArrowIcon arrow={this.props.dash_data.arrow} rank={this.props.dash_data.rank} outOf={this.props.dash_data.house.no_residents} />
                   </div>
-                <RegionComponent id={this.props.user_id} regionType="Personal" label="Me" linkAction={null} monthlyAvg={ this.props.dash_data.avg_monthly_consumption} parentAvg={ this.props.dash_data.household[2] } color={color}/>
-                <div className="data-item-g">
-                  <div className='bargraph-div'>
-                    <BarGraph id={"personal"} a={this.props.dash_data.avg_monthly_consumption} c={this.props.dash_data.house_max} chartName="chart0" color={color} goToRegionPage={this.goToRegionPage} name="neighborhoods" regionName={"Household"}/>
-                    <BarGraph id={"personal"} a={this.props.dash_data.household[2]} c={this.props.dash_data.house_max} chartName="chart01" color={color} goToRegionPage={this.goToRegionPage} name="neighborhoods" regionName={"Household"}/>
+                  <RegionComponent id={this.props.user_id} regionType="Personal" label="Me" linkAction={null} monthlyAvg={ this.props.dash_data.avg_monthly_consumption} parentAvg={ this.props.dash_data.household[2] } color={color}/>
+                  <div className="data-item-g">
+                    <div className='bargraph-div'>
+                      <BarGraph id={"personal"} a={this.props.dash_data.avg_monthly_consumption} c={this.props.dash_data.house_max} chartName="chart0" color={color} goToRegionPage={this.goToRegionPage} name="personal" regionName={"Household"}/>
+                      <BarGraph id={"personal"} a={this.props.dash_data.household[2]} c={this.props.dash_data.house_max} chartName="chart01" color={color} goToRegionPage={this.goToRegionPage} name="personal" regionName={"Household"}/>
+                    </div>
                   </div>
+                  <h6 className="graph-Exp">household average</h6>
                 </div>
-                <h6 className="graph-Exp">household average</h6>
-              </div>
               </div>  : <div></div>
               }
               <div className="data-item-row">

@@ -32,7 +32,7 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url('./img/background.jpeg');
+  background-image: url('./img/heaviest_gaussianBlur.jpg');
   background-repeat: center repeat-y;
   background-size: auto 100%;
   padding-top: 10vh;
@@ -176,7 +176,7 @@ input:-moz-placeholder {
 
 @media (max-width: 600px){
   #app-background-image{
-    background: #F1F6DB;
+    background: #def0f1;
     opacity: 0.8;
   }
 }
