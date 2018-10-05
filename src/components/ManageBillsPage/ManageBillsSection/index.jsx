@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { post } from '../../../api_client';
+import {scrollTop} from '../../../helper-scripts/screenHelpers.js';
 
 function capitalize(name){
   return name.charAt(0).toUpperCase() + name.slice(1);
@@ -19,19 +20,20 @@ class ManageBillsSection extends Component{
     let formResource = "total_" + type.toLowerCase()
     this.state = {
       resource: resource,
-      [formResource]: 0,
+      [formResource]: "",
       type: type,
       message: "",
       messageStyle: {
         display: 'none',
       },
-      house_id: this.props.house_id,
+      house_id: props.house_id,
       start_date: "",
       end_date: "",
       no_residents: props.noResidents,
       org_count: props.orgCount,
       num_bills: props.numBills,
-      price: 0,
+      force: false,
+      price: "",
       loading: true,
     };
     this.disappear = this.disappear.bind(this);
@@ -42,12 +44,27 @@ class ManageBillsSection extends Component{
     this.handleAddBillsForm = this.handleAddBillsForm.bind(this);
   }
 
+  componentDidMount(){
+    console.log(this.state)
+  }
+
   catchError(error){
-    this.setState({message: error.errors, messageStyle: {color: "#ED3838", display: 'block'}})
+    if(error.errors === "resource usage is much higher than average, are you sure you want to proceed?"){
+      if(confirm(error.errors)){
+        this.setState({force: true})
+        return setTimeout(this.handleAddBillsForm, 1000, {preventDefault: function(){}})
+      }else{
+        return this.resetForm(false)
+      }
+    }
+    else{
+      this.setState({message: error.errors, messageStyle: {color: "#ED3838", display: 'block'}})
+      setTimeout(this.resetForm, 1300, false)
+    }
   }
 
   componentDidUpdate(){
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   handleChange(event){
@@ -73,7 +90,7 @@ class ManageBillsSection extends Component{
       //make API call to post new bill
       householdData = {[appg]: householdData}
         post(path, householdData)
-          .then(data => this.resetForm())
+          .then(data => this.resetForm(true))
           .catch(error => this.catchError(error))
       // API call above
     }else{
@@ -95,17 +112,29 @@ class ManageBillsSection extends Component{
     })
   }
 
-  resetForm() {
-    alert("Bill save was a success!")
+  resetForm(alertNotice=true) {
+    alertNotice ? alert("Bill save was a success") : console.log()
     let formResource = "total_" + this.props.type.toLowerCase()
+    let fireCloseDiv = this.props.closeDiv
+    var myFunct = function(){
+      if(alertNotice){
+        fireCloseDiv('bills')
+        scrollTop()
+      }
+    }
     this.setState({
       errors: "",
+      house_id: this.props.house_id,
       start_date: "",
       end_date: "",
-      price: 0,
-      [formResource]: 0,
-      house_id: null,
-    }, this.props.closeDiv('bills'))
+      no_residents: this.props.no_residents,
+      org_count: this.props.orgCount,
+      num_bills: this.props.numBills,
+      [formResource]: "",
+      force: false,
+      price: "",
+      loading: true,
+    }, myFunct())
   }
 
   assignBillPath(){
@@ -159,6 +188,7 @@ class ManageBillsSection extends Component{
               required="true"
               type="number"
               name={ formResource }
+              placeholder="0"
               min="0"
               value={ formResourceAmt }
               onChange={ this.handleChange }
@@ -171,6 +201,7 @@ class ManageBillsSection extends Component{
               required="true"
               type="number"
               name="price"
+              placeholder="0"
               min="0"
               value={ price }
               onChange={ this.handleChange }

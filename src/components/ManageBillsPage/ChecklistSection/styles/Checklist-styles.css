@@ -133,28 +133,35 @@ form.checklist-form h3{
   color: black;
   font-size: 13px;
   line-height: 18px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  opacity: 0.4;
+  
+  /* text-shadow: 0.5px 0.5px 0.5px #1fa245; */
 }
 
 .manage-bills input::-moz-placeholder { /* Firefox 19+ */
   font-size: 13px;
   color: black;
   line-height: 22px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  opacity: 0.4;
+
+  /* text-shadow: 0.5px 0.5px 0.5px #1fa245; */
 }
 
 .manage-bills input:-ms-input-placeholder { /* IE 10+ */
   font-size: 13px;
   color: black;
   line-height: 22px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  opacity: 0.4;
+
+  /* text-shadow: 0.5px 0.5px 0.5px #1fa245; */
 }
 
 .manage-bills input:-moz-placeholder { /* Firefox 18- */
   font-size: 13px;
   color: black;
   line-height: 22px;
-  text-shadow: 0.5px 0.5px 0.5px #1fa245;
+  opacity: 0.4;
+  /* text-shadow: 0.5px 0.5px 0.5px #1fa245; */
 }
 
 .checklist-question-selection-div{
