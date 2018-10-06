@@ -36,12 +36,11 @@ html {
   background-repeat: center repeat-y;
   background-size: auto 100%;
   padding-top: 10vh;
-  opacity: 0.2;
+  opacity: 0.4;
   z-index: -1;
   width: 100vw;
   height: 100%;
   min-height: 600px;
-  background-color: #E3E7D5;
   background-size: cover;
   -ms-background-size: cover;
   -o-background-size: cover;
@@ -176,7 +175,7 @@ input:-moz-placeholder {
 
 @media (max-width: 600px){
   #app-background-image{
-    background: #def0f1;
+    background: #B9DEE0;
     opacity: 0.8;
   }
 }

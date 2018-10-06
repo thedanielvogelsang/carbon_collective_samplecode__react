@@ -9,8 +9,8 @@ export default class BarGraph extends Component{
       a: props.a,
       b: props.b,
       svgName: "chart " + props.chartName,
+      }
     }
-  }
 
     shouldComponentUpdate(){
       return false
@@ -37,9 +37,14 @@ export default class BarGraph extends Component{
         <div></div>
       )
     }else{
+      let spanName;
+      this.props.up ? spanName = "svg-span up" : spanName = "svg-span down"
        return(
-         <svg id={this.props.id} name={this.props.name} className={this.state.svgName} onClick={this.props.goToRegionPage} >
-         </svg>
+         <div className="svg-div">
+           <svg id={this.props.id} name={this.props.name} className={this.state.svgName} onClick={this.props.goToRegionPage}>
+           </svg>
+           <span className={spanName}><p>{this.props.title}</p></span>
+         </div>
        )
      }
    }

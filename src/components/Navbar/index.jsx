@@ -265,10 +265,10 @@ class Navbar extends Component {
           </div>
           <div className="landing-navbar-links">
             <ul className="navbar">
-              <li className="header-button landing-nav-link">
+              <li className="header-button landing-nav-link unloaded">
                 <a onClick={(e) => this.goToAboutPage(e)}>About</a>
               </li>
-              <li className="header-button landing-nav-link contactUs">
+              <li className="header-button landing-nav-link contactUs unloaded">
                 <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
               </li>
             </ul>
@@ -387,7 +387,7 @@ class Navbar extends Component {
                 <li className="header-button landing-nav-link">
                   <img alt="carbon collective logo" className="navbar-link dash-logo" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
                 </li>
-                <li className="header-button landing-nav-link">
+                <li className="header-button landing-nav-link bills">
                   <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={billsLogo} style={{width: '24px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
                 </li>
                 <li className="header-button landing-nav-link spacer">

@@ -96,20 +96,6 @@ class Dashboard extends Component {
               <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
             </div>
           </div>
-          <div className="arrow-holder">
-            <div id="start-here-div">
-              <button
-                className="start-here-btn"
-                onClick=""
-              >Start Here</button>
-            </div>
-            <div id="line1">
-            </div>
-            <div id="line2">
-            </div>
-            <div id="bills-arrow">
-            </div>
-          </div>
           <div className="dashboard-data-container">
           {!loading ? <DashboardData {...this.state} title={title} updateState={this.props.updateState}/> : <Loader /> }
           </div>

@@ -298,8 +298,8 @@ button.delete-acct-link{
     justify-content: center;
   }
   form.form-container.users-editform h5{
-    padding: 0;
-    margin-left: 0;
+    max-width: 350px;
+
   }
 }
 
@@ -311,7 +311,12 @@ button.delete-acct-link{
   h1.edit-header.user-settings{
     font-size: 38px;
   }
-  form.users-editform h5{font-size: 1em}
+  form.users-editform h5{
+    font-size: 1em;
+    margin-left: 0;
+    min-width: 80%;
+    max-width: 80% !important;
+  }
   form.password-form{
     display: flex;
     flex-direction: column;

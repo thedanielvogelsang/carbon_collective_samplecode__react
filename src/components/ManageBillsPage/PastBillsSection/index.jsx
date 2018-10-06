@@ -74,7 +74,7 @@ const Bill = function(props){
               <h3 name="no_residents" className="values smaller">{props.bill.no_residents}</h3>
             </div>
             <div className="past-bill-stat avg_use">
-              <h3 name="avg_daily" className="values usage larger">{props.bill.average_daily}</h3>
+              <h3 name="avg_daily" className="values usage larger">{props.bill.average_use}</h3>
             </div>
             <div className="past-bill-stat cost">
               <input name="price" className="values smaller cost" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id)} placeholder={`$${props.bill.price}`} onFocus={(e) => {e.target.placeholder = ''}}></input>

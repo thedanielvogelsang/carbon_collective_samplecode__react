@@ -8,23 +8,15 @@
 .dashboard-data-container_main{
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  padding-left: 30vw;
+  width: 100%;
+  padding-left: 15vw;
   align-items: baseline;
-}
-
-.dashboard-overlay{
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  width: 80%;
-  min-width: 350px;
+  box-sizing: border-box;
 }
 
 .dashboard-data-container{
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
@@ -153,7 +145,7 @@ div.textfit-div > div{
   /* border-top: 2px solid #d3d4d5; */
   /* border-bottom: 1px solid black; */
   font-family: 'Libre Franklin', sans-serif;
-  padding-top: 30px;
+  padding-top: 16px;
   padding-bottom: 10px;
   width: 90%;
   min-height:70px;
@@ -170,7 +162,7 @@ div.textfit-div > div{
   width: 100%;
   text-align: left;
   padding-top: 10px;
-  padding-left: 10px;
+  padding-left: 6px;
   font-weight: 400;
 }
 
@@ -290,9 +282,10 @@ h6.data-value.secondary{
 .community-comps-labels{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  margin: 5px 0px 5px 0px;
+  margin: 5px 0px 5px 5px;
+  box-sizing: border-box;
   /* text-decoration: underline; */
 }
 
@@ -336,7 +329,9 @@ p.data-item-rank{
   overflow-x: visible;
   position: absolute;
 }
-
+div.svg-div{
+  position: relative;
+}
 svg.chart {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -346,6 +341,106 @@ svg.chart {
   border-bottom-right-radius: 5px;
   overflow-x: visible;
   z-index: 3;
+}
+
+svg.chart + span{
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 14px;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  position: absolute;
+  display: none;
+  z-index: 10;
+  padding: 5px 5px;
+  min-width: 150px;
+}
+
+h6.data-value + span{
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 14px;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  position: absolute;
+  display: none;
+  z-index: 10;
+  padding: 5px 5px;
+  min-width: 150px;
+}
+
+.data-item-box span > p {text-align: center;}
+
+svg.chart:hover + span.up:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: -5px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
+}
+
+svg.chart:hover + span.down:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 0px 6px 6px 6px;
+  top: -5px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
+}
+
+svg.chart:hover + span{
+    display: flex;
+}
+
+svg.chart + span.down{
+  bottom: -38px;
+  left: 100px;
+}
+
+svg.chart + span.up{
+  bottom: 38px;
+  left: 100px;
+}
+
+h6.data-value:hover + span{
+    display: flex;
+    right: 5px;
+}
+
+h6.data-value:hover + span.up:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: -5px;
+  content: "";
+  left: 70%;
+  position: absolute;
+  z-index: 99;
+}
+
+h6.data-value:hover + span.down:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 0px 6px 6px 6px;
+  top: -5px;
+  content: "";
+  left: 70%;
+  position: absolute;
+  z-index: 99;
+}
+
+h6.data-value:hover + span.up{
+  bottom: 23px;
+}
+h6.data-value:hover + span.down{
+  bottom: -62px;
 }
 
 .wrap{
@@ -366,8 +461,9 @@ h1.rank{
   position: absolute;
   font-weight: bold;
   z-index: 2;
-  color: white;
+  color: black;
   min-width: 15px;
+  text-shadow: 1px 1px 1px #D4AF37, -1px -1px 1px #D4AF37;
 }
 
 h1.outof{

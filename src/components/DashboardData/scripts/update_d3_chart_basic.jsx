@@ -11,7 +11,6 @@ BasicChart.enter = function(elem_, props){
   // dataVal = percenting - dataVal + 1
   // using 1. to give percentage threshold to val
   var data = [dataVal];
-  console.log(data)
   let windowWidth = document.getElementById('root').clientWidth
   // console.log(dataVal, props.c)
 
@@ -47,7 +46,6 @@ BasicChart.enter = function(elem_, props){
       .attr("class", regionName)
       .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
-  console.log(props.a)
   bar.append("rect")
       .attr("width", 0)
       .transition()
