@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 function namify(name){
   switch(name){
+    case "Me":
+      return "my"
     case "Household":
       return "households"
     case "Neighborhood":
@@ -22,7 +24,7 @@ export default class RegionComponent extends Component{
         <a id={this.props.id} name={name} className="data-label-t clickable" onClick={this.props.linkAction}>{this.props.label}</a>
         <div style={{position: 'relative'}}>
           <h6 className="data-value main" onClick={this.props.linkAction}>{this.props.monthlyAvg}</h6>
-          <span className="svg-span up"><p>your average ({this.props.metric})</p></span>
+          <span className="svg-span up"><p>{name} average ({this.props.metric})</p></span>
         </div>
         <div style={{position: 'relative'}}>
           <h6 className="data-value secondary" onClick={this.props.linkAction}>{this.props.parentAvg}</h6>

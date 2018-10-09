@@ -7,6 +7,7 @@ import './Dashboard-styles.css';
 import Loader from '../Loader';
 import ResourceNav from './ResourceNav'
 import {ResourceTitleDash} from './ResourceTitle'
+import {withRouter} from 'react-router-dom';
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -129,7 +130,7 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps, {fetchDashData})(Dashboard);
+export default withRouter(connect(mapStateToProps, {fetchDashData})(Dashboard));
 
 // Avatar:
 

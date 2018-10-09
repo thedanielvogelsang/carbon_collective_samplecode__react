@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import * as d3 from "d3";
 import {BasicChart} from './update_d3_chart_basic';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
-export default class BarGraph extends Component{
+class BarGraph extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -22,8 +24,11 @@ export default class BarGraph extends Component{
       BasicChart.enter(x, this.props)
     }
 
+    componentDidUpdate(){
+    }
+
     componentWillReceiveProps(nextProps){
-      if(nextProps.color !== this.props.color){
+      if(this.props.a !== nextProps.a){
         var chartName = "." + this.props.chartName
         let x = d3.select(chartName)
         BasicChart.update(x, nextProps)
@@ -49,3 +54,15 @@ export default class BarGraph extends Component{
      }
    }
 }
+
+const mapStateToProps = (state) => {
+  return({
+    user_id: state.userInfo.user_id,
+    house_id: state.userInfo.house_id,
+    dash_data: state.userInfo.dash_data,
+    resource_type: state.userInfo.resource_type,
+    color: state.userInfo.color,
+  })
+}
+
+export default withRouter(connect(mapStateToProps, null)(BarGraph));

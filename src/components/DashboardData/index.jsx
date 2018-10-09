@@ -23,7 +23,7 @@ function pluralize(string){
   let regionName;
   switch(newString){
     case "me":
-      regionName = "individuals"
+      regionName = "my"
       break
     case "household":
       regionName = "households"
@@ -53,37 +53,44 @@ function pluralize(string){
 }
 
 const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, metric) => {
+  console.log(area[1], area[6])
   let labelName = pluralize(areaType);
   let chart1 = `chart` + String(chartNum);
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
-  return(
-    <div className="data-item-row">
-      <div className="rank-arrow-div">
-        <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} />
-      </div>
-      <div className="data-item-box">
-        <div className="backup-rank-arrow-div">
+    if(!area[6]){
+      return(
+        <div></div>
+      )
+    }else{
+      return(
+      <div className="data-item-row">
+        <div className="rank-arrow-div">
           <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} />
         </div>
-        <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric}/>
-        <div className="data-item-g">
-          {areaType === "Individual" ?
-            <div className='bargraph-div'>
-              <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]}/>
-              <BarGraph up={false} title={"my housemates' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]}/>
-            </div> :
-             <div className='bargraph-div'>
-              <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} />
-              <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} />
-            </div> }
+        <div className="data-item-box">
+          <div className="backup-rank-arrow-div">
+            <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} />
+          </div>
+          <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric}/>
+          <div className="data-item-g">
+            {areaType === "Me" ?
+              <div className='bargraph-div'>
+                <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]}/>
+                <BarGraph up={false} title={"my housemates' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]}/>
+              </div> :
+               <div className='bargraph-div'>
+                <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} />
+                <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} />
+              </div> }
+          </div>
+          {areaType === "Me" ? <h6 className="graph-Exp">household average</h6> :
+          <h6 className="graph-Exp">other {labelName} {parentArea ? `in ` + parentArea[1] : null}</h6> }
         </div>
-        {areaType === "Individual" ? <h6 className="graph-Exp">household average</h6> :
-        <h6 className="graph-Exp">other {labelName} {parentArea ? `in ` + parentArea[1] : null}</h6> }
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 class DashboardData extends Component{
@@ -208,16 +215,10 @@ class DashboardData extends Component{
             <div className="community-comps-labels">
             <h6 className="label-consumption">Average Use Per Person Per Month in {metric}</h6>
             </div>
-              { notCarbon ? DashDataRow(this.props.dash_data.personal, "Individual", this.props.dash_data.household, 0, null, color, metric) : <div></div>}
-              { !this.props.dash_data.household[6] ? <div></div>
-                : DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric)
-              }
-              { !this.props.dash_data.neighborhood[6] ? <div></div>
-                : DashDataRow(this.props.dash_data.neighborhood, "Neighborhood", this.props.dash_data.city, 2, this.goToRegionPage, color, metric)
-              }
-              { !this.props.dash_data.city[6] ? <div></div>
-                : DashDataRow(this.props.dash_data.city, "City", this.props.dash_data.region, 3, this.goToRegionPage, color, metric)
-              }
+              { notCarbon ? DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric) : <div></div>}
+              { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric) }
+              { DashDataRow(this.props.dash_data.neighborhood, "Neighborhood", this.props.dash_data.city, 2, this.goToRegionPage, color, metric) }
+              { DashDataRow(this.props.dash_data.city, "City", this.props.dash_data.region, 3, this.goToRegionPage, color, metric) }
               {country ?
               <div>
               <RegionGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/>

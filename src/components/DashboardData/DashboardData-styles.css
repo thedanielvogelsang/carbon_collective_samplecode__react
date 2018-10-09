@@ -320,6 +320,8 @@ p.data-item-rank{
 .chart rect {
   /* fill: steelblue; */
   overflow-x: visible;
+  border-right: 1px solid black;
+  z-index: 4;
 }
 
 .chart text {
@@ -331,6 +333,18 @@ p.data-item-rank{
 }
 div.svg-div{
   position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+svg.chart {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #2a2c33;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow-x: visible;
+  z-index: 3;
 }
 svg.chart {
   box-sizing: border-box;
@@ -343,6 +357,19 @@ svg.chart {
   z-index: 3;
 }
 
+svg.chart + span{
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 14px;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  position: absolute;
+  display: none;
+  z-index: 10;
+  padding: 5px 5px;
+  min-width: 150px;
+}
 svg.chart + span{
   font-family: 'Libre Franklin', sans-serif;
   font-size: 14px;

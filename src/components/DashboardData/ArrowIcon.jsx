@@ -9,6 +9,7 @@ const ArrowIcon = (props) => {
   props.rank === 1 ? arr = arrowUp : console.log()
   return(
       <div className="arrow-holder-div">
+        <span></span>
         <h1 className="rank">{props.rank}</h1>
         <img src={arr} alt="arrow icon" className={className}/>
         <h1 className="outof">of <span> {props.outOf}</span></h1>
