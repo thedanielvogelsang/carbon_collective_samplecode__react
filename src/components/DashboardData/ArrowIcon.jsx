@@ -5,14 +5,14 @@ import arrowDown from '../../../public/deacon-imgs/rank_down_ii.svg'
 const ArrowIcon = (props) => {
   let className = sortClassName(props.up)
   console.log(className)
-  let arr;
+  let arr, fixer;
   let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
   props.rank === 1 || props.rank === "?" ? arr = arrowUp : console.log();
   return(
       <div className="arrow-holder-div">
         {props.rank !== '?' ?
-        <span className="arrow-tooltip">ranked {rank} out of {props.outOf} {props.areaType}</span> : <span className="arrow-tooltip">no rank to be displayed</span> }
+        <span className="arrow-tooltip"> * ranked {rank} out of {props.outOf} {props.areaType}</span> : <span className={"arrow-tooltip space-left"}>no rank to be displayed</span> }
         <img src={arr} alt="arrow icon" className={className}/>
         <h1 className="rank">{props.rank}</h1>
         {props.rank !== '?' ?

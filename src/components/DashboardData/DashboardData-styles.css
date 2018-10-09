@@ -335,6 +335,7 @@ p.data-item-rank{
   width: 60px;
   margin-left: -55px; */
 }
+
 .chart rect {
   /* fill: steelblue; */
   overflow-x: visible;
@@ -368,6 +369,7 @@ svg.chart {
 svg.chart + span{
   font-family: 'Libre Franklin', sans-serif;
   font-size: 16px;
+  font-weight: 400;
   background: #333;
   color: #fff;
   background: rgba(0,0,0,.8);
@@ -377,6 +379,7 @@ svg.chart + span{
   z-index: 4;
   padding: 10px 5px;
   min-width: 150px;
+  letter-spacing: 1px
 }
 
 h6.data-value + span{
@@ -512,8 +515,13 @@ span.arrow-tooltip{
   background: rgba(0,0,0,.8);
   border-radius: 5px;
   z-index: 10;
-  padding: 5px 5px;
-  min-width: 150px;
+  padding: 11px 5px;
+  min-width: 180px;
+  letter-spacing: 1px
+}
+
+span.arrow-tooltip.space-left{
+  padding: 11px 5px 11px 15px;
 }
 
 .arrow-holder-div:hover > span{

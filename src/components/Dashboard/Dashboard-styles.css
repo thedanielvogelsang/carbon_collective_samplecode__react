@@ -107,10 +107,38 @@ h6.data-title{
   background-color: #2a2c33;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
+  position: relative;
+}
+
+.dashboard-resource-relative{
+  position: relative;
 }
 
 .dashboard-resource-nav button{
   border: none;
+}
+
+span.resource-btn-tooltip{
+  /* font-family: 'Libre Franklin', sans-serif; */
+  font-size: 16px;
+  font-weight: 400;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  position: absolute;
+  display: none;
+  z-index: 4;
+  padding: 10px 5px;
+  text-align: center;
+  min-width: 80px;
+  letter-spacing: 1px;
+  left: -20px;
+  bottom: -50px;
+}
+
+span.resource-btn-tooltip > p {
+  text-align: center;
 }
 
 /* button.resource-btn img.highlighted{
@@ -128,11 +156,15 @@ button.resource-btn{
   box-sizing: border-box;
 }
 
+button.resource-btn:hover + span.resource-btn-tooltip{
+  display: flex;
+}
+
 button.electricity-btn{
   padding-top: 10px;
 }
 
-button.resource-btn:not(:first-child){
+div.dashboard-resource-relative:not(:first-child){
   margin-left: 30px;
 }
 
@@ -178,15 +210,15 @@ button.gas-btn:hover{
 }
 
 button.update-bill-button{
-  width: 32%;
+  width: 140px;
   margin-right: 10px;
   font-size: 0.9em;
   font-weight: bolder;
   font-family: 'Merriweather', serif;
   height: 52px;
-  opacity: 0.5;
   background-color: #F1F6DB;
-  color: #1fa245!important;
+  color: #219a60 !important;
+  opacity: 0.8;
   border: 0.5px solid  #2a2c33;
   border-top: 1px solid #2a2c33;
   border-bottom: 1px solid  #2a2c33;
@@ -195,17 +227,12 @@ button.update-bill-button{
 
 button.update-bill-button:hover{
   cursor: pointer;
-  width: 33%;
-  margin-right: 10px;
+  width: 150px;
   font-size: 0.9em;
   font-weight: bolder;
-  color: #219a60 !important;
-  opacity: 0.8;
-  height: 52px;
   border: 0.5px solid  #c0c2c2;
   border-top: 1px solid #c0c2c2;
   border-bottom: 1px solid  #c0c2c2;
-  padding: 0px 10px;
   /* width: 33%;
   margin-right: 30px;
   margin-left: -10px;
@@ -337,6 +364,8 @@ span.material-icons.carbon-logo{
     margin-right: 0;
     background: none;
     border-top-right-radius: 10px;
+    margin-top: 10px;
+    
   }
   h6.data-title{
     color: #2a2c33;
@@ -352,7 +381,6 @@ span.material-icons.carbon-logo{
     margin-right: 50px;
   }
   .dashboard-data-container_main{
-    padding-left: 20vw;
     justify-content: center;
     align-items: flex-start;
   }
