@@ -221,6 +221,20 @@ div.textfit-div > div{
   /* text-shadow: 0 0 1px #468ac7 !important; */
 }
 
+h6.label-consumption{
+  box-sizing: border-box;
+  font-size: 10px;
+  font-weight: 300;
+  color: #2a2c33;
+  /* background-color: #2A2C33; */
+  height: 50%;
+  width: 100%;
+  padding-right: 20px;
+  text-align: right !important;
+  position: relative;
+  top: -16px;
+}
+
 h6.data-value.main{
   box-sizing: border-box;
   font-weight: 400;
@@ -231,7 +245,7 @@ h6.data-value.main{
   padding-right: 10px;
   text-align: right !important;
   position: relative;
-  top: 10px;
+  top: 0px;
 }
 
 h6.data-value.secondary{
@@ -245,7 +259,7 @@ h6.data-value.secondary{
   padding-right: 10px;
   text-align: right !important;
   position: relative;
-  top: 24px;
+  top: 14px;
 }
 
 .graph-icon{
@@ -346,30 +360,7 @@ svg.chart {
   overflow-x: visible;
   z-index: 3;
 }
-svg.chart {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border: 1px solid #2a2c33;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  overflow-x: visible;
-  z-index: 3;
-}
 
-svg.chart + span{
-  font-family: 'Libre Franklin', sans-serif;
-  font-size: 14px;
-  background: #333;
-  color: #fff;
-  background: rgba(0,0,0,.8);
-  border-radius: 5px;
-  position: absolute;
-  display: none;
-  z-index: 10;
-  padding: 5px 5px;
-  min-width: 150px;
-}
 svg.chart + span{
   font-family: 'Libre Franklin', sans-serif;
   font-size: 14px;
@@ -427,7 +418,7 @@ svg.chart:hover + span{
 }
 
 svg.chart + span.down{
-  bottom: -38px;
+  bottom: -25px;
   left: 100px;
 }
 
@@ -501,11 +492,4 @@ h1.outof{
 
 h1.outof span{
   font-weight: bold;
-}
-
-@media (max-width: 330px){
-  .backup-rank-arrow-div h1.outof{
-    margin-top: 0;
-    left: 46px;
-  }
 }

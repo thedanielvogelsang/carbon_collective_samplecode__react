@@ -400,6 +400,7 @@ span.material-icons.carbon-logo{
   }
   .dashboard-overlay .data-title-container{
     width: 90vw;
+    min-width: 0;
     max-width: none;
     justify-content: space-between;
     padding: 0px;
@@ -423,21 +424,8 @@ span.material-icons.carbon-logo{
     justify-content: center;
     box-sizing: border-box;
   }
-  button.resource-btn{
-    color: #129941;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    padding: 8px 6px;
-    max-width: 110px;
-    font-weight: bolder;
-  }
   .data-item-box{
     min-width: 310px;
-  }
-
-  button.resource-btn{
-    margin-left: 0px;
-    max-width: 60px;
   }
   .carbon-img{
     height: 34px;
@@ -513,12 +501,17 @@ span.material-icons.carbon-logo{
 
 @media (max-width: 370px){
   button.resource-btn{
-    color: #129941;
-    margin-top: 3px;
+    margin-top: 12px;
     margin-bottom: 3px;
-    padding: 8px 6px;
-    min-width: 50px;
+    padding: 0px;
+    width: 48px;
     font-weight: bolder;
+    background-color: transparent;
+    height: 48px;
+    box-sizing: border-box;
+  }
+  button.resource-btn:not(:first-child){
+    margin-left: 20px;
   }
   .dashboard-data-container{
     width: 100%;
@@ -584,14 +577,14 @@ span.material-icons.carbon-logo{
   .data-item-row h6.graph-Exp {
     box-sizing: border-box;
   }
+  button.resource-btn:not(:first-child){
+    margin-left: 30px;
+  }
 }
 
 @media (max-width: 330px){
   .regional-header > h5{
     padding-left: 10px;
-  }
-  .rank-arrow-div{
-    display: none;
   }
   .data-container{
     padding: 5px;
@@ -600,12 +593,6 @@ span.material-icons.carbon-logo{
   .data-item-box{
     max-width: 100%;
     width: 100%;
-  }
-  .backup-rank-arrow-div{
-    display: flex;
-    position: absolute;
-    right: 40px;
-    margin-top: -26px;
   }
 }
 
