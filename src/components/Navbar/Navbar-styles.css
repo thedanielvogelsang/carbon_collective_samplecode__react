@@ -85,7 +85,8 @@ img.log-svg{
 }
 
 img.dash-logo.landing{
-  padding-top: 6px;
+  padding-top: 3px;
+  padding-bottom: 1px;
 }
 
 input.login-bar{
@@ -128,18 +129,23 @@ ul.navbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-top: 5px;
 }
 
 ul.navbar li:hover{
   cursor: pointer;
 }
 
-li.header-button{
+li.header-button:not(.unloaded){
   margin-top: 5px;
   display: inline-block;
   align-items: baseline;
   vertical-align: top;
   justify-content: center;
+}
+
+li.header-button.bills{
+  margin-top: 7px;
 }
 
 li.landing-nav-link{
@@ -153,6 +159,10 @@ li.landing-nav-link:not(.contactUs){
 li.landing-nav-link.spacer{
   margin-top: 8px;
 }
+/*
+li.landing-nav-link.bills{
+  margin-top: 8px;
+} */
 
 li.landing-nav-link.hamburger{
   padding-top: 5px;

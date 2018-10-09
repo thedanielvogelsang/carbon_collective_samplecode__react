@@ -3,17 +3,17 @@ import * as d3 from "d3";
 var BasicChart = {}
 
 BasicChart.enter = function(elem_, props){
-  var color = props.color
-  var dataVal = props.a
-  var id = props.id
-  let name = props.name
-  let regionName = props.regionName
-  // dataVal = percenting - dataVal + 1
+  var color = props.color;
+  var barWidth = props.a;
+  var parentMax = props.c;
+  var id = props.id;
+  let name = props.name;
+  let regionName = props.regionName;
+  // barWidth = percenting - barWidth + 1
   // using 1. to give percentage threshold to val
-  var data = [dataVal];
-
+  var data = [barWidth];
   let windowWidth = document.getElementById('root').clientWidth
-  // console.log(dataVal, props.c)
+  // console.log(barWidth, props.c)
 
   let wcw = function(ww){
     if(ww > 360){
@@ -30,13 +30,13 @@ BasicChart.enter = function(elem_, props){
   var width = wcw(windowWidth);
   var barHeight = 30;
 
-  var x = d3.scaleLinear()
+  var scale = d3.scaleLinear()
       .domain([0, props.c])
       .range([0, width]);
 
   elem_
       .attr("width", width)
-      .attr("height", barHeight); // excludes 2nd bar from showing
+      .attr("height", barHeight); // excludes 2nd bar from showing if smaller than 30
 
   var bar = elem_.selectAll("g")
       .data(data)
@@ -51,26 +51,42 @@ BasicChart.enter = function(elem_, props){
       .attr("width", 0)
       .transition()
       .duration(1500)
-      .attr("width", props.a)
+      .attr("width", function(){if(Number(barWidth) !== 0){return scale(barWidth) - 5}})
       .attr("fill", color)
       .attr("height", barHeight - 1)
       .attr("name", name)
       .attr("id", id)
       .attr("class", regionName);
+      // .attr("fill-opacity", function(d){
+      //   return d / parentMax
+      // })
+      // console.log(scale(props.a), props.b, props.c)
 
+  bar.append("text")
+      .attr("x", function(d) { return scale(d) - 30; })
+      .attr("y", barHeight / 2.5)
+      .attr("dy", ".60em")
+      .text(function(d){
+        if(d <= props.b){
+          return "great!"
+        }
+      })
+      .data(data)
+      .enter()
+      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 }
 
 BasicChart.update = function(elem_, props){
   var color = props.color
-  var dataVal = props.a
-  var percenting = props.b
+  var barWidth = props.a;
+  var parentMax = props.c;
   var id = props.id
   let name = props.name
   let regionName = props.regionName
-  // dataVal = percenting - dataVal + 1
+  // barWidth = percenting - barWidth + 1
   // using 1. to give percentage threshold to val
-  var data = [dataVal, percenting];
 
+  var data = [barWidth];
 
   let windowWidth = document.getElementById('root').clientWidth
 
@@ -87,9 +103,9 @@ BasicChart.update = function(elem_, props){
   var width = wcw(windowWidth);
   var barHeight = 30;
 
-  // var x = d3.scaleLinear()
-  //     .domain([0, props.c])
-  //     .range([0, width]);
+  var scale = d3.scaleLinear()
+      .domain([0, props.c])
+      .range([0, width]);
 
   var bar = elem_.selectAll("g").data(data)
 
@@ -97,23 +113,30 @@ BasicChart.update = function(elem_, props){
       .attr("width", 0)
       .transition()
       .duration(1500)
-      .attr("width", props.a)
+      .attr("width", function(){if(Number(barWidth) !== 0){return scale(barWidth) - 5}})
       .attr("fill", color)
       .attr("name", name)
       .attr("id", id)
       .attr("height", barHeight - 1)
-      .attr("class", regionName);
+      .attr("class", regionName)
+      // .attr("fill-opacity", function(d){
+      //   return d / parentMax
+      // })
 
-  // bar.selectAll("text")
-  //     .attr("x", function(d) { return x(d) - 3; })
-  //     .attr("y", barHeight / 2.5)
-  //     .attr("dy", ".60em")
-  //     .text(function(){return String(props.a) + "/" + String(percenting)})
-
-  //     .data(data)
-  //     .enter()
-  //     .classed("cheelloo")
-  //     .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+      // console.log(props.a, props.b, props.c)
+  bar.selectAll("text")
+      .attr("x", function(d) { return scale(d) - 10; })
+      .attr("y", barHeight / 2.5)
+      .attr("dy", ".60em")
+      .text(function(d){
+        if(d <= props.b){
+          return "great!"
+        }
+      })
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
   // console.log(elem_)
 }
 
