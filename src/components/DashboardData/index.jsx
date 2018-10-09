@@ -207,13 +207,9 @@ class DashboardData extends Component{
     this.props.resource_type === 'carbon' ? notCarbon = false : notCarbon = true;
     return (
       <div className="dashboard-data-container_main">
-      <div className="regional-header">
-        <h5>Community Comparisons</h5>
-      </div>
       <div className="data-container">
           <div className="community-comps">
             <div className="community-comps-labels">
-            <h6 className="label-consumption">Average Use Per Person Per Month in {metric}</h6>
             </div>
               { notCarbon ? DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric) : <div></div>}
               { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric) }

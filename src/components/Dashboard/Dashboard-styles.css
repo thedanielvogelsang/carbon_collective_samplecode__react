@@ -133,7 +133,7 @@ button.electricity-btn{
 }
 
 button.resource-btn:not(:first-child){
-  margin-left: 25px;
+  margin-left: 30px;
 }
 
 button.carbon-btn:hover{
@@ -395,6 +395,8 @@ span.material-icons.carbon-logo{
   .dashboard-data-container_main{
     width: 100%;
     padding-left: 0;
+    justify-content: center;
+    align-items: center;
   }
   .dashboard-overlay .data-title-container{
     width: 90vw;
@@ -457,7 +459,7 @@ span.material-icons.carbon-logo{
     margin-left: 10vw;
   }
   .data-container{
-    margin-left: 10vw;
+    margin-left: 0vw;
   }
 }
 @media (max-width: 475px){
