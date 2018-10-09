@@ -217,7 +217,7 @@ class ManageBillsSection extends Component{
               required="true"
               type="number"
               name="no_residents"
-              min={this.state.no_residents}
+              min="0"
               value={ no_residents }
               onChange={ this.handleChange }
               />
