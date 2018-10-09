@@ -76,13 +76,16 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
               <div className='bargraph-div'>
                 <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
                 <BarGraph up={false} title={"my housemates' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
-              </div> :
+              </div> : areaType !== "City" ?
                <div className='bargraph-div'>
                 <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
                 <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+              </div> :
+              <div className='bargraph-div'>
+               <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
               </div> }
           </div>
-          {areaType === "Me" ? <h6 className="graph-Exp">household average</h6> :
+          {areaType === "Me" ? <h6 className="graph-Exp">household average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
           <h6 className="graph-Exp">other {labelName} {parentArea ? `in ` + parentArea[1] : null}</h6> }
         </div>
       </div>

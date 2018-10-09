@@ -461,6 +461,17 @@ h6.data-value:hover + span.down{
   bottom: -62px;
 }
 
+h6.city-total{
+  margin-top: -20px;
+}
+
+span.city-total-avg{
+  font-size: 1.4em;
+  font-weight: 700;
+  padding: 0px 5px;
+  line-height: 1.8em;
+}
+
 .wrap{
   width: 130;
 }
