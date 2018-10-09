@@ -3,8 +3,8 @@ import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_HOUSE} from '../act
 const initialState = {
   user_id: null,
   house_id: null,
-  data: null,
-  dash_data: false,
+  data: [],
+  dash_data: [],
   resource_type: 'carbon',
   color: 'rgb(121,194,120)',
 }
