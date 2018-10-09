@@ -20,11 +20,11 @@ export default class RegionComponent extends Component{
   render(){
     let name = namify(this.props.regionType)
     let label = this.props.label;
-    label === "Me" ? label = "My Average Use" : console.log();
+    // label === "Me" ? label = "My Average Use" : console.log();
     return(
       <div className="data-item-t">
         <a id={this.props.id} name={name} className="data-label-t clickable" onClick={this.props.linkAction}>{label}</a>
-        <div class="label-div" style={{position: 'relative'}}>
+        <div className="label-div" style={{position: 'relative'}}>
           <h6 className="label-consumption">{this.props.metric} per month</h6>
         </div>
       </div>

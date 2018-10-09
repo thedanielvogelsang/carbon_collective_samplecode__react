@@ -112,6 +112,10 @@ button.home-icon-cont{
   height: 50px;
 }
 
+img.arrow-icon.up + h1{
+  margin-top: 2px;
+}
+
 .textfit-div{
   display: flex;
   text-align: center;
@@ -363,29 +367,29 @@ svg.chart {
 
 svg.chart + span{
   font-family: 'Libre Franklin', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   background: #333;
   color: #fff;
   background: rgba(0,0,0,.8);
   border-radius: 5px;
   position: absolute;
   display: none;
-  z-index: 10;
-  padding: 5px 5px;
+  z-index: 4;
+  padding: 10px 5px;
   min-width: 150px;
 }
 
 h6.data-value + span{
   font-family: 'Libre Franklin', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   background: #333;
   color: #fff;
   background: rgba(0,0,0,.8);
   border-radius: 5px;
   position: absolute;
   display: none;
-  z-index: 10;
-  padding: 5px 5px;
+  z-index: 4;
+  padding: 10px 5px;
   min-width: 150px;
 }
 
@@ -399,7 +403,7 @@ svg.chart:hover + span.up:before{
   content: "";
   left: 50%;
   position: absolute;
-  z-index: 99;
+  z-index: 3;
 }
 
 svg.chart:hover + span.down:before{
@@ -410,7 +414,7 @@ svg.chart:hover + span.down:before{
   content: "";
   left: 50%;
   position: absolute;
-  z-index: 99;
+  z-index: 3;
 }
 
 svg.chart:hover + span{
@@ -418,7 +422,7 @@ svg.chart:hover + span{
 }
 
 svg.chart + span.down{
-  bottom: -25px;
+  bottom: -35px;
   left: 100px;
 }
 
@@ -466,7 +470,7 @@ h6.city-total{
 }
 
 span.city-total-avg{
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 700;
   padding: 0px 5px;
   line-height: 1.8em;
@@ -483,16 +487,39 @@ span.city-total-avg{
   flex-direction: center;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 h1.rank{
   font-family: 'Alfa Slab One', cursive;
   position: absolute;
-  font-weight: bold;
+  font-weight: normal;
+  font-size: 24px;
   z-index: 2;
   color: black;
   min-width: 15px;
   text-shadow: 1px 1px 1px #D4AF37, -1px -1px 1px #D4AF37;
+  -webkit-transform: scaleX(0.5)
+}
+
+span.arrow-tooltip{
+  display: none;
+  position: absolute;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 14px;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  z-index: 10;
+  padding: 5px 5px;
+  min-width: 150px;
+}
+
+.arrow-holder-div:hover > span{
+  display: flex;
+  left: 50px;
+  top: 10px;
 }
 
 h1.outof{

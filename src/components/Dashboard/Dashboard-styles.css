@@ -142,7 +142,7 @@ button.carbon-btn:hover{
   background-color: rgb(223,223,223);
   box-shadow: 0px 0px 10px rgb(251,230,73) !important;
   border-radius: 50%;
-
+  padding: 1px 0px 0px 3px;
   /* background-color: rgb(191,130,54);
   color: #2A2C33; */
 }
@@ -150,7 +150,7 @@ button.electricity-btn:hover{
   cursor: pointer;
   -webkit-transform: scale(1.1);
   background-color: rgb(223,223,223);
-  padding-top: 10px;
+  padding-top: 6px;
   box-shadow: 0px 0px 10px rgb(251,230,73) !important;
   border-radius: 50%;
   /* background-color: rgb(118,204,223);
@@ -371,6 +371,7 @@ span.material-icons.carbon-logo{
     width: 100vw;
     justify-content: center;
     align-items: flex-start;
+    padding-top: 0;
   }
   .bug-report-icon-fixed-div{
     max-width: 600px;
@@ -444,7 +445,7 @@ span.material-icons.carbon-logo{
     width: 28px;
   }
   .regional-header{
-    margin-left: 10vw;
+    margin-left: 0vw;
   }
   .data-container{
     margin-left: 0vw;
@@ -457,20 +458,13 @@ span.material-icons.carbon-logo{
     padding: 5px 5px 0px 0px;
   }
   .data-container{
-    margin-left: 0;
     width: 100%;
-    max-width: none;
+    padding: 0px 10px 10px 10px;
     box-sizing: border-box;
-    padding: 5px;
   }
 }
 
 @media (max-width: 450px){
-  .data-container{
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-  }
   .regional-header > h5{
     padding-left: 10px;
   }
