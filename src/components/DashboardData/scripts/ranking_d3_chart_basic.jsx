@@ -43,12 +43,12 @@ class BarGraph extends Component{
       )
     }else{
       let spanName;
-      this.props.up ? spanName = "svg-span up" : spanName = "svg-span down"
+      this.props.up ? spanName = "svg-span up" : spanName = "svg-span down";
        return(
          <div className="svg-div">
            <svg id={this.props.id} name={this.props.name} className={this.state.svgName} onClick={this.props.goToRegionPage}>
            </svg>
-           <span className={spanName}><p>{this.props.title}</p></span>
+           <span className={spanName}><p>{this.props.a}</p></span>
          </div>
        )
      }

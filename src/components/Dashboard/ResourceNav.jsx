@@ -122,6 +122,7 @@ class ResourceNav extends Component {
     this.state.flame_highlighted ? heat_class = 'gas-img highlighted' : heat_class = 'gas-img';
     return(
         <div className="dashboard-resource-nav">
+        <div className="dashboard-resource-relative">
           <button
             className="resource-btn carbon-btn"
             onClick={this.preSetDash}
@@ -132,6 +133,9 @@ class ResourceNav extends Component {
                 name="carbon"
                 src={require(`${this.state.carbon_url}`)} />
           </button>
+          <span className="resource-btn-tooltip"><p>carbon</p></span>
+        </div>
+        <div className="dashboard-resource-relative">
           <button
           className="resource-btn electricity-btn"
           onClick={this.preSetDash}
@@ -142,6 +146,9 @@ class ResourceNav extends Component {
               name="electricity"
               src={require(`${this.state.elec_url}`)} />
           </button>
+          <span className="resource-btn-tooltip"><p>electricity</p></span>
+        </div>
+        <div className="dashboard-resource-relative">
           <button
           className="resource-btn water-btn"
           onClick={this.preSetDash}
@@ -152,16 +159,21 @@ class ResourceNav extends Component {
               name="water"
               src={require(`${this.state.water_url}`)} />
           </button>
-          <button
-          className="resource-btn gas-btn"
-          onClick={this.preSetDash}
-          name="gas"
-          ><img
-              className={heat_class}
-              alt="carbon collective logo gas"
-              name="gas"
-              src={require(`${this.state.flame_url}`)} />
-          </button>
+          <span className="resource-btn-tooltip"><p>water</p></span>
+        </div>
+        <div className="dashboard-resource-relative">
+            <button
+            className="resource-btn gas-btn"
+            onClick={this.preSetDash}
+            name="gas"
+            ><img
+                className={heat_class}
+                alt="carbon collective logo gas"
+                name="gas"
+                src={require(`${this.state.flame_url}`)} />
+            </button>
+            <span className="resource-btn-tooltip"><p>heat</p></span>
+        </div>
       </div>
     )
   }

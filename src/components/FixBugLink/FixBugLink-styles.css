@@ -1,5 +1,6 @@
 .bug-report-icon-fixed-div{
-  width: 100vw;
+  width: 100px;
+  margin-left: 35vw;
   max-width: 903px;
   position: fixed;
   display: flex;
@@ -7,7 +8,7 @@
   justify-content: flex-end;
   bottom: 34px;
   height: 35px;
-  z-index: 0;
+  z-index: 2;
 }
 
 .bug-report-icon-container{
@@ -22,7 +23,7 @@
   /* background-color: #2A2C33; */
   background-color: rgb(241, 246, 219);
   border-radius: 50%;
-  z-index: 3;
+  z-index: 5;
 }
 
 .bug-report-icon-container:hover{
@@ -39,9 +40,12 @@
   flex-direction: row;
   position: relative;
   right: 30px;
+  color: #2a2c33;
+  opacity: 1;
 }
 
 img.bug-report-icon-fixed{
   width: 90%;
   height: 90%;
+  z-index: 5;
 }

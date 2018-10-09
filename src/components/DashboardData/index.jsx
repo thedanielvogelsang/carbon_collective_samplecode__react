@@ -64,28 +64,32 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
         <div></div>
       )
     }else{
+      console.log(area[7])
       return(
       <div className="data-item-row">
+        {area[6] && Number(area[6]) !== 1 ?
         <div className="rank-arrow-div">
-          <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} />
-        </div>
+          <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} areaType={labelName} />
+        </div> :  areaType !== 'City' ? <div className="rank-arrow-div">
+                  <ArrowIcon arrow={null} rank={"?"} outOf={null} areaType={areaType} up={area[7]}/>
+                </div> : <div className="rank-arrow-div"></div>}
         <div className="data-item-box">
-          <div className="backup-rank-arrow-div">
-            <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} />
-          </div>
           <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric}/>
           <div className="data-item-g">
             {areaType === "Me" ?
               <div className='bargraph-div'>
-                <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]}/>
-                <BarGraph up={false} title={"my housemates' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]}/>
-              </div> :
+                <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
+                <BarGraph up={false} title={"other users' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
+              </div> : areaType !== "City" ?
                <div className='bargraph-div'>
-                <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} />
-                <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} />
+                <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+                <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+              </div> :
+              <div className='bargraph-div'>
+               <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
               </div> }
           </div>
-          {areaType === "Me" ? <h6 className="graph-Exp">household average</h6> :
+          {areaType === "Me" ? <h6 className="graph-Exp">household average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
           <h6 className="graph-Exp">other {labelName} {parentArea ? `in ` + parentArea[1] : null}</h6> }
         </div>
       </div>
@@ -207,13 +211,12 @@ class DashboardData extends Component{
     this.props.resource_type === 'carbon' ? notCarbon = false : notCarbon = true;
     return (
       <div className="dashboard-data-container_main">
-      <div className="regional-header">
-        <h5>Community Comparisons</h5>
-      </div>
       <div className="data-container">
           <div className="community-comps">
+            <div className="regional-header">
+              <h5>Community Comparisons (Avg Use)</h5>
+            </div>
             <div className="community-comps-labels">
-            <h6 className="label-consumption">Average Use Per Person Per Month in {metric}</h6>
             </div>
               { notCarbon ? DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric) : <div></div>}
               { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric) }

@@ -16,14 +16,14 @@ BasicChart.enter = function(elem_, props){
   // console.log(barWidth, props.c)
 
   let wcw = function(ww){
-    if(ww > 360){
+    if(ww > 400){
+      return 310
+    }else if(ww > 300){
+      return 250
+    }else if(ww < 310){
       return 220
-    }else if(ww > 319){
-      return 180
-    }else if(ww > 290){
-      return 200
     }else{
-      return 180
+      return 200
     }
   }
 
@@ -62,18 +62,18 @@ BasicChart.enter = function(elem_, props){
       // })
       // console.log(scale(props.a), props.b, props.c)
 
-  bar.append("text")
-      .attr("x", function(d) { return scale(d) - 30; })
-      .attr("y", barHeight / 2.5)
-      .attr("dy", ".60em")
-      .text(function(d){
-        if(d <= props.b){
-          return "great!"
-        }
-      })
-      .data(data)
-      .enter()
-      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+  // bar.append("text")
+  //     .attr("x", function(d) { return scale(d) - 30; })
+  //     .attr("y", barHeight / 2.5)
+  //     .attr("dy", ".60em")
+  //     .text(function(d){
+  //       if(d <= props.b){
+  //         return "great!"
+  //       }
+  //     })
+  //     .data(data)
+  //     .enter()
+  //     .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 }
 
 BasicChart.update = function(elem_, props){
@@ -124,19 +124,19 @@ BasicChart.update = function(elem_, props){
       // })
 
       // console.log(props.a, props.b, props.c)
-  bar.selectAll("text")
-      .attr("x", function(d) { return scale(d) - 10; })
-      .attr("y", barHeight / 2.5)
-      .attr("dy", ".60em")
-      .text(function(d){
-        if(d <= props.b){
-          return "great!"
-        }
-      })
-      .data(data)
-      .enter()
-      .append("text")
-      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+  // bar.selectAll("text")
+  //     .attr("x", function(d) { return scale(d) - 10; })
+  //     .attr("y", barHeight / 2.5)
+  //     .attr("dy", ".60em")
+  //     .text(function(d){
+  //       if(d <= props.b){
+  //         return "great!"
+  //       }
+  //     })
+  //     .data(data)
+  //     .enter()
+  //     .append("text")
+  //     .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
   // console.log(elem_)
 }
 

@@ -246,7 +246,7 @@ class HouseSettings extends Component{
             className="form-container house-editform"
             >
 
-              <h5>Move in Date</h5>
+              <h5>Your Move in Date</h5>
               <label>
                 <input
                   id="move-in"
