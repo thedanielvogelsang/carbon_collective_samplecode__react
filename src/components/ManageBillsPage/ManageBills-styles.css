@@ -211,7 +211,7 @@ button.bills-button:hover{
 .manage-bills-overlay .data-title-container{
   min-width: 200px;
   margin-left: 13vw;
-  color: #105130;
+  color: rgb(245, 245, 245);
 }
 
 .manage-section-master-div{
