@@ -54,6 +54,7 @@ class Navbar extends Component {
     this.goToDash = this.goToDash.bind(this)
     this.goToSettings = this.goToSettings.bind(this)
     this.goToAboutPage = this.goToAboutPage.bind(this)
+    this.goToContactPage = this.goToContactPage.bind(this)
     this.goToInvitePage = this.goToInvitePage.bind(this)
     this.checkLoginStatus = this.checkLoginStatus.bind(this)
     this.checkSettingsStatus = this.checkSettingsStatus.bind(this)
@@ -269,7 +270,7 @@ class Navbar extends Component {
                 <a onClick={(e) => this.goToAboutPage(e)}>About</a>
               </li>
               <li className="header-button landing-nav-link contactUs unloaded">
-                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+                <a onClick={(e) => this.goToContactPage(e)}>Contact</a>
               </li>
             </ul>
           </div>
@@ -298,7 +299,7 @@ class Navbar extends Component {
                 <a onClick={(e) => this.goToAboutPage(e)}>About</a>
               </li>
               <li className="header-button landing-nav-link spacer">
-                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+                <a onClick={(e) => this.goToContactPage(e)}>Contact</a>
               </li>
               <li className="header-button landing-nav-link">
                 <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
@@ -324,7 +325,7 @@ class Navbar extends Component {
                 <a onClick={(e) => this.goToAboutPage(e)}>About</a>
               </li>
               <li className="header-button landing-nav-link spacer">
-                <a onClick={(e) => this.goToAboutPage(e)}>Contact</a>
+                <a onClick={(e) => this.goToContactPage(e)}>Contact</a>
               </li>
               <li className="header-button landing-nav-link">
                 <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={this.state.dashLogo} style={{width: '36px', height: '38px'}} onClick={(e) => this.goToDash(e)}/>
@@ -452,6 +453,11 @@ class Navbar extends Component {
     this.setState({settingsOpen: false})
     this.logPageChange("/about")
     this.props.history.push('/about')
+  }
+  goToContactPage(){
+    this.setState({settingsOpen: false})
+    this.logPageChange("/contact")
+    this.props.history.push('/contact')
   }
 
   goToInvitePage(){

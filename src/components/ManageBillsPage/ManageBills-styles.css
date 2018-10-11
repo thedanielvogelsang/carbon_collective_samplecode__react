@@ -189,10 +189,11 @@ button.bills-button:hover{
 .manage-bills-header-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
+  align-content: flex-start;
   border-bottom: 1px dotted white;
-  width: 100vw;
+  width: 100%;
   padding: 0;
   padding-top: 30px;
   margin: 0;
@@ -203,16 +204,17 @@ button.bills-button:hover{
   flex-wrap: wrap-reverse;
   justify-content: flex-start;
   align-items: center;
-  padding: 5px;
-  width: 80%;
+  padding-left: 15vw;
+  width: 100%;
   min-width: 350px;
+  box-sizing: border-box;
 }
-
+/*
 .manage-bills-overlay .data-title-container{
   min-width: 200px;
   margin-left: 13vw;
-  color: #105130;
-}
+  color: rgb(245, 245, 245);
+} */
 
 .manage-section-master-div{
   display: flex;
@@ -340,6 +342,11 @@ svg.fa-caret-down.fa-sm{
   100% { opacity: 0; height: 0}
 }
 
+@media (max-width: 1000px){
+  .manage-bills-overlay{
+    padding-left: 0px;
+  }
+}
 @media (max-width: 872px){
   .manage-section-master-div{
     display: flex;
@@ -347,8 +354,8 @@ svg.fa-caret-down.fa-sm{
     padding: 0;
     justify-content: center;
     align-items: flex-start;
-    padding-left: 20vw;
-    max-width: 100vw;
+    padding-left: 14%;
+    max-width: 100%;
     min-width: 0;
   }
   .manage-bills-overlay{width: 100%;}
@@ -370,10 +377,6 @@ svg.fa-caret-down.fa-sm{
     width: 100%;
     margin-left: 0;
     padding-left: 0;
-    justify-content: center;
-  }
-  .manage-bills-header-container .data-title-container{
-    margin-left: 0 !important;
   }
   .manage-bills-overlay h6{
     margin-right: 0 !important;
@@ -414,11 +417,23 @@ svg.fa-caret-down.fa-sm{
   }
   .manage-bills-overlay{
     width: 100%;
+    max-width: 450px;
     min-width: 0;
-    justify-content: center !important;
+    align-items: center;
+    justify-content: center;
     padding: 0;
   }
-  .manage-bills-overlay .dashboard-resource-nav{
+  .manage-bills-header-container{
+    padding-top: 0;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+  }
+  .section-title-row{
+    justify-content: flex-start;
+
+  }
+  /* .manage-bills-overlay .dashboard-resource-nav{
     width: 100%;
     justify-content: center;
     margin-left: 0;
@@ -427,34 +442,25 @@ svg.fa-caret-down.fa-sm{
     width: 100%;
     padding: 0;
     justify-content: center;
-  }
-  .manage-bills-header-container{
-    padding-top: 0;
-  }
-  .data-title-container h6{
+  } */
+
+  /* .data-title-container h6{
     margin: 0;
     margin-right: 45px;
-  }
-  .section-title-row{
-    justify-content: flex-start;
-
-  }
-  .manage-bills-overlay .data-title-container{
+  } */
+  /* .manage-bills-overlay .data-title-container{
     max-width: 100%;
     margin-left: 0 !important;
-  }
-  .manage-bills-overlay .dashboard-resource-nav{
+  } */
+  /* .manage-bills-overlay .dashboard-resource-nav{
     box-sizing: border-box;
     max-width: 100vw;
     min-width: unset;
     margin-left: 0 !important;
-  }
+  } */
   .manage-bills-overlay{
     padding-left: 0;
     width: 100%;
-  }
-  .manage-section-master-div{
-    padding-left: 10px;
   }
 }
 
@@ -467,10 +473,13 @@ svg.fa-caret-down.fa-sm{
   }
 }
 
-@media (max-width: 500px){
+@media (max-width: 580px){
   .manage-section-master-div{
     padding-left: 5px;
     box-sizing: border-box;
+  }
+  .manage-section-master-div{
+    padding-left: 10px;
   }
   .section-title-row{width: 95%;}
   .section-content-div{width: 95%;}
@@ -484,7 +493,7 @@ svg.fa-caret-down.fa-sm{
     max-width: 100%;
   }
   .section-title-row{
-    padding-left: 30px;
+    /* padding-left: 30px; */
     margin: 0;
     box-sizing: border-box;
   }
@@ -499,7 +508,7 @@ svg.fa-caret-down.fa-sm{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     max-width: unset;
     min-width: unset;
     box-sizing: border-box;
@@ -512,14 +521,20 @@ svg.fa-caret-down.fa-sm{
 
 @media (max-width: 400px){
   form.manage-bills > div{
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
+    width: 95%;
+    min-width: 90%;
+    max-width: 95%;
   }
-  .section-title-row{
-    padding-left: 15px;
+  form.manage-bills button.bills-button{
+    width: 100%;
+    padding: 0px;
+    min-width: 250px;
+  }
+  form.form-container.manage-bills{
+
   }
 }
+
 @media (max-width: 350px){
   form.manage-bills > div{
     display: flex;

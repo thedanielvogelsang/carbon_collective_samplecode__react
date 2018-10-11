@@ -85,18 +85,18 @@ BasicChart.update = function(elem_, props){
   let regionName = props.regionName
   // barWidth = percenting - barWidth + 1
   // using 1. to give percentage threshold to val
-
   var data = [barWidth];
-
   let windowWidth = document.getElementById('root').clientWidth
 
   let wcw = function(ww){
-    if(ww > 360){
+    if(ww > 400){
+      return 310
+    }else if(ww > 300){
+      return 250
+    }else if(ww < 310){
       return 220
-    }else if(ww > 310){
-      return 200
     }else{
-      return 180
+      return 200
     }
   }
 

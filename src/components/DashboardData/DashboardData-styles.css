@@ -100,6 +100,7 @@ button.home-icon-cont{
   width: 10%;
   position: relative;
   z-index: 3;
+  margin-top: 10px;
   margin-right: 10px;
 }
 
@@ -179,6 +180,7 @@ div.textfit-div > div{
 
 .data-item-t{
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: flex-start;
   font-size: 1.3em;
@@ -213,7 +215,7 @@ div.textfit-div > div{
   color: #2a2c33;
   height: 50%;
   min-width: 130px !important;
-  width: 100% !important;
+  width: 50% !important;
   padding-left: 5px;
   padding-top: 3px;
   font-family: 'Merriweather', Garamond, serif;
@@ -225,6 +227,11 @@ div.textfit-div > div{
   /* text-shadow: 0 0 1px #468ac7 !important; */
 }
 
+.data-item-t .label-div{
+  display: flex;
+  justify-content: flex-end;
+}
+
 h6.label-consumption{
   box-sizing: border-box;
   font-size: 10px;
@@ -232,11 +239,33 @@ h6.label-consumption{
   color: #2a2c33;
   /* background-color: #2A2C33; */
   height: 50%;
-  width: 100%;
+  width: 140px;
   padding-right: 20px;
   text-align: right !important;
   position: relative;
   top: -16px;
+}
+
+span.label-consumption-tooltip{
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  position: absolute;
+  display: none;
+  z-index: 4;
+  padding: 10px 5px;
+  min-width: 150px;
+  letter-spacing: 1px;
+  right: 10px;
+  top: -10px;
+}
+
+a.data-label-t:hover + span.label-consumption-tooltip{
+  display: flex;
 }
 
 h6.data-value.main{
@@ -300,9 +329,9 @@ h6.data-value.secondary{
 .community-comps-labels{
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
-  margin: 5px 0px 5px 5px;
+  margin: 5px 0px;
   box-sizing: border-box;
   /* text-decoration: underline; */
 }
@@ -310,6 +339,7 @@ h6.data-value.secondary{
 .community-comps-labels h6{
   font-size: 0.8em;
   vertical-align: baseline;
+  padding-left: 40px;
 }
 
 .community-comps-labels h6.label-rank{
@@ -497,12 +527,12 @@ h1.rank{
   font-family: 'Alfa Slab One', cursive;
   position: absolute;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 20px;
   z-index: 2;
   color: black;
   min-width: 15px;
   text-shadow: 1px 1px 1px #D4AF37, -1px -1px 1px #D4AF37;
-  -webkit-transform: scaleX(0.5)
+  -webkit-transform: scaleX(0.7)
 }
 
 span.arrow-tooltip{
@@ -526,8 +556,8 @@ span.arrow-tooltip.space-left{
 
 .arrow-holder-div:hover > span{
   display: flex;
-  left: 50px;
-  top: 10px;
+  left: 55px;
+  top: 4px;
 }
 
 h1.outof{

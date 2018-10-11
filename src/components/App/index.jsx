@@ -7,6 +7,7 @@ import HouselessRoute from '../HouselessRoute';
 import Header from '../Header'
 import Landing from '../Landing'
 import AboutUs from '../AboutUs'
+import ContactUs from '../ContactUs'
 import AddAddress from '../AddAddress'
 import AddHousehold from '../AddHousehold'
 import HouseExists from '../HouseExists'
@@ -184,6 +185,7 @@ class App extends Component {
           <Switch>
             <PropsRoute exact path="/" component={ Landing } updateState={this.updateState} /> } />
             <PropsRoute path="/about" component={ AboutUs } /> } />
+            <PropsRoute path="/contact" component={ ContactUs } /> } />
             <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
             <UnauthenticatedRouteProps path="/request-reset" loaded={loaded} component={ RequestReset }/> } />
             <UnauthenticatedRouteProps path="/reset-password/:id" loaded={loaded} component={ ResetPasswordPage }/> } />
@@ -202,6 +204,7 @@ class App extends Component {
             <Switch>
               <PropsRoute exact path="/" component={ Landing } loaded={loaded} updateState={this.updateState} /> } />
               <PropsRoute path="/about" component={ AboutUs } /> } />
+              <PropsRoute path="/contact" component={ ContactUs } /> } />
               <UnauthenticatedRouteProps path="/login-first-time" loaded={loaded} component={ FirstLogin } data={this.state} updateState={this.updateState} /> } />
               <UnauthenticatedRouteProps path="/signup/:id" loaded={loaded} component={ NewUserSignup } data={this.state} updateState={this.updateState}/> } />
               <UnauthenticatedRouteProps path="/confirm-address" loaded={loaded} component={ WaitConfirm } /> } />
