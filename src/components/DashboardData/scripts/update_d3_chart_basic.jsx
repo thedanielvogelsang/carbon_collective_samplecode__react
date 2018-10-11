@@ -77,7 +77,6 @@ BasicChart.enter = function(elem_, props){
 }
 
 BasicChart.update = function(elem_, props){
-  console.log(props)
   var color = props.color
   var barWidth = props.a;
   var parentMax = props.c;
@@ -109,8 +108,6 @@ BasicChart.update = function(elem_, props){
       .range([0, width]);
 
   var bar = elem_.selectAll("g").data(data)
-
-  console.log(barWidth)
 
   bar.selectAll("rect")
       .attr("width", 0)
