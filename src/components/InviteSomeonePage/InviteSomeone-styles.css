@@ -19,6 +19,31 @@
   min-height: 40px;
 }
 
+.invite-expl-div{
+  width: 100%;
+  padding: 5px 0px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+p.invite-tree-explication{
+  font-family: 'Merriweather', serif;
+  font-size: 1em;
+  line-height: 1.8em;
+  font-weight: 400;
+  color: #2a2c33;
+  margin: 20px 0px 10px 0px;
+  max-width: 400px;
+  text-align: justify;
+}
+
+p.invite-tree-explication > span{
+  font-weight: 800;
+  color: #219a60;
+  font-size: 1.05rem;
+}
+
 form.inviteSomeone-form{
   display: flex;
   flex-direction: column;
@@ -27,7 +52,7 @@ form.inviteSomeone-form{
   width: 100%;
   min-width: 350px;
   padding: 0px !important;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .inviteSomeone-form ul{
@@ -222,6 +247,10 @@ label.invite-label textarea:-moz-placeholder {
   div.invite-row-div.invited{
     padding-left: 10vw;
   } */
+  p.invite-tree-explication{
+    width: 85%;
+    max-width: none;
+  }
   .invite-cancel-div.invisible{
     visibility: hidden;
     margin-left: -30px;
@@ -272,6 +301,9 @@ label.invite-label textarea:-moz-placeholder {
   }
   .inviteSomeone-form ul{
     min-width: 0;
+  }
+  .invite-email-input{
+    width: 90%;
   }
   label.invite-label{
     padding: 6px;

@@ -23,7 +23,7 @@ function pluralize(string){
   let regionName;
   switch(lowerCase){
     case "me":
-      regionName = "my"
+      regionName = "users"
       break
     case "household":
       regionName = "households"
@@ -67,11 +67,11 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
     }else{
       return(
       <div className="data-item-row">
-        {area[6] && Number(area[6]) !== 1 ?
+        {area[6] !== 1 && Number(area[2]) !== 0 ?
         <div className="rank-arrow-div">
-          <ArrowIcon arrow={area[7]} rank={area[5]} outOf={area[6]} areaType={labelName} />
+          <ArrowIcon arrow={area[7]} a={area[2]} rank={area[5]} outOf={area[6]} areaType={labelName} />
         </div> :  areaType !== 'City' ? <div className="rank-arrow-div">
-                  <ArrowIcon arrow={null} rank={"?"} outOf={null} areaType={areaType} up={area[7]}/>
+                  <ArrowIcon arrow={null}  a={area[2]} rank={"?"} outOf={null} areaType={areaType} up={area[7]}/>
                 </div> : <div className="rank-arrow-div"></div>}
         <div className="data-item-box">
           <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric} max={area[4]}/>
@@ -219,7 +219,7 @@ class DashboardData extends Component{
             <div className="community-comps-labels">
               <h6>Reduce your {this.props.resource} use to shrink your bar!</h6>
             </div>
-              { notCarbon ? DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric) : <div></div>}
+              { DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric)}
               { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric) }
               { DashDataRow(this.props.dash_data.neighborhood, "Neighborhood", this.props.dash_data.city, 2, this.goToRegionPage, color, metric) }
               { DashDataRow(this.props.dash_data.city, "City", this.props.dash_data.region, 3, this.goToRegionPage, color, metric) }

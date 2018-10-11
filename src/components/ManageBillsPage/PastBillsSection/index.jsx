@@ -62,10 +62,10 @@ const Bill = function(props){
               <h3 name="who" className="values">{props.bill.who}</h3>
             </div>
             <div className="past-bill-stat larger">
-              <input name="start_date" className="values larger" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.start_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
+              <h3 name="start_date" className="values larger">{props.bill.start_date}</h3>
             </div>
             <div className="past-bill-stat larger">
-              <input name="end_date" className="values larger" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.end_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
+              <h3 name="end_date" className="values larger">{props.bill.end_date}</h3>
             </div>
             <div className="past-bill-stat usage larger">
               <h3 name="total_used" className="values">{props.bill.total_used}</h3>
@@ -77,11 +77,16 @@ const Bill = function(props){
               <h3 name="avg_daily" className="values usage larger">{props.bill.average_use}</h3>
             </div>
             <div className="past-bill-stat cost">
-              <input name="price" className="values smaller cost" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id)} placeholder={`$${props.bill.price}`} onFocus={(e) => {e.target.placeholder = ''}}></input>
+              <h3 name="price" className="values smaller cost">{`$${props.bill.price}`}</h3>
             </div>
       </div>
     )
   }
+
+// <input name="start_date" className="values larger" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.start_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
+// <input name="end_date" className="values larger" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id, props.year)} placeholder={props.bill.end_date} onFocus={(e) => {e.target.placeholder = ''}}></input>
+// <input name="price" className="values smaller cost" onBlur={(e)=>props.updateBillAndChangeToInactive(e, props.bill.id)} placeholder={`$${props.bill.price}`} onFocus={(e) => {e.target.placeholder = ''}}></input>
+
 
 const renderBills = function(deleteBillFunc, billUpdateFunc, bills, billType, i, num, year){
   return bills.map((bill, n) => {

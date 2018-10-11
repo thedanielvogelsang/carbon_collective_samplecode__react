@@ -288,44 +288,6 @@ span.material-icons.carbon-logo{
 }
 
 
-
-@keyframes border{
-  0% {
-    box-shadow: 30px -30px 0 2px #2A2C33, -30px -30px 0 2px #2A2C33, -30px 30px 0 2px #2A2C33, 30px 30px 0 2px #2A2C33, 0 0 0 2px #2A2C33;
-    opacity: 1;
-  }
-  10% {
-    box-shadow: 0 -65px 0 2px #2A2C33, -30px -30px 0 2px #2A2C33, -30px 30px 0 2px #2A2C33, 30px 30px 0 2px #2A2C33, 0 0 0 2px #fff;
-    opacity: 1;
-  }
-  20% {
-    box-shadow: 0 -65px 0 2px #2A2C33, -65px 0px 0 2px #2A2C33, -30px 30px 0 2px #2A2C33, 30px 30px 0 2px #2A2C33, 0 0 0 2px #fff;
-    opacity: 1;
-  }
-  40% {
-    box-shadow: 0 -65px 0 2px #2A2C33, -65px 0px 0 2px #2A2C33, 0px 65px 0 2px #2A2C33, 30px 30px 0 2px #2A2C33, 0 0 0 2px #fff;
-    opacity: 1;
-  }
-  50% {
-    box-shadow: 0 -65px 0 2px transparent, -65px 0px 0 2px transparent, 0px 65px 0 2px transparent, 60px 30px 0 2px transparent, 0 0 0 2px #fff;
-    opacity: 1;
-  }
-  70% {
-    box-shadow: 0 -65px 0 2px transparent, -65px 0px 0 2px transparent, 0px 65px 0 2px transparent, 60px 30px 0 2px transparent, 0 0 0 2px #fff;
-    opacity: 0.7;
-  }
-  90% {
-    box-shadow: 0 -65px 0 2px transparent, -65px 0px 0 2px transparent, 0px 65px 0 2px transparent, 60px 30px 0 2px transparent, 0 0 0 2px #fff;
-    opacity: 0.3;
-  }
-  100% {
-    box-shadow: 30px -30px 0 2px transparent, -30px -30px 0 2px transparent, -30px 30px 0 2px transparent, 30px 30px 0 2px transparent, 0 0 0 2px transparent;
-    opacity: 0;
-    display: none;
-  }
-}
-
-
 @keyframes flash {
   0% { opacity: 0 }
   10% { opacity: 0.1 }

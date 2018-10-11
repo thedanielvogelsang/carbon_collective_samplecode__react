@@ -134,7 +134,7 @@ form.checklist-form h3{
   font-size: 13px;
   line-height: 18px;
   opacity: 0.4;
-  
+
   /* text-shadow: 0.5px 0.5px 0.5px #1fa245; */
 }
 
@@ -314,7 +314,6 @@ button.checklist-button:hover{
   }
   form.checklist-form h3{
     max-width: 130px;
-
   }
   div.checklist-button-div{
     width: 90%;
