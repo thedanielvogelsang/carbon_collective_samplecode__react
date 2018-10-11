@@ -260,13 +260,28 @@ span.label-consumption-tooltip{
   padding: 10px 5px;
   min-width: 150px;
   letter-spacing: 1px;
-  right: 10px;
+  right: 50px;
   top: -10px;
 }
 
 a.data-label-t:hover + span.label-consumption-tooltip{
   display: flex;
+  transition: 1s;
+  -webkit-animation: slide 0.2s ease-in forwards;
+  /* -webkit-animation-delay: 0.1s; */
+  animation: slide 0.2s ease-in forwards;
+  /* animation-delay: 0.1s; */
 }
+
+  @-webkit-keyframes slide {
+      /* 50% {right: 50px} */
+      100% { right: 10px; }
+  }
+
+  @keyframes slide {
+      /* 50% {right: 50px} */
+      100% { right: 10px; }
+  }
 
 h6.data-value.main{
   box-sizing: border-box;

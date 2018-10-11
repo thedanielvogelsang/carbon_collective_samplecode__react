@@ -247,6 +247,9 @@ class InviteSomeonePage extends Component{
     return(
       <div className="invite-list-page">
         <h4 className="edit-header invite-page">Invite your friends!</h4>
+          <div className="invite-expl-div">
+            <p className="invite-tree-explication"><span className="green-bold">Watch your carbon savings multiply!</span> Invite up to 3 friends and grow a <span>tree of carbon savings</span> to see how much you can save together. We are currently in early release, so make sure they <span className="green-bold">live in Denver</span> and have access to their own water and electric/gas bills.</p>
+          </div>
         {loading ? <div></div> :
         <form
           onSubmit={(e) => this.handleForm(e)}

@@ -21,7 +21,12 @@ const ArrowIcon = (props) => {
 }
 
 function findOrdinal(num){
-  num = num.toString().split('').pop();
+  num = num.toString().split('');
+  num = num.length === 1 ? num = singleOrdinance(num.pop()) : num.length > 2 ? num = tripleOrdinance(num) : num = doubleOrdinance(num)
+  return num
+}
+
+function singleOrdinance(num){
   switch(num){
     case "1":
       num = "1st"
@@ -36,6 +41,26 @@ function findOrdinal(num){
       num = num + 'th'
   }
   return num
+}
+
+function doubleOrdinance(num){
+  if(num[0] === "1"){
+    let dig = num.pop()
+    switch(dig){
+        default:
+          dig = dig + 'th'
+      }
+    num[1] = dig
+    return num
+  }else{
+    num[1] = singleOrdinance(num[1])
+    return num
+  }
+  return num.join('')
+}
+
+function tripleOrdinance(num){
+  return num.join('')
 }
 
 function sortClassName(prop){
