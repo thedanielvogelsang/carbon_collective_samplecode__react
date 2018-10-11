@@ -98,7 +98,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="dashboard-data-container">
-          {!loading ? <DashboardData {...this.state} title={title} updateState={this.props.updateState}/> : <Loader /> }
+          {!loading ? <DashboardData {...this.state} title={title} resource={this.props.resource_type} updateState={this.props.updateState}/> : <Loader /> }
           </div>
         </div>
       )}else{

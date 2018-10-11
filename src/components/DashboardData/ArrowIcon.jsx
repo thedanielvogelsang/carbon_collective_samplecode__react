@@ -15,7 +15,7 @@ const ArrowIcon = (props) => {
         <span className="arrow-tooltip"> * ranked {rank} out of {props.outOf} {props.areaType}</span> : <span className={"arrow-tooltip space-left"}>no rank to be displayed</span> }
         <img src={arr} alt="arrow icon" className={className}/>
         <h1 className="rank">{props.rank}</h1>
-        {props.rank !== '?' ?
+        {props.rank === '???' ?
         <h1 className="outof">{props.rank} <span>/</span> {props.outOf}</h1> : <div></div> }
       </div>
   )

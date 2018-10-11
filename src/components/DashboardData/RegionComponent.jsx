@@ -24,6 +24,7 @@ export default class RegionComponent extends Component{
     return(
       <div className="data-item-t">
         <a id={this.props.id} name={name} className="data-label-t clickable" onClick={this.props.linkAction}>{label}</a>
+        <span className="label-consumption-tooltip"><p>user max: {this.props.max}</p></span>
         <div className="label-div" style={{position: 'relative'}}>
           <h6 className="label-consumption">{this.props.metric} per month</h6>
         </div>

@@ -19,9 +19,9 @@ function throwEllipsis(string){
 }
 
 function pluralize(string){
-  let newString = string.charAt(0).toLowerCase() + string.slice(1);
+  let lowerCase = string.charAt(0).toLowerCase() + string.slice(1);
   let regionName;
-  switch(newString){
+  switch(lowerCase){
     case "me":
       regionName = "my"
       break
@@ -53,18 +53,18 @@ function pluralize(string){
 }
 
 const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, metric) => {
-  console.log(area[1], area[6])
+  console.log(area)
   let labelName = pluralize(areaType);
   let chart1 = `chart` + String(chartNum);
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
+  console.log(bargraphId1)
     if(!area[6]){
       return(
         <div></div>
       )
     }else{
-      console.log(area[7])
       return(
       <div className="data-item-row">
         {area[6] && Number(area[6]) !== 1 ?
@@ -74,7 +74,7 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
                   <ArrowIcon arrow={null} rank={"?"} outOf={null} areaType={areaType} up={area[7]}/>
                 </div> : <div className="rank-arrow-div"></div>}
         <div className="data-item-box">
-          <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric}/>
+          <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric} max={area[4]}/>
           <div className="data-item-g">
             {areaType === "Me" ?
               <div className='bargraph-div'>
@@ -89,8 +89,8 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
                <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
               </div> }
           </div>
-          {areaType === "Me" ? <h6 className="graph-Exp">household average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
-          <h6 className="graph-Exp">other {labelName} {parentArea ? `in ` + parentArea[1] : null}</h6> }
+          {areaType === "Me" ? <h6 className="graph-Exp">other users average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
+          <h6 className="graph-Exp">other {labelName} {parentArea ? `avg in Denver` : null}</h6> }
         </div>
       </div>
     )
@@ -217,6 +217,7 @@ class DashboardData extends Component{
               <h5>Community Comparisons (Avg Use)</h5>
             </div>
             <div className="community-comps-labels">
+              <h6>Reduce your {this.props.resource} use to shrink your bar!</h6>
             </div>
               { notCarbon ? DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric) : <div></div>}
               { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric) }
