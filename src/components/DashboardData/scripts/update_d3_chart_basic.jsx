@@ -77,6 +77,7 @@ BasicChart.enter = function(elem_, props){
 }
 
 BasicChart.update = function(elem_, props){
+  console.log(props)
   var color = props.color
   var barWidth = props.a;
   var parentMax = props.c;
@@ -85,18 +86,18 @@ BasicChart.update = function(elem_, props){
   let regionName = props.regionName
   // barWidth = percenting - barWidth + 1
   // using 1. to give percentage threshold to val
-
   var data = [barWidth];
-
   let windowWidth = document.getElementById('root').clientWidth
 
   let wcw = function(ww){
-    if(ww > 360){
+    if(ww > 400){
+      return 310
+    }else if(ww > 300){
+      return 250
+    }else if(ww < 310){
       return 220
-    }else if(ww > 310){
-      return 200
     }else{
-      return 180
+      return 200
     }
   }
 
@@ -108,6 +109,8 @@ BasicChart.update = function(elem_, props){
       .range([0, width]);
 
   var bar = elem_.selectAll("g").data(data)
+
+  console.log(barWidth)
 
   bar.selectAll("rect")
       .attr("width", 0)

@@ -15,7 +15,7 @@ class BarGraph extends Component{
     }
 
     shouldComponentUpdate(){
-      return false
+      return true
     }
 
     componentDidMount(){

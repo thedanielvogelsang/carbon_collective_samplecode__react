@@ -53,13 +53,13 @@ function pluralize(string){
 }
 
 const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, metric) => {
-  console.log(area)
+  // console.log(area)
   let labelName = pluralize(areaType);
   let chart1 = `chart` + String(chartNum);
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
-  console.log(bargraphId1)
+  // console.log(bargraphId1)
     if(!area[6]){
       return(
         <div></div>

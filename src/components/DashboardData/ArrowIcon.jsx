@@ -4,7 +4,6 @@ import arrowDown from '../../../public/deacon-imgs/rank_down_ii.svg'
 
 const ArrowIcon = (props) => {
   let className = sortClassName(props.up)
-  console.log(className)
   let arr, fixer;
   let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
