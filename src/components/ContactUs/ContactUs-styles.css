@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin|Merriweather');
+
+.contactus-page{
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 50px;
+  padding-left: 200px;
+  box-sizing: border-box;
+}
+
+.contactus-div{
+  width: 68%;
+}
+
+.contactus-page h1, h2, p{
+  text-align: left;
+}
+
+.contactus-page h1{
+  font-family: 'Merriweather', serif;
+  font-size: 56px;
+  color: #219a60;
+}
+
+.contactus-quote-div{
+  max-width: 75%;
+  margin: 10px 0px;
+  margin-right: 80px;
+  font-style: italic;
+  z-index: 3;
+  margin-top: -60px;
+  padding-left: 20px;
+  border-left: 8px solid rgba(42, 44, 51, 0.5) !important;
+}
+
+.contactus-quote-aligner{
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.contactus-quote-div span{
+  text-align: right;
+}
+p.contactus-quote.email{
+  font-weight: 400;
+}
+
+.contactus-page p{
+  font-family: "Libre Franklin", Garamond, sans-serif;
+  font-size: 1em;
+  line-height: 1.8em;
+  font-weight: 400;
+  color: #2a2c33;
+  margin: 10px 0px;
+}
+
+p.contactus-welcome{
+  text-align: justify;
+  font-family: 'Libre Franklin', Helvetica, sans-serif;
+     font-weight: 400;
+     color: #2a2c33;
+     font-size: 1em;
+     line-height: 1.8em;
+     margin-bottom: 0px;
+}
+
+span.contactus-welcome{
+  font-weight: 800;
+  color: #219a60;
+  font-size: 1.05rem;
+}
+
+img.contactus-portrait{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 0px;
+  /* margin-right: 80px; */
+  opacity: 0.8;
+  z-index: 2;
+  margin-top: -10px;
+}
+
+.contactus-paragraphs{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 45px 5px 0px 5px;
+}
+
+@media (max-width: 720px){
+  .contactus-page{
+    padding-left: 20%;
+  }
+}
+@media (max-width: 600px){
+  .contactus-quote-div{
+    margin-right: 0;
+  }
+}
+@media (max-width: 389px){
+  .contactus-quote-div{
+    padding-left: 10px;
+  }
+  .contactus-paragraphs{
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -58,6 +58,8 @@ class Settings extends Component {
   }
 
   goToContactPage(event){
+    this.logPageChange('/contact')
+    this.props.history.push('/contact')
     console.log('not built yet')
   }
 
