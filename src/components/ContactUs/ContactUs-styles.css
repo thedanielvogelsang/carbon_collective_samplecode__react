@@ -8,12 +8,25 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding-top: 50px;
-  padding-left: 200px;
+  padding-left: 25%;
   box-sizing: border-box;
 }
 
 .contactus-div{
   width: 68%;
+}
+
+.contactus-welcome-div{
+  width: 90%;
+  padding-right: 20%;
+  padding-bottom: 20px;
+}
+.contactus-welcome-div p{
+  text-align: left;
+}
+
+.contactus-portrait-div{
+  width: 90%;
 }
 
 .contactus-page h1, h2, p{
@@ -22,14 +35,14 @@
 
 .contactus-page h1{
   font-family: 'Merriweather', serif;
-  font-size: 56px;
+  font-size: 58px;
   color: #219a60;
 }
 
 .contactus-quote-div{
-  max-width: 75%;
   margin: 10px 0px;
   margin-right: 80px;
+  width: 90%;
   font-style: italic;
   z-index: 3;
   margin-top: -60px;
@@ -44,7 +57,7 @@
 }
 
 .contactus-quote-div span{
-  text-align: right;
+  text-align: left;
 }
 p.contactus-quote.email{
   font-weight: 400;
@@ -53,19 +66,20 @@ p.contactus-quote.email{
 .contactus-page p{
   font-family: "Libre Franklin", Garamond, sans-serif;
   font-size: 1em;
-  line-height: 2.8em;
+  line-height: 1.8em;
   font-weight: 400;
   color: #2a2c33;
   margin: 20px 0px;
 }
 
 p.contactus-welcome{
+  margin-top: 0;
   text-align: justify;
   font-family: 'Libre Franklin', Helvetica, sans-serif;
      font-weight: 400;
      color: #2a2c33;
      font-size: 1em;
-     line-height: 3.8em;
+     line-height: 1.8em;
      margin-bottom: 0px;
 }
 
@@ -82,7 +96,7 @@ img.contactus-portrait{
   /* margin-right: 80px; */
   opacity: 0.8;
   z-index: 2;
-  margin-top: -50px;
+  margin-top: 0px;
 }
 
 .contactus-paragraphs{
@@ -96,13 +110,13 @@ img.contactus-portrait{
 }
 
 @media (max-width: 920px){
-.contactus-quote-div{
-  max-width: none;
-  margin: 10px 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  padding-left: 20px;
-}
+  .contactus-quote-div{
+    /* max-width: none;
+    margin: 10px 0px; */
+    margin-right: 0px;
+    margin-top: 0px;
+    /* padding-left: 20px; */
+  }
 img.contactus-portrait{
   margin-top: 0;
 }
@@ -114,6 +128,10 @@ img.contactus-portrait{
 }
 
 @media (max-width: 780px){
+  .contactus-welcome-div{
+    width: 100%;
+    padding-right: 0;
+  }
   .contactus-page{
     padding-left: 20%;
   }
@@ -146,5 +164,8 @@ img.contactus-portrait{
   .contactus-paragraphs{
     justify-content: center;
     align-items: center;
+  }
+  img.contactus-portrait{
+    -webkit-transform: scale(0.8)
   }
 }
