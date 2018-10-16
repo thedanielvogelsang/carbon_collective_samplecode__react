@@ -43,7 +43,9 @@ class Dashboard extends Component {
     prevProps.dash_data !== this.props.dash_data ? this.changeDashboardData(this.props.dash_data) : console.log()
   }
 
+  //  used by ResourceNav but discontinued for now, due to improper/ out-of-sync loading
   updateLoader(load){
+    console.log('updating loader')
     this.setState({
       loading: !load,
     })

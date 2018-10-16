@@ -170,7 +170,7 @@ class App extends Component {
       [name]: value
     });
   };
-   onEnter={checkImageHeight}
+
   render() {
     let loaded = this.state.loaded;
     let house = this.props.house_id;

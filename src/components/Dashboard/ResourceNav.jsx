@@ -7,7 +7,7 @@ class ResourceNav extends Component {
   constructor(props){
     super(props);
     this.state = {
-      carbon_url: "./img/Leaf final_blank.png",
+      carbon_url: "./img/Leaf final_fill.png",
       elec_url: "./img/ELEC_blank_2.png",
       water_url: "./img/AQUA_blank_2.png",
       flame_url: "./img/FLAME_blank_2.png",
@@ -34,7 +34,7 @@ class ResourceNav extends Component {
   updateDashColors(){
     let type = this.props.resource_type
     this.updateUserData(type)
-    setTimeout(this.setDashboardData, 800, type)
+    setTimeout(this.setDashboardData, 1500, type)
   }
 
   setDashboardData(type){
@@ -49,7 +49,7 @@ class ResourceNav extends Component {
           elec_highlighted: false,
           flame_highlighted: false,
           water_highlighted: false,
-        }, this.props.updateLoader(true));
+        });
         break
       case "electricity":
         this.setState({
@@ -61,7 +61,7 @@ class ResourceNav extends Component {
           elec_highlighted: true,
           flame_highlighted: false,
           water_highlighted: false,
-        }, this.props.updateLoader(true));
+        });
         break
       case "water":
         this.setState({
@@ -73,7 +73,7 @@ class ResourceNav extends Component {
           elec_highlighted: false,
           flame_highlighted: false,
           water_highlighted: true,
-        }, this.props.updateLoader(true));
+        });
         break
       case "gas":
         this.setState({
@@ -85,7 +85,7 @@ class ResourceNav extends Component {
         elec_highlighted: false,
         flame_highlighted: true,
         water_highlighted: false,
-        }, this.props.updateLoader(true));
+        });
         break
       default:
         break;
