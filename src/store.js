@@ -17,24 +17,27 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 let store;
 
-if (window.navigator.userAgent.includes('Chrome')) {
-    store = createStore(
-      persistedReducer,
-      initialState,
-      compose(
-        applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-      )
-    );
-  } else {
-    store = createStore(
-      persistedReducer,
-      initialState,
-      compose(
-        applyMiddleware(...middleware)
-      )
-    );
-  }
+// if (window.navigator.userAgent.includes('Chrome')) {
+//     store = createStore(
+//       persistedReducer,
+//       initialState,
+//       compose(
+//         applyMiddleware(...middleware),
+//         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//       )
+//     );
+//   } else {
+//
+//   }
+
+store = createStore(
+  persistedReducer,
+  initialState,
+  compose(
+    applyMiddleware(...middleware)
+  )
+);
+
 const persistor = persistStore(store)
 
 export { store, persistor }
