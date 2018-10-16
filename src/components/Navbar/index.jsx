@@ -75,6 +75,7 @@ class Navbar extends Component {
   }
 
   componentDidMount(){
+    
   }
 
   componentDidUpdate(prevProps, prevState){

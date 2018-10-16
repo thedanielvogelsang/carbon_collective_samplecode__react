@@ -53,10 +53,10 @@ p.contactus-quote.email{
 .contactus-page p{
   font-family: "Libre Franklin", Garamond, sans-serif;
   font-size: 1em;
-  line-height: 1.8em;
+  line-height: 2.8em;
   font-weight: 400;
   color: #2a2c33;
-  margin: 10px 0px;
+  margin: 20px 0px;
 }
 
 p.contactus-welcome{
@@ -65,7 +65,7 @@ p.contactus-welcome{
      font-weight: 400;
      color: #2a2c33;
      font-size: 1em;
-     line-height: 1.8em;
+     line-height: 3.8em;
      margin-bottom: 0px;
 }
 
@@ -79,11 +79,10 @@ img.contactus-portrait{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  margin-top: 0px;
   /* margin-right: 80px; */
   opacity: 0.8;
   z-index: 2;
-  margin-top: -10px;
+  margin-top: -50px;
 }
 
 .contactus-paragraphs{
@@ -91,17 +90,53 @@ img.contactus-portrait{
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  padding: 45px 5px 0px 5px;
+  padding: 45px 5px 0px 0px;
+  padding-left: 10%;
+  width: 80%;
 }
 
-@media (max-width: 720px){
+@media (max-width: 920px){
+.contactus-quote-div{
+  max-width: none;
+  margin: 10px 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-left: 20px;
+}
+img.contactus-portrait{
+  margin-top: 0;
+}
+}
+@media (min-height: 1000px){
+img.contactus-portrait{
+  margin-top: -10px;
+}
+}
+
+@media (max-width: 780px){
   .contactus-page{
     padding-left: 20%;
   }
+
 }
 @media (max-width: 600px){
   .contactus-quote-div{
-    margin-right: 0;
+    max-width: none;
+    margin: 10px 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-left: 20px;
+  }
+  .contactus-div{
+    width: 100%;
+  }
+  .contactus-page{
+    width: 100vw;
+    padding-top: 50px;
+    padding-left: 20px;
+  }
+  .contactus-page h1{
+    padding-left: 20px;
   }
 }
 @media (max-width: 389px){

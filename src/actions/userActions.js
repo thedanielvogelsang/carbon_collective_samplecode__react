@@ -13,9 +13,6 @@ export const loginUser = (loginData) => dispatch => {
         payload: data
       })
     )
-    .then(
-      data => sortLoginPageChange(data.payload)
-    )
     .catch(
       error => dispatch({
         type: CATCH_ERROR,
@@ -63,13 +60,5 @@ export function removeUserHouse(id, hId) {
       })
     )
     .catch(error => console.log(error))
-  }
-}
-
-function sortLoginPageChange(data){
-  if(!data.privacy_policy){
-    setTimeout(BrowserRouter.push, 1000, '/privacy-policy')
-  }else{
-    setTimeout(BrowserRouter.push, 1000, '/dashboard')
   }
 }
