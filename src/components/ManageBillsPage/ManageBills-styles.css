@@ -2,8 +2,23 @@
 
 .carbon-no-bills{
   margin-top: 15vh;
+  width: 100%;
   font-size: 20px;
   font-style: italic;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 35%;
+}
+.resource-directions{
+  margin-top: 30px;
+  width: 100%;
+  font-size: 20px;
+  font-style: italic;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 35%;
 }
 .bills-page-container{
   display: flex;
@@ -355,6 +370,14 @@ svg.fa-caret-down.fa-sm{
   .manage-bills-overlay{
     padding-left: 0px;
   }
+  .carbon-no-bills{
+    width: 80%;
+    padding-left: 0px;
+  }
+  .resource-directions{
+    width: 70%;
+    padding-left: 0px;
+  }
 }
 @media (max-width: 872px){
   .manage-section-master-div{
@@ -419,7 +442,7 @@ svg.fa-caret-down.fa-sm{
 }
 
 @media (max-width: 667px){
-  .bills-page-overlay > div{
+  .bills-page-overlay > div.not(.carbon-no-bills).not(.resource-directions){
     width: 100%;
     max-width: 100%;
     min-width: 0;

@@ -12,7 +12,7 @@ import Loader from '../Loader';
 const NoCarbonBillsDiv = () => {
   return (
     <div className="carbon-no-bills">
-        <h1>No bills to report</h1>
+        <h1>Click the electric or heat icon to enter your usage and calculate your Carbon score</h1>
     </div>
   )
 }
@@ -175,6 +175,12 @@ class ManageBillsPage extends Component {
               <ResourceTitleDash color={color} title={title} graph={false} resourceType={this.props.resource_type} changePage={this.goToPage} />
               <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
             </div>
+          </div>
+          <div className="resource-directions">
+              {resource === 'water' ?
+              <h1>Enter your water usage to calculate your footprint and compare your results</h1> :
+              <h1>Enter your {resource} usage to calculate your carbon footprint and compare your results</h1>
+              }
           </div>
           {!navLoading ? <div>
             <div className="error-box">{errors}</div>
