@@ -59,7 +59,6 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
-  // console.log(bargraphId1)
     if(!area[6]){
       return(
         <div></div>
@@ -224,9 +223,10 @@ class DashboardData extends Component{
               { DashDataRow(this.props.dash_data.neighborhood, "Neighborhood", this.props.dash_data.city, 2, this.goToRegionPage, color, metric) }
               { DashDataRow(this.props.dash_data.city, "City", this.props.dash_data.region, 3, this.goToRegionPage, color, metric) }
               {country ?
-              <div>
+            <div>
               <RegionGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/>
-              <CountryGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/></div> : <div></div> }
+              <CountryGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/>
+            </div> : <div></div> }
           </div>
         </div>
       </div>

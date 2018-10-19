@@ -10,7 +10,9 @@ class ContactUs extends Component{
         <div className="contactus-div">
           <h1>Contact us.</h1>
             <div className="contactus-paragraphs">
-              <p className="contactus-welcome"><span className="contactus-welcome">Are you a community organizer,</span> head of a nonprofit or part of an environmentally-conscious network? Please contact us so we can expedite your invite process. All others please also feel free to reach out with questions or comments.</p>
+              <div className="contactus-welcome-div">
+                <p className="contactus-welcome"><span className="contactus-welcome">Are you a community organizer,</span> head of a nonprofit or part of an environmentally-conscious network? Please contact us so we can expedite your invite process. All others please also feel free to reach out with questions or comments.</p>
+              </div>
               <div className="contactus-portrait-div">
                 <img
                   className="contactus-portrait"
