@@ -14,7 +14,7 @@ class AboutUs extends Component{
               <div className="aboutus-quote-div">
                 <div className="aboutus-quote-aligner">
                   <p className="aboutus-quote">Carbon Collective is a social network of all of us, working together and competing to reduce carbon footprint at every level of impact.</p>
-                  <span>- Sven Ceelen, founder of Carbon Collective LLP</span>
+                  <span>- Sven Ceelen, founder of Carbon Collective LLC</span>
                 </div>
               </div>
             <h2>Our Community:</h2>

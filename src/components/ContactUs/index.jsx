@@ -24,7 +24,7 @@ class ContactUs extends Component{
                 <p className="contactus-quote email">svenceelen@gmail.com</p>
                 <p className="contactus-quote"><span>720-255-3692</span></p>
                 <div className="contactus-quote-aligner">
-                  <span>- Sven Ceelen, founder of Carbon Collective LLP</span>
+                  <span>- Sven Ceelen, founder of Carbon Collective LLC</span>
                 </div>
               </div>
             </div>
