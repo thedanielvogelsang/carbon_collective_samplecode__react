@@ -48,7 +48,7 @@ class BarGraph extends Component{
          <div className="svg-div">
            <svg id={this.props.id} name={this.props.name} className={this.state.svgName} onClick={this.props.goToRegionPage}>
            </svg>
-           <span className={spanName}><p>{this.props.a} {this.props.metric}</p></span>
+           <span className={spanName}><p>avg:&nbsp; <span className='span-green-hlte' style={{color: this.props.color}}>{this.props.a}</span> {this.props.metric}</p></span>
          </div>
        )
      }

@@ -11,6 +11,7 @@ const EmailInputs = function(props){
     return(
       <div className="invite-row-div">
         <li className="email-input-email" key={props.myKey}>
+          <h2 className="email-ordered-list">&Dagger;&nbsp;{props.num + 1}&nbsp;</h2>
           <input
             type="text"
             name={props.num}

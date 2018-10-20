@@ -80,11 +80,11 @@ class PageSection extends Component{
     let reload = this.props.reload;
     return(
       <div className="manage-section-master-div">
-        <div className="section-title-row">
-          <div className="arrow-div" onClick={(e) => this.changeArrow(e)}>
+        <div className="section-title-row" onClick={(e) => this.changeArrow(e)}>
+          <div className="arrow-div" >
             <FontAwesomeIcon icon={this.state.arrow} size="lg"/>
           </div>
-          <div className="section-title-div" onClick={(e) => this.changeArrow(e)}>
+          <div className="section-title-div">
             <h1>{this.props.title}</h1>
           </div>
         </div>

@@ -13,7 +13,7 @@ const ArrowIcon = (props) => {
   return(
       <div className="arrow-holder-div">
         {props.rank !== '?' ?
-          <span className="arrow-tooltip"> * better than {props.outOf} other {areaType}</span> : <span className={"arrow-tooltip space-left"}>enter a bill on the bills page to calculate your footprint!</span> }
+          <span className="arrow-tooltip"> * better than {props.outOf} other {areaType}</span> : <span className={"arrow-tooltip space-left"}>to get started, enter a bill on the bills page!</span> }
         <img src={arr} alt="arrow icon" className={className}/>
         <h1 className="rank">{props.outOf}</h1>
         {props.rank === '???' ?
