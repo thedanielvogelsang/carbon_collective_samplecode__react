@@ -54,6 +54,8 @@
   display: flex;
   flex-direction: column;
   z-index: 3;
+   color: #2a2c33;
+   opacity: 0.8;
 }
 
 .contactus-quote-div span{
@@ -97,6 +99,8 @@ img.contactus-portrait{
   opacity: 0.8;
   z-index: 2;
   margin-top: 0px;
+  /* box-shadow: 3px -1px 4px #1fa245; */
+  box-shadow: -3px 1px 4px #1fa245;
 }
 
 .contactus-paragraphs{

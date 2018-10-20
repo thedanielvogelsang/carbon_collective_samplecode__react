@@ -14,6 +14,7 @@
 
 .aboutus-div{
   width: 68%;
+  padding-top: 20px;
 }
 
 .aboutus-page h1, h2, p{
@@ -35,12 +36,15 @@
 
 .aboutus-quote-div{
   max-width: 75%;
-  margin: 10px 0px;
+  margin: 20px 0px;
   margin-left: 20%;
   font-style: italic;
+  padding-left: 20px;
+  border-left: 8px solid rgba(42, 44, 51, 0.5) !important;
 }
 
 .aboutus-quote-aligner{
+
   display: flex;
   flex-direction: column;
 }
@@ -55,6 +59,7 @@
   line-height: 1.45em;
   font-weight: 400;
   color: #2a2c33;
+  padding-top: 10px;
   margin: 10px 0px;
 }
 
@@ -64,13 +69,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding-top: 20px;
   padding-left: 5px;
 }
 
-.aboutus-quote-div{
-  padding-left: 20px;
-  border-left: 8px solid rgba(42, 44, 51, 0.5) !important;
-}
 
 @media (max-width: 975px){
   .aboutus-page h1{

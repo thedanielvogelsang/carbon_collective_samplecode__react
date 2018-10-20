@@ -171,9 +171,9 @@ div.dashboard-resource-relative:not(:first-child){
 button.carbon-btn:hover{
   cursor: pointer;
   -webkit-transform: scale(1.1);
-  background-color: rgb(223,223,223);
-  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
-  border-radius: 50%;
+  /* background-color: rgb(223,223,223); */
+  /* box-shadow: 0px 0px 10px rgb(251,230,73) !important; */
+  /* border-radius: 50%; */
   padding: 1px 0px 0px 3px;
   /* background-color: rgb(191,130,54);
   color: #2A2C33; */
@@ -181,10 +181,10 @@ button.carbon-btn:hover{
 button.electricity-btn:hover{
   cursor: pointer;
   -webkit-transform: scale(1.1);
-  background-color: rgb(223,223,223);
+  /* background-color: rgb(223,223,223); */
   padding-top: 6px;
-  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
-  border-radius: 50%;
+  /* box-shadow: 0px 0px 10px rgb(251,230,73) !important;
+  border-radius: 50%; */
   /* background-color: rgb(118,204,223);
   color: #2A2C33; */
 }
@@ -192,9 +192,9 @@ button.electricity-btn:hover{
 button.water-btn:hover{
   cursor: pointer;
   -webkit-transform: scale(1.1);
-  background-color: rgb(223,223,223);
+  /* background-color: rgb(223,223,223);
   box-shadow: 0px 0px 10px rgb(251,230,73) !important;
-  border-radius: 50%;
+  border-radius: 50%; */
 
   /* background-color: rgb(67,83,161);
   color: #2A2C33; */
@@ -202,9 +202,9 @@ button.water-btn:hover{
 button.gas-btn:hover{
   cursor: pointer;
   -webkit-transform: scale(1.1);
-  background-color: rgb(223,223,223);
-  box-shadow: 0px 0px 10px rgb(251,230,73) !important;
-  border-radius: 50%;
+  /* background-color: rgb(223,223,223); */
+  /* box-shadow: 0px 0px 10px rgb(251,230,73) !important;
+  border-radius: 50%; */
   /* background-color: rgb(211,35,46);
   color: #e23606; */
 }
@@ -227,8 +227,8 @@ button.update-bill-button{
 
 button.update-bill-button:hover{
   cursor: pointer;
-  width: 150px;
   font-size: 0.9em;
+  opacity: 1.0;
   font-weight: bolder;
   border: 0.5px solid  #c0c2c2;
   border-top: 1px solid #c0c2c2;
@@ -332,6 +332,9 @@ span.material-icons.carbon-logo{
   h6.data-title{
     color: #2a2c33;
   }
+  div.carbon-no-bills{
+    width: 60%;
+  }
 }
 
 @media (max-width: 820px){
@@ -397,7 +400,6 @@ span.material-icons.carbon-logo{
     padding: 0px;
     margin: 0px;
     margin-left: 0 !important;
-    border-top: 3px solid rgb(200,200,200);
     box-sizing: border-box;
   }
   h6.data-title{
@@ -440,6 +442,9 @@ span.material-icons.carbon-logo{
   .data-container{
     margin-left: 0vw;
   }
+  div.carbon-no-bills{
+    width: 85%;
+  }
 }
 @media (max-width: 475px){
   .regional-header{
@@ -451,6 +456,10 @@ span.material-icons.carbon-logo{
     width: 100%;
     padding: 0px 10px 10px 10px;
     box-sizing: border-box;
+  }
+  .data-title-container{
+    border-top: 3px solid rgb(200,200,200);
+
   }
 }
 
