@@ -58,23 +58,23 @@ const Bill = function(props){
                 >X
               </button>
             </div>
-            <div className="past-bill-stat who-div">
-              <h3 name="who" className="values">{props.bill.who}</h3>
+            <div className="past-bill-stat who">
+              <h3 name="who" className="values who">{props.bill.who}</h3>
             </div>
-            <div className="past-bill-stat larger">
-              <h3 name="start_date" className="values larger">{props.bill.start_date}</h3>
+            <div className="past-bill-stat time">
+              <h3 name="start_date" className="values larger time">{props.bill.start_date}</h3>
             </div>
-            <div className="past-bill-stat larger">
-              <h3 name="end_date" className="values larger">{props.bill.end_date}</h3>
+            <div className="past-bill-stat time">
+              <h3 name="end_date" className="values larger time">{props.bill.end_date}</h3>
             </div>
-            <div className="past-bill-stat usage larger">
-              <h3 name="total_used" className="values">{props.bill.total_used}</h3>
+            <div className="past-bill-stat usage">
+              <h3 name="total_used" className="values usage">{props.bill.total_used}</h3>
             </div>
             <div className="past-bill-stat no_residents">
-              <h3 name="no_residents" className="values smaller">{props.bill.no_residents}</h3>
+              <h3 name="no_residents" className="values smaller no_residents">{props.bill.no_residents}</h3>
             </div>
             <div className="past-bill-stat avg_use">
-              <h3 name="avg_daily" className="values usage larger">{props.bill.average_use}</h3>
+              <h3 name="avg_daily" className="values usage larger avg_use">{props.bill.average_use}</h3>
             </div>
             <div className="past-bill-stat cost">
               <h3 name="price" className="values smaller cost">{`$${props.bill.price}`}</h3>
@@ -106,26 +106,26 @@ const BillYear = function(props){
         <h4>{props.year}</h4>
       </div>
       <div className="bills-titles">
-        <div className="past-bill-title" >
-          <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Who:  </h3>
+        <div className="past-bill-title who" >
+          <h3 className='who' style={{color: color, textShadow: "1px 1px black"}}>Who:  </h3>
         </div>
         <div className="past-bill-title time">
-        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Start Date:  </h3>
+          <h3 className='time' style={{color: color, textShadow: "1px 1px black"}}>Start Date:  </h3>
         </div>
         <div className="past-bill-title time">
-        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>End Date:  </h3>
+          <h3 className='time' style={{color: color, textShadow: "1px 1px black"}}>End Date:  </h3>
         </div>
         <div className="past-bill-title usage">
-        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Use ({props.metric}):  </h3>
+          <h3 className='usage' style={{color: color, textShadow: "1px 1px black"}}>Use ({props.metric}):  </h3>
         </div>
         <div className="past-bill-title no-residents">
-        <h3 className='xtra wide' style={{color: color, textShadow: "1px 1px black"}}>Residents :  </h3>
+          <h3 className='no-residents' style={{color: color, textShadow: "1px 1px black"}}>Residents :  </h3>
         </div>
-        <div className="past-bill-title daily-avg wide-cell">
-        <h3 className='xtra wide avg' style={{color: color, textShadow: "1px 1px black"}}>Daily Average use per Person ({props.metric}):  </h3>
+        <div className="past-bill-title avg_use">
+          <h3 className='avg_use' style={{color: color, textShadow: "1px 1px black"}}>Daily Average use per Person ({props.metric}):  </h3>
         </div>
-        <div className="past-bill-title">
-        <h3 className='xtra cost' style={{color: color, textShadow: "1px 1px black"}}>Cost :  </h3>
+        <div className="past-bill-title cost">
+          <h3 className='cost' style={{color: color, textShadow: "1px 1px black"}}>Cost :  </h3>
         </div>
       </div>
       <div className="billyear-bills-container">

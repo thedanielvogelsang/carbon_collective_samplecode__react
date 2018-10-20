@@ -45,7 +45,6 @@ class ManageBillsSection extends Component{
   }
 
   componentDidMount(){
-    console.log(this.state)
   }
 
   catchError(error){
