@@ -273,6 +273,8 @@ a.data-label-t:hover + span.label-consumption-tooltip{
   /* animation-delay: 0.1s; */
 }
 
+span.span-green-hlte{
+}
   @-webkit-keyframes slide {
       /* 50% {right: 50px} */
       100% { right: 10px; }
