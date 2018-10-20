@@ -53,47 +53,42 @@ function pluralize(string){
 }
 
 const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, metric) => {
-  // console.log(area)
   let labelName = pluralize(areaType);
   let chart1 = `chart` + String(chartNum);
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
-    if(!area[6]){
-      return(
-        <div></div>
-      )
-    }else{
       return(
       <div className="data-item-row">
-        {area[6] !== 1 && Number(area[2]) !== 0 ?
-        <div className="rank-arrow-div">
-          <ArrowIcon arrow={area[7]} a={area[2]} rank={area[5]} outOf={area[6]} areaType={labelName} />
-        </div> :  areaType !== 'City' ? <div className="rank-arrow-div">
-                  <ArrowIcon arrow={null}  a={area[2]} rank={"?"} outOf={null} areaType={areaType} up={area[7]}/>
-                </div> : <div className="rank-arrow-div"></div>}
+        {
+          area[6] !== null && Number(area[2]) !== 0 && areaType !== 'City' ?
+              <div className="rank-arrow-div">
+                <ArrowIcon arrow={area[7]} a={area[2]} rank={area[5]} outOf={area[6]} areaType={labelName} />
+              </div> :area[6] === null ? <div className="rank-arrow-div">
+                    <ArrowIcon arrow={area[7]} a={area[2]} rank={"?"} outOf={area[6]} areaType={labelName} />
+                  </div> : <div className="rank-arrow-div"></div>
+                      }
         <div className="data-item-box">
           <RegionComponent id={area[0]} regionType={areaType} label={area[1]} linkAction={linkAction} monthlyAvg={ area[2]} parentAvg={ area[3] } color={color} metric={metric} max={area[4]}/>
           <div className="data-item-g">
             {areaType === "Me" ?
-              <div className='bargraph-div'>
-                <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
-                <BarGraph up={false} title={"other users' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
-              </div> : areaType !== "City" ?
-               <div className='bargraph-div'>
-                <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
-                <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
-              </div> :
-              <div className='bargraph-div'>
-               <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
-              </div> }
+                <div className='bargraph-div'>
+                  <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
+                  <BarGraph up={false} title={"other users' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
+                </div> : areaType !== "City" ?
+                           <div className='bargraph-div'>
+                            <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+                            <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+                          </div> :
+                          <div className='bargraph-div'>
+                           <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+                          </div> }
           </div>
           {areaType === "Me" ? <h6 className="graph-Exp">other users average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
           <h6 className="graph-Exp">other {labelName} {parentArea ? `avg in Denver` : null}</h6> }
         </div>
       </div>
     )
-  }
 }
 
 class DashboardData extends Component{
