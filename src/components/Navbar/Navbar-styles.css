@@ -79,7 +79,6 @@ form.landing-navbar-login-form{
   max-width: 70vw;
 }
 
-
 img.log-svg{
   padding-bottom: 5px;
 }
@@ -135,6 +134,9 @@ ul.navbar {
 ul.navbar li:hover{
   cursor: pointer;
 }
+ul.navbar li.landing-nav-link.spacer:hover{
+  cursor: pointer;
+}
 
 li.header-button:not(.unloaded){
   margin-top: 5px;
@@ -159,10 +161,6 @@ li.landing-nav-link:not(.contactUs){
 li.landing-nav-link.spacer{
   margin-top: 8px;
 }
-/*
-li.landing-nav-link.bills{
-  margin-top: 8px;
-} */
 
 li.landing-nav-link.hamburger{
   padding-top: 5px;
@@ -209,9 +207,10 @@ li.landing-nav-link a:hover{
 
 .navbar img {
   padding: 2px;
+  opacity: 0.7;
 }
 
-.navbar img:hover:not(.log-svg):not(.homepage){ -webkit-transform: scale(1.2); background-color: rgb(221,221,221); box-shadow: 0px 0px 10px rgb(251,230,73) !important}
+.navbar img:hover:not(.log-svg):not(.homepage){ -webkit-transform: scale(1.2); opacity: 1.0}
 
 .shrunken-hamburger-menu{
   display: none;
@@ -226,12 +225,15 @@ li.landing-nav-link a:hover{
   padding-top: 5px;
   margin-right: 10px;
   color: black;
+  width: 28px !important;
+  opacity: 0.7;
 }
 
 .hamburger-menu:hover{
   color: rgb(251,230,73);
   font-size: 27px;
   -webkit-transform: scale(1.1);
+  opacity: 1.0;
   /* background-color: rgb(223,223,223); */
   /* box-shadow: 0px 0px 10px rgb(251,230,73) !important; */
 }

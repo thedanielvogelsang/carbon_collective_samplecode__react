@@ -58,6 +58,7 @@ class ManageBillsPage extends Component {
   componentDidUpdate(prevProps, prevState){
     if(prevProps.resource_type !== this.props.resource_type){
       this.setState({
+        loading: true,
         navLoading: true
       }, this.loadData("reload"))
     }
@@ -122,7 +123,8 @@ class ManageBillsPage extends Component {
         return this.setState({
             no_residents: data.house.no_residents,
             org_count: data.house.no_residents,
-            num_bills: data.num_bills, loading: false})
+            num_bills: data.num_bills, loading: false,
+            navLoading: false})
     }
   }
 

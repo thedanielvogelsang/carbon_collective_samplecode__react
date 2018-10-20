@@ -4,16 +4,18 @@ import arrowDown from '../../../public/deacon-imgs/rank_down_ii.svg'
 
 const ArrowIcon = (props) => {
   let className = sortClassName(props.up)
-  let arr, fixer;
+  let arr, fixer, areaType;
   let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
-  props.rank === 1 || props.rank === "?" ? arr = arrowUp : console.log();
+  props.outOf === 1 ? areaType = props.areaType.replace(/s$/, '') : areaType = props.areaType
+  // props.rank === 1 || props.rank === "?" ? arr = arrowUp : console.log();
+  // console.log(props.arrow ? true : false)
   return(
       <div className="arrow-holder-div">
         {props.rank !== '?' ?
-        <span className="arrow-tooltip"> * ranked {rank} out of {props.outOf} {props.areaType}</span> : <span className={"arrow-tooltip space-left"}>no rank to be displayed</span> }
+          <span className="arrow-tooltip"> * better than {props.outOf} other {areaType}</span> : <span className={"arrow-tooltip space-left"}>enter a bill on the bills page to calculate your footprint!</span> }
         <img src={arr} alt="arrow icon" className={className}/>
-        <h1 className="rank">{props.rank}</h1>
+        <h1 className="rank">{props.outOf}</h1>
         {props.rank === '???' ?
         <h1 className="outof">{props.rank} <span>/</span> {props.outOf}</h1> : <div></div> }
       </div>
@@ -66,5 +68,7 @@ function tripleOrdinance(num){
 function sortClassName(prop){
   return prop ? "arrow-icon up" : "arrow-icon down"
 }
+// original tooltip
+// <span className="arrow-tooltip"> * ranked {rank} out of {props.outOf} {props.areaType}</span> : <span className={"arrow-tooltip space-left"}>no rank to be displayed</span> }
 
 export default ArrowIcon;

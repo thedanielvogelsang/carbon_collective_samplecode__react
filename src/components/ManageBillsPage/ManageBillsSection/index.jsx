@@ -45,7 +45,6 @@ class ManageBillsSection extends Component{
   }
 
   componentDidMount(){
-    console.log(this.state)
   }
 
   catchError(error){
@@ -71,13 +70,9 @@ class ManageBillsSection extends Component{
     const target = event.target;
     const name = target.name;
     const value = target.value;
-    if(name === "no_residents" && value !== "" && Number(value) < this.state.org_count){
-      return null
-    }else{
       this.setState({
         [name]: value,
       });
-    }
   }
 
   handleAddBillsForm(event){
