@@ -134,6 +134,7 @@ h5.email-text{
   font-size: 14px;
   height: 1.8em;
   display: flex;
+  padding-left: 5px;
   flex-direction: column;
   align-items: baseline;
   justify-content: center;
@@ -241,6 +242,9 @@ label.invite-label textarea:-moz-placeholder {
   visibility: hidden;
   margin-left: -35px;
 }
+div.invite-row-div.invited{
+  margin-left: -20px;
+}
 
 @media (max-width: 700px){
   form.inviteSomeone-form{
@@ -257,9 +261,7 @@ label.invite-label textarea:-moz-placeholder {
     justify-content: center;
     align-items: center;
   }
-  div.invite-row-div.invited{
-    padding-left: 10vw;
-  } */
+
   p.invite-tree-explication{
     width: 85%;
     max-width: none;
@@ -284,7 +286,7 @@ label.invite-label textarea:-moz-placeholder {
     /* align-items: center;
     padding-left: 6px;
     width: 184px; */
-  }
+  /* } */
   h5.accepted-text{
     font-size: 10px;
     font-style: italic;

@@ -104,6 +104,7 @@ class AddAddress extends Component {
     this.props.fetchUserData(this.props.id)
     this.resetForm();
     this.logPageChange('/dashboard')
+    // console.log('setting page', Date())
     setTimeout(this.goToPage, 2000, '/dashboard');
   }
 

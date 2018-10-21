@@ -52,7 +52,7 @@ class ChecklistToggle extends Component{
                   base: 'rgb(250,250,250)',
                 },
                 inactiveThumb: {
-                  base: 'rgba(255,0,0,0.5)',
+                  base: 'rgb(250,250,250)',
                 },
                 active: {
                   base: 'rgb(18,153,65)',
