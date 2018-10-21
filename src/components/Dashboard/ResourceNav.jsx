@@ -7,7 +7,7 @@ class ResourceNav extends Component {
   constructor(props){
     super(props);
     this.state = {
-      carbon_url: "./img/Leaf final_fill.png",
+      carbon_url: "./img/Leaf final_blank.png",
       elec_url: "./img/ELEC_blank_2.png",
       water_url: "./img/AQUA_blank_2.png",
       flame_url: "./img/FLAME_blank_2.png",
@@ -27,14 +27,20 @@ class ResourceNav extends Component {
     this.updateDashColors()
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.resource_type != this.props.resource_type){
+      this.updateDashColors()
+    }
+  }
+
   updateUserData(type){
     this.props.fetchDashData(this.props.user_id, type)
   }
 
   updateDashColors(){
     let type = this.props.resource_type
+    this.setDashboardData(type)
     this.updateUserData(type)
-    setTimeout(this.setDashboardData, 1500, type)
   }
 
   setDashboardData(type){

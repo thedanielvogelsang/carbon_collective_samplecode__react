@@ -173,9 +173,9 @@ class SearchAddressPage extends Component{
           cities: null,
           nextBtn: 'none'
         }, () => this.loadCities(id))
+        alert("Sorry, your region is not supported yet. We will let you know when it is!")
+        this.props.history.push('/')
       }
-      alert("Sorry, your region is not supported yet. We will let you know when it is!")
-      this.props.history.push('/')
       scrollTop()
     }
   }

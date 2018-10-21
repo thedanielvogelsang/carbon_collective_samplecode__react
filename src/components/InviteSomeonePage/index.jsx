@@ -11,7 +11,7 @@ const EmailInputs = function(props){
     return(
       <div className="invite-row-div">
         <li className="email-input-email" key={props.myKey}>
-          <h2 className="email-ordered-list">&Dagger;&nbsp;{props.num + 1}&nbsp;</h2>
+          <h2 className="email-ordered-list">{props.num + 1}.&nbsp;</h2>
           <input
             type="text"
             name={props.num}
@@ -132,7 +132,7 @@ class InviteSomeonePage extends Component{
       count: 1,
       message: "",
       messageDisplay: 'inline-block',
-      plusOneBtn: {display: 'block'},})
+      plusOneBtn: {display: 'block'},}, this.loadInvites(this.props.id))
     }
   }
 
@@ -259,7 +259,6 @@ class InviteSomeonePage extends Component{
           <ul ref="invite-list">
             {this.state.emailInputs}
           </ul>
-          <h4 className="leave-a-message">Leave a personal message:</h4>
           <label className="invite-label" style={{display: this.state.messageDisplay}}>
             <textarea
               className="invitation-textBox"
@@ -269,7 +268,7 @@ class InviteSomeonePage extends Component{
               rows="10"
               cols="40"
               spellCheck="true"
-              placeholder="Hey All! It's me Chuck!...."
+              placeholder="Leave a personal message..."
               />
           </label>
           <div

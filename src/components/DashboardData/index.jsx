@@ -85,7 +85,7 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
                           </div> }
           </div>
           {areaType === "Me" ? <h6 className="graph-Exp">other users average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
-          <h6 className="graph-Exp">other {labelName} {parentArea ? `avg in Denver` : null}</h6> }
+           <h6 className="graph-Exp">other {labelName} avg in {parentArea[1]}</h6> }
         </div>
       </div>
     )

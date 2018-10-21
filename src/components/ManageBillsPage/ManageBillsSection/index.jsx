@@ -197,6 +197,7 @@ class ManageBillsSection extends Component{
               type="number"
               name="price"
               placeholder="0"
+              step="any"
               min="0"
               value={ price }
               onChange={ this.handleChange }
