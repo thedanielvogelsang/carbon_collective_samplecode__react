@@ -9,7 +9,6 @@ const ArrowIcon = (props) => {
   let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
   props.rank === '?' ? arr = exclamationMark : console.log();
-  console.log(props.rank, arr)
   props.outOf === 1 ? areaType = props.areaType.replace(/s$/, '') : areaType = props.areaType
   // console.log(props.arrow ? true : false)
   return(
