@@ -4,10 +4,8 @@ import storage from 'redux-persist/lib/storage'
 import rootReducer from './reducers';
 import thunk from 'redux-thunk';
 
-
 const initialState = {}
 const middleware = [thunk]
-
 const persistConfig = {
   key: 'root',
   storage,

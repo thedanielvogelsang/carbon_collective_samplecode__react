@@ -1,8 +1,5 @@
-// const host = 'https://carboncollective.herokuapp.com'
-const host = 'http://localhost:3000'
-// const headers = {
-//   'content-type': 'application/json'
-// }
+const host = 'https://carboncollective.herokuapp.com'
+// const host = 'http://localhost:3000'
 
 const token = process.env.REACT_APP_XCRF_TOKEN
 
