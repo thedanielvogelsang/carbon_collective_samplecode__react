@@ -1,14 +1,16 @@
 import React from 'react';
 import arrowUp from '../../../public/deacon-imgs/rank_up_ii.svg'
 import arrowDown from '../../../public/deacon-imgs/rank_down_ii.svg'
+import exclamationMark from '../../../public/deacon-imgs/Exclamation_mark_2.svg'
 
 const ArrowIcon = (props) => {
   let className = sortClassName(props.up)
-  let arr, fixer, areaType;
+  let arr, areaType;
   let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
+  props.rank === '?' ? arr = exclamationMark : console.log();
+  console.log(props.rank, arr)
   props.outOf === 1 ? areaType = props.areaType.replace(/s$/, '') : areaType = props.areaType
-  // props.rank === 1 || props.rank === "?" ? arr = arrowUp : console.log();
   // console.log(props.arrow ? true : false)
   return(
       <div className="arrow-holder-div">

@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {questions} from '../questions/gas_questions.js';
 import ChecklistQuestion from './ChecklistQuestion.jsx';
 import ChecklistToggle from './toggles/ChecklistToggle';
+import {fetchDashData, fetchUserData} from '../../../../actions/userActions'
 import {get, put} from '../../../../api_client.js';
+import {connect} from 'react-redux';
 
 class GasChecklist extends Component{
   constructor(props){
@@ -64,22 +66,32 @@ class GasChecklist extends Component{
   }
 
   updateChecklist(quest, ans){
+    this.updateAll(quest, ans)
+    // let uId = this.props.user
+    // let hId = this.props.house
+    // const path = `api/v1/users/${uId}/houses/${hId}/questions?resource=gas`
+    // const data = {question: quest, answer: ans}
+    // put(path, undefined, data)
+    //   .then(data => this.updateAll(data, quest, ans))
+    //   .catch(error => console.log(error))
+  }
+
+  handleChecklist(){
+    let questionData = {user_question: this.state}
     let uId = this.props.user
     let hId = this.props.house
-    const path = `api/v1/users/${uId}/houses/${hId}/questions?resource=gas`
-    const data = {question: quest, answer: ans}
-    put(path, undefined, data)
-      .then(data => this.updateAll(data, quest, ans))
+    let path = `api/v1/users/${uId}/houses/${hId}/questions?resource=gas`
+    put(path, undefined, questionData)
+      .then(data => alert("Thank you. Your data has been saved"))
       .catch(error => console.log(error))
-  }
-  handleChecklist(){
-    alert("Thank you. Your data has been saved")
+    this.props.fetchDashData(this.props.user, "gas")
+    this.props.fetchUserData(this.props.user)
     this.props.closeDiv('checklist')
 
   }
 
-  updateAll(data, quest, ans){
-    this.setState({[quest]: ans, completed: data.completed})
+  updateAll(quest, ans){
+    this.setState({[quest]: ans})
   }
 
   render(){
@@ -110,4 +122,9 @@ class GasChecklist extends Component{
   }
 }
 
-export default GasChecklist;
+const mapStateToProps = (state) => {
+  return({
+  })
+}
+
+export default connect(mapStateToProps, {fetchDashData, fetchUserData})(GasChecklist);

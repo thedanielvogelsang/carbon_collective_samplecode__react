@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {questions} from '../questions/electricity_questions.js';
 import ChecklistQuestion from './ChecklistQuestion.jsx';
 import ChecklistToggle from './toggles/ChecklistToggle';
+import {fetchDashData, fetchUserData} from '../../../../actions/userActions'
+import {connect} from 'react-redux';
+
 import {get, put} from '../../../../api_client.js';
 
 class ElectricityChecklist extends Component{
@@ -62,20 +65,30 @@ class ElectricityChecklist extends Component{
   }
 
   updateChecklist(quest, ans){
-    let uId = this.props.user
-    let hId = this.props.house
-    const path = `api/v1/users/${uId}/houses/${hId}/questions?resource=electricity`
-    const data = {question: quest, answer: ans}
-    put(path, undefined, data)
-      .then(data => this.updateAll(data, quest, ans))
-      .catch(error => console.log(error))
+    this.updateAll(quest, ans)
+    // let uId = this.props.user
+    // let hId = this.props.house
+    // const path = `api/v1/users/${uId}/houses/${hId}/questions?resource=electricity`
+    // const data = {user_question}{question: quest, answer: ans}
+    // put(path, undefined, data)
+    //   .then(data => this.updateAll(data, quest, ans))
+    //  d.catch(errord=> console.log(error))
   }
 
-  updateAll(data, quest, ans){
-    this.setState({[quest]: ans, completed: data.completed})
+  updateAll(quest, ans){
+    this.setState({[quest]: ans})
   }
+
   handleChecklist(){
-    alert("Thank you. Your data has been saved")
+    let questionData = {user_question: this.state}
+    let uId = this.props.user
+    let hId = this.props.house
+    let path = `api/v1/users/${uId}/houses/${hId}/questions?resource=electricity`
+    put(path, undefined, questionData)
+      .then(data => alert("Thank you. Your data has been saved"))
+      .catch(error => console.log(error))
+    this.props.fetchDashData(this.props.user, "electricity")
+    this.props.fetchUserData(this.props.user)
     this.props.closeDiv('checklist')
   }
 
@@ -106,4 +119,9 @@ class ElectricityChecklist extends Component{
   }
 }
 
-export default ElectricityChecklist;
+const mapStateToProps = (state) => {
+  return({
+  })
+}
+
+export default connect(mapStateToProps, {fetchDashData, fetchUserData})(ElectricityChecklist);
