@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Timer from './Timer';
 import {get, post} from '../../api_client';
+import {fetchUserData} from '../../actions/userActions'
 import './InviteSomeone-styles.css';
 
 const EmailInputs = function(props){
@@ -134,6 +135,7 @@ class InviteSomeonePage extends Component{
       messageDisplay: 'inline-block',
       plusOneBtn: {display: 'block'},}, this.loadInvites(this.props.id))
     }
+    this.props.fetchUserData(this.props.id)
   }
 
   confirmSuccess(e){
@@ -293,4 +295,4 @@ const mapStateWithProps = (state) => {
     invite_max: state.userInfo.data.invite_max,
   })
 }
-export default withRouter(connect(mapStateWithProps, null)(InviteSomeonePage));
+export default withRouter(connect(mapStateWithProps, {fetchUserData})(InviteSomeonePage));

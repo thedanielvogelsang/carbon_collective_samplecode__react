@@ -75,7 +75,7 @@ class Navbar extends Component {
   }
 
   componentDidMount(){
-    
+
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -341,6 +341,8 @@ class Navbar extends Component {
     }
     else if(['/settings'].indexOf(window.location.pathname) > - 1){
       let house = this.props.house
+      let ct = this.props.data.checklists_left
+      let inv = this.props.data.invites_left
       return(
         <div className="main-navbar">
           <div className="navbar-logo-menu-div navbar loaded">
@@ -356,9 +358,11 @@ class Navbar extends Component {
               <span>
               <li className="header-button landing-nav-link">
                 <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={billsLogo} style={{width: '24px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+                {ct ? <div className="notifier-dot billspage">{ct}</div> : null }
               </li>
               <li className="header-button landing-nav-link spacer">
                 <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
+                {inv ? <div className="notifier-dot billspage">{inv}</div> : null }
               </li></span>: null }
               <li className="header-button landing-nav-link spacer">
                 <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>
@@ -378,6 +382,8 @@ class Navbar extends Component {
           )
     }
     else if(house){
+        let ct = this.props.data.checklists_left
+        let inv = this.props.data.invites_left
         return (
           <div className="main-navbar">
             <div className="navbar-logo-menu-div navbar loaded">
@@ -391,9 +397,11 @@ class Navbar extends Component {
                 </li>
                 <li className="header-button landing-nav-link bills">
                   <img alt="carbon collective logo" className="navbar-link dash-logo landing" src={billsLogo} style={{width: '24px', height: '32px'}} onClick={(e) => this.goToPage('/managebills')}/>
+                  {ct ? <div className="notifier-dot billspage">{ct}</div> : null }
                 </li>
                 <li className="header-button landing-nav-link spacer">
                   <img alt="carbon collective logo" className="navbar-link invite-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToInvitePage(e)}/>
+                  {inv ? <div className="notifier-dot billspage">{inv}</div> : null }
                 </li>
                 <li className="header-button landing-nav-link spacer">
                   <FontAwesomeIcon icon={faEllipsisH} className="navbar-link hamburger-menu" onClick={(e) => this.goToSettings()}/>

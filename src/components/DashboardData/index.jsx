@@ -58,6 +58,7 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
+      console.log(area)
       return(
       <div className="data-item-row">
         {
