@@ -302,7 +302,7 @@ span.material-icons.carbon-logo{
   100% { opacity: 0 }
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1020px){
   .dashboard-overlay{
     padding-left: 0;
   }
