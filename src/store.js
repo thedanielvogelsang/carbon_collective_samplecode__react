@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 
 const initialState = {}
 const middleware = [thunk]
-
 const persistConfig = {
   key: 'root',
   storage,

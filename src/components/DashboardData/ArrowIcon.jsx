@@ -10,7 +10,7 @@ const ArrowIcon = (props) => {
   props.arrow ? arr = arrowUp : arr = arrowDown
   props.rank === '?' ? arr = exclamationMark : console.log();
   props.outOf === 1 ? areaType = props.areaType.replace(/s$/, '') : areaType = props.areaType
-  // console.log(props.arrow ? true : false)
+  console.log(props.arrow, props.rank, arr)
   return(
       <div className="arrow-holder-div">
         {props.rank !== '?' ?
