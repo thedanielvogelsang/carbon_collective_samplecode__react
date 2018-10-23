@@ -341,7 +341,7 @@ class Navbar extends Component {
     }
     else if(['/settings'].indexOf(window.location.pathname) > - 1){
       let house = this.props.house
-      let ct = this.props.data.checklists_left
+      let ct = this.props.data.bills_left
       let inv = this.props.data.invites_left
       return(
         <div className="main-navbar">
@@ -382,7 +382,7 @@ class Navbar extends Component {
           )
     }
     else if(house){
-        let ct = this.props.data.checklists_left
+        let ct = this.props.data.bills_left
         let inv = this.props.data.invites_left
         return (
           <div className="main-navbar">
