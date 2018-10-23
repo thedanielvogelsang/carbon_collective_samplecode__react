@@ -117,7 +117,7 @@ form.manage-bills input{
   color: #2a2c33;
   opacity: 0.8;
   width: 140px;
-  max-height: 40px;
+  height: 34px;
   border: 1px solid #c0c2c2;
   border-radius: 4px;
 }

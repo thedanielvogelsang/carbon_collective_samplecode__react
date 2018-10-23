@@ -65,7 +65,10 @@ class PageSection extends Component{
 
   }
 
-  changeArrow(e){
+  changeArrow(e, overview){
+    if(overview){
+      this.updateDotState()
+    }
     let a, name, s_name;
     let open = this.state.open
     !open ? a = 'caret-down' : a = 'caret-right'
@@ -101,11 +104,11 @@ class PageSection extends Component{
     let comp = !this.props.completed;
     return(
       <div className="manage-section-master-div">
-        <div className="section-title-row" onClick={(e) => this.changeArrow(e)}>
+        <div className="section-title-row" onClick={(e) => this.changeArrow(e, overview)}>
           <div className="arrow-div" >
             <FontAwesomeIcon icon={this.state.arrow} size="lg"/>
           </div>
-          <div className="section-title-div" onClick={overview ? this.updateDotState : null}>
+          <div className="section-title-div">
             <h1>{this.props.title}</h1>
             {comp && overview ? <div className={this.state.redDot}></div> : null }
           </div>

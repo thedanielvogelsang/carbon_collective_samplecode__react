@@ -52,7 +52,7 @@ function pluralize(string){
   return regionName
 }
 
-const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, metric) => {
+const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, metric, billsLink) => {
   let labelName = pluralize(areaType);
   let chart1 = `chart` + String(chartNum);
   let chart2 = `chart` + String(chartNum) + '1';
@@ -65,7 +65,7 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
               <div className="rank-arrow-div">
                 <ArrowIcon arrow={area[7]} a={area[2]} rank={area[5]} outOf={area[6]} areaType={labelName} />
               </div> :area[6] === null ? <div className="rank-arrow-div">
-                    <ArrowIcon arrow={area[7]} a={area[2]} rank={"?"} outOf={area[6]} areaType={labelName} />
+                    <ArrowIcon arrow={area[7]} a={area[2]} rank={"?"} outOf={area[6]} areaType={labelName} goToBillsPage={billsLink}/>
                   </div> : <div className="rank-arrow-div"></div>
                       }
         <div className="data-item-box">
@@ -101,6 +101,7 @@ class DashboardData extends Component{
       login: true,
     }
     this.goToRegionPage = this.goToRegionPage.bind(this)
+    this.goToBillsPage = this.goToBillsPage.bind(this)
     this.goToHouseholdPage = this.goToHouseholdPage.bind(this)
     this.applyDataOnState = this.applyDataOnState.bind(this)
   };
@@ -165,6 +166,10 @@ class DashboardData extends Component{
     //   .catch(error => console.log(error))
   }
 
+  goToBillsPage(){
+    this.props.history.push('/managebills')
+  }
+
   applyDataOnState(region, name, region_type){
     // page change
     let path = '/regionPage/'
@@ -213,13 +218,13 @@ class DashboardData extends Component{
             <div className="community-comps-labels">
               <h6>Reduce your {this.props.resource} use to shrink your bar!</h6>
             </div>
-              { DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric)}
-              { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric) }
-              { DashDataRow(this.props.dash_data.neighborhood, "Neighborhood", this.props.dash_data.city, 2, this.goToRegionPage, color, metric) }
-              { DashDataRow(this.props.dash_data.city, "City", this.props.dash_data.region, 3, this.goToRegionPage, color, metric) }
+              { DashDataRow(this.props.dash_data.personal, "Me", this.props.dash_data.household, 0, null, color, metric, this.goToBillsPage)}
+              { DashDataRow(this.props.dash_data.household, "Household", this.props.dash_data.neighborhood, 1, this.goToHouseholdPage, color, metric, this.goToBillsPage) }
+              { DashDataRow(this.props.dash_data.neighborhood, "Neighborhood", this.props.dash_data.city, 2, this.goToRegionPage, color, metric, this.goToBillsPage) }
+              { DashDataRow(this.props.dash_data.city, "City", this.props.dash_data.region, 3, this.goToRegionPage, color, metric, this.goToBillsPage) }
               {country ?
             <div>
-              <RegionGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/>
+              <RegionGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage} />
               <CountryGraphIcon {...this.props} color={color} goToRegionPage={this.goToRegionPage}/>
             </div> : <div></div> }
           </div>
