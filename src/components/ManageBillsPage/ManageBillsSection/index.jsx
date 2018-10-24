@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { post } from '../../../api_client';
 import {scrollTop} from '../../../helper-scripts/screenHelpers.js';
+import $ from "jquery";
+
+
 
 function capitalize(name){
   return name.charAt(0).toUpperCase() + name.slice(1);
@@ -38,6 +41,7 @@ class ManageBillsSection extends Component{
     };
     this.disappear = this.disappear.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.turnOffButton = this.turnOffButton.bind(this);
     this.assignBillPath = this.assignBillPath.bind(this);
     this.catchError = this.catchError.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -77,6 +81,7 @@ class ManageBillsSection extends Component{
 
   handleAddBillsForm(event){
     event.preventDefault();
+    this.turnOffButton();
     let householdData = this.state;
     let id = this.props.user_id
     const appg = this.assignBillPath()
@@ -97,6 +102,16 @@ class ManageBillsSection extends Component{
     }
 
   };
+
+  turnOffButton(){
+    $('#billsButton').on('click', function() {
+            $(this).prop('disabled', true);
+          });
+    setTimeout(this.turnOnButton, 2000)
+  }
+  turnOnButton(){
+    $('#billsButton').prop('disabled', false);
+  }
 
   disappear(){
     this.setState({
@@ -220,6 +235,7 @@ class ManageBillsSection extends Component{
           </div>
           <div>
             <button
+              id="billsButton"
               className="bills-button"
               disabled={ !isFormValid }
               type="submit"

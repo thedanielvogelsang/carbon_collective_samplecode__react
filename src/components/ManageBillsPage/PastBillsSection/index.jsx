@@ -4,6 +4,12 @@ import {get, put, destroy} from '../../../api_client';
 import {scrollTop} from '../../../helper-scripts/screenHelpers.js'
 import {connect} from 'react-redux';
 import './PastBillsPage-styles.css';
+import $ from 'jquery';
+
+$('#billsDeleteButton').on('click', function() {
+  console.log('clicked')
+      $(this).prop('disabled', true);
+    });
 
 function rowColor(num){
   return num % 2 === 0 ? "#f5f5f5" : "#FFFFFF"
@@ -52,6 +58,7 @@ const Bill = function(props){
       <div className="bill-container" style={{backgroundColor: color}}>
             <div className="bill-delete-div">
               <button
+                id="billsDeleteButton"
                 className="bill-delete-btn"
                 name="bill"
                 onClick={(e) => props.deleteBill(e, props.bill.id)}
