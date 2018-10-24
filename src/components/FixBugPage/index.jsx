@@ -66,7 +66,7 @@ class FixBugPage extends Component{
             rows="10"
             cols="40"
             spellCheck="true"
-            placeholder="Tell us what went wrong"
+            placeholder="Tell us what went wrong..."
             />
           <button
             type="submit"

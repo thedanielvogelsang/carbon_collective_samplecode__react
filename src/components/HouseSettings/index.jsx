@@ -220,8 +220,6 @@ class HouseSettings extends Component{
             name="remove-house-btn"
             onClick={this.removeUserHouse}
             >Click To Remove House</button>
-        </div>
-        <div>
           <button
             className="address-link"
             onClick={this.goToUserSettings}
@@ -237,33 +235,35 @@ class HouseSettings extends Component{
     if(this.state.house_exists && addressLoaded){
       return(
         <div className="houseSettings-container">
-          <div className="housesettings-error-box" onClick={this.disappear} style={this.state.errorStyle}>
-            { this.state.errors }
-          </div>
-          <h1 className="edit-header house-settings">House Settings</h1>
-          <h2 className="edit-header current-settings">Editable Details</h2>
-          <form
-            className="form-container house-editform"
-            >
+          <div className="housesettings-editform-container">
+            <div className="housesettings-error-box" onClick={this.disappear} style={this.state.errorStyle}>
+              { this.state.errors }
+            </div>
+            <h1 className="edit-header house-settings">House Settings</h1>
+            <h2 className="edit-header current-settings">Editable Details</h2>
+            <form
+              className="form-container house-editform"
+              >
 
-              <h5>Your Move in Date</h5>
-              <label>
-                <input
-                  id="move-in"
-                  required="false"
-                  type="date"
-                  name="move_in_date"
-                  placeholder={ move_in_date }
-                  value={ move_in_date }
-                  onFocus={(e) => {return e.target.value = ''}}
-                  onChange={(e) => this.handleChange(e) }
-                  onBlur={ this.updateUserHouseDetails }
-                />
-              </label>
+                <h5>Your Move in Date</h5>
+                <label>
+                  <input
+                    id="move-in"
+                    required="false"
+                    type="date"
+                    name="move_in_date"
+                    placeholder={ move_in_date }
+                    value={ move_in_date }
+                    onFocus={(e) => {return e.target.value = ''}}
+                    onChange={(e) => this.handleChange(e) }
+                    onBlur={ this.updateUserHouseDetails }
+                  />
+                </label>
 
-            </form>
-          <h2 className="edit-header current-settings static-details">Static Details</h2>
+              </form>
+            <h2 className="edit-header current-settings static-details">Static Details</h2>
             { addressLoaded ? this.addressForm() : null }
+          </div>
         </div>
       )
     }else{
