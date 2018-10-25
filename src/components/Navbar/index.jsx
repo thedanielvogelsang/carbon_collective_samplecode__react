@@ -342,7 +342,6 @@ class Navbar extends Component {
     else if(['/settings'].indexOf(window.location.pathname) > - 1){
       let house = this.props.house
       let ct = this.props.data.bills_left
-      console.log(this.props.data)
       let inv = this.props.data.invites_left
       return(
         <div className="main-navbar">
