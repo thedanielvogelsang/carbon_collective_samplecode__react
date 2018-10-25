@@ -100,6 +100,9 @@ class Settings extends Component {
 
   render() {
     let house = this.props.house;
+    let ct = this.props.data.bills_left;
+    let inv = this.props.data.invites_left;
+    console.log(this.props.data)
     return (
     <div>
       { house ?
@@ -113,13 +116,19 @@ class Settings extends Component {
           </li>
           <li className="shrunken-nav-buttons">
             <div className="shrunken-nav-icon-container bills">
-              <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/managebills')}>Bills</div>
+              <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/managebills')}>
+                Bills
+                {ct ? <div className="notifier-dot billspage shrunken">{ct}</div> : null }
+              </div>
               <img alt="carbon collective logo" className="navbar-link dropdown-logo" src={this.state.billsLogo} style={{width: '24px', height: '30px', paddingBottom: "2px"}} onClick={(e) => this.goToDash(e)}/>
             </div>
           </li>
           <li className="shrunken-nav-buttons">
             <div className="shrunken-nav-icon-container invites">
-              <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/invites')}>Invite</div>
+              <div className='shrunken-nav-label' onClick={(e) => this.goToPage('/invites')}>
+                Invite
+                {inv ? <div className="notifier-dot billspage shrunken">{inv}</div> : null }
+              </div>
               <img alt="invite logo" className="settings-logo dropdown-logo" src={this.state.inviteLogo} style={{width: '26px', height: '32px'}} onClick={(e) => this.goToPage('/invites')}/>
             </div>
           </li>
@@ -197,6 +206,7 @@ class Settings extends Component {
 // </ul>
 
 const mapStateToProps = (state) => ({
-    user_id: state.userInfo.user_id
+    user_id: state.userInfo.user_id,
+    data: state.userInfo.data
 });
 export default withRouter(connect(mapStateToProps, null)(Settings));

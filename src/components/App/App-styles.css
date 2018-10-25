@@ -181,6 +181,7 @@ input:-moz-placeholder {
   font-size: 14px;
   font-weight: bold;
   border-radius: 50%;
+  /* text-shadow: 1px -1px black; */
 }
 
 .notifier-dot.checklist{
