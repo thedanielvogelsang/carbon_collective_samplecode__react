@@ -1,4 +1,4 @@
-import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_HOUSE} from './types' ;
+import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_ERROR, CLEAR_HOUSE} from './types' ;
 import {BrowserRouter} from 'react-router-dom';
 import {get, post, destroy} from '../api_client';
 import {whichColor} from './helpers/whichColor'
@@ -60,5 +60,13 @@ export function removeUserHouse(id, hId) {
       })
     )
     .catch(error => console.log(error))
+  }
+}
+
+export function clearError(){
+  return function(dispatch){
+    dispatch({
+      type: CLEAR_ERROR
+    })
   }
 }

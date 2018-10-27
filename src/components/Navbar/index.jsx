@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 // import FontIcon from 'material-ui/FontIcon';
 import {post} from '../../api_client';
 import {connect} from 'react-redux'
-import { loginUser } from '../../actions/userActions'
+import { loginUser, clearError } from '../../actions/userActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
   import LogGrey from "./img/log_grey.svg";
@@ -75,10 +75,12 @@ class Navbar extends Component {
   }
 
   componentDidMount(){
-
   }
 
   componentDidUpdate(prevProps, prevState){
+    if(this.props.error.errors){
+      setTimeout(2000, this.props.clearError())
+    }
     this.checkLoginStatus()
     this.checkSettingsStatus()
   }
@@ -155,7 +157,7 @@ class Navbar extends Component {
       post(path)
         .then(ans => this.goToPage('/dashboard'))
         .catch(error => console.log(error))
-    }else if(this.props.data && !this.props.data.privacy_policy){
+    }else if(!Array.isArray(this.props.data) && !this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
         .then(ans => this.goToPage('/privacy-policy'))
@@ -163,6 +165,7 @@ class Navbar extends Component {
     }else if(this.props.error){
       alert(this.props.error.errors)
     }
+    console.log(this.props.error)
     this.clearAll()
   }
 
@@ -523,4 +526,4 @@ const mapStateToProps = (state) => ({
     // </li>
 
 // bypassing mapDispatchToProps for now:
-export default withRouter(connect(mapStateToProps, { loginUser })(Navbar));
+export default withRouter(connect(mapStateToProps, { loginUser, clearError })(Navbar));
