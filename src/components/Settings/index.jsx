@@ -102,7 +102,6 @@ class Settings extends Component {
     let house = this.props.house;
     let ct = this.props.data.bills_left;
     let inv = this.props.data.invites_left;
-    console.log(this.props.data)
     return (
     <div>
       { house ?
