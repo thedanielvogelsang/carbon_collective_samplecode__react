@@ -6,9 +6,14 @@ import {get, post} from '../../api_client';
 import {fetchUserData} from '../../actions/userActions'
 import './InviteSomeone-styles.css';
 
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+// var unique = a.filter( onlyUnique );
+
+
 const EmailInputs = function(props){
-    let placeholder;
-    props.num === 0 ? placeholder = "Enter a friend's email address" : placeholder = "Email address"
+    let placeholder = "Email address"
     return(
       <div className="invite-row-div">
         <li className="email-input-email" key={props.myKey}>
@@ -37,7 +42,7 @@ const EmailInvite = function(props, n){
             <button
               className="invite-cancel-btn"
               name={email}
-              type="submit"
+              type="button"
               onClick={(e) => props.deleteUserInvite(e, props.id)}
               >X
             </button>
@@ -127,7 +132,7 @@ class InviteSomeonePage extends Component{
         plusOneBtn: {display: 'block'}}, this.confirmSuccess(e))
     }else{
       let emails = message.message
-      alert(`Some of your invites could not be sent. The following people are already Carbon Collective members: ${emails}`)
+      alert(`Some of your invites could not be sent. Check the spelling and try again`)
       this.setState({emails: {},
       emailInputs: [],
       count: 1,
@@ -181,12 +186,28 @@ class InviteSomeonePage extends Component{
 
   handleForm(event){
     event.preventDefault();
-    let emailData = {emails: this.state.emails, message: this.state.message}
-    const id = this.props.id
-    const path = `users/invite/${id}`
-    post(path, emailData)
-      .then(data => this.renderMessage(data))
-      .catch(error => this.renderMessage(error))
+    let prev_E = Object.values(this.state.userInvites).map(function(ui){
+                        return ui[1]
+                      })
+    let emails = Object.values(this.state.emails)
+    let overlaps = emails.filter(e => prev_E.includes(e))
+    if(overlaps.length !== 0){
+      alert("One or more of your invites have already been invited. Please try again.")
+      this.setState({
+          emails: {},
+          emailInputs: [],
+          message: "",
+          messageDisplay: 'inline-block',
+          plusOneBtn: {display: 'block'}
+      })
+    }else{
+      let emailData = {emails: this.state.emails, message: this.state.message}
+      const id = this.props.id
+      const path = `users/invite/${id}`
+      post(path, emailData)
+        .then(data => this.renderMessage(data))
+        .catch(error => this.renderMessage(error))
+    }
   }
 
   renderEmails(num){
