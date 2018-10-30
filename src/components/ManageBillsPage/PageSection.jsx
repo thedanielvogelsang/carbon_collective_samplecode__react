@@ -26,6 +26,7 @@ class PageSection extends Component{
   }
 
   componentDidUpdate(){
+    console.log(this.props.bill_entered)
     if(this.state.reloadPosts === true){
       setTimeout(1000, this.setState({reloadPosts: false}))
     }
@@ -102,6 +103,7 @@ class PageSection extends Component{
     }
     let reload = this.props.reload;
     let comp = !this.props.completed;
+    let bill = !this.props.bill_entered;
     return(
       <div className="manage-section-master-div">
         <div className="section-title-row" onClick={(e) => this.changeArrow(e, overview)}>
@@ -110,7 +112,7 @@ class PageSection extends Component{
           </div>
           <div className="section-title-div">
             <h1>{this.props.title}</h1>
-            {comp && overview ? <div className={this.state.redDot}></div> : null }
+            {comp && overview || bill && manage ? <div className={this.state.redDot}></div> : null }
           </div>
         </div>
         <div className={this.state.sectionName} >
@@ -132,6 +134,7 @@ const mapStateToProps = (state) =>{
     resource_type: state.userInfo.resource_type,
     color: state.userInfo.color,
     completed: state.userInfo.dash_data.checklist_completed,
+    bill_entered: state.userInfo.dash_data.bill_entered,
   })
 }
 export default connect(mapStateToProps, null)(PageSection);
