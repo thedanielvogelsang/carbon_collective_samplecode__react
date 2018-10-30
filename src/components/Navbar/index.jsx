@@ -78,7 +78,9 @@ class Navbar extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(this.props.error.errors){
+    if(this.props.error){
+      alert(this.props.error.errors)
+      this.clearAll()
       setTimeout(2000, this.props.clearError())
     }
     this.checkLoginStatus()
@@ -138,7 +140,7 @@ class Navbar extends Component {
     const stateData = { ...this.state };
     const loginData = {user: stateData}
     this.props.loginUser(loginData)
-    setTimeout(this.logLogin, 3000)
+    setTimeout(2000, this.logLogin)
   }
 
   resetWithErrors(error){
@@ -152,6 +154,7 @@ class Navbar extends Component {
 
 
   logLogin(){
+    console.log('loglogin triggered')
     if(this.props.id && this.props.data && this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)
@@ -162,10 +165,7 @@ class Navbar extends Component {
       post(path)
         .then(ans => this.goToPage('/privacy-policy'))
         .catch(error => console.log(error))
-    }else if(this.props.error){
-      alert(this.props.error.errors)
     }
-    console.log(this.props.error)
     this.clearAll()
   }
 
