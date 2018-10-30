@@ -4,7 +4,7 @@ var BasicChart = {}
 
 BasicChart.enter = function(elem_, props){
   var color = props.color;
-  props.up ? color : color = '#c0c2c2'
+  if(props.up){color = '#c0c2c2'}
   var barWidth = props.a;
   var parentMax = props.c;
   var id = props.id;
@@ -32,7 +32,7 @@ BasicChart.enter = function(elem_, props){
   var barHeight = 30;
 
   var scale = d3.scaleLinear()
-      .domain([0, props.c])
+      .domain([0, parentMax])
       .range([0, width]);
 
   elem_
@@ -79,7 +79,7 @@ BasicChart.enter = function(elem_, props){
 
 BasicChart.update = function(elem_, props){
   var color = props.color
-  props.up ? color : color = '#c0c2c2'
+  if(props.up){color = '#c0c2c2'}
   var barWidth = props.a;
   var parentMax = props.c;
   var id = props.id
@@ -106,7 +106,7 @@ BasicChart.update = function(elem_, props){
   var barHeight = 30;
 
   var scale = d3.scaleLinear()
-      .domain([0, props.c])
+      .domain([0, parentMax])
       .range([0, width]);
 
   var bar = elem_.selectAll("g").data(data)

@@ -28,42 +28,42 @@ const ArrowIcon = (props) => {
 //   return num
 // }
 
-function singleOrdinance(num){
-  switch(num){
-    case "1":
-      num = "1st"
-      break
-    case "2":
-      num = "2nd"
-      break
-    case "3":
-      num = "3rd"
-      break
-    default:
-      num = num + 'th'
-  }
-  return num
-}
-
-function doubleOrdinance(num){
-  if(num[0] === "1"){
-    let dig = num.pop()
-    switch(dig){
-        default:
-          dig = dig + 'th'
-      }
-    num[1] = dig
-    return num
-  }else{
-    num[1] = singleOrdinance(num[1])
-    return num
-  }
-  return num.join('')
-}
-
-function tripleOrdinance(num){
-  return num.join('')
-}
+// function singleOrdinance(num){
+//   switch(num){
+//     case "1":
+//       num = "1st"
+//       break
+//     case "2":
+//       num = "2nd"
+//       break
+//     case "3":
+//       num = "3rd"
+//       break
+//     default:
+//       num += 'th'
+//   }
+//   return num
+// }
+//
+// function doubleOrdinance(num){
+//   if(num[0] === "1"){
+//     let dig = num.pop()
+//     switch(dig){
+//         default:
+//           dig += 'th'
+//       }
+//     num[1] = dig
+//     return num
+//   }else{
+//     num[1] = singleOrdinance(num[1])
+//     return num
+//   }
+//   return num.join('')
+// }
+//
+// function tripleOrdinance(num){
+//   return num.join('')
+// }
 
 function sortClassName(prop){
   return prop ? "arrow-icon up" : "arrow-icon down"
