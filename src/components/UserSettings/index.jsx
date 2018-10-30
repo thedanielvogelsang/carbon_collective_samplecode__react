@@ -143,7 +143,7 @@ class UserSettings extends Component{
           </form>
           </div>
           <div className='passwordUpdate'>
-            <PasswordInput />
+            <PasswordInput id={this.props.id}/>
           </div>
           <div className="house-info-link-div">
             <button
@@ -175,7 +175,6 @@ class PasswordForm extends Component{
       var root = document.getElementById('root')
       var image = document.getElementById('app-background-image')
       image.style.height = root.offsetHeight + "px"
-      console.log(root.offsetHeight)
   }
 
   handleForm(event){
@@ -185,7 +184,7 @@ class PasswordForm extends Component{
     const updatedPassword = {user: {old_password: oldPassword, password: password}}
     const passwordConfirm = document.getElementById('pass-confirm-input').value;
     const path = 'users';
-    const id = sessionStorage.getItem('user_id')
+    const id = this.props.id
     if(password === passwordConfirm){
       put(path, id, updatedPassword)
         .then(data => this.props.setErrors('success'))
@@ -262,7 +261,7 @@ class PasswordInput extends Component{
       isReactComponent: true,
       items: [
         (
-          <PasswordForm setErrors={this.setErrors}/>
+          <PasswordForm id={this.props.id} setErrors={this.setErrors}/>
         ),
       ],
     }],

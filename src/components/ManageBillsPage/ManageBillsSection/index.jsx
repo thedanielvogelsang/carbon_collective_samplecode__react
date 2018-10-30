@@ -12,7 +12,7 @@ function capitalize(name){
 }
 
 function checkDateFormat(date){
-  var regExp = (/^\d{4}\-\d{2}\-\d{2}$/)
+  var regExp = (/^\d{4}-\d{2}-\d{2}$/)
   return regExp.test(date)
 }
 

@@ -54,13 +54,13 @@ class Settings extends Component {
   }
 
   goToGoalsPage(event){
-    console.log("not built yet")
+    // console.log("not built yet")
   }
 
   goToContactPage(event){
     this.logPageChange('/contact')
     this.props.history.push('/contact')
-    console.log('not built yet')
+    // console.log('not built yet')
   }
 
   bugsPage(){

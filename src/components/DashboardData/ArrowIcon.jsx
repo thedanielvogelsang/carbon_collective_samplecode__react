@@ -6,7 +6,7 @@ import exclamationMark from '../../../public/deacon-imgs/Exclamation_mark_2.svg'
 const ArrowIcon = (props) => {
   let className = sortClassName(props.up)
   let arr, areaType;
-  let rank = findOrdinal(props.rank)
+  // let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
   props.rank === '?' ? arr = exclamationMark : console.log();
   props.outOf === 1 ? areaType = props.areaType.replace(/s$/, '') : areaType = props.areaType
@@ -21,12 +21,12 @@ const ArrowIcon = (props) => {
       </div>
   )
 }
-
-function findOrdinal(num){
-  num = num.toString().split('');
-  num = num.length === 1 ? num = singleOrdinance(num.pop()) : num.length > 2 ? num = tripleOrdinance(num) : num = doubleOrdinance(num)
-  return num
-}
+//
+// function findOrdinal(num){
+//   num = num.toString().split('');
+//   num = num.length === 1 ? num = singleOrdinance(num.pop()) : num.length > 2 ? num = tripleOrdinance(num) : num = doubleOrdinance(num)
+//   return num
+// }
 
 function singleOrdinance(num){
   switch(num){

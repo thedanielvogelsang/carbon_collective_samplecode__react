@@ -7,7 +7,6 @@ import './PastBillsPage-styles.css';
 import $ from 'jquery';
 
 $('#billsDeleteButton').on('click', function() {
-  console.log('clicked')
       $(this).prop('disabled', true);
     });
 
