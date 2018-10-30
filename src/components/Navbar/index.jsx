@@ -81,7 +81,7 @@ class Navbar extends Component {
     if(this.props.error){
       alert(this.props.error.errors)
       this.clearAll()
-      setTimeout(this.props.clearError, 2000)
+      this.props.clearError()
     }
     this.checkLoginStatus()
     this.checkSettingsStatus()
@@ -139,8 +139,8 @@ class Navbar extends Component {
   handleLogin(){
     const stateData = { ...this.state };
     const loginData = {user: stateData}
-    this.props.loginUser(loginData);
-    this.logLogin();
+    this.props.loginUser(loginData)
+    setTimeout(2000, this.logLogin)
   }
 
   resetWithErrors(error){

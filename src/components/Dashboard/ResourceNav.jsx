@@ -28,7 +28,7 @@ class ResourceNav extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if(prevProps.resource_type != this.props.resource_type){
+    if(prevProps.resource_type !== this.props.resource_type){
       this.updateDashColors()
     }
   }

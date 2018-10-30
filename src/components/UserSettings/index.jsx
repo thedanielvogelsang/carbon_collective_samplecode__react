@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import ReactExpandableViewList from 'react-expandable-listview';
-import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {get, put, post} from '../../api_client';
+import {userLogout} from '../../actions/userActions.js';
 import './UserSettings-styles.css';
 
 class UserSettings extends Component{
@@ -63,7 +64,6 @@ class UserSettings extends Component{
   }
 
   goToPage(path){
-    console.log('going ', path)
     this.props.history.push(path)
   }
 
@@ -329,4 +329,4 @@ const mapStateWithProps = function(state){
   })
 }
 
-export default withRouter(connect(mapStateWithProps, null)(UserSettings));
+export default withRouter(connect(mapStateWithProps, {userLogout})(UserSettings));

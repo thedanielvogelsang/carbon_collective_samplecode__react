@@ -1,4 +1,5 @@
 export const LOGIN_USER = "LOGIN_USER"
+export const LOGOUT_USER = "LOGOUT_USER"
 export const CATCH_ERROR = "CATCH_ERROR"
 export const CLEAR_ERROR = "CLEAR_ERROR"
 export const USER_INFO = "USER_INFO"

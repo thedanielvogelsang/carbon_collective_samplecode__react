@@ -6,12 +6,6 @@ import {get, post} from '../../api_client';
 import {fetchUserData} from '../../actions/userActions'
 import './InviteSomeone-styles.css';
 
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
-}
-// var unique = a.filter( onlyUnique );
-
-
 const EmailInputs = function(props){
     let placeholder = "Email address"
     return(
@@ -131,7 +125,7 @@ class InviteSomeonePage extends Component{
         messageDisplay: 'inline-block',
         plusOneBtn: {display: 'block'}}, this.confirmSuccess(e))
     }else{
-      let emails = message.message
+      // let emails = message.message
       alert(`Some of your invites could not be sent. Check the spelling and try again`)
       this.setState({emails: {},
       emailInputs: [],

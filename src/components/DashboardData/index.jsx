@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import {get, post} from '../../api_client';
+import {post} from '../../api_client';
 import './DashboardData-styles.css';
 import {checkImageHeight} from '../../helper-scripts/screenHelpers.js'
 import {connect} from 'react-redux'
@@ -206,8 +206,6 @@ class DashboardData extends Component{
     var country = false;
     var color = this.props.color
     var metric = this.props.dash_data.metric_sym
-    var notCarbon;
-    this.props.resource_type === 'carbon' ? notCarbon = false : notCarbon = true;
     return (
       <div className="dashboard-data-container_main">
       <div className="data-container">

@@ -1,8 +1,6 @@
-import {LOGIN_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_ERROR, CLEAR_HOUSE} from './types' ;
-import {BrowserRouter} from 'react-router-dom';
+import {LOGIN_USER, LOGOUT_USER, USER_INFO, DASH_INFO, CATCH_ERROR, CLEAR_ERROR, CLEAR_HOUSE} from './types' ;
 import {get, post, destroy} from '../api_client';
 import {whichColor} from './helpers/whichColor'
-
 
 export const loginUser = (loginData) => dispatch => {
   const sessionsPath = `login`
@@ -19,6 +17,14 @@ export const loginUser = (loginData) => dispatch => {
         payload: error
       })
     )
+}
+
+export function userLogout(){
+  return function(dispatch){
+    dispatch({
+      type: LOGOUT_USER,
+    })
+  }
 }
 
 export function fetchDashData(id, type) {

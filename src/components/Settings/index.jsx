@@ -11,6 +11,7 @@ import { get, post } from '../../api_client';
   import AboutLogo from './img/about.svg';
   import ContactLogo from './img/contact.svg';
   import LogoutLogo from './img/log_grey.svg';
+  import {userLogout} from '../../actions/userActions.js'
   import './Settings-styles.css';
 
 class Settings extends Component {
@@ -76,6 +77,7 @@ class Settings extends Component {
       .then(data => console.log())
       .catch(error => console.log(error))
     localStorage.clear();
+    this.props.userLogout();
     this.props.history.push('/')
     setTimeout(this.resetPage, 500)
   }
@@ -208,4 +210,4 @@ const mapStateToProps = (state) => ({
     user_id: state.userInfo.user_id,
     data: state.userInfo.data
 });
-export default withRouter(connect(mapStateToProps, null)(Settings));
+export default withRouter(connect(mapStateToProps, {userLogout})(Settings));
