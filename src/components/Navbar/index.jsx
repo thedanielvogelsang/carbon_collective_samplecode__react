@@ -139,8 +139,8 @@ class Navbar extends Component {
   handleLogin(){
     const stateData = { ...this.state };
     const loginData = {user: stateData}
-    this.props.loginUser(loginData)
-    setTimeout(this.logLogin, 2000)
+    this.props.loginUser(loginData);
+    this.logLogin();
   }
 
   resetWithErrors(error){
