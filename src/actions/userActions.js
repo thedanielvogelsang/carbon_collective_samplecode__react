@@ -22,6 +22,7 @@ export const loginUser = (loginData) => dispatch => {
 }
 
 export function fetchDashData(id, type) {
+  console.log('fetching dash data')
   let color = whichColor(type)
   return function(dispatch) {
     const path = `api/v1/users/${id}/resources?resource=${type}`

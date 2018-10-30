@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AddAddress-styles.css'
 import { withRouter } from 'react-router-dom';
-import {fetchUserData} from '../../actions/userActions'
+import {fetchUserData, fetchDashData} from '../../actions/userActions'
 import { connect } from 'react-redux';
 import { countries } from '../utilities';
 import { get, post } from '../../api_client'
@@ -102,9 +102,9 @@ class AddAddress extends Component {
 
   setSession(data){
     this.props.fetchUserData(this.props.id)
+    setTimeout(this.props.fetchDashData, 1000, (this.props.user_id, this.props.resource_type))
     this.resetForm();
     this.logPageChange('/dashboard')
-    // console.log('setting page', Date())
     setTimeout(this.goToPage, 2000, '/dashboard');
   }
 
