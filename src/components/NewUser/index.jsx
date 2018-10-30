@@ -70,7 +70,7 @@ class NewUserSignup extends Component {
 
   handleSuccess(){
     alert("Welcome to Carbon Collective! Your email has been confirmed. Please log in to the app to continue.")
-    const path = '/'
+    const path = '/dashboard'
     this.goToPage(path)
   }
 
