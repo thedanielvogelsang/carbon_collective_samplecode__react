@@ -252,11 +252,4 @@ const mapStateToProps = (state) => {
   })
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return({
-//     fetchUserData: fetchUserData
-//   })
-// }
-// <PropsRoute path="/login" component={ Login } data={this.state} updateState={this.updateState} /> } />
-
 export default withRouter(connect(mapStateToProps, {fetchUserData})(App));
