@@ -6,7 +6,7 @@ import './SearchAddress-styles.css';
 import {renderFormStyles} from './form-search.js';
 import {renderSubFormStyles} from './form-search.js';
 import {capitalizeFirstLetter} from '../../helper-scripts/textHelpers.js';
-import {scrollTop} from '../../helper-scripts/screenHelpers.js';
+import {scrollTop, checkImageHeight} from '../../helper-scripts/screenHelpers.js';
 
 
 function cleanId(id){
@@ -95,7 +95,6 @@ class SearchAddressPage extends Component{
   }
 
   loadCities(id){
-    console.log(id)
     if(Number(id) === 6){
       const path = `api/v1/areas/cities?region_id=${id}`
       return get(path)
@@ -324,7 +323,7 @@ class SearchAddressPage extends Component{
             onSubmit={(e) => this.goToNeighborhoods(e)}
             className="regional-form"
             >
-            <div id="custom-select-country" className="custom-select" style={{width: '250px', height: '100px'}}>
+            <div id="custom-select-country" className="custom-select" style={{width: '250px', height: '100px'}} >
               <label>
               <h3>Countries</h3>
               <div>
