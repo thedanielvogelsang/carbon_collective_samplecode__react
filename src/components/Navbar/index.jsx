@@ -140,7 +140,7 @@ class Navbar extends Component {
     const stateData = { ...this.state };
     const loginData = {user: stateData}
     this.props.loginUser(loginData)
-    setTimeout(2000, this.logLogin)
+    setTimeout(this.logLogin, 2000)
   }
 
   resetWithErrors(error){
@@ -154,7 +154,6 @@ class Navbar extends Component {
 
 
   logLogin(){
-    console.log('loglogin triggered')
     if(this.props.id && this.props.data && this.props.data.privacy_policy){
       let path = `${this.props.id }/user-logs-in`
       post(path)

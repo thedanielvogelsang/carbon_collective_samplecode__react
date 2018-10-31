@@ -20,6 +20,7 @@ export const loginUser = (loginData) => dispatch => {
 }
 
 export function userLogout(){
+  console.log('logout triggered')
   return function(dispatch){
     dispatch({
       type: LOGOUT_USER,
@@ -28,7 +29,6 @@ export function userLogout(){
 }
 
 export function fetchDashData(id, type) {
-  console.log('fetching dash data')
   let color = whichColor(type)
   return function(dispatch) {
     const path = `api/v1/users/${id}/resources?resource=${type}`

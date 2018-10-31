@@ -16,7 +16,7 @@ class ContactUs extends Component{
               <div className="contactus-portrait-div">
                 <img
                   className="contactus-portrait"
-                  alt="carbon collective founder portrait photo"
+                  alt="carbon collective founder"
                   src={require(`./svenportrait.jpg`)}
                   />
               </div>

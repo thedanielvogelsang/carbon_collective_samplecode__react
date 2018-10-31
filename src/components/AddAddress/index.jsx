@@ -103,9 +103,9 @@ class AddAddress extends Component {
   setSession(data){
     this.props.fetchUserData(this.props.id)
     setTimeout(this.props.fetchDashData, 1000, (this.props.user_id, this.props.resource_type))
+    setTimeout(this.goToPage, 2000, '/dashboard');
     this.resetForm();
     this.logPageChange('/dashboard')
-    setTimeout(this.goToPage, 2000, '/dashboard');
   }
 
   logPageChange(path){
@@ -153,6 +153,7 @@ class AddAddress extends Component {
     }else{
       let hid = error.house
       localStorage.setItem("temp_house", hid)
+      localStorage.setItem("user_id", this.props.id)
       this.goToPage('/house-exists')
     }
   }
@@ -235,4 +236,4 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default withRouter(connect(mapStateToProps, {fetchUserData})(AddAddress));
+export default withRouter(connect(mapStateToProps, {fetchUserData, fetchDashData})(AddAddress));

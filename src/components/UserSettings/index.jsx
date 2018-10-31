@@ -64,6 +64,7 @@ class UserSettings extends Component{
   }
 
   goToPage(path){
+    console.log(path)
     this.props.history.push(path)
   }
 
@@ -99,8 +100,14 @@ class UserSettings extends Component{
 
   confirmAndLogout(){
     alert('user account deleted')
+    this.props.userLogout();
     localStorage.clear();
-    setTimeout(this.goToPage, 500, '/')
+    setTimeout(this.goToPage, 400, '/')
+    setTimeout(this.resetPage, 500)
+  }
+
+  resetPage(){
+    return location.reload()
   }
 
   render(){

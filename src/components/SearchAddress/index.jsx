@@ -6,7 +6,7 @@ import './SearchAddress-styles.css';
 import {renderFormStyles} from './form-search.js';
 import {renderSubFormStyles} from './form-search.js';
 import {capitalizeFirstLetter} from '../../helper-scripts/textHelpers.js';
-import {scrollTop, checkImageHeight} from '../../helper-scripts/screenHelpers.js';
+import {scrollTop} from '../../helper-scripts/screenHelpers.js';
 
 
 function cleanId(id){

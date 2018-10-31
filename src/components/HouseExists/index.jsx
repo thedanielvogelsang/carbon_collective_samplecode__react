@@ -54,7 +54,7 @@ class HouseExists extends Component{
   }
 
   joinUserToHouse(){
-    let uid = sessionStorage.getItem("user_id")
+    let uid = localStorage.getItem("user_id")
     let hid = this.state.house_id
     sessionStorage.setItem("house_id", hid)
     const body = {house_id: hid}
@@ -73,6 +73,7 @@ class HouseExists extends Component{
   confirmData(data){
     this.props.addUserData()
     sessionStorage.setItem('house_id', this.state.house_id)
+    alert("Be sure to go to the House Settings page and confirm your move-in-date to log bills!")
     spaceTimer(data)
       .then(data => this.goToPage('/dashboard'))
   }

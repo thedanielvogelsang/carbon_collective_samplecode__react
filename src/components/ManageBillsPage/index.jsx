@@ -4,7 +4,6 @@ import ResourceNav from '../Dashboard/ResourceNav'
 import {ResourceTitleDash} from '../Dashboard/ResourceTitle'
 import PageSection from './PageSection';
 import { withRouter } from 'react-router-dom';
-import {scrollTop} from '../../helper-scripts/screenHelpers';
 import { get, post } from '../../api_client';
 import { connect } from 'react-redux'
 import Loader from '../Loader';
