@@ -61,7 +61,7 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
       return(
       <div className="data-item-row">
         {
-          area[6] !== null && Number(area[2]) !== 0 && areaType !== 'City' ?
+          area[6] !== null && Number(area[6]) > 0 && Number(area[2]) !== 0 && areaType !== 'City' ?
               <div className="rank-arrow-div">
                 <ArrowIcon arrow={area[7]} a={area[2]} rank={area[5]} outOf={area[6]} areaType={labelName} />
               </div> :area[6] === null ? <div className="rank-arrow-div">
@@ -76,7 +76,7 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
                   <BarGraph up={true} title={"my average"} id={"individual"} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
                   <BarGraph up={false} title={"other users' average"} id={"individual1"} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name="personal" regionName={area[1]} metric={metric}/>
                 </div> : areaType !== "City" ?
-                           <div className='bargraph-div'>
+                          <div className='bargraph-div'>
                             <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
                             <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
                           </div> :

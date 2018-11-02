@@ -4,7 +4,8 @@ var BasicChart = {}
 
 BasicChart.enter = function(elem_, props){
   var color = props.color;
-  if(props.up){color = '#c0c2c2'}
+  if(!props.up){color = '#c0c2c2'}
+  console.log(props.up, color)
   var barWidth = props.a;
   var parentMax = props.c;
   var id = props.id;
@@ -79,7 +80,7 @@ BasicChart.enter = function(elem_, props){
 
 BasicChart.update = function(elem_, props){
   var color = props.color
-  if(props.up){color = '#c0c2c2'}
+  if(!props.up){color = '#c0c2c2'}
   var barWidth = props.a;
   var parentMax = props.c;
   var id = props.id
