@@ -5,17 +5,14 @@ var BasicChart = {}
 BasicChart.enter = function(elem_, props){
   var color = props.color;
   if(!props.up){color = '#c0c2c2'}
-  console.log(props.up, color)
   var barWidth = props.a;
   var parentMax = props.c;
   var id = props.id;
   let name = props.name;
   let regionName = props.regionName;
-  // barWidth = percenting - barWidth + 1
-  // using 1. to give percentage threshold to val
+
   var data = [barWidth];
   let windowWidth = document.getElementById('root').clientWidth
-  // console.log(barWidth, props.c)
 
   let wcw = function(ww){
     if(ww > 400){
@@ -62,7 +59,6 @@ BasicChart.enter = function(elem_, props){
       // .attr("fill-opacity", function(d){
       //   return d / parentMax
       // })
-      // console.log(scale(props.a), props.b, props.c)
 
   // bar.append("text")
   //     .attr("x", function(d) { return scale(d) - 30; })
@@ -86,8 +82,7 @@ BasicChart.update = function(elem_, props){
   var id = props.id
   let name = props.name
   let regionName = props.regionName
-  // barWidth = percenting - barWidth + 1
-  // using 1. to give percentage threshold to val
+
   var data = [barWidth];
   let windowWidth = document.getElementById('root').clientWidth
 
@@ -122,25 +117,6 @@ BasicChart.update = function(elem_, props){
       .attr("id", id)
       .attr("height", barHeight - 1)
       .attr("class", regionName)
-      // .attr("fill-opacity", function(d){
-      //   return d / parentMax
-      // })
-
-      // console.log(props.a, props.b, props.c)
-  // bar.selectAll("text")
-  //     .attr("x", function(d) { return scale(d) - 10; })
-  //     .attr("y", barHeight / 2.5)
-  //     .attr("dy", ".60em")
-  //     .text(function(d){
-  //       if(d <= props.b){
-  //         return "great!"
-  //       }
-  //     })
-  //     .data(data)
-  //     .enter()
-  //     .append("text")
-  //     .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-  // console.log(elem_)
 }
 
 export {BasicChart};

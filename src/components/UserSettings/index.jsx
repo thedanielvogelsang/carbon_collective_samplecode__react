@@ -64,7 +64,6 @@ class UserSettings extends Component{
   }
 
   goToPage(path){
-    console.log(path)
     this.props.history.push(path)
   }
 
