@@ -98,6 +98,7 @@ button.home-icon-cont{
 
 .rank-arrow-div{
   width: 10%;
+  min-width: 42px;
   position: relative;
   z-index: 3;
   margin-top: 10px;

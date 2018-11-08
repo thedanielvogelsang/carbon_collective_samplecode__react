@@ -60,7 +60,7 @@ const Bill = function(props){
                 id="billsDeleteButton"
                 className="bill-delete-btn"
                 name="bill"
-                onClick={(e) => props.deleteBill(e, props.bill.id)}
+                onClick={(e) => props.deleteBill(e, props.bill.id, props.bill.who_id, props.bill.who)}
                 >X
               </button>
             </div>
@@ -190,18 +190,22 @@ class PastBillsPage extends Component{
     this.setState({billArray, loaded: true})
   }
 
-  deleteBill(event, id){
+  deleteBill(event, id, whoId, whoName){
     event.preventDefault();
-    if(confirm("Are you sure you want to delete this bill record? Warning:: You can't undo this.")){
-    event.target.parentNode.parentNode.classList.add("disappear")
-    let uId = this.props.user_id
-    let type = sortType(this.props.resource_type)
-    let path = `api/v1/users/${uId}/${type}?id=${id}`
-    destroy(path)
-      .then(data => console.log())
-      .catch(error => this.addAndLoadBills(error, true))
-    }
-  }
+    if(whoId !== this.props.user_id){
+      alert(`Only ${whoName} can delete this bill!`)
+    }else{
+      if(confirm("Are you sure you want to delete this bill record? Warning:: You can't undo this.")){
+        event.target.parentNode.parentNode.classList.add("disappear")
+        let uId = this.props.user_id
+        let type = sortType(this.props.resource_type)
+        let path = `api/v1/users/${uId}/${type}?id=${id}`
+        destroy(path)
+          .then(data => console.log())
+          .catch(error => this.addAndLoadBills(error, true))
+        }
+      }
+    };
 
   updateBillAndChangeToInactive(e, id, year){
     if(e.target.value === ""){
