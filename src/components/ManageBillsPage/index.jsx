@@ -11,7 +11,7 @@ import Loader from '../Loader';
 const NoCarbonBillsDiv = () => {
   return (
     <div className="carbon-no-bills">
-        <h1>Click the electric or heat icon to enter your usage and calculate your Carbon score</h1>
+        <h1>Click the electric or heat icon to enter your usage and calculate your Carbon score. Click the water icon to enter and compare water usage</h1>
     </div>
   )
 }

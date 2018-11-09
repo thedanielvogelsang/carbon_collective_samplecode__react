@@ -176,6 +176,7 @@ class HouseSettings extends Component{
 
   // used for onBlur to put and save data
   updateUserHouseDetails(){
+      if(confirm("Careful! Changing your move_in_date may affect your score and cannot be undone.")){
       const path = `api/v1/houses`
       const user_id = this.props.user_id
       const house = this.state.house
@@ -185,6 +186,10 @@ class HouseSettings extends Component{
       put(path, id, houseData)
         .then(data => this.setState({house: data, errors: "house details saved", errorStyle: {display: 'block'}}))
         .catch(error => this.sortErrors(error))
+      }else{
+        this.forceUpdate()
+      }
+
   }
 
   sortErrors(err){
