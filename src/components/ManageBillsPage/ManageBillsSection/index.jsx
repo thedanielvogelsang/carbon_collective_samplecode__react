@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { post } from '../../../api_client';
 import {scrollTop} from '../../../helper-scripts/screenHelpers.js';
-import {fetchDashData} from '../../../actions/userActions.js';
+import {fetchDashData, fetchUserData} from '../../../actions/userActions.js';
 import $ from "jquery";
 
 
@@ -125,6 +125,7 @@ class ManageBillsSection extends Component{
 
   resetForm(alertNotice=true) {
     alertNotice ? alert("Bill save was a success") : console.log()
+    this.props.fetchUserData(this.props.user_id)
     this.props.fetchDashData(this.props.user_id, this.props.resource_type)
     let formResource = "total_" + this.props.type.toLowerCase()
     let fireCloseDiv = this.props.closeDiv
@@ -257,4 +258,4 @@ const mapStateToProps = (state) =>{
     color: state.userInfo.color,
   })
 }
-export default connect(mapStateToProps, {fetchDashData})(ManageBillsSection);
+export default connect(mapStateToProps, {fetchDashData, fetchUserData})(ManageBillsSection);
