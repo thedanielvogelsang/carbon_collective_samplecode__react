@@ -58,6 +58,8 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
   let chart2 = `chart` + String(chartNum) + '1';
   let bargraphId1 = areaType.charAt(0).toLowerCase() + areaType.slice(1);
   let bargraphId2 = areaType.charAt(0).toLowerCase() + areaType.slice(1) + '1';
+      console.log(area)
+      // console.log(Number(area[6]), Number(area[2]))
       return(
       <div className="data-item-row">
         {
@@ -80,9 +82,9 @@ const DashDataRow = (area, areaType, parentArea, chartNum, linkAction, color, me
                             <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
                             <BarGraph up={false} id={bargraphId2} title={`other ` + bargraphId1 + ` averages`} a={area[3]} c={area[4]} chartName={chart2} color={'#89868D'} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
                           </div> :
-                          <div className='bargraph-div'>
-                           <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
-                          </div> }
+                                  <div className='bargraph-div'>
+                                   <BarGraph up={true} id={bargraphId1} title={bargraphId1 + ` average`} a={area[2]} b={area[3]} c={area[4]} chartName={chart1} color={color} goToRegionPage={linkAction} name={labelName} regionName={area[1]} metric={metric} />
+                                  </div> }
           </div>
           {areaType === "Me" ? <h6 className="graph-Exp">other users average</h6> : areaType === "City" ? <h6 className="city-total">City Avg: <span className="city-total-avg">{area[2]}</span> {metric}/month</h6> :
            <h6 className="graph-Exp">other {labelName} avg in {parentArea[1]}</h6> }

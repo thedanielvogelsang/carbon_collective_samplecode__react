@@ -8,7 +8,8 @@ const ArrowIcon = (props) => {
   let arr, areaType;
   // let rank = findOrdinal(props.rank)
   props.arrow ? arr = arrowUp : arr = arrowDown
-  props.rank === '?' ? arr = exclamationMark : console.log();
+  console.log(props.rank)
+  props.rank === '?' ? arr = exclamationMark : console.log(props.rank);
   props.outOf === 1 ? areaType = props.areaType.replace(/s$/, '') : areaType = props.areaType
   return(
       <div className="arrow-holder-div">

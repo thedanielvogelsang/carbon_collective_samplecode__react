@@ -156,6 +156,7 @@ class InviteSomeonePage extends Component{
         .then(data => this.loadInvites(id))
         .catch(error => console.log(error))
     }
+    this.props.fetchUserData(this.props.id)
   }
 
   handleValue(event){

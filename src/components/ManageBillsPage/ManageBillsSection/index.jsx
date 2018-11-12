@@ -124,7 +124,7 @@ class ManageBillsSection extends Component{
   }
 
   resetForm(alertNotice=true) {
-    alertNotice ? alert("Bill save was a success") : console.log()
+    alertNotice ? alert("Bill save was a success! Your score may take a minute or two to reflect changes.") : console.log()
     this.props.fetchUserData(this.props.user_id)
     this.props.fetchDashData(this.props.user_id, this.props.resource_type)
     let formResource = "total_" + this.props.type.toLowerCase()
