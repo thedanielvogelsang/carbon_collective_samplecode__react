@@ -51,7 +51,6 @@ class ManageBillsPage extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.resource_type)
     if(this.props.resource_type === "carbon"){
       this.props.fetchDashData(this.props.user_id, "electricity")
     }
