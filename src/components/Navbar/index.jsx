@@ -384,6 +384,8 @@ class Navbar extends Component {
           )
     }
     else if(house){
+      let ct = this.props.data.bills_left
+      let inv = this.props.data.invites_left
         return (
           <div className="main-navbar">
             <div className="navbar-logo-menu-div navbar loaded">

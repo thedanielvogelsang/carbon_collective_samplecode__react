@@ -6,6 +6,7 @@ import PageSection from './PageSection';
 import { withRouter } from 'react-router-dom';
 import { get, post } from '../../api_client';
 import { connect } from 'react-redux'
+import {fetchDashData} from '../../actions/userActions'
 import Loader from '../Loader';
 
 const NoCarbonBillsDiv = () => {
@@ -50,6 +51,10 @@ class ManageBillsPage extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props.resource_type)
+    if(this.props.resource_type === "carbon"){
+      this.props.fetchDashData(this.props.user_id, "electricity")
+    }
     this.loadData()
     this.logLanding()
   }
@@ -174,7 +179,7 @@ class ManageBillsPage extends Component {
           <div className="manage-bills-header-container">
             <div className="manage-bills-overlay">
               <ResourceTitleDash color={color} title={title} graph={false} resourceType={this.props.resource_type} changePage={this.goToPage} />
-              <ResourceNav updateLoader={this.updateLoader} history={this.props.history} />
+              <ResourceNav noCarbon={true} updateLoader={this.updateLoader} history={this.props.history} />
             </div>
           </div>
           <div className="resource-directions">
@@ -218,4 +223,4 @@ const mapStateToProps = (state) =>{
     color: state.userInfo.color,
   })
 }
-export default withRouter(connect(mapStateToProps, null)(ManageBillsPage));
+export default withRouter(connect(mapStateToProps, {fetchDashData})(ManageBillsPage));

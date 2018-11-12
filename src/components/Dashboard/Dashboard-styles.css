@@ -168,6 +168,10 @@ div.dashboard-resource-relative:not(:first-child){
   margin-left: 30px;
 }
 
+div.dashboard-resource-relative.no_carbon{
+  margin-left: 50px;
+}
+
 button.carbon-btn:hover{
   cursor: pointer;
   -webkit-transform: scale(1.1);
@@ -552,9 +556,7 @@ span.material-icons.carbon-logo{
     max-width: 300px;
     min-width: 0;
   }
-}
 
-@media (max-width: 360px){
   h6.data-value.main{
     font-size: 16px;
   }
@@ -572,6 +574,9 @@ span.material-icons.carbon-logo{
   }
   button.resource-btn:not(:first-child){
     margin-left: 30px;
+  }
+  button.resource-btn.electricity-btn{
+    margin-top: 24px;
   }
 }
 
@@ -598,5 +603,8 @@ span.material-icons.carbon-logo{
   }
   h6.data-value.secondary{
     font-size: 10px;
+  }
+  div.dashboard-resource-relative.no_carbon{
+    margin-left: 30px;
   }
 }
