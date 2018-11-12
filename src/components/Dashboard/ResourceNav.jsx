@@ -126,6 +126,9 @@ class ResourceNav extends Component {
     this.state.elec_highlighted ? elec_class = 'elec-img highlighted' : elec_class = 'elec-img';
     this.state.water_highlighted ? water_class = 'water-img highlighted' : water_class = 'water-img';
     this.state.flame_highlighted ? heat_class = 'gas-img highlighted' : heat_class = 'gas-img';
+
+    let ct = this.props.data.bills_left
+    console.log('bills left ' + ct)
     return(
         <div className="dashboard-resource-nav">
         <div className="dashboard-resource-relative">
