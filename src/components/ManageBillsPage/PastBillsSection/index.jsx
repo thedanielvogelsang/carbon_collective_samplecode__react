@@ -201,9 +201,10 @@ class PastBillsPage extends Component{
         let type = sortType(this.props.resource_type)
         let path = `api/v1/users/${uId}/${type}?id=${id}`
         destroy(path)
-          .then(data => console.log())
+          .then(data => alert(`Bill deleted.`))
           .catch(error => this.addAndLoadBills(error, true))
         }
+
       }
     };
 
