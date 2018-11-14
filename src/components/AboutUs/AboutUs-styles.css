@@ -3,6 +3,7 @@
 .aboutus-page{
   width: 100vw;
   height: 100%;
+  min-height: 1800px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -73,6 +74,41 @@
   padding-left: 5px;
 }
 
+button.about-me-button {
+  bottom: 40px;
+  font-size: 28px;
+  font-weight: 300;
+  height: 60px;
+  margin-top: 45px;
+  margin-bottom: 15px;
+  max-width: 245px;
+  background: none;
+  text-align: left;
+  margin-left: 10%;
+  padding-left: 55px;
+  padding-top: 4px;
+  opacity: 0.5 !important;
+  transition: opacity .6s;
+  color: #2A2C33;
+  border-radius: 5px;
+  box-sizing: content-box;
+}
+
+button.about-me-button:hover{
+  background-color: #fce834;
+  opacity: 0.6 !important;
+  transition: background-color .6s;
+}
+
+
+@media (min-width: 975px){
+  .aboutus-page h1{
+    font-size: 50px;
+  }
+  button.about-me-button {
+    margin-left: 16%;
+  }
+}
 
 @media (max-width: 975px){
   .aboutus-page h1{
@@ -116,6 +152,9 @@
 }
 
 @media (max-width: 460px){
+  .aboutus-page{
+    padding-left: 40px;
+  }
   .aboutus-page h1{
     font-size: 42px;
   }
@@ -135,7 +174,6 @@
 @media (max-width: 370px){
   .aboutus-page{
     padding: 20px;
-    padding-left: 70px;
   }
   .aboutus-div {
     width: 80%;

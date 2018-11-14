@@ -17,9 +17,10 @@ export const ResourceTitleDash = (props) => {
         <h6 className="data-title">{capitalizeFirstLetter(props.resourceType)}</h6>
         {props.graph ?
         <button
+          type="button"
           className="update-bill-button"
           style={{color: props.color}}
-          onClick={(e) => props.changePage('/carbon-calculations')}
+          onClick={props.showCalculationModal}
               >
             How We Calculate
         </button> : null }

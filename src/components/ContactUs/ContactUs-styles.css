@@ -98,7 +98,7 @@ img.contactus-portrait{
   /* margin-right: 80px; */
   opacity: 0.8;
   z-index: 2;
-  margin-top: 0px;
+  margin-top: -10px;
   /* box-shadow: 3px -1px 4px #1fa245; */
   box-shadow: -3px 1px 4px #1fa245;
 }
@@ -122,12 +122,12 @@ img.contactus-portrait{
     /* padding-left: 20px; */
   }
 img.contactus-portrait{
-  margin-top: 0;
+  margin-top: -10px;
 }
 }
 @media (min-height: 1000px){
 img.contactus-portrait{
-  margin-top: -10px;
+  /* margin-top: -10px; */
 }
 }
 

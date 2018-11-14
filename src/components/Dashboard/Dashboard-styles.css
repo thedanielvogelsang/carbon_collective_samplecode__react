@@ -72,6 +72,7 @@
   min-width: 400px;
   height: 68px;
   padding-left: 60px;
+  position: relative;
   /* color: rgb(245,245,245); */
   /* color: rgb(245,245,245); */
   box-sizing: border-box;
@@ -291,6 +292,152 @@ span.material-icons.carbon-logo{
   line-height: 25px;
 }
 
+/*  */
+
+.dashboard-modal-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carbon-calculation-modal{
+  display: flex;
+  transition: display 0.6s;
+  font-size: 16px;
+  font-weight: 400;
+  background: #333;
+  color: #fff;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  position: absolute;
+  z-index: 4;
+  padding: 10px 5px;
+  text-align: center;
+  top: 200px;
+  min-width: 80px;
+  letter-spacing: 1px;
+}
+
+.carbon-calculation-modal:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 0px 6px 6px 6px;
+  top: -5px;
+  left: 20%;
+  content: "";
+  position: absolute;
+  z-index: 3;
+}
+
+
+
+@media(min-width: 1200px){
+  .carbon-calculation-modal:before{
+    left: 20%;
+  }
+}
+
+@media(max-width: 1200px){
+  .carbon-calculation-modal:before{
+    left: 30%;
+  }
+}
+
+@media(max-width: 1080px){
+  .carbon-calculation-modal:before{
+    left: 40%;
+  }
+}
+@media(max-width: 1080px){
+  .carbon-calculation-modal:before{
+    left: 40%;
+  }
+}
+@media(max-width: 1020px){
+  .carbon-calculation-modal{
+    top: 255px;
+  }
+}
+
+@media(max-width: 850px){
+  .carbon-calculation-modal:before{
+    left: 50%;
+  }
+}
+
+@media(max-width: 667px){
+  .carbon-calculation-modal:before{
+    left: 75%;
+  }
+  .carbon-calculation-modal{
+    top: 230px;
+  }
+}
+
+.carbon-calcs-notice{
+  width: 100%;
+  max-width: 375px;
+  padding-top: 10px;
+}
+
+.carbon-calcs-form-div{
+  width: 100%;
+  max-width: 375px;
+}
+
+.carbon-calcs-header{
+  text-align: left;
+  width: 320px;
+  /* font-family: 'Kaushan Script', cursive;
+  font-size: 2em; */
+  margin-left: 16px;
+  margin-top: 16px;
+  padding: 0px 10px 0px 10px;
+  max-width: 320px;
+  font-size:  22px;
+  font-weight: normal;
+  text-shadow: 1px 1px white;
+  /* font-size: 1.1em; */
+}
+
+.carbon-calcs-text{
+  margin: 5px 5px 2px 5px;
+  text-align: justify;
+  line-height: 1.1em;
+  padding: 15px 15px 0px 15px;
+  text-indent: 30px;
+}
+
+.carbon-calcs-text p{
+  padding: 20px 0px 20px;
+  max-width: 355px;
+  min-width: 355px;
+  box-sizing: border-box;
+}
+
+p.carbon-calculation{
+  text-align: left;
+  padding-right: 60px;
+  margin-left: -10px;
+}
+
+p.carbonfund-link-p{
+  text-align: right;
+  margin-left: -20px;
+  min-width: 355px;
+  padding-right: 10px;
+  font-weight: lighter;
+}
+
+a.carbonfund-link{
+  color: white;
+  font-weight: lighter;
+  margin-left: 10px;
+}
+
+/*  */
 
 @keyframes flash {
   0% { opacity: 0 }
