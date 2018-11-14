@@ -375,7 +375,7 @@ class Navbar extends Component {
         </div>
       )
     }
-    else if(['/login', '/signup'].indexOf(window.location.pathname) > -1){
+    else if(['/login', '/signup', '/privacy-policy'].indexOf(window.location.pathname) > -1){
         return(
           <div className="main-navbar navbar">
             <div className="navbar-logo-menu-div navbar loaded">

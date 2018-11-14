@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
+import {checkImageHeight} from '../../helper-scripts/screenHelpers'
 import './AboutUs-styles.css';
 
 class AboutUs extends Component{
+  componentDidMount(){
+    checkImageHeight()
+  }
+  openMonkeySignup(){
+    window.open('http://eepurl.com/dBEQe9')
+  }
   render(){
     return(
       <div className="aboutus-page">
@@ -21,6 +28,11 @@ class AboutUs extends Component{
               <p>We are people who want our actions to reflect our beliefs. As we see increasing average temperatures, more extreme weather events, and massive people displacement, we choose to seek a path forward, together. We recognize that innovative technologies can serve us in organizing, sharing, and holding ourselves and each other accountable.</p>
           </div>
         </div>
+        <button
+          type="button"
+          className="about-me-button"
+          onClick={this.openMonkeySignup}
+        >GET INVOLVED</button>
       </div>
     )
   }

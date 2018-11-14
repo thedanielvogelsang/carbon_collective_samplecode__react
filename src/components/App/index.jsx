@@ -35,7 +35,6 @@ import PrivacyPage from '../PrivacyPage'
 import SuggestionEmailPage from '../SuggestionEmailPage'
 import FixBugPage from '../FixBugPage'
 import FixBugLink from '../FixBugLink'
-import CarbonCalc from '../CarbonCalculationsPage'
 import Page404 from '../Page404'
 import {connect} from 'react-redux'
 import {fetchUserData} from '../../actions/userActions'
@@ -175,8 +174,9 @@ class App extends Component {
     let loaded = this.state.loaded;
     let house = this.props.house_id;
     let id = this.props.user_id;
-    let fixbug;
+    let fixbug, navbar;
     this.props.history.location.pathname === '/settings' ? fixbug = false : fixbug = true;
+    this.props.history.location.pathname === '/privacy-policy' ? navbar = false : navbar = true;
     if(!loaded && !id){
       return(
         <div className="app-container" id="app-container">
@@ -217,7 +217,6 @@ class App extends Component {
               <NoHouseRoute path="/house-exists" loaded={loaded} house={house} component={ HouseExists } addUserData={this.addUserData} data={this.state.userData}/> } />
               <AuthenticatedRouteProps path="/dashboard" loaded={loaded} component={ Dashboard } updateState={this.updateState} userData={this.state.userData} /> } />
               <AuthenticatedRouteProps path="/managebills" loaded={loaded}  component={ ManageBillsPage } data={this.state} updateState={this.updateState} /> } />
-              <AuthenticatedRouteProps path="/carbon-calculations" loaded={loaded} component={ CarbonCalc } /> } />
               <AuthenticatedRouteProps path="/regionPage" loaded={loaded}  component={ RegionPage} data={this.state} /> } />
               <PropsRoute path="/settings" loaded={loaded} component={ Settings } data={this.state} updateState={this.updateState} house={house}/> } />
               <AuthenticatedRouteProps path="/household" loaded={loaded}  component={ HouseholdPage } data={this.state} /> } />
